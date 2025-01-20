@@ -1,10 +1,9 @@
-// dependencies and variables
+// dependencies, variables
 require('dotenv').config({ path: './.env' });
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-
 const app = express();
 const PORT = 3000;
 
@@ -102,8 +101,7 @@ app.post('/api/signup', async (req, res) => {
     }
 });
 
-
-// Login route (POST) with debugging
+// Login route (POST)
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -123,14 +121,8 @@ app.post('/api/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
 
-        // Log retrieved password and request password for debugging
-        console.log("Stored hashed password:", Item.password);
-        console.log("Password from request:", password);
-
         // Compare password
         const isMatch = await bcrypt.compare(password, Item.password);
-        console.log("Password comparison result:", isMatch);
-
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
@@ -145,13 +137,10 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-
-
 // Protected route placeholder
 app.get('/api/protected', authenticateToken, (req, res) => {
     res.json({ message: `Welcome, ${req.user.email}!` });
 });
-
 
 // Start server
 app.listen(PORT, (err) => {
