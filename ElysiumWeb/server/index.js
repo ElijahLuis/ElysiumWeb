@@ -137,10 +137,16 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Protected route placeholder
+/* Protected Routes */
 app.get('/api/protected', authenticateToken, (req, res) => {
     res.json({ message: `Welcome, ${req.user.email}!` });
 });
+
+app.get('/api/profile', authenticateToken, (req, res) => {
+    // Fetch user profile
+    res.json({ message: `Profile of ${req.user.email}` });
+});
+
 
 // Start server
 app.listen(PORT, (err) => {
