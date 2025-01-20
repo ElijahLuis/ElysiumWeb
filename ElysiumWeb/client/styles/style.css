@@ -1,0 +1,270 @@
+/* Set default format */
+body,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --scrollbar-width: 16px;
+}
+
+/* Background set-up */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: url('../assets/images/clouds.jpg'), linear-gradient(to bottom, #a0d8ef, #cfeffd);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: multiply;
+    overscroll-behavior: none;
+}
+
+/* Body layout */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    text-align: center;
+    gap: 20px;
+}
+
+/* Floating clouds anim */
+@keyframes cloudsFloat {
+    0% {
+        background-position: center center;
+    }
+
+    50% {
+        background-position: center top;
+    }
+
+    100% {
+        background-position: center center;
+    }
+}
+
+/* Floating text anim */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+h1,
+p {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Body styling */
+body {
+    color: #ffeeee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: multiply;
+    padding: 20px;
+    animation: cloudsFloat 30s ease-in-out infinite;
+    gap: 20px;
+}
+
+/* Header styling */
+/* h1: "Welcome to Elysium Web!" */
+h1 {
+    margin-top: 100px;
+    color: #ffeeee;
+    font-family: Cambria, Times, sans-serif;
+    margin-bottom: 10px;
+    font-size: 4rem;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+#elysiumword {
+    color: palevioletred;
+    font-size: 4rem;
+}
+
+h2 {
+    color: palevioletred;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 166, 193, 1);
+}
+
+#line {
+width: 100%;
+margin: 0px auto;
+border: 2px solid rgba(255, 166, 193, 0.75);
+}
+
+/* Paragraph styling */
+/* p: "We are currently under construction." */
+p {
+    margin-top: 0;
+    color: #ffeeee;
+    font-size: 1.75rem;
+    margin: 10px 0;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Auth container */
+#auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Form sections */
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.75rem;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #555;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Navbar styling */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: calc(100% - var(--scrollbar-width));
+    background-color: #FFA6C1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Navlinks container */
+#nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+/* Navlinks */
+#nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-family: Cambria, Times, serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
+}
+
+#nav-links a:hover {
+    background-color: #ffffff;
+    color: #ff69b4;
+    text-shadow: none;
+}
+
+/* Active link */
+#nav-links .active {
+    background-color: #ffffff;
+    color: #ff69b4;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Adjust container to fit forms */
+#auth-container>form {
+    margin: 0 10px;
+}
+
+/* Remove server API message at bottom of webpage for now */
+#message {
+display: none;
+}
