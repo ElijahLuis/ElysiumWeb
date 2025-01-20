@@ -21,10 +21,16 @@ app.use(express.json());
 // Serve static files from client folder
 app.use(express.static('C:/Users/elija/Projects/ElysiumWeb/client'));
 
-// Basic API Route Placeholder
+// Basic API route placeholder
  app.get('/api', (req, res) => {
     res.json({ message: 'Heyo from the server! Wut it do?' });
 }); 
+
+// API Updates route placeholder
+app.get('/api/updates', (req, res) => {
+    res.json({ updates: ["Test feature added", "Bug fixes and improvements"] });
+});
+
 
 // Start server
 app.listen(PORT, (err) => {

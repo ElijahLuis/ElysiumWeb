@@ -1,0 +1,64 @@
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 50px 20px;
+/*   background: linear-gradient(to bottom, #6c63ff, #c3cffe); */
+    color: white;
+    font-family: 'Cambria', serif;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.5rem;
+}
+
+/* Quick Links */
+#quick-links {
+    margin: 40px 20px;
+    text-align: center;
+}
+
+#quick-links h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quick-link {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #ffa6c1;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.quick-link:hover {
+    background-color: #ff69b4;
+}
+
+/* Updates Section */
+#updates {
+    margin: 40px 20px;
+    text-align: center;
+}
+
+#updates h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#updates p {
+    font-size: 1.2rem;
+}

@@ -3,29 +3,39 @@ fetch('/api')
     .then(response => response.json())
     .then(data => {
         // update DOM with message from server
-        document.getElementById('message').textContent = data.message;
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            messageElement.textContent = data.message;
+        }
+        ;
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
 
 // Authentication logic
-document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
 
-    alert(`Login attempt with email: ${email}`);
-});
+        alert(`Login attempt with email: ${email}`);
+    });
+}
 
-document.getElementById('signup-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
+const signupForm = document.getElementById('signup-form');
+if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('signup-name').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
 
-    alert(`Signup attempt with name: ${name}, email: ${email}`);
-});
+        alert(`Signup attempt with name: ${name}, email: ${email}`);
+    });
+}
 
 //  Test: Change navbar upon login
 document.addEventListener("DOMContentLoaded", function () {
