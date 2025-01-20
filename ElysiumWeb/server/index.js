@@ -1,5 +1,5 @@
 // dependencies and variables
-require('dotenv').config();
+require('dotenv').config({ path: './.env' });
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -12,6 +12,12 @@ const PORT = 3000;
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
 const { DynamoDBDocumentClient } = require('@aws-sdk/lib-dynamodb');
 const { GetCommand, PutCommand } = require('@aws-sdk/lib-dynamodb');
+
+// Debug logging
+app.use((req, res, next) => {
+    console.log(`Request made to: ${req.method} ${req.url}`);
+    next();  // Continue processing the request
+});
 
 // Initialize DynamoDB Client
 const client = new DynamoDBClient({
@@ -63,7 +69,7 @@ app.post('/api/signup', async (req, res) => {
     }
 
     try {
-        // Check if the user already exists
+        // Check if user already exists
         const user = await dynamoDb.send(
             new GetCommand({
                 TableName: 'Users',
@@ -75,7 +81,7 @@ app.post('/api/signup', async (req, res) => {
             return res.status(400).json({ message: 'User already exists.' });
         }
 
-        // Hash the password
+        // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Store user in DynamoDB
@@ -85,39 +91,46 @@ app.post('/api/signup', async (req, res) => {
                 Item: {
                     email,
                     name,
-                    password: hashedPassword,
+                    password: hashedPassword,  // Store hashed password
                 },
             })
         );
 
         res.status(201).json({ message: 'User registered successfully!' });
     } catch (error) {
-        // Detailed error logging for debugging
-        console.error('Error during signup:', error.message);  // Log the error message
-        console.error('Stack trace:', error.stack);  // Log the stack trace for better context
         res.status(500).json({ message: 'Internal server error' });
     }
 });
 
-// Login route (POST)
+
+// Login route (POST) with debugging
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
+
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required.' });
     }
-    try {
-        // Retrieve user from DynamoDB
-        const user = await dynamoDb.get({
-            TableName: 'Users',
-            Key: { email },
-        });
 
-        if (!user.Item) {
+    try {
+        const { Item } = await dynamoDb.send(
+            new GetCommand({
+                TableName: 'Users',
+                Key: { email }
+            })
+        );
+
+        if (!Item) {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
 
-        // Verify password
-        const isMatch = await bcrypt.compare(password, user.Item.password);
+        // Log retrieved password and request password for debugging
+        console.log("Stored hashed password:", Item.password);
+        console.log("Password from request:", password);
+
+        // Compare password
+        const isMatch = await bcrypt.compare(password, Item.password);
+        console.log("Password comparison result:", isMatch);
+
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
@@ -131,6 +144,8 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
 
 // Protected route placeholder
 app.get('/api/protected', authenticateToken, (req, res) => {
