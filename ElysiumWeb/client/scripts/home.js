@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const updatesSection = document.getElementById("updates");
-    // Example: Fetch updates dynamically (replace URL with your API)
     fetch("/api/updates")
         .then(response => response.json())
         .then(data => {
