@@ -1,19 +1,23 @@
 // dependencies and variables
 require('dotenv').config();
 const express = require('express');
-const AWS = require('aws-sdk');
-const path = require('path'); // Import path module
+const path = require('path');
 const app = express();
 const PORT = 3000;
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
-const tableName = 'Users';
 
-// AWS SDK Config
-AWS.config.update({
+// AWS imports
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+const { DynamoDBDocumentClient } = require('@aws-sdk/lib-dynamodb');
+
+// Initialize DynamoDB Client
+const client = new DynamoDBClient({
     region: process.env.AWS_REGION,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
 });
+const dynamoDb = DynamoDBDocumentClient.from(client);
 
 // Tell Express to parse incoming reqs as JSON
 app.use(express.json());
