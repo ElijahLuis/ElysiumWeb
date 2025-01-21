@@ -147,6 +147,11 @@ app.get('/api/profile', authenticateToken, (req, res) => {
     res.json({ message: `Profile of ${req.user.email}` });
 });
 
+app.get('/api/settings', authenticateToken, (req, res) => {
+    // Allow user to update settings
+    res.json({ message: `Settings for ${req.user.email}` });
+});
+
 
 // Start server
 app.listen(PORT, (err) => {
