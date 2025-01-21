@@ -13,10 +13,10 @@ const { DynamoDBDocumentClient } = require('@aws-sdk/lib-dynamodb');
 const { GetCommand, PutCommand } = require('@aws-sdk/lib-dynamodb');
 
 // Debug logging
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     console.log(`Request made to: ${req.method} ${req.url}`);
-    next();  // Continue processing the request
-});
+    next();  // continue processing
+}); */
 
 // Initialize DynamoDB Client
 const client = new DynamoDBClient({
