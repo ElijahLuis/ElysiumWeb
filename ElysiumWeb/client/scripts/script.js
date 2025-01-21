@@ -34,7 +34,7 @@ if (loginForm) {
                 // Store JWT token in localStorage
                 localStorage.setItem('token', data.token);
                 alert('Login successful!');
-                window.location.href = '/home.html';  // Redirect to home page
+                window.location.href = '/pages/home.html';  // Redirect to home page
             } else {
                 alert(`Error: ${data.message}`);
             }
@@ -85,28 +85,33 @@ document.addEventListener("DOMContentLoaded", function () {
     navLinks.innerHTML = "";
 
     function updateNavbar() {
-    const navLinks = document.getElementById("nav-links");
-    const currentPage = window.location.pathname.split('/').pop();
-    let isAuthenticated = localStorage.getItem('token') !== null;
+        const navLinks = document.getElementById("nav-links");
+        const currentPage = window.location.pathname.split('/').pop();
+        let isAuthenticated = localStorage.getItem('token') !== null;
 
-    navLinks.innerHTML = ""; // Clear previous navbar links
+        navLinks.innerHTML = ""; // Clear previous navbar links
 
-    if (isAuthenticated) {
-        navLinks.innerHTML = `
-            <li><a href="home.html" ${currentPage === "home.html" ? 'class="active"' : ''}>Home</a></li>
-            <li><a href="avatar.html" ${currentPage === "avatar.html" ? 'class="active"' : ''}>Avatar</a></li>
-            <li><a href="items.html" ${currentPage === "items.html" ? 'class="active"' : ''}>Items</a></li>
-            <li><a href="settings.html" ${currentPage === "settings.html" ? 'class="active"' : ''}>Settings</a></li>
-            <li><a href="#" id="logout-btn">Logout</a></li>
+        if (isAuthenticated) {
+            // logged in
+            navLinks.innerHTML = `
+            <li><a href="../pages/home.html" ${currentPage === "home.html" ? 'class="active"' : ''}>Home</a></li>
+            <li><a href="../pages/avatar.html" ${currentPage === "avatar.html" ? 'class="active"' : ''}>Avatar</a></li>
+            <li><a href="../pages/items.html" ${currentPage === "items.html" ? 'class="active"' : ''}>Items</a></li>
+            <li><a href="../pages/about.html" ${currentPage === "about.html" ? 'class="active"' : ''}>About</a></li>
+            <li><a href="../pages/contact.html" ${currentPage === "contact.html" ? 'class="active"' : ''}>Support</a></li>
+            <li><a href="../pages/settings.html" ${currentPage === "settings.html" ? 'class="active"' : ''}>Settings</a></li>
         `;
-    } else {
-        navLinks.innerHTML = `
-            <li><a href="index.html" ${currentPage === "index.html" ? 'class="active"' : ''}>Home</a></li>
-            <li><a href="login.html" ${currentPage === "login.html" ? 'class="active"' : ''}>Login</a></li>
-            <li><a href="signup.html" ${currentPage === "signup.html" ? 'class="active"' : ''}>Sign Up</a></li>
+        } else {
+            // logged out
+            navLinks.innerHTML = `
+            <li><a href="../index.html" ${currentPage === "index.html" ? 'class="active"' : ''}>Welcome</a></li>
+            <li><a href="../pages/about.html" ${currentPage === "about.html" ? 'class="active"' : ''}>About Us</a></li>
+            <li><a href="../pages/contact.html" ${currentPage === "contact.html" ? 'class="active"' : ''}>Contact</a></li>
+            <li><a href="../pages/login.html" ${currentPage === "login.html" ? 'class="active"' : ''}>Login</a></li>
+            <li><a href="../pages/signup.html" ${currentPage === "signup.html" ? 'class="active"' : ''}>Sign Up</a></li>
         `;
+        }
     }
-}
 
     updateNavbar();
 
@@ -115,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             localStorage.removeItem('token');
-            window.location.href = '/login.html';
+            window.location.href = '../index.html'; // redirect to welcome page
         });
     }
 });
