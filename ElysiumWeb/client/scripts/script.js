@@ -78,31 +78,39 @@ if (signupForm) {
 
 // Change navbar upon login status
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Token in localStorage:", localStorage.getItem('token'));
     const navLinks = document.getElementById("nav-links");
+    const currentPage = window.location.pathname.split('/').pop();
     let isAuthenticated = localStorage.getItem('token') !== null;
+    navLinks.innerHTML = "";
 
     function updateNavbar() {
-        navLinks.innerHTML = "";
+    const navLinks = document.getElementById("nav-links");
+    const currentPage = window.location.pathname.split('/').pop();
+    let isAuthenticated = localStorage.getItem('token') !== null;
 
-        if (isAuthenticated) {
-            navLinks.innerHTML = `
-                <li><a href="home.html">Home</a></li>
-                <li><a href="avatar.html">Avatar</a></li>
-                <li><a href="items.html">Items</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="#" id="logout-btn">Logout</a></li>
-            `;
-        } else {
-            navLinks.innerHTML = `
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-            `;
-        }
+    navLinks.innerHTML = ""; // Clear previous navbar links
+
+    if (isAuthenticated) {
+        navLinks.innerHTML = `
+            <li><a href="home.html" ${currentPage === "home.html" ? 'class="active"' : ''}>Home</a></li>
+            <li><a href="avatar.html" ${currentPage === "avatar.html" ? 'class="active"' : ''}>Avatar</a></li>
+            <li><a href="items.html" ${currentPage === "items.html" ? 'class="active"' : ''}>Items</a></li>
+            <li><a href="settings.html" ${currentPage === "settings.html" ? 'class="active"' : ''}>Settings</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+        `;
+    } else {
+        navLinks.innerHTML = `
+            <li><a href="index.html" ${currentPage === "index.html" ? 'class="active"' : ''}>Home</a></li>
+            <li><a href="login.html" ${currentPage === "login.html" ? 'class="active"' : ''}>Login</a></li>
+            <li><a href="signup.html" ${currentPage === "signup.html" ? 'class="active"' : ''}>Sign Up</a></li>
+        `;
     }
+}
 
     updateNavbar();
 
-    // Logout functionality
+    // Logout function
     const logoutButton = document.getElementById('logout-btn');
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {

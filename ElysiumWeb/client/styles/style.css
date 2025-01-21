@@ -1,10 +1,6 @@
 /* Set default format */
-body,
-h1,
-p {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+:root {
+    --scrollbar-width: 16px;
 }
 
 *,
@@ -13,8 +9,12 @@ p {
     box-sizing: border-box;
 }
 
-:root {
-    --scrollbar-width: 16px;
+body,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
 /* Background set-up */
@@ -130,7 +130,6 @@ border: 2px solid rgba(255, 166, 193, 0.75);
 }
 
 /* Paragraph styling */
-/* p: "We are currently under construction." */
 p {
     margin-top: 0;
     color: #ffeeee;
