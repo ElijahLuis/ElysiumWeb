@@ -143,12 +143,10 @@ app.get('/api/protected', authenticateToken, (req, res) => {
 });
 
 app.get('/api/profile', authenticateToken, (req, res) => {
-    // Fetch user profile
     res.json({ message: `Profile of ${req.user.email}` });
 });
 
 app.get('/api/settings', authenticateToken, (req, res) => {
-    // Allow user to update settings
     res.json({ message: `Settings for ${req.user.email}` });
 });
 

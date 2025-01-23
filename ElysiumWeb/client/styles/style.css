@@ -1,8 +1,4 @@
 /* Set default format */
-:root {
-    --scrollbar-width: 16px;
-}
-
 *,
 *::before,
 *::after {
@@ -80,8 +76,7 @@ body {
     }
 }
 
-h1,
-p {
+h1 {
     animation: float 4s ease-in-out infinite;
 }
 
@@ -118,7 +113,7 @@ h1 {
 
 #elysiumword {
     color: palevioletred;
-    font-size: 4rem;
+    font-size: inherit;
 }
 
 h2 {
@@ -168,7 +163,7 @@ border: 2px solid rgba(255, 166, 193, 0.75);
 p {
     margin-top: 0;
     color: #ffeeee;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin: 10px 0;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
@@ -293,3 +288,7 @@ button:hover {
     text-shadow: none;
 }
 
+/* Footer styling */
+.footer {
+    font-size: 0.5rem;
+}
