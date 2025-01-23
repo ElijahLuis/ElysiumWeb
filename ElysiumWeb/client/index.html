@@ -5,46 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elysium Web</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
     <nav id="navbar">
         <ul id="nav-links">
-            <!-- links added via JS -->
+            <!-- links added via script.js -->
         </ul>
     </nav>
+
     <h1>Welcome to <label id="elysiumword">Elysium</label> Web!</h1>
     <p>Your journey begins here. Explore creativity, adventure, and growth.</p>
-    <div id="line"></div>
 
-    <!-- Authentication -->
-    <div id="auth-container">
-        <div class="auth-section">
-            <h2>Log In</h2>
-            <form id="login-form">
-                <label for="login-email">Email:</label>
-                <input type="email" id="login-email" required>
-                <label for="login-password">Password:</label>
-                <input type="password" id="login-password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        <div class="auth-section">
-            <h2>Sign Up</h2>
-            <form id="signup-form">
-                <label for="signup-name">Name:</label>
-                <input type="text" id="signup-name" required>
-                <label for="signup-email">Email:</label>
-                <input type="email" id="signup-email" required>
-                <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" required>
-                <button type="submit">Signup</button>
-            </form>
-        </div>
-    </div>
+    <div id="line"></div>
+    <div id="hero">
+        <h2>Join the Adventure</h2>
+        <p>Sign up now to start your journey in Elysium Web.</p>
+        <a href="pages/signup.html" class="btn">Sign Up</a>
+    <!-- Authentication moved to separate webpages-->
     <script src="scripts/script.js"></script>
-    <p id="message"></p>
 </body>
 
 </html>
