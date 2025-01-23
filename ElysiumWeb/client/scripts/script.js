@@ -20,7 +20,7 @@ if (loginForm) {
                 // Store JWT token in localStorage
                 localStorage.setItem('token', data.token);
                 alert('Login successful!');
-                window.location.href = '/pages/home.html'; // Redirect to home page
+                window.location.href = '/pages/home.html'; // Redirect to user home
             } else {
                 alert(`Error: ${data.message}`);
             }
@@ -51,7 +51,7 @@ if (signupForm) {
 
             if (response.ok) {
                 alert('Signup successful!');
-                window.location.href = '/login.html'; // Redirect to login page
+                window.location.href = '/login.html'; // Redirect to login
             } else {
                 alert(`Error: ${data.message}`);
             }
@@ -62,18 +62,17 @@ if (signupForm) {
     });
 }
 
-// Change navbar upon login status
 function updateNavbar() {
     const navLinks = document.getElementById("nav-links");
 
     let currentPage = window.location.pathname.split('/').pop();
     if (currentPage === "" || currentPage === "index.html") {
-        currentPage = "index.html"; // Normalize root URL
+        currentPage = "index.html";
     }
 
     const isAuthenticated = localStorage.getItem('token') !== null;
 
-    navLinks.innerHTML = ""; // Clear previous navbar links
+    navLinks.innerHTML = "";
 
     if (isAuthenticated) {
         // Logged-in navbar links
@@ -84,6 +83,7 @@ function updateNavbar() {
             <li><a href="../pages/about.html" ${currentPage === "about.html" ? 'class="active"' : ''}>About</a></li>
             <li><a href="../pages/contact.html" ${currentPage === "contact.html" ? 'class="active"' : ''}>Support</a></li>
             <li><a href="../pages/settings.html" ${currentPage === "settings.html" ? 'class="active"' : ''}>Settings</a></li>
+            <li><a href="../pages/logout.html" ${currentPage === "logout.html" ? 'class="active"' : ''}>Logout</a></li>
         `;
     } else {
         // Logged-out navbar links
@@ -97,7 +97,6 @@ function updateNavbar() {
     }
 }
 
-// Ensure DOM is loaded before updating the navbar
 document.addEventListener("DOMContentLoaded", function () {
     updateNavbar();
 

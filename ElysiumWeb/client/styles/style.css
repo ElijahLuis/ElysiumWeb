@@ -17,6 +17,11 @@ p {
     font-family: sans-serif;
 }
 
+/* Adjust container to fit forms */
+#auth-container>form {
+    margin: 0 10px;
+}
+
 /* Background set-up */
 html,
 body {
@@ -129,6 +134,36 @@ margin: 0px auto;
 border: 2px solid rgba(255, 166, 193, 0.75);
 }
 
+/* Styling for the clickable h2 link */
+#hero a {
+    text-decoration: none; 
+    display: inline-block;
+}
+
+#hero a h2 {
+    color: palevioletred;
+    padding: 12px 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 166, 193, 1);
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#hero a h2:hover {
+    background-color: rgba(255, 166, 193, 0.8);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    cursor: pointer; /* Make it clear it's clickable */
+}
+
+#hero a h2:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
 /* Paragraph styling */
 p {
     margin-top: 0;
@@ -207,7 +242,7 @@ button:hover {
     top: 0;
     left: 0;
     right: 0;
-    width: calc(100% - var(--scrollbar-width));
+    width: 100vw;
     background-color: #FFA6C1;
     display: flex;
     justify-content: flex-start;
@@ -255,15 +290,6 @@ button:hover {
     color: #ff69b4;
     font-weight: bold;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+    text-shadow: none;
 }
 
-
-/* Adjust container to fit forms */
-#auth-container>form {
-    margin: 0 10px;
-}
-
-/* Remove server API message at bottom of webpage for now */
-#message {
-display: none;
-}
