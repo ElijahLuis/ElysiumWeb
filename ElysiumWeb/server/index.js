@@ -9,14 +9,7 @@ const PORT = 3000;
 
 // AWS imports
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
-const { DynamoDBDocumentClient } = require('@aws-sdk/lib-dynamodb');
-const { GetCommand, PutCommand } = require('@aws-sdk/lib-dynamodb');
-
-// Debug logging
-/* app.use((req, res, next) => {
-    console.log(`Request made to: ${req.method} ${req.url}`);
-    next();  // continue processing
-}); */
+const { DynamoDBDocumentClient, GetCommand, PutCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
 
 // Initialize DynamoDB Client
 const client = new DynamoDBClient({
@@ -57,6 +50,120 @@ app.get('/api', (req, res) => {
 // Updates route placeholder (GET)
 app.get('/api/updates', (req, res) => {
     res.json({ updates: ["Test feature added", "Bug fixes and improvements"] });
+});
+
+/* CRUD Routes for UserProfiles */
+// Create new profile (PUT)
+app.post('/api/profiles', authenticateToken, async (req, res) => {
+    const { UserID, Username, FullName, Role, Bio, ProfilePictureURL } = req.body;
+
+    if (!UserID || !Username || !FullName || !Role) {
+        return res.status(400).json({ message: 'Required info is missing.' });
+    }
+
+    try {
+        await dynamoDb.send(
+            new PutCommand({
+                TableName: 'UserProfiles',
+                Item: {
+                    UserID,
+                    Username,
+                    FullName,
+                    Role,
+                    Bio: Bio || '', // Default empty bio
+                    ProfilePictureURL: ProfilePictureURL || '', // Default empty picture
+                    JoinDate: new Date().toISOString(),
+                    LastLogin: new Date().toISOString(),
+                    Status: 'Active',
+                },
+            })
+        );
+
+        res.status(201).json({ message: 'Profile created successfully!' });
+    } catch (error) {
+        console.error('Error creating profile:', error);
+        res.status(500).json({ message: 'Failed to create profile' });
+    }
+});
+
+// Read profile by UserID (GET)
+app.get('/api/profiles/:id', authenticateToken, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const { Item } = await dynamoDb.send(
+            new GetCommand({
+                TableName: 'UserProfiles',
+                Key: { UserID: id },
+            })
+        );
+
+        if (!Item) {
+            return res.status(404).json({ message: 'Profile not found.' });
+        }
+
+        res.status(200).json(Item);
+    } catch (error) {
+        console.error('Error fetching profile:', error);
+        res.status(500).json({ message: 'Failed to fetch profile' });
+    }
+});
+
+// Update profile by UserID (PUT)
+app.put('/api/profiles/:id', authenticateToken, async (req, res) => {
+    const { id } = req.params;
+    const { FullName, Bio, ProfilePictureURL, Role, Status } = req.body;
+
+    try {
+        await dynamoDb.send(
+            new PutCommand({
+                TableName: 'UserProfiles',
+                Item: {
+                    UserID: id,
+                    ...(FullName && { FullName }),
+                    ...(Bio && { Bio }),
+                    ...(ProfilePictureURL && { ProfilePictureURL }),
+                    ...(Role && { Role }),
+                    ...(Status && { Status }),
+                    LastUpdated: new Date().toISOString(),
+                },
+            })
+        );
+
+        res.status(200).json({ message: 'Profile updated successfully!' });
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).json({ message: 'Failed to update profile' });
+    }
+});
+
+// Delete profile by UserID (DELETE)
+app.delete('/api/profiles/:id', authenticateToken, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const { Item } = await dynamoDb.send(
+            new GetCommand({
+                TableName: 'UserProfiles',
+                Key: { UserID: id },
+            })
+        );
+
+        if (!Item) {
+            return res.status(404).json({ message: 'Profile not found.' });
+        }
+        await dynamoDb.send(
+            new DeleteCommand({
+                TableName: 'UserProfiles',
+                Key: { UserID: id },
+            })
+        );
+
+        res.status(200).json({ message: 'Profile deleted successfully!' });
+    } catch (error) {
+        console.error('Error deleting profile:', error);
+        res.status(500).json({ message: 'Failed to delete profile.' });
+    }
 });
 
 // Signup route (POST)
