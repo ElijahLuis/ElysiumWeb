@@ -126,22 +126,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let selectedEmotions = [];
 
-    // Handle primary emotion selection
-    primaryEmotions.forEach(bubble => {
+     // Handle primary emotion selection
+     primaryEmotions.forEach((bubble) => {
         bubble.addEventListener("click", () => {
             const emotion = bubble.dataset.emotion;
 
-            // Highlight selected bubble
-            primaryEmotions.forEach(b => b.classList.remove("selected"));
+            // Highlight the selected bubble
+            primaryEmotions.forEach((b) => b.classList.remove("selected"));
             bubble.classList.add("selected");
 
             // Clear previous selections and subgroups
             selectedEmotions = [];
             subgroupContainer.style.display = "flex";
-            subgroupContainer.innerHTML = "";
+            subgroupContainer.innerHTML = ""; // Clear previous subgroups
 
-            // Populate subgroups with js
-            emotionSubgroups[emotion].forEach(sub => {
+            // Populate subgroups dynamically
+            emotionSubgroups[emotion].forEach((sub) => {
                 const subBubble = document.createElement("div");
                 subBubble.classList.add("subgroup-bubble");
                 subBubble.textContent = sub;
@@ -158,20 +158,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                         alert("You can only select up to 5 emotions.");
                     }
+
                     // Disable bubbles if limit is reached
                     if (selectedEmotions.length === 5) {
-                        document.querySelectorAll(".subgroup-bubble:not(.selected)").forEach(b => {
-                            b.style.pointerEvents = "none";
-                            b.style.opacity = "0.5";
-                        });
+                        document
+                            .querySelectorAll(".subgroup-bubble:not(.selected)")
+                            .forEach((b) => {
+                                b.style.pointerEvents = "none";
+                                b.style.opacity = "0.5";
+                            });
                     } else {
                         // Re-enable bubbles if below limit
-                        document.querySelectorAll(".subgroup-bubble").forEach(b => {
-                            b.style.pointerEvents = "auto";
-                            b.style.opacity = "1";
-                        });
+                        document
+                            .querySelectorAll(".subgroup-bubble")
+                            .forEach((b) => {
+                                b.style.pointerEvents = "auto";
+                                b.style.opacity = "1";
+                            });
                     }
                 });
+
                 subgroupContainer.appendChild(subBubble);
             });
         });
