@@ -108,4 +108,48 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = '../index.html'; // Redirect to welcome page
         });
     }
+
+    // Daily emotional check-in functionality
+    const checkInForm = document.getElementById("emotional-check-in");
+    const tailoredContent = document.getElementById("tailored-content");
+
+    if (checkInForm) {
+        checkInForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Prevent page reload on form submission
+
+            const selectedEmotion = checkInForm.querySelector('input[name="emotion"]:checked');
+
+            if (selectedEmotion) {
+                const emotion = selectedEmotion.value;
+                let message;
+
+                // Tailor the feedback based on the emotion
+                switch (emotion) {
+                    case "happy":
+                        message = "That's great to hear! Here's some content to keep your positive energy flowing.";
+                        break;
+                    case "anxious":
+                        message = "Take a deep breath. Here are some grounding techniques that might help.";
+                        break;
+                    case "sad":
+                        message = "It's okay to feel sad. Here's something uplifting to brighten your day.";
+                        break;
+                    case "curious":
+                        message = "Curiosity is the key to growth! Check out these insights to feed your mind.";
+                        break;
+                    case "frustrated":
+                        message = "Frustration can be tough. Here's some advice to help ease your stress.";
+                        break;
+                    default:
+                        message = "Thank you for sharing how you feel. Here's some tailored content for you.";
+                        break;
+                }
+
+                // Display the message dynamically in the tailored-content section
+                tailoredContent.querySelector("p").textContent = message;
+            } else {
+                alert("Please select an emotion before submitting.");
+            }
+        });
+    }
 });
