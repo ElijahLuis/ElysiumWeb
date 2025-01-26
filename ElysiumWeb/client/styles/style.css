@@ -296,7 +296,7 @@ button:hover {
     color: #ffeeee;
     padding: 10px 0;
     width: 100%;
-    margin-top: auto; /* Push footer to the bottom */
-    position: relative; /* Default position at bottom */
+    margin-top: auto;
+    position: relative;
     bottom: 0;
 }

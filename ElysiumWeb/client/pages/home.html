@@ -25,27 +25,25 @@
     </header>
 
     <main>
-        <section id="daily-check-in">
-            <h2>How are you feeling today?</h2>
-            <form id="emotional-check-in">
-                <label>
-                    <input type="radio" name="emotion" value="happy"> Happy
-                </label>
-                <label>
-                    <input type="radio" name="emotion" value="anxious"> Anxious
-                </label>
-                <label>
-                    <input type="radio" name="emotion" value="sad"> Sad
-                </label>
-                <label>
-                    <input type="radio" name="emotion" value="curious"> Curious
-                </label>
-                <label>
-                    <input type="radio" name="emotion" value="frustrated"> Frustrated
-                </label>
-                <button type="submit">Submit</button>
-            </form>
+        <section id="emotion-map">
+            <h2>What are you feeling today?</h2>
+            <div id="primary-emotions">
+                <!-- Primary Emotion Bubbles -->
+                <div class="emotion-bubble" data-emotion="joy" style="background-color: #FFD700;">Joy</div>
+                <div class="emotion-bubble" data-emotion="grief" style="background-color: #1E90FF;">Grief</div>
+                <div class="emotion-bubble" data-emotion="love" style="background-color: #FF69B4;">Love</div>
+                <div class="emotion-bubble" data-emotion="fear" style="background-color: #FF4500;">Fear</div>
+                <div class="emotion-bubble" data-emotion="anger" style="background-color: #8B0000;">Anger</div>
+                <div class="emotion-bubble" data-emotion="curiosity" style="background-color: #6A5ACD;">Curiosity</div>
+                <div class="emotion-bubble" data-emotion="boredom" style="background-color: #A9A9A9;">Boredom</div>
+                <div class="emotion-bubble" data-emotion="surprise" style="background-color: #00CED1;">Surprise</div>
+            </div>
+
+            <div id="subgroup-emotions" style="display: none;">
+                <!-- Subgroup Emotion Bubbles populated with JS -->
+            </div>
         </section>
+
 
         <section id="tailored-content">
             <h2>Today's Content for You</h2>
@@ -93,7 +91,5 @@
         <p>&copy; 2025 <label id="elysiumword">Elysium</label> Web. All rights reserved.</p>
     </footer>
     <script src="../scripts/script.js"></script>
-    <script src="../scripts/home.js"></script>
 </body>
-
 </html>
