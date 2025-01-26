@@ -97,10 +97,10 @@ function updateNavbar() {
     }
 }
 
+/* Event Listener for DOMContentLoaded */
 document.addEventListener("DOMContentLoaded", function () {
     updateNavbar();
 
-    // Logout functionality
     const logoutButton = document.getElementById('logout-btn');
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
@@ -109,6 +109,74 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Emotion selection functionality
+    const primaryEmotions = document.querySelectorAll(".emotion-bubble");
+    const subgroupContainer = document.getElementById("subgroup-emotions");
+
+    const emotionSubgroups = {
+        joy: ["Excitement", "Proud", "Playful", "Content", "Optimistic", "Grateful"],
+        grief: ["Heartbroken", "Hopeless", "Lonely", "Mournful", "Despair", "Depressed"],
+        love: ["Affectionate", "Passionate", "Sentimental", "Romantic", "Hot"],
+        fear: ["Anxious", "Panicked", "Helpless", "Threatened", "Terrified", "Paranoid"],
+        anger: ["Frustrated", "Irritated", "Hostile", "Resentful", "Enraged", "Hateful"],
+        curiosity: ["Interested", "Intrigued", "Inquisitive", "Eager", "Adventurous", "Creative"],
+        boredom: ["Apathetic", "Indifferent", "Weary", "Disinterested", "Unmotivated"],
+        surprise: ["Amazed", "Startled", "Stunned", "Awestruck", "Shocked", "Rattled"],
+    };
+
+    let selectedEmotions = [];
+
+    // Handle primary emotion selection
+    primaryEmotions.forEach(bubble => {
+        bubble.addEventListener("click", () => {
+            const emotion = bubble.dataset.emotion;
+
+            // Highlight selected bubble
+            primaryEmotions.forEach(b => b.classList.remove("selected"));
+            bubble.classList.add("selected");
+
+            // Clear previous selections and subgroups
+            selectedEmotions = [];
+            subgroupContainer.style.display = "flex";
+            subgroupContainer.innerHTML = "";
+
+            // Populate subgroups with js
+            emotionSubgroups[emotion].forEach(sub => {
+                const subBubble = document.createElement("div");
+                subBubble.classList.add("subgroup-bubble");
+                subBubble.textContent = sub;
+
+                // Subgroup selection logic
+                subBubble.addEventListener("click", () => {
+                    if (selectedEmotions.length < 5 && !selectedEmotions.includes(sub)) {
+                        selectedEmotions.push(sub);
+                        subBubble.classList.add("selected");
+                    } else if (selectedEmotions.includes(sub)) {
+                        const index = selectedEmotions.indexOf(sub);
+                        selectedEmotions.splice(index, 1);
+                        subBubble.classList.remove("selected");
+                    } else {
+                        alert("You can only select up to 5 emotions.");
+                    }
+                    // Disable bubbles if limit is reached
+                    if (selectedEmotions.length === 5) {
+                        document.querySelectorAll(".subgroup-bubble:not(.selected)").forEach(b => {
+                            b.style.pointerEvents = "none";
+                            b.style.opacity = "0.5";
+                        });
+                    } else {
+                        // Re-enable bubbles if below limit
+                        document.querySelectorAll(".subgroup-bubble").forEach(b => {
+                            b.style.pointerEvents = "auto";
+                            b.style.opacity = "1";
+                        });
+                    }
+                });
+                subgroupContainer.appendChild(subBubble);
+            });
+        });
+    });
+    /*
     // Daily emotional check-in functionality
     const checkInForm = document.getElementById("emotional-check-in");
     const tailoredContent = document.getElementById("tailored-content");
@@ -150,6 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 alert("Please select an emotion before submitting.");
             }
-        });
-    }
+        }); 
+    }*/
+
 });
