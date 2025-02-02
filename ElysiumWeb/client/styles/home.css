@@ -25,14 +25,14 @@
 }
 
 .emotion-bubble {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
@@ -41,7 +41,7 @@
 
 .emotion-bubble:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
 }
 
 .emotion-bubble.selected {
@@ -59,15 +59,15 @@
 }
 
 .subgroup-bubble {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    color: #ffffff; /* Ensure text is visible */
+    color: #ffffff;
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.3s ease;
@@ -75,13 +75,13 @@
 
 .subgroup-bubble:hover {
     transform: scale(1.2);
-    background-color: #ff69b4; /* Add hover color to differentiate */
+    background-color: #ff69b4;
 }
 
 .subgroup-bubble.selected {
     transform: scale(1.4);
     border: 2px solid #ffffff;
-    background-color: #ffa6c1; /* Make selected bubbles stand out */
+    background-color: #ffa6c1;
 }
 
 /* Discussion section of home page */
@@ -133,7 +133,8 @@
     100% { transform: scale(1); }
 }
 
+/* confirm button */
 #confirm-button {
-    margin-top: 25px;
+    margin-top: 40px;
 }
 
