@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        discussionThreads.prepend(threadElement); // Ensures new posts are placed at the top
+        discussionThreads.prepend(threadElement);
 
         newPostInput.value = "";
     });
