@@ -54,9 +54,8 @@ async function handleAuth(event, endpoint, type) {
     const password = document.getElementById(`${type}-password`).value;
     const name = type === "signup" ? document.getElementById('signup-name').value : null;
 
-    const requestBody = type === "signup"
-        ? JSON.stringify({ name, email, password })
-        : JSON.stringify({ email, password });
+    const requestBody = JSON.stringify({ email, password, ...(name && { name }) });
+
 
     /* debug logging */
     console.log("📤 Sending request to:", endpoint);
@@ -172,6 +171,7 @@ function setupFeelings() {
 
 // Navbar Handling
 function updateNavbar() {
+    if (!navLinks) return;
     const isAuthenticated = sessionStorage.getItem("token") !== null;
     const pages = isAuthenticated
     ? [ // logged in links
@@ -183,9 +183,14 @@ function updateNavbar() {
     ["/pages/logout.html", "Logout"]] 
     : [ // logged out links
     ["/index.html", "Welcome"],
-    ["/pages/about.html", "About"] 
+    ["/pages/about.html", "About"], 
     ["/pages/login.html", "Login"], 
     ["/pages/signup.html", "Sign Up"]];
+
+    if (!Array.isArray(pages)) {
+        console.error("❌ Navbar Error: 'pages' is not an array:", pages);
+        return;
+    }
 
 navLinks.innerHTML = pages
     .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
