@@ -11,6 +11,30 @@ const signupForm = document.getElementById('signup-form');
 const navLinks = document.getElementById('nav-links');
 const logoutButton = document.getElementById('logout-btn');
 
+// message boxes
+function showMessage(message, isError = false) {
+    const messageBox = document.getElementById("message-box") || createMessageBox();
+    messageBox.textContent = message;
+    messageBox.style.color = isError ? "red" : "green";
+    messageBox.style.display = "block";
+}
+
+function createMessageBox() {
+    const box = document.createElement("div");
+    box.id = "message-box";
+    box.style.position = "fixed";
+    box.style.top = "10px";
+    box.style.left = "50%";
+    box.style.transform = "translateX(-50%)";
+    box.style.backgroundColor = "white";
+    box.style.border = "1px solid black";
+    box.style.padding = "10px";
+    box.style.borderRadius = "5px";
+    box.style.display = "none";
+    document.body.appendChild(box);
+    return box;
+}
+
 // Authentication Handling
 function setupAuthForms() {
     if (loginForm) {
@@ -34,6 +58,10 @@ async function handleAuth(event, endpoint, type) {
         ? JSON.stringify({ name, email, password })
         : JSON.stringify({ email, password });
 
+    /* debug logging */
+    console.log("📤 Sending request to:", endpoint);
+    console.log("📦 Request Body:", requestBody);
+
     try {
         const response = await fetch(endpoint, {
             method: "POST",
@@ -46,13 +74,13 @@ async function handleAuth(event, endpoint, type) {
         if (response.ok) {
             sessionStorage.setItem("token", result.token);
             showMessage("Login successful!", false);
-            setTimeout(() => window.location.href = type === "login" ? "/pages/home.html" : "/login.html", 1000);
+            setTimeout(() => window.location.href = type === "login" ? "/pages/home.html" : "/pages/login.html", 1000);
         } else {
             showMessage(result.message, true);
         }
     } catch (error) {
-        console.error(`${type} Error:`, error);
-        showError("Something went wrong. Please try again.");
+        console.error("❌ Signup Error:", error);
+        showMessage("Something went wrong. Please try again.", true);
     }
 }
 
@@ -65,29 +93,6 @@ function showError(message) {
     } else {
         alert(message);
     }
-}
-
-function showMessage(message, isError = false) {
-    const messageBox = document.getElementById("message-box") || createMessageBox();
-    messageBox.textContent = message;
-    messageBox.style.color = isError ? "red" : "green";
-    messageBox.style.display = "block";
-}
-
-function createMessageBox() {
-    const box = document.createElement("div");
-    box.id = "message-box";
-    box.style.position = "fixed";
-    box.style.top = "10px";
-    box.style.left = "50%";
-    box.style.transform = "translateX(-50%)";
-    box.style.backgroundColor = "white";
-    box.style.border = "1px solid black";
-    box.style.padding = "10px";
-    box.style.borderRadius = "5px";
-    box.style.display = "none";
-    document.body.appendChild(box);
-    return box;
 }
 
 function setupFeelings() {
@@ -169,14 +174,14 @@ function setupFeelings() {
 function updateNavbar() {
     const isAuthenticated = sessionStorage.getItem("token") !== null;
     const pages = isAuthenticated
-    ? [
+    ? [ // logged in links
     ["/pages/home.html", "Home"], 
     ["/pages/avatar.html", "Avatar"], 
     ["/pages/about.html", "About"], 
     ["/pages/contact.html", "Support"], 
     ["/pages/settings.html", "Settings"],
-    ["/pages/logout.html", "Logout"]]
-    : [
+    ["/pages/logout.html", "Logout"]] 
+    : [ // logged out links
     ["/index.html", "Welcome"],
     ["/pages/about.html", "About"] 
     ["/pages/login.html", "Login"], 
