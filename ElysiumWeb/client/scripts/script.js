@@ -2,14 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
     setupAuthForms();
     updateNavbar();
     setupLogoutButton();
-    setupEmotionSelection();
+    setupFeelings();
 });
 
-// ===== AUTHENTICATION HANDLING =====
-function setupAuthForms() {
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
+// DOM elements
+const loginForm = document.getElementById('login-form');
+const signupForm = document.getElementById('signup-form');
+const navLinks = document.getElementById('nav-links');
+const logoutButton = document.getElementById('logout-btn');
 
+// Authentication Handling
+function setupAuthForms() {
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => handleAuth(e, '/api/login', 'login'));
     }
@@ -23,29 +26,29 @@ async function handleAuth(event, endpoint, type) {
     event.preventDefault();
 
     const form = event.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const email = document.getElementById(`${type}-email`).value;
+    const password = document.getElementById(`${type}-password`).value;
+    const name = type === "signup" ? document.getElementById('signup-name').value : null;
 
-    // Input sanitization
-    for (let key in data) {
-        data[key] = sanitizeInput(data[key]);
-    }
+    const requestBody = type === "signup"
+        ? JSON.stringify({ name, email, password })
+        : JSON.stringify({ email, password });
 
     try {
         const response = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            body: requestBody,
         });
 
         const result = await response.json();
 
         if (response.ok) {
             sessionStorage.setItem("token", result.token);
-            const redirectURL = type === "login" ? "/pages/home.html" : "/login.html";
-            window.location.href = redirectURL;
+            showMessage("Login successful!", false);
+            setTimeout(() => window.location.href = type === "login" ? "/pages/home.html" : "/login.html", 1000);
         } else {
-            showError(result.message);
+            showMessage(result.message, true);
         }
     } catch (error) {
         console.error(`${type} Error:`, error);
@@ -53,73 +56,43 @@ async function handleAuth(event, endpoint, type) {
     }
 }
 
-// Sanitize input fields to prevent basic XSS
-function sanitizeInput(input) {
-    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-// Show error messages in the UI instead of using `alert`
+// Show error messages in UI
 function showError(message) {
     const errorBox = document.getElementById("error-message");
     if (errorBox) {
         errorBox.textContent = message;
         errorBox.style.display = "block";
     } else {
-        alert(message); // Fallback
+        alert(message);
     }
 }
 
-// ===== NAVBAR HANDLING =====
-function updateNavbar() {
-    const navLinks = document.getElementById("nav-links");
-    if (!navLinks) return;
-
-    const currentPage = window.location.pathname.split('/').pop() || "index.html";
-    const isAuthenticated = sessionStorage.getItem("token") !== null;
-
-    const links = isAuthenticated
-        ? [
-            { href: "../pages/home.html", label: "Home" },
-            { href: "../pages/avatar.html", label: "Avatar" },
-            { href: "../pages/items.html", label: "Items" },
-            { href: "../pages/about.html", label: "About" },
-            { href: "../pages/contact.html", label: "Support" },
-            { href: "../pages/settings.html", label: "Settings" },
-            { href: "../pages/logout.html", label: "Logout" },
-        ]
-        : [
-            { href: "../index.html", label: "Welcome" },
-            { href: "../pages/about.html", label: "About Us" },
-            { href: "../pages/contact.html", label: "Contact" },
-            { href: "../pages/login.html", label: "Login" },
-            { href: "../pages/signup.html", label: "Sign Up" },
-        ];
-
-    navLinks.innerHTML = links
-        .map(
-            (link) =>
-                `<li><a href="${link.href}" ${currentPage === link.href.split('/').pop() ? 'class="active"' : ''}>${link.label}</a></li>`
-        )
-        .join("");
+function showMessage(message, isError = false) {
+    const messageBox = document.getElementById("message-box") || createMessageBox();
+    messageBox.textContent = message;
+    messageBox.style.color = isError ? "red" : "green";
+    messageBox.style.display = "block";
 }
 
-// ===== LOGOUT HANDLING =====
-function setupLogoutButton() {
-    const logoutButton = document.getElementById("logout-btn");
-    if (logoutButton) {
-        logoutButton.addEventListener("click", () => {
-            sessionStorage.removeItem("token");
-            window.location.href = "../index.html";
-        });
-    }
+function createMessageBox() {
+    const box = document.createElement("div");
+    box.id = "message-box";
+    box.style.position = "fixed";
+    box.style.top = "10px";
+    box.style.left = "50%";
+    box.style.transform = "translateX(-50%)";
+    box.style.backgroundColor = "white";
+    box.style.border = "1px solid black";
+    box.style.padding = "10px";
+    box.style.borderRadius = "5px";
+    box.style.display = "none";
+    document.body.appendChild(box);
+    return box;
 }
 
-// ===== EMOTION SELECTION HANDLING =====
-function setupEmotionSelection() {
+function setupFeelings() {
     const primaryEmotions = document.querySelectorAll(".emotion-bubble");
     const subgroupContainer = document.getElementById("subgroup-emotions");
-
-    if (!primaryEmotions.length || !subgroupContainer) return;
 
     const emotionSubgroups = {
         joy: ["Excitement", "Proud", "Playful", "Content", "Optimistic", "Grateful"],
@@ -132,18 +105,94 @@ function setupEmotionSelection() {
         surprise: ["Amazed", "Startled", "Stunned", "Awestruck", "Shocked", "Rattled"],
     };
 
+    let selectedEmotions = [];
+
+    // Handle primary emotion selection
     primaryEmotions.forEach((bubble) => {
         bubble.addEventListener("click", () => {
             const emotion = bubble.dataset.emotion;
-            subgroupContainer.innerHTML = "";
-            subgroupContainer.style.display = "flex";
 
-            emotionSubgroups[emotion]?.forEach((sub) => {
+            // Highlight the selected bubble
+            primaryEmotions.forEach((b) => b.classList.remove("selected"));
+            bubble.classList.add("selected");
+
+            // Clear previous selections and subgroups
+            selectedEmotions = [];
+            subgroupContainer.style.display = "flex";
+            subgroupContainer.innerHTML = ""; // Clear previous subgroups
+
+            // Populate subgroups dynamically
+            emotionSubgroups[emotion].forEach((sub) => {
                 const subBubble = document.createElement("div");
                 subBubble.classList.add("subgroup-bubble");
                 subBubble.textContent = sub;
+
+                // Subgroup selection logic
+                subBubble.addEventListener("click", () => {
+                    if (selectedEmotions.length < 5 && !selectedEmotions.includes(sub)) {
+                        selectedEmotions.push(sub);
+                        subBubble.classList.add("selected");
+                    } else if (selectedEmotions.includes(sub)) {
+                        const index = selectedEmotions.indexOf(sub);
+                        selectedEmotions.splice(index, 1);
+                        subBubble.classList.remove("selected");
+                    } else {
+                        alert("You can only select up to 5 emotions.");
+                    }
+
+                    // Disable bubbles if limit is reached
+                    if (selectedEmotions.length === 5) {
+                        document
+                            .querySelectorAll(".subgroup-bubble:not(.selected)")
+                            .forEach((b) => {
+                                b.style.pointerEvents = "none";
+                                b.style.opacity = "0.5";
+                            });
+                    } else {
+                        // Re-enable bubbles if below limit
+                        document
+                            .querySelectorAll(".subgroup-bubble")
+                            .forEach((b) => {
+                                b.style.pointerEvents = "auto";
+                                b.style.opacity = "1";
+                            });
+                    }
+                });
+
                 subgroupContainer.appendChild(subBubble);
             });
         });
     });
+}
+
+// Navbar Handling
+function updateNavbar() {
+    const isAuthenticated = sessionStorage.getItem("token") !== null;
+    const pages = isAuthenticated
+    ? [
+    ["/pages/home.html", "Home"], 
+    ["/pages/avatar.html", "Avatar"], 
+    ["/pages/about.html", "About"], 
+    ["/pages/contact.html", "Support"], 
+    ["/pages/settings.html", "Settings"],
+    ["/pages/logout.html", "Logout"]]
+    : [
+    ["/index.html", "Welcome"],
+    ["/pages/about.html", "About"] 
+    ["/pages/login.html", "Login"], 
+    ["/pages/signup.html", "Sign Up"]];
+
+navLinks.innerHTML = pages
+    .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
+    .join("");
+}
+
+// Logout Handling
+function setupLogoutButton() {
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            sessionStorage.removeItem("token");
+            window.location.href = "/index.html";
+        });
+    }
 }

@@ -8,7 +8,7 @@ const { body, validationResult } = require('express-validator');
 
 // aws imports
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
-const { DynamoDBDocumentClient, GetCommand, PutCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+const { DynamoDBDocumentClient, QueryCommand, GetCommand, PutCommand, DeleteCommand } = require('@aws-sdk/lib-dynamodb');
 
 // app config
 const app = express();
@@ -74,7 +74,7 @@ app.post('/api/signup', async (req, res) => {
     }
 
     try {
-        // Check if user already exists
+        // check if user exists
         const user = await dynamoDb.send(
             new GetCommand({
                 TableName: 'Users',
@@ -86,10 +86,9 @@ app.post('/api/signup', async (req, res) => {
             return res.status(400).json({ message: 'User already exists.' });
         }
 
-        // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Store user in DynamoDB
+        // add to users table
         await dynamoDb.send(
             new PutCommand({
                 TableName: 'Users',
@@ -103,7 +102,7 @@ app.post('/api/signup', async (req, res) => {
 
         res.status(201).json({ message: 'User registered successfully!' });
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error.' });
     }
 });
 
@@ -116,46 +115,39 @@ app.post('/api/login', async (req, res) => {
     }
 
     try {
-        const { Item } = await dynamoDb.send(
-            new GetCommand({
-                TableName: 'Users',
-                Key: { email }
-            })
-        );
+        const userQuery = await dynamoDb.send(new QueryCommand({
+            TableName: 'Users',
+            KeyConditionExpression: "email = :email",
+            ExpressionAttributeValues: { ":email": email }
+        }));
 
-        if (!Item) {
+        if (userQuery.Items.length === 0) {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
 
-        // Compare password
-        const isMatch = await bcrypt.compare(password, Item.password);
+        const user = userQuery.Items[0];
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid credentials.' });
         }
-
-        // Generate JWT token
         const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
         res.json({ token });
     } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        console.error('Login Error:', error);
+        res.status(500).json({ message: 'Internal server error.' });
     }
 });
 
-/* --- CRUD Routes --- */
-/* CRUD Routes for UserProfiles */
+/* --- CRUD Routes (for Users) --- */
 // Create new profile (PUT)
 app.post('/api/profiles', authenticateToken, async (req, res) => {
     const { UserID, Username, FullName, Role, Bio, ProfilePictureURL } = req.body;
-
     if (!UserID || !Username || !FullName || !Role) {
-        return res.status(400).json({ message: 'Required info is missing.' });
+        return res.status(400).json({ mssage: 'Required fields missing.' });
     }
 
     try {
-        await dynamoDb.send(
-            new PutCommand({
+        await dynamoDb.send(new PutCommand({
                 TableName: 'UserProfiles',
                 Item: {
                     UserID,
@@ -168,8 +160,7 @@ app.post('/api/profiles', authenticateToken, async (req, res) => {
                     LastLogin: new Date().toISOString(),
                     Status: 'Active',
                 },
-            })
-        );
+            }));
 
         res.status(201).json({ message: 'Profile created successfully!' });
     } catch (error) {
@@ -183,21 +174,18 @@ app.get('/api/profiles/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const { Item } = await dynamoDb.send(
-            new GetCommand({
-                TableName: 'UserProfiles',
-                Key: { UserID: id },
-            })
-        );
+        const profileQuery = await dynamoDb.send(new QueryCommand({
+            TableName: 'UserProfiles',
+            KeyConditionExpression: "UserID = :id",
+            ExpressionAttributeValues: { ":id": id }
+        }));
 
-        if (!Item) {
-            return res.status(404).json({ message: 'Profile not found.' });
-        }
+        if (profileQuery.Items.length === 0) return res.status(404).json({ message: 'Profile not found.' });
 
-        res.status(200).json(Item);
+        res.status(200).json(profileQuery.Items[0]);
     } catch (error) {
         console.error('Error fetching profile:', error);
-        res.status(500).json({ message: 'Failed to fetch profile' });
+        res.status(500).json({ message: 'Failed to fetch profile.' });
     }
 });
 
@@ -207,8 +195,7 @@ app.put('/api/profiles/:id', authenticateToken, async (req, res) => {
     const { FullName, Bio, ProfilePictureURL, Role, Status } = req.body;
 
     try {
-        await dynamoDb.send(
-            new PutCommand({
+        await dynamoDb.send(new PutCommand({
                 TableName: 'UserProfiles',
                 Item: {
                     UserID: id,
@@ -225,7 +212,7 @@ app.put('/api/profiles/:id', authenticateToken, async (req, res) => {
         res.status(200).json({ message: 'Profile updated successfully!' });
     } catch (error) {
         console.error('Error updating profile:', error);
-        res.status(500).json({ message: 'Failed to update profile' });
+        res.status(500).json({ message: 'Failed to update profile.' });
     }
 });
 
@@ -234,22 +221,19 @@ app.delete('/api/profiles/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const { Item } = await dynamoDb.send(
-            new GetCommand({
+        const profileQuery = await dynamoDb.send(new QueryCommand({
                 TableName: 'UserProfiles',
-                Key: { UserID: id },
-            })
-        );
+                KeyConditionExpression: "UserID = :id",
+                ExpressionAttributeValues: { ":id": id }
+            }));
 
-        if (!Item) {
+        if (profileQuery.Items.length === 0) {  
             return res.status(404).json({ message: 'Profile not found.' });
         }
-        await dynamoDb.send(
-            new DeleteCommand({
+        await dynamoDb.send(new DeleteCommand({
                 TableName: 'UserProfiles',
                 Key: { UserID: id },
-            })
-        );
+            }));
 
         res.status(200).json({ message: 'Profile deleted successfully!' });
     } catch (error) {
