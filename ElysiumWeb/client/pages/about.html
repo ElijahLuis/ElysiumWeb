@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Elysium Web</title>
+    <link rel="preload" href="../styles/style.css" as="style">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
+
 <body>
-    <nav id="navbar">
-        <ul id="nav-links"></ul>
-    </nav>
     <header>
+        <nav id="navbar" aria-label="Main Navigation">
+            <ul id="nav-links"></ul>
+        </nav>
         <h1>About Us</h1>
-        <p>Learn more about <label id="elysiumword">Elysium</label> Web and our mission to inspire creativity and growth.</p>
+        <p>Learn more about <span id="elysiumword">Elysium</span> Web and our mission to inspire creativity and growth.</p>
     </header>
+
+    <main>
+        <section id="mission">
+            <h2>Our Mission</h2>
+            <p>At <span id="elysiumword">Elysium</span> Web, we believe in fostering personal growth, emotional intelligence, and creativity through immersive digital experiences.</p>
+        </section>
+    </main>
+
     <footer id="footer">
-        <p>&copy; 2025 <label id="elysiumword">Elysium</label> Web. All rights reserved.</p>
+        <p>&copy; 2025 <span id="elysiumword">Elysium</span> Web. All rights reserved.</p>
     </footer>
-    <script src="../scripts/script.js"></script>
+
+    <script src="../scripts/script.js" defer></script>
 </body>
+
 </html>

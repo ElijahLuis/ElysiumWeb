@@ -5,31 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elysium Web</title>
+    <link rel="preload" href="styles/style.css" as="style">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <nav id="navbar">
+    <header>
+    <nav id="navbar" aria-label="Main Navigation">
         <ul id="nav-links">
             <!-- links added via script.js -->
         </ul>
     </nav>
-
-    <h1>Welcome to <label id="elysiumword">Elysium</label> Web!</h1>
+    <h1>Welcome to <span id="elysiumword">Elysium</span> Web!</h1>
     <p>Your journey begins here. Explore creativity, adventure, and growth.</p>
-
+    </header>
+    
     <div id="line"></div>
-    <div id="hero">
-        <a href="pages/signup.html">
-            <h2>Join the Adventure!</h2>
-        </a>
-        <p>Sign up now to start your journey in <label id="elysiumword">Elysium</label> Web.</p>
-    </div>
+    <section id="hero">
+        <button id="join-btn" onclick="location.href='pages/signup.html'">
+            Join the Adventure!
+        </button>
+        <p>Sign up now to start your journey in <span id="elysiumword">Elysium</span> Web.</p>
+    </section>
 
     <footer id="footer">
-        <p>&copy; 2025 <label id="elysiumword">Elysium</label> Web. All rights reserved.</p>
+        <p>&copy; 2025 <span id="elysiumword">Elysium</span> Web. All rights reserved.</p>
     </footer>
-    <script src="../scripts/script.js"></script>
+    <script src="scripts/script.js" defer></script>
 </body>
 
 </html>
