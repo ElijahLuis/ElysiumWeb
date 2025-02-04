@@ -310,6 +310,24 @@ button:hover {
     color: green;
 }
 
+/* Profile Media */ 
+.profile-icon {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white; /* Optional: clean outline */
+    z-index: 1000; /* Ensures it stays on top */
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1); /* Slight hover effect */
+}
+
 /* Footer styling */
 #footer p {
     font-size: 1.2rem;

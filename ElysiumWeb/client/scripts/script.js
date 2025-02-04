@@ -161,6 +161,7 @@ function updateNavbar() {
     if (!navLinks) return;
     const isAuthenticated = sessionStorage.getItem("token") !== null;
     const pages = isAuthenticated
+
         ? [ // logged in links
             ["/pages/home.html", "Home"],
             ["/pages/avatar.html", "Avatar"],
@@ -182,6 +183,16 @@ function updateNavbar() {
     navLinks.innerHTML = pages
         .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
         .join("");
+
+        if (!document.querySelector(".profile-icon")) {
+            const profileIcon = document.createElement("img");
+            profileIcon.src = "../assets/images/default-avatar-icon.png";
+            profileIcon.alt = "Profile Icon";
+            profileIcon.classList.add("profile-icon");
+    
+            // Append profile icon to the body (outside the navbar for fixed positioning)
+            document.body.appendChild(profileIcon);
+        }
 }
 
 // Logout Handling
