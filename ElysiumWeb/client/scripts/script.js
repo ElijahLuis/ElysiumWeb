@@ -13,26 +13,18 @@ const logoutButton = document.getElementById('logout-btn');
 
 // message boxes
 function showMessage(message, isError = false) {
-    const messageBox = document.getElementById("message-box") || createMessageBox();
-    messageBox.textContent = message;
-    messageBox.style.color = isError ? "red" : "green";
-    messageBox.style.display = "block";
-}
+    let messageBox = document.getElementById("message-box")
 
-function createMessageBox() {
-    const box = document.createElement("div");
-    box.id = "message-box";
-    box.style.position = "fixed";
-    box.style.top = "10px";
-    box.style.left = "50%";
-    box.style.transform = "translateX(-50%)";
-    box.style.backgroundColor = "white";
-    box.style.border = "1px solid black";
-    box.style.padding = "10px";
-    box.style.borderRadius = "5px";
-    box.style.display = "none";
-    document.body.appendChild(box);
-    return box;
+    if (!messageBox) {
+        messageBox = document.createElement("div");
+        messageBox.id = "message-box";
+        messageBox.className = "message-box";
+        document.body.appendChild(messageBox);
+    }
+    messageBox.textContent = message;
+    messageBox.classList.toggle("error", isError);
+    messageBox.classList.toggle("success", !isError);
+    messageBox.style.display = "block";
 }
 
 // Authentication Handling
@@ -133,34 +125,29 @@ function setupFeelings() {
 
                 // Subgroup selection logic
                 subBubble.addEventListener("click", () => {
-                    if (selectedEmotions.length < 5 && !selectedEmotions.includes(sub)) {
-                        selectedEmotions.push(sub);
-                        subBubble.classList.add("selected");
-                    } else if (selectedEmotions.includes(sub)) {
-                        const index = selectedEmotions.indexOf(sub);
+                    const index = selectedEmotions.indexOf(sub);
+
+                    if (index === -1) {
+                        // Add emotion (if not selected), limit 5
+                        if (selectedEmotions.length < 5) {
+                            selectedEmotions.push(sub);
+                            subBubble.classList.add("selected");
+                        } else {
+                            alert("You can only select up to 5 emotions.");
+                        }
+                    } else {
+                        // Remove emotion if already selected
                         selectedEmotions.splice(index, 1);
                         subBubble.classList.remove("selected");
-                    } else {
-                        alert("You can only select up to 5 emotions.");
                     }
 
-                    // Disable bubbles if limit is reached
-                    if (selectedEmotions.length === 5) {
-                        document
-                            .querySelectorAll(".subgroup-bubble:not(.selected)")
-                            .forEach((b) => {
-                                b.style.pointerEvents = "none";
-                                b.style.opacity = "0.5";
-                            });
-                    } else {
-                        // Re-enable bubbles if below limit
-                        document
-                            .querySelectorAll(".subgroup-bubble")
-                            .forEach((b) => {
-                                b.style.pointerEvents = "auto";
-                                b.style.opacity = "1";
-                            });
-                    }
+                    // Update disabled states
+                    document.querySelectorAll(".subgroup-bubble").forEach((b) => {
+                        b.style.pointerEvents = selectedEmotions.length === 5 && !b.classList.contains("selected") ? "none" : "auto";
+                        b.style.opacity = selectedEmotions.length === 5 && !b.classList.contains("selected") ? "0.5" : "1";
+                    });
+
+                    console.log("Selected Emotions:", selectedEmotions);
                 });
 
                 subgroupContainer.appendChild(subBubble);
@@ -174,27 +161,27 @@ function updateNavbar() {
     if (!navLinks) return;
     const isAuthenticated = sessionStorage.getItem("token") !== null;
     const pages = isAuthenticated
-    ? [ // logged in links
-    ["/pages/home.html", "Home"], 
-    ["/pages/avatar.html", "Avatar"], 
-    ["/pages/about.html", "About"], 
-    ["/pages/contact.html", "Support"], 
-    ["/pages/settings.html", "Settings"],
-    ["/pages/logout.html", "Logout"]] 
-    : [ // logged out links
-    ["/index.html", "Welcome"],
-    ["/pages/about.html", "About"], 
-    ["/pages/login.html", "Login"], 
-    ["/pages/signup.html", "Sign Up"]];
+        ? [ // logged in links
+            ["/pages/home.html", "Home"],
+            ["/pages/avatar.html", "Avatar"],
+            ["/pages/about.html", "About"],
+            ["/pages/contact.html", "Support"],
+            ["/pages/settings.html", "Settings"],
+            ["/pages/logout.html", "Logout"]]
+        : [ // logged out links
+            ["/index.html", "Welcome"],
+            ["/pages/about.html", "About"],
+            ["/pages/login.html", "Login"],
+            ["/pages/signup.html", "Sign Up"]];
 
     if (!Array.isArray(pages)) {
         console.error("❌ Navbar Error: 'pages' is not an array:", pages);
         return;
     }
 
-navLinks.innerHTML = pages
-    .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
-    .join("");
+    navLinks.innerHTML = pages
+        .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
+        .join("");
 }
 
 // Logout Handling
