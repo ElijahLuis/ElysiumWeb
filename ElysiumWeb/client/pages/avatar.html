@@ -6,17 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avatar - Elysium Web</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/avatar.css">
 </head>
 
 <body>
     <nav id="navbar">
-        <ul id="nav-links">
-            <li><a href="home.html" class="active">Home</a></li>
-            <li><a href="avatar.html">Avatar</a></li>
-            <li><a href="items.html">Items</a></li>
-            <li><a href="settings.html">Settings</a></li>
-        </ul>
+        <ul id="nav-links"></ul>
     </nav>
 
     <header id="avatar">
@@ -24,15 +19,21 @@
         <p>Customize your avatar here.</p>
     </header>
 
-    <main>
-        <p>Placeholder text.</p>
+    <main id="avatar-editor">
+        <div id="avatar-display">
+            <p>Your avatar will appear here.</p>
+        </div>
+    
+        <div id="avatar-controls">
+            <button id="randomize-avatar">Randomize</button>
+            <button id="save-avatar">Save</button>
+        </div>
     </main>
 
     <footer id="footer">
-        <p>&copy; 2025 <label id="elysiumword">Elysium</label> Web. All rights reserved.</p>
+        <p>&copy; 2025 <span id="elysiumword">Elysium</span> Web. All rights reserved.</p>
     </footer>
     <script src="../scripts/script.js"></script>
-    <script src="../scripts/home.js"></script>
 </body>
 
 </html>
