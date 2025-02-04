@@ -289,6 +289,27 @@ button:hover {
     text-shadow: none;
 }
 
+/* Message Box */
+.message-box {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.message-box.error {
+    color: red;
+}
+
+.message-box.success {
+    color: green;
+}
+
 /* Footer styling */
 #footer p {
     font-size: 1.2rem;
