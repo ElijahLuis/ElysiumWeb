@@ -13,75 +13,29 @@ p {
     font-family: sans-serif;
 }
 
-/* Adjust container to fit forms */
-#auth-container>form {
-    margin: 0 10px;
-}
-
 /* Background set-up */
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background: url('../assets/images/clouds.jpg'), linear-gradient(to bottom, #a0d8ef, #cfeffd);
-    background-size: cover;
+    background-size: 105%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
     background-blend-mode: multiply;
-    overscroll-behavior: none;
-    display: flex;
-    flex-direction: column;
+    transition: background-position 0.1s ease-out;
 }
 
-/* Body layout */
-body {
-    flex: 1;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    gap: 20px;
+/* Content layout */
+html {
+    transition: background-position 0.3s ease-out;
 }
 
-main {
-    flex-grow: 1;
-}
-
-/* Floating clouds anim */
-@keyframes cloudsFloat {
-    0% {
-        background-position: center center;
-    }
-
-    50% {
-        background-position: center top;
-    }
-
-    100% {
-        background-position: center center;
-    }
-}
-
-/* Floating text anim */
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-h1 {
-    animation: float 4s ease-in-out infinite;
+html:hover {
+    background-position: center -10px;
 }
 
 /* Body styling */
@@ -94,14 +48,17 @@ body {
     text-align: center;
     min-height: 100vh;
     margin: 0;
-    background-size: cover;
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center;
     background-blend-mode: multiply;
     padding: 20px;
-    animation: cloudsFloat 30s ease-in-out infinite;
     gap: 20px;
+    flex: 1;
+}
+
+main {
+    flex-grow: 1;
 }
 
 /* Header styling */
@@ -116,6 +73,21 @@ h1 {
     margin-bottom: 10px;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 #elysiumword {
@@ -359,8 +331,9 @@ button:hover {
     width: 100%;
     padding: 0px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     color: white;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
 }

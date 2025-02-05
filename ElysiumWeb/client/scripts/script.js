@@ -5,6 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
     setupFeelings();
 });
 
+document.addEventListener("mousemove", (event) => {
+    let maxShift = 15; // Maximum allowed shift in pixels
+
+    // normalize and set vars
+    let x = ((event.clientX / window.innerWidth) * 30 - 15);
+    let y = ((event.clientY / window.innerHeight) * 30 - 15);
+    x = Math.max(-maxShift, Math.min(maxShift, x));
+    y = Math.max(-maxShift, Math.min(maxShift, y));
+    document.documentElement.style.setProperty("--bg-x", `${x}px`);
+    document.documentElement.style.setProperty("--bg-y", `${y}px`);
+});
+
+
 // DOM elements
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
