@@ -5,40 +5,28 @@
     box-sizing: border-box;
 }
 
-body,
-h1,
-p {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-/* Background set-up */
+/* HTML+BODY background set-up */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    background: url('../assets/images/clouds.jpg'), linear-gradient(to bottom, #a0d8ef, #cfeffd);
-    background-size: 105%;
+    background: linear-gradient(to bottom, rgba(160, 216, 239, 0.7), rgba(207, 239, 253, 0.7)),
+                url('../assets/images/clouds.jpg');
+    background-size: 120%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
-    background-blend-mode: multiply;
     transition: background-position 0.1s ease-out;
 }
 
-/* Content layout */
-html {
-    transition: background-position 0.3s ease-out;
-}
-
+/* HTML customs */
 html:hover {
     background-position: center -10px;
 }
 
-/* Body styling */
+/* Body customs */
 body {
     color: #ffeeee;
     display: flex;
@@ -48,13 +36,25 @@ body {
     text-align: center;
     min-height: 100vh;
     margin: 0;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-blend-mode: multiply;
     padding: 20px;
     gap: 20px;
     flex: 1;
+    background-blend-mode: multiply;
+    animation: cloudsFloat 20s ease-in-out infinite;
+}
+
+@keyframes cloudsFloat { /* disables on hover */
+    0% {
+        background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
+    }
+
+    50% {
+        background-position: calc(50% + var(--bg-x, 0px)) calc(75% + var(--bg-y, 0px));
+    }
+
+    100% {
+        background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
+    }
 }
 
 main {
@@ -148,7 +148,7 @@ p {
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Auth container */
+/* --- Auth Container --- */
 #auth-container {
     display: flex;
     flex-direction: column;
