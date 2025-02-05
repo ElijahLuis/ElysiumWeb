@@ -123,13 +123,6 @@ h1 {
     font-size: inherit;
 }
 
-h2 {
-    color: palevioletred;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(255, 166, 193, 1);
-}
-
 /* Join the Adventure section */
 #join-section a {
     text-decoration: none; 
@@ -158,7 +151,6 @@ h2 {
     transform: translateY(0);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Paragraph styling */
 p {
@@ -219,8 +211,6 @@ input {
 
 /* Button Styling */
 button {
-    background: linear-gradient(45deg, #007bff, #0099ff);
-    color: white;
     border-radius: 30px;
     padding: 15px 35px;
     cursor: pointer;
@@ -228,14 +218,33 @@ button {
     font-weight: bold;
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
     transition: 0.3s ease-in-out;
-    display: block;
-    margin: 20px auto;
 }
 
 button:hover {
-    background-color: #0056b3;
     transform: scale(1.08);
+}
+
+#join-btn {
+    background: linear-gradient(45deg, #007bff, #0099ff);
+    color: white;
+    border-radius: 30px;
+    padding: 15px 35px;
+    font-size: 20px;
+    font-weight: bold;
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 20px auto;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px (rgba(0, 123, 255, 0.4));
+    }
+    100% {
+        box-shadow: 0 0 25px (rgba(0, 123, 255, 1));
+    }
 }
 
 /* Navbar styling */
@@ -244,18 +253,16 @@ button:hover {
     top: 0;
     left: 0;
     right: 0;
-    width: 100vw;
-    background-color: #FFA6C1;
+    width: 100%;
+    background: rgba(255, 166, 193, 0.4);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 15px 20px;
     z-index: 1000;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    margin: 0;
-    border: none;
-    overflow: hidden;
-    box-sizing: border-box;
+    box-shadow: 0px 4px 6px rgba(255, 166, 193, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #navbar ul {
@@ -351,6 +358,8 @@ button:hover {
     width: 100%;
     padding: 0px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     color: white;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
 }
