@@ -231,7 +231,7 @@ button:hover {
     padding: 15px 35px;
     font-size: 20px;
     font-weight: bold;
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
+    box-shadow: 0 8px 20px rgba(255, 166, 193, 0.6);
     transition: 0.3s ease-in-out;
     display: block;
     margin: 20px auto;
@@ -240,10 +240,10 @@ button:hover {
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 10px (rgba(0, 123, 255, 0.4));
+        box-shadow: 0 0 15px rgba(255, 166, 193, 0.5);
     }
     100% {
-        box-shadow: 0 0 25px (rgba(0, 123, 255, 1));
+        box-shadow: 0 0 30px rgba(255, 121, 198, 1);
     }
 }
 
@@ -333,24 +333,6 @@ button:hover {
 
 .message-box.success {
     color: green;
-}
-
-/* Profile Media */ 
-.profile-icon {
-    position: fixed;
-    top: 15px;
-    left: 20px;
-    width: 225px; 
-    height: 225px;
-    border-radius: 50%;
-    object-fit: cover; 
-    border: 5px solid #FFA6C1; 
-    z-index: 1000;
-    transition: transform 0.2s ease-in-out;
-}
-
-.profile-icon:hover {
-    transform: scale(1.1);
 }
 
 /* Footer styling */
