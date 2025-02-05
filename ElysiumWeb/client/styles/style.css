@@ -123,6 +123,21 @@ h1 {
     font-size: inherit;
 }
 
+h1::before,
+#join-section::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0));
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+}
+
 /* Join the Adventure section */
 #join-section a {
     text-decoration: none; 
@@ -254,8 +269,8 @@ button:hover {
     left: 0;
     right: 0;
     width: 100%;
-    background: rgba(255, 166, 193, 0.4);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 166, 193, 0.2);
+    backdrop-filter: blur(12px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -340,8 +355,8 @@ button:hover {
     width: 100%;
     padding: 0px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
     color: white;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
 }
