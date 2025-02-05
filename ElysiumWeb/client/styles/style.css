@@ -252,6 +252,19 @@ button:hover {
     box-sizing: border-box;
 }
 
+#navbar ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 12px 0;
+}
+
+#navbar a {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 /* Navlinks container */
 #nav-links {
     list-style: none;
