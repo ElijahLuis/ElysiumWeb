@@ -33,18 +33,21 @@ body {
     background-position: center;
     background-blend-mode: multiply;
     overscroll-behavior: none;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Body layout */
 body {
     flex: 1;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
     text-align: center;
     gap: 20px;
+}
+
+main {
+    flex-grow: 1;
 }
 
 /* Floating clouds anim */
@@ -105,11 +108,13 @@ body {
 /* h1: "Welcome to Elysium Web!" */
 h1 {
     font-size: 48px;
+    font-weight: bold;
     margin-top: 100px;
+    margin-bottom: 10px;
     color: #ffeeee;
     font-family: Cambria, Times, sans-serif;
     margin-bottom: 10px;
-    font-size: 4rem;
+    letter-spacing: 1.5px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -125,19 +130,13 @@ h2 {
     border: 2px solid rgba(255, 166, 193, 1);
 }
 
-#line {
-width: 100%;
-margin: 0px auto;
-border: 2px solid rgba(255, 166, 193, 0.75);
-}
-
-/* Styling for the clickable h2 link */
-#hero a {
+/* Join the Adventure section */
+#join-section a {
     text-decoration: none; 
     display: inline-block;
 }
 
-#hero a h2 {
+#join-section a h2 {
     color: palevioletred;
     padding: 12px 40px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -148,14 +147,14 @@ border: 2px solid rgba(255, 166, 193, 0.75);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-#hero a h2:hover {
+#join-section a h2:hover {
     background-color: rgba(255, 166, 193, 0.8);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
     cursor: pointer; /* Make it clear it's clickable */
 }
 
-#hero a h2:active {
+#join-section a h2:active {
     transform: translateY(0);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -218,6 +217,7 @@ input {
     font-size: 1rem;
 }
 
+/* Button Styling */
 button {
     background: linear-gradient(45deg, #007bff, #0099ff);
     color: white;
@@ -226,8 +226,10 @@ button {
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
     transition: 0.3s ease-in-out;
+    display: block;
+    margin: 20px auto;
 }
 
 button:hover {
@@ -269,7 +271,7 @@ button:hover {
     letter-spacing: 1px;
 }
 
-/* Navlinks container */
+/* Navlinks Styling */
 #nav-links {
     list-style: none;
     display: flex;
@@ -279,7 +281,6 @@ button:hover {
     margin-left: auto;
 }
 
-/* Navlinks */
 #nav-links a {
     text-decoration: none;
     color: #ffffff;
@@ -346,13 +347,10 @@ button:hover {
 }
 
 /* Footer styling */
-#footer p {
-    font-size: 1.2rem;
-    text-align: center;
-    color: #ffeeee;
-    padding: 10px 0;
+#footer {
     width: 100%;
-    margin-top: auto;
-    position: relative;
-    bottom: 0;
+    padding: 0px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
