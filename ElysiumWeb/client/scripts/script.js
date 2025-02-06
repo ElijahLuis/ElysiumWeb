@@ -42,13 +42,12 @@ function showMessage(message, isError = false) {
 
 // Authentication Handling
 function setupAuthForms() {
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => handleAuth(e, '/api/login', 'login'));
-    }
-
-    if (signupForm) {
-        signupForm.addEventListener('submit', (e) => handleAuth(e, '/api/signup', 'signup'));
-    }
+    ["login", "signup"].forEach(type => {
+        const form = document.getElementById(`${type}-form`);
+        if (form) {
+            form.addEventListener("submit", (e) => handleAuth(e, `/api/${type}`, type));
+        }
+    });
 }
 
 async function handleAuth(event, endpoint, type) {

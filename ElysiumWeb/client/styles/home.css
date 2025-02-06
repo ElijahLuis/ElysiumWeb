@@ -1,17 +1,39 @@
-/* Hero Section */
-#hero {
+/* Colors for emotions */
+:root {
+    --joy-color: #FFD700;
+    --grief-color: #1E90FF;
+    --love-color: #FF69B4;
+    --fear-color: #160530;
+    --anger-color: #8B0000;
+    --curiosity-color: #1f781b;
+    --boredom-color: #7b7b7b;
+    --surprise-color: #bb7805;
+}
+
+.emotion-bubble[data-emotion="joy"] { background-color: var(--joy-color); }
+.emotion-bubble[data-emotion="grief"] { background-color: var(--grief-color); }
+.emotion-bubble[data-emotion="love"] { background-color: var(--love-color); }
+.emotion-bubble[data-emotion="fear"] { background-color: var(--fear-color); }
+.emotion-bubble[data-emotion="anger"] { background-color: var(--anger-color); }
+.emotion-bubble[data-emotion="curiosity"] { background-color: var(--curiosity-color); }
+.emotion-bubble[data-emotion="boredom"] { background-color: var(--boredom-color); }
+.emotion-bubble[data-emotion="surprise"] { background-color: var(--surprise-color); }
+
+
+/* Welcome Section */
+#welcome-section {
     text-align: center;
     padding: 50px 20px;
     color: white;
     font-family: 'Cambria', serif;
 }
 
-#hero h1 {
+#welcome-section h1 {
     font-size: 3rem;
     margin-bottom: 10px;
 }
 
-#hero p {
+#welcome-section p {
     font-size: 1.5rem;
 }
 
