@@ -99,75 +99,63 @@ function showError(message) {
     }
 }
 
-function setupFeelings() {
+async function fetchEmotions() {
+    try {
+        const response = await fetch("../data/emotion-data.json");
+        return await response.json();
+    } catch (error) {
+        console.error("Error loading emotion data:", error);
+        return {};
+    }
+}
+
+async function setupFeelings() {
     const primaryEmotions = document.querySelectorAll(".emotion-bubble");
     const subgroupContainer = document.getElementById("subgroup-emotions");
-
-    const emotionSubgroups = {
-        joy: ["Excitement", "Proud", "Playful", "Content", "Optimistic", "Grateful"],
-        grief: ["Heartbroken", "Hopeless", "Lonely", "Mournful", "Despair", "Depressed"],
-        love: ["Affectionate", "Passionate", "Sentimental", "Romantic", "Hot"],
-        fear: ["Anxious", "Panicked", "Helpless", "Threatened", "Terrified", "Paranoid"],
-        anger: ["Frustrated", "Irritated", "Hostile", "Resentful", "Enraged", "Hateful"],
-        curiosity: ["Interested", "Intrigued", "Inquisitive", "Eager", "Adventurous", "Creative"],
-        boredom: ["Apathetic", "Indifferent", "Weary", "Disinterested", "Unmotivated"],
-        surprise: ["Amazed", "Startled", "Stunned", "Awestruck", "Shocked", "Rattled"],
-    };
+    const emotionSubgroups = await fetchEmotions();
 
     let selectedEmotions = [];
 
-    // Handle primary emotion selection
     primaryEmotions.forEach((bubble) => {
         bubble.addEventListener("click", () => {
             const emotion = bubble.dataset.emotion;
-
-            // Highlight the selected bubble
             primaryEmotions.forEach((b) => b.classList.remove("selected"));
             bubble.classList.add("selected");
 
-            // Clear previous selections and subgroups
+            // clear previous selections
             selectedEmotions = [];
+            subgroupContainer.innerHTML = "";
             subgroupContainer.style.display = "flex";
-            subgroupContainer.innerHTML = ""; // Clear previous subgroups
 
-            // Populate subgroups dynamically
-            emotionSubgroups[emotion].forEach((sub) => {
+            // populate subgroups
+            (emotionSubgroups[emotion] || []).forEach((sub) => {
                 const subBubble = document.createElement("div");
                 subBubble.classList.add("subgroup-bubble");
                 subBubble.textContent = sub;
 
-                // Subgroup selection logic
-                subBubble.addEventListener("click", () => {
-                    const index = selectedEmotions.indexOf(sub);
-
-                    if (index === -1) {
-                        // Add emotion (if not selected), limit 5
-                        if (selectedEmotions.length < 5) {
-                            selectedEmotions.push(sub);
-                            subBubble.classList.add("selected");
-                        } else {
-                            alert("You can only select up to 5 emotions.");
-                        }
-                    } else {
-                        // Remove emotion if already selected
-                        selectedEmotions.splice(index, 1);
-                        subBubble.classList.remove("selected");
-                    }
-
-                    // Update disabled states
-                    document.querySelectorAll(".subgroup-bubble").forEach((b) => {
-                        b.style.pointerEvents = selectedEmotions.length === 5 && !b.classList.contains("selected") ? "none" : "auto";
-                        b.style.opacity = selectedEmotions.length === 5 && !b.classList.contains("selected") ? "0.5" : "1";
-                    });
-
-                    console.log("Selected Emotions:", selectedEmotions);
-                });
+                subBubble.addEventListener("click", () => handleSubgroupSelection(subBubble, sub, selectedEmotions));
 
                 subgroupContainer.appendChild(subBubble);
             });
         });
     });
 }
+
+function handleSubgroupSelection(subBubble, sub, selectedEmotions) {
+    const index = selectedEmotions.indexOf(sub);
+    if (index === -1) {
+        if (selectedEmotions.length < 5) {
+            selectedEmotions.push(sub);
+            subBubble.classList.add("selected");
+        } else {
+            alert("You can only select up to 5 emotions.");
+        }
+    } else {
+        selectedEmotions.splice(index, 1);
+        subBubble.classList.remove("selected");
+    }
+}
+
 
 // Navbar Handling
 function updateNavbar() {
