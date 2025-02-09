@@ -1,0 +1,108 @@
+/* --- About Me Styling --- */
+
+/* Headers */
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff7c96;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: rgba(255, 166, 193, 0.8);
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* Mission Section */
+#mission {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    max-width: 800px;
+    box-shadow: 0px 4px 10px rgba(255, 121, 198, 0.3);
+    transition: transform 0.3s ease;
+}
+
+#mission:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 166, 193, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+/* Key Features */
+.feature-title {
+    font-size: 1.6rem;
+    color: #ff7c96;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#key-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: left;
+    max-width: 85%;
+}
+
+#key-features li {
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 5px solid rgba(255, 166, 193, 0.8);
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#key-features li:hover {
+    background: rgba(255, 166, 193, 0.5);
+    transform: translateX(5px);
+}
+
+/* FAQ Section */
+#faq {
+    margin: 30px auto;
+    width: 85%;
+    max-width: 800px;
+}
+
+details {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+}
+
+details:hover {
+    background: rgba(255, 166, 193, 0.3);
+}
+
+summary {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffeeee;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+    padding: 5px;
+}
+
+details[open] {
+    background: rgba(255, 166, 193, 0.4);
+}
