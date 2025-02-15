@@ -1,3 +1,4 @@
+/* Avatar Header */
 #avatar {
     text-align: center;
     margin-top: 20px;
@@ -7,9 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 15px;
+    padding: 15px;
 }
 
+/* Avatar Icon */
 .avatar-icon {
     width: 80px; 
     height: 80px;
@@ -17,31 +20,93 @@
     object-fit: cover;
 }
 
+/* Avatar Editor Map */
+.editor-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Avatar Display */
 #avatar-display {
     text-align: center;
-    margin-top: 20px;
+    flex: 1;
+    max-width: 400px;
 }
 
 #avatar-display img {
-    max-width: 300px;
+    max-width: 280px;
     width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
-    background: rgba(255, 255, 255, 0.05); 
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.07); 
+    padding: 12px;
     backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-
-#avatar-display p {
-    font-size: 16px;
-    color: #eee;
-    margin-top: 10px;
+#avatar-display img:hover {
+    box-shadow: 0 10px 25px rgba(255, 121, 198, 0.5);
+    filter: brightness(1.1);
 }
 
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+#avatar-display img {
+    animation: float 5s ease-in-out infinite; 
+}
+
+/* Avatar Controls */
 #avatar-controls {
+    flex: 1;
     text-align: center;
+    max-width: 350px;
+}
+
+#avatar-controls h2 {
+    font-size: 1.8rem;
+    color: #ff7c96;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Control Group Styling */
+
+.control-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.control-group label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.control-group input,
+.control-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* Avatar Buttons */
+.button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -56,39 +121,28 @@
     border-radius: 8px;
     margin: 5px;
     transition: all 0.3s ease-in-out;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Subtle text outline */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #avatar-controls button:hover {
-    transform: scale(1.05);
+    background: linear-gradient(45deg, #ff92d0, #70e1ff);
     box-shadow: 0 5px 15px rgba(255, 121, 198, 0.4);
-    filter: brightness(1.1);
+    filter: brightness(1.15);
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-}
-
-#avatar-display img {
-    animation: float 3s ease-in-out infinite; /* Smooth floating effect */
-}
-
-body {
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-/* responsive design */
+/* Responsive design */
 @media (max-width: 768px) {
-    .avatar-header-container {
+    .editor-container {
         flex-direction: column;
-        gap: 5px;
+        gap: 20px;
     }
 
     #avatar-display img {
-        max-width: 250px;
+        max-width: 250px;;
+    }
+
+    #button-group {
+        flex-direction: column;
     }
 }

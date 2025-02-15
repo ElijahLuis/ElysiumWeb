@@ -19,20 +19,42 @@
             <img src="../assets/images/default-avatar-icon.png" alt="Default Avatar Icon" class="avatar-icon">
             <div>
                 <h1>Avatar Editor</h1>
-                <p>Customize your avatar here.</p>
+                <p>Customize your avatar and make it your own.</p>
             </div>
         </div>
     </header>
 
     <main id="avatar-editor">
-        <div id="avatar-display">
-            <img src="../assets/images/default-avatar.png" alt="Avatar Preview">
-            <p>Your avatar will appear here.</p>
-        </div>
-    
-        <div id="avatar-controls">
-            <button id="randomize-avatar">Randomize</button>
-            <button id="save-avatar">Save</button>
+        <div class="editor-container">
+            <!-- Avatar Preview Section -->
+            <div id="avatar-display">
+                <img src="../assets/images/default-avatar.png" alt="Avatar Preview">
+                <p>Your avatar will appear here.</p>
+            </div>
+
+            <!-- Avatar Controls Section -->
+            <div id="avatar-controls">
+                <h2>Customize Your Avatar</h2>
+
+                <div class="control-group">
+                    <label for="hair-style">Hair</label>
+                    <select id="hair-style">
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="eye-color">Eye Color</label>
+                    <input type="color" id="eye-color" value="#2a2a2a">
+                </div>
+
+                <div class="button-group">
+                    <button id="randomize-avatar">Randomize</button>
+                    <button id="save-avatar">Save</button>
+                </div>
+            </div>
         </div>
     </main>
 
