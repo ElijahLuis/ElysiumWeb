@@ -35,7 +35,7 @@ html, body {
     overflow-x: hidden;
     background: linear-gradient(to bottom, rgba(160, 216, 239, 0.7), rgba(207, 239, 253, 0.7)),
                 url('../assets/images/clouds.jpg');
-    background-size: 120%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
@@ -44,7 +44,7 @@ html, body {
 
 /* HTML customs */
 html:hover {
-    background-position: center -10px;
+    animation: none;
 }
 
 /* Body customs */
@@ -64,17 +64,17 @@ body {
     animation: cloudsFloat 20s ease-in-out infinite;
 }
 
-@keyframes cloudsFloat { /* disables on hover */
+@keyframes cloudsFloat { /* disables on mouse movement */
     0% {
-        background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
+        background-position: center 0px;
     }
 
     50% {
-        background-position: calc(50% + var(--bg-x, 0px)) calc(75% + var(--bg-y, 0px));
+        background-position: center 20px; 
     }
 
     100% {
-        background-position: calc(50% + var(--bg-x, 0px)) calc(50% + var(--bg-y, 0px));
+        background-position: center 0px;
     }
 }
 
@@ -152,7 +152,7 @@ h1::before,
     background-color: rgba(255, 166, 193, 0.8);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
-    cursor: pointer; /* Make it clear it's clickable */
+    cursor: pointer;
 }
 
 #join-section a h2:active {
@@ -162,11 +162,9 @@ h1::before,
 
 /* Paragraph styling */
 p {
-    margin-top: 0;
-    color: #ffeeee;
+    color: #fff;
     font-size: 1.5rem;
-    margin: 10px 0;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* --- Auth Container --- */
@@ -226,7 +224,7 @@ button {
     font-size: 20px;
     font-weight: bold;
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
-    transition: 0.3s ease-in-out;
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
@@ -237,24 +235,24 @@ button:hover {
     background: linear-gradient(45deg, #ff79c6, #ffa6c1);
     color: white;
     box-shadow: 0 8px 20px rgba(255, 166, 193, 0.6);
-    transition: 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
     display: block;
     margin: 20px auto;
     animation: glow 2s infinite alternate;
-    transition: transform 0.3s ease;
 }
 
 #join-btn:hover {
-    box-shadow: 0 0 40px rgba(255, 121, 198, 0.8), 0 0 80px rgba(255, 166, 193, 0.6);
-    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(255, 121, 198, 0.8), 0 0 60px rgba(255, 166, 193, 0.6);
+    filter: brightness(1.15);
+    transform: translateY(-3px);
 }
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 20px rgba(255, 121, 198, 0.5), 0 0 40px rgba(255, 166, 193, 0.3);
+        box-shadow: 0 0 15px rgba(255, 121, 198, 0.3), 0 0 30px rgba(255, 166, 193, 0.3); 
     }
     100% {
-        box-shadow: 0 0 30px rgba(255, 121, 198, 0.9), 0 0 60px rgba(255, 166, 193, 0.5);
+        box-shadow: 0 0 25px rgba(255, 121, 198, 0.6), 0 0 50px rgba(255, 166, 193, 0.4);
     }
 }
 
@@ -274,11 +272,17 @@ button:hover {
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(255, 166, 193, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease-in-out;
+}
+
+#navbar.scrolled {
+    background: rgba(255, 166, 193, 0.6);
+    backdrop-filter: blur(8px);
 }
 
 #navbar ul {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     padding: 12px 0;
 }
@@ -315,6 +319,7 @@ button:hover {
     color: #ff69b4;
     text-shadow: none;
     transform: translateY(-3px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 }
 
 /* Active link */
@@ -326,35 +331,14 @@ button:hover {
     text-shadow: none;
 }
 
-/* Message Box */
-.message-box {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-}
-
-.message-box.error {
-    color: red;
-}
-
-.message-box.success {
-    color: green;
-}
-
 /* Footer styling */
 #footer {
     width: 100%;
-    padding: 0px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(6px);
     color: white;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-    font-size: 1.1rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    border-radius: 10px 10px 0 0;
 }
