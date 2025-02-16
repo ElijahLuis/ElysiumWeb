@@ -45,14 +45,6 @@ const authenticateToken = (req, res, next) => {
     }
 };
 
-// debug middleware
-/* app.use((req, res, next) => {
-    console.log(`Incoming Request: ${req.method} ${req.url}`);
-    if (req.body && Object.keys(req.body).length > 0) console.log('Request Body:', req.body);
-    next();
-});
-*/
-
 /* --- API Routes --- */
 // Test route
 app.get('/api', (req, res) => {
@@ -244,7 +236,7 @@ app.delete('/api/profiles/:id', authenticateToken, async (req, res) => {
 
 
 /* --- Protected Routes --- */
-app.get('/api/protected', authenticateToken, (req, res) => {
+/* app.get('/api/protected', authenticateToken, (req, res) => {
     res.json({ message: `Welcome, ${req.user.email}!` });
 });
 
@@ -254,7 +246,7 @@ app.get('/api/profile', authenticateToken, (req, res) => {
 
 app.get('/api/settings', authenticateToken, (req, res) => {
     res.json({ message: `Settings for ${req.user.email}` });
-});
+}); */
 
 
 // Start server
