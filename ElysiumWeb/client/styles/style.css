@@ -17,7 +17,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
+    color: #ffeeee;
 }
 
 h1 {
@@ -25,7 +25,8 @@ h1 {
     transform: translateY(10px); 
     animation: fadeIn 3s ease-out forwards;
     font-size: 3.75rem;
-    text-shadow: rgba(255, 255, 255, 0.3);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 4px;
 }
 
 @keyframes fadeIn {
@@ -71,6 +72,10 @@ h1 {
     animation-delay: var(--twinkle-delay);
 }
 
+.paused .star {
+    animation-play-state: paused !important;
+}
+
 @keyframes driftLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-110vw); }
@@ -80,6 +85,32 @@ h1 {
     0% { opacity: 0.2; }
     50% { opacity: 1; }
     100% { opacity: 0.2; }
+}
+
+/* Button Styling */
+#startButton {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInButton 2s ease-out forwards;
+    animation-delay: 1s;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#startButton:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes fadeInButton {
+    0% { opacity: 0; transform: translateY(0px); }
+    100% { opacity: 1; transform: translateY(-30px); }
 }
 
 
