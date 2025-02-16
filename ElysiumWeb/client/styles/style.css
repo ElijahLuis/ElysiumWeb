@@ -67,18 +67,7 @@ h1 {
     background: white;
     border-radius: 50%;
     opacity: 0.3;
-    animation: twinkle 5s infinite alternate ease-in-out, 
-               driftLeft 60s linear infinite;
-    animation-delay: var(--twinkle-delay);
-}
-
-.paused .star {
-    animation-play-state: paused !important;
-}
-
-@keyframes driftLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-110vw); }
+    animation: twinkle 3s infinite alternate ease-in-out, 
 }
 
 @keyframes twinkle {
@@ -93,8 +82,8 @@ h1 {
     transform: translateY(10px);
     animation: fadeInButton 2s ease-out forwards;
     animation-delay: 1s;
-    padding: 10px 20px;
-    font-size: 1.4rem;
+    padding: 12px 25px;
+    font-size: 1.5rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
     background: rgba(255, 255, 255, 0.15);
