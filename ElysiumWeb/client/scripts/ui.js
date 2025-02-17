@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("login-form");
     const signupForm = document.getElementById("signup-form");
 
-    // Function to fade elements out
     function fadeOutElement(element, duration = 500) {
         element.style.transition = `opacity ${duration}ms ease-out`;
         element.style.opacity = "0";
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, duration);
     }
 
-    // Function to fade elements in
     function fadeInElement(element, duration = 500) {
         element.style.display = "block";
         setTimeout(() => {
@@ -25,17 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 50);
     }
 
-    // When the Enter button is clicked, transition to login/signup
+    // When Enter is clicked, transition to login/signup
     enterButton.addEventListener("click", () => {
         fadeOutElement(welcomeText);
         fadeOutElement(enterButton);
         setTimeout(() => {
             fadeInElement(authModal);
-            authModal.classList.add("active"); // Add class for background blur effect
+            authModal.classList.add("active");
         }, 500);
     });
 
-    // Tab switching functionality
     function switchTab(activeTab, inactiveTab, activeForm, inactiveForm) {
         activeTab.classList.add("active");
         inactiveTab.classList.remove("active");
