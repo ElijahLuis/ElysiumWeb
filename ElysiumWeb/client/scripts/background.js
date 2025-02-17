@@ -1,7 +1,7 @@
 // stars
 document.addEventListener("DOMContentLoaded", () => {
     const starContainer = document.getElementById("stars");
-    const numberOfStars = 200;
+    const numberOfStars = 75;
 
     function createStar() {
         const star = document.createElement("div");
@@ -9,19 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
-        const size = Math.random() * 2 + 0.5; // 0.5px - 2px
+        const size = Math.random() * 1.5 + 1.5;
+
         star.style.left = `${x}px`;
         star.style.top = `${y}px`;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
 
-        // random twinkle delay
-        const twinkleDelay = Math.random() * 3;
-        star.style.animation = `twinkle 3s infinite alternate ease-in-out`;
-        star.style.animationDelay = `${twinkleDelay}s`;
+        star.style.animationDelay = `${Math.random() * 5}s`;
 
-        // random hue shift
-        star.style.setProperty('--hue-shift', Math.random() * 5 - 2.5);
         starContainer.appendChild(star);
     }
 
@@ -98,15 +94,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const nebula1 = document.getElementById("nebula1");
     const nebula2 = document.getElementById("nebula2");
 
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    const easeFactor = 0.1;
+
     document.addEventListener("mousemove", (e) => {
-        const { clientX: x, clientY: y } = e;
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
-        const moveX = (x - centerX) / centerX;
-        const moveY = (y - centerY) / centerY;
 
-        stars.style.transform = `translate(${moveX * 10}px, ${moveY * 10}px)`;
-        nebula1.style.transform = `translate(${moveX * 20}px, ${moveY * 20}px) scale(1.05)`;
-        nebula2.style.transform = `translate(${moveX * 30}px, ${moveY * 30}px) scale(1.1)`;
+        targetX = (e.clientX - centerX) / centerX;
+        targetY = (e.clientY - centerY) / centerY;
     });
+
+    function animateParallax() {
+        currentX += (targetX - currentX) * easeFactor;
+        currentY += (targetY - currentY) * easeFactor;
+
+        stars.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
+        nebula1.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px) scale(1.02)`;
+        nebula2.style.transform = `translate(${currentX * 20}px, ${currentY * 20}px) scale(1.04)`;
+
+        requestAnimationFrame(animateParallax);
+    }
+
+    animateParallax();
 });

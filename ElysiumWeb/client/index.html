@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elysium Web</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,8 +19,33 @@
     <header>
         <h1>Welcome to Elysium</h1>
     </header>
-    <div id="buttonContainer">
+    <div id="enterButtonContainer">
         <button id="enterButton">Enter</button>
+    </div>
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Step into Elysium</h2>
+            <div class="tabs">
+                <button class="tab active" id="login-tab">Login</button>
+                <button class="tab" id="signup-tab">Sign Up</button>
+            </div>
+            
+            <div id="login-form" class="form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <label><input type="checkbox"> Remember Me</label>
+                <button class="submit-btn">Login</button>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <div id="signup-form" class="form hidden">
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button class="submit-btn">Sign Up</button>
+            </div>
+        </div>
     </div>
     <script src="scripts/background.js"></script>
 </body>
