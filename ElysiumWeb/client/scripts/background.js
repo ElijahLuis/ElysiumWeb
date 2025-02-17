@@ -91,3 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateGradients, 120000);
     updateGradients(); 
 });
+
+// parallax
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.getElementById("stars");
+    const nebula1 = document.getElementById("nebula1");
+    const nebula2 = document.getElementById("nebula2");
+
+    document.addEventListener("mousemove", (e) => {
+        const { clientX: x, clientY: y } = e;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const moveX = (x - centerX) / centerX;
+        const moveY = (y - centerY) / centerY;
+
+        stars.style.transform = `translate(${moveX * 10}px, ${moveY * 10}px)`;
+        nebula1.style.transform = `translate(${moveX * 20}px, ${moveY * 20}px) scale(1.05)`;
+        nebula2.style.transform = `translate(${moveX * 30}px, ${moveY * 30}px) scale(1.1)`;
+    });
+});
