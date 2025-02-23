@@ -1,11 +1,3 @@
-@keyframes backgroundShift {
-    0% { background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6); }
-    25% { background: linear-gradient(to bottom, #180020, #4A004E, #B00078, #FF70A6); }
-    50% { background: linear-gradient(to bottom, #4A004E, #B00078, #FF70A6, #B00078); }
-    75% { background: linear-gradient(to bottom, #B00078, #FF70A6, #4A004E, #180020); }
-    100% { background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6); }
-}
-
 body {
     margin: 0;
     height: 100vh;
@@ -76,7 +68,6 @@ h1 {
     width: 100%;
     height: 100%;
     background: black;
-    z-index: 10;
     animation: fadeOutOverlay 1.5s ease-out forwards;
 }
 
@@ -165,6 +156,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 10;
 }
 
 #enterButton {
@@ -236,6 +228,7 @@ h1 {
     transition: opacity 0.5s ease, transform 0.5s ease;
     display: none;
     letter-spacing: 2px;
+    z-index: 10;
 }
 
 .modal.active {

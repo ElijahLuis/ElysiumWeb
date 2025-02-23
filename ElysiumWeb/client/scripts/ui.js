@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (enterButton) {
         enterButton.addEventListener("click", () => {
+            console.log("Enter button clicked!"); // Debugging
             fadeOutElement(welcomeText);
             fadeOutElement(enterButton);
             setTimeout(() => {
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginButton) {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault();
+            console.log("Login button clicked!"); // Debugging
             stars.style.transition = "opacity 1.5s ease-out";
             stars.style.opacity = "0";
 
