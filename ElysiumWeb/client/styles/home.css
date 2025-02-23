@@ -1,6 +1,7 @@
 /* 🔹 Immersive Welcome Header */
 #immersive-header {
     position: absolute;
+    top: -15%;
     left: 25%;
     transform: translate(-50%, 0);
     text-align: center;
