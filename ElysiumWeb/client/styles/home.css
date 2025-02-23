@@ -1,19 +1,25 @@
 /* 🔹 Immersive Welcome Header */
 #immersive-header {
     position: absolute;
-    top: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
+    left: 25%;
+    transform: translate(-50%, 0);
+    text-align: center;
     color: white;
     font-family: 'Orbitron', sans-serif;
-    text-align: center;
     font-size: 2rem;
     letter-spacing: 3px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     animation: fadeInUp 2.5s ease-out forwards;
-    white-space: nowrap;
+    white-space: nowrap; 
+    width: fit-content;
+    min-width: auto;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+    z-index: 10;
 }
+
+
 
 /* 🔹 Floating Navigation Hub */
 #navigation-hub {

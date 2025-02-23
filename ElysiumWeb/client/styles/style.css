@@ -1,9 +1,9 @@
 @keyframes backgroundShift {
-    0% { background: linear-gradient(to bottom, #000000, #020c1b, #0a1f44, #273a7f); }
-    25% { background: linear-gradient(to bottom, #020c1b, #0a1f44, #273a7f, #3b3f80); }
-    50% { background: linear-gradient(to bottom, #0a1f44, #273a7f, #3b3f80, #484c91); }
-    75% { background: linear-gradient(to bottom, #273a7f, #3b3f80, #484c91, #2a2e5a); }
-    100% { background: linear-gradient(to bottom, #000000, #020c1b, #0a1f44, #273a7f); }
+    0% { background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6); }
+    25% { background: linear-gradient(to bottom, #180020, #4A004E, #B00078, #FF70A6); }
+    50% { background: linear-gradient(to bottom, #4A004E, #B00078, #FF70A6, #B00078); }
+    75% { background: linear-gradient(to bottom, #B00078, #FF70A6, #4A004E, #180020); }
+    100% { background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6); }
 }
 
 body {
@@ -11,8 +11,8 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(to bottom, #000000, #020c1b, #0a1f44, #273a7f);
-    transition: background-color 1.5s ease-in-out;
+    background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6);
+    transition: background 1.5s ease-in-out;
 }
 
 /* --- Gradient Layers --- */
@@ -153,10 +153,15 @@ h1 {
     height: 2px;
     background: white;
     border-radius: 50%;
-    opacity: 0.3;
-    animation: twinkle 3s infinite alternate ease-in-out;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-    filter: hue-rotate(calc(20deg * var(--hue-shift)));
+    opacity: 0.4;
+    animation: twinkle 3s infinite alternate ease-in-out, starDrift 10s infinite ease-in-out;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes starDrift {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0px); }
 }
 
 @keyframes twinkle {
@@ -181,16 +186,15 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: white;
-
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-
     cursor: pointer;
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    animation: pulseGlow 4s infinite ease-in-out;
+    animation: pulseGlow 4s infinite ease-in-out, fadeInUp 2s ease-out forwards;
+    opacity: 0;
 }
 
 #enterButton:hover {

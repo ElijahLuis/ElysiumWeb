@@ -52,15 +52,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loginButton.addEventListener("click", function (event) {
         event.preventDefault();
+
         stars.style.transition = "opacity 1.5s ease-out";
         stars.style.opacity = "0";
-        body.style.transition = "background-color 1.5s ease-in-out";
-        body.style.backgroundColor = "#180020";
+
+        body.style.transition = "background 2s ease-in-out";
+        body.style.background = "linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6)";
 
         setTimeout(() => {
             window.location.href = "../pages/home.html";
         }, 2000);
     });
 });
+
 
 
