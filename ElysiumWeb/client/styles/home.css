@@ -1,0 +1,93 @@
+/* Import global styles */
+@import url('style.css');
+
+/* ---- Layout Adjustments ---- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+/* ---- Section Styling ---- */
+section {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    width: 60%;
+    text-align: center;
+}
+
+/* ---- Notifications List ---- */
+#notifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#notifications li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+}
+
+#notifications li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---- Quick Actions Styling ---- */
+#quick-actions .actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+#quick-actions button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+#quick-actions button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+#quick-actions button:active {
+    transform: scale(0.95);
+}
+
+/* ---- Updates Section ---- */
+#updates {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* ---- Responsive Adjustments ---- */
+@media (max-width: 768px) {
+    section {
+        width: 90%;
+    }
+
+    #quick-actions .actions {
+        flex-direction: column;
+    }
+}
