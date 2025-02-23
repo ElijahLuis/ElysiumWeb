@@ -3,7 +3,7 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6);
+    background: linear-gradient(to bottom, #000000, #290136, #400144, #290136, #020131);
     transition: background 1.5s ease-in-out;
 }
 
