@@ -43,3 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
     loginTab.addEventListener("click", () => switchTab(loginTab, signupTab, loginForm, signupForm));
     signupTab.addEventListener("click", () => switchTab(signupTab, loginTab, signupForm, loginForm));
 });
+
+// fade transition on login
+document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.querySelector("#login-form .submit-btn");
+    const stars = document.getElementById("stars");
+    const body = document.body;
+
+    loginButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        stars.style.transition = "opacity 1.5s ease-out";
+        stars.style.opacity = "0";
+        body.style.transition = "background-color 1.5s ease-in-out";
+        body.style.backgroundColor = "#180020";
+
+        setTimeout(() => {
+            window.location.href = "../pages/home.html";
+        }, 2000);
+    });
+});
+
+
