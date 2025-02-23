@@ -1,7 +1,7 @@
 // stars
 document.addEventListener("DOMContentLoaded", () => {
     const starContainer = document.getElementById("stars");
-    const numberOfStars = 75;
+    const numberOfStars = 100;
 
     function createStar() {
         const star = document.createElement("div");

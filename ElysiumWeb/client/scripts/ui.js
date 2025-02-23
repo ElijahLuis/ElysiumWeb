@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    window.fadeInElement = fadeInElement;
+
     if (enterButton) {
         enterButton.addEventListener("click", () => {
-            console.log("Enter button clicked!"); // Debugging
             fadeOutElement(welcomeText);
             fadeOutElement(enterButton);
             setTimeout(() => {
@@ -61,18 +62,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginButton) {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault();
-            console.log("Login button clicked!"); // Debugging
             stars.style.transition = "opacity 1.5s ease-out";
             stars.style.opacity = "0";
-
-            body.style.transition = "background 2s ease-in-out";
-            body.style.background = "linear-gradient(to bottom, #000000, #180020, #4A004E, #B00078, #FF70A6)";
-
+    
+            const gradientOverlay = document.createElement("div");
+            gradientOverlay.style.position = "fixed";
+            gradientOverlay.style.top = "0";
+            gradientOverlay.style.left = "0";
+            gradientOverlay.style.width = "100%";
+            gradientOverlay.style.height = "100%";
+            gradientOverlay.style.background = "linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082)";
+            gradientOverlay.style.opacity = "0";
+            gradientOverlay.style.transition = "opacity 1.5s ease-in";
+            gradientOverlay.style.zIndex = "1"; 
+    
+            document.body.appendChild(gradientOverlay);
+    
+            setTimeout(() => {
+                gradientOverlay.style.opacity = "1";
+            }, 50);
+    
             setTimeout(() => {
                 window.location.href = "../pages/home.html";
-            }, 2000);
+            }, 1500);
         });
     } else {
         console.warn("Login button not found in DOM.");
-    }
+    }    
 });

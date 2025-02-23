@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="../styles/home.css">
 </head>
-<body>
 
+<body>
+  <div id="stars"></div>
   <div id="immersive-header">
     <h1>Drift Deeper into Elysium...</h1>
   </div>
@@ -36,5 +38,21 @@
       <p>🌠 Discover the newest content and features added to Elysium Web.</p>
     </section>
   </main>
+  <script src="../scripts/background.js"></script>
+  <script src="../scripts/ui.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const stars = document.getElementById("stars");
+      if (stars) {
+        stars.style.opacity = "0";
+        stars.style.display = "block";
+        setTimeout(() => {
+          stars.style.transition = "opacity 2000ms ease-in-out";
+          stars.style.opacity = "1";
+        }, 50);
+      }
+    });
+    </script>
 </body>
+
 </html>

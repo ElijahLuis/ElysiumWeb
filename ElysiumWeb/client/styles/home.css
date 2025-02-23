@@ -1,8 +1,11 @@
-/* 🔹 Immersive Welcome Header */
-#immersive-header {
+body {
+    background: linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082);
+  }
+  
+  #immersive-header {
     position: absolute;
     top: -15%;
-    left: 25%;
+    left: 30%;
     transform: translate(-50%, 0);
     text-align: center;
     color: white;
@@ -11,19 +14,14 @@
     letter-spacing: 3px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     animation: fadeInUp 2.5s ease-out forwards;
-    white-space: nowrap; 
+    white-space: nowrap;
     width: fit-content;
-    min-width: auto;
-    padding: 0;
     margin: 0 auto;
     display: block;
     z-index: 10;
-}
-
-
-
-/* 🔹 Floating Navigation Hub */
-#navigation-hub {
+  }
+  
+  #navigation-hub {
     position: fixed;
     bottom: 8%;
     left: 50%;
@@ -35,10 +33,9 @@
     backdrop-filter: blur(12px);
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-/* 🔹 Navigation Hub Button */
-#navigation-hub button {
+  }
+  
+  #navigation-hub button {
     padding: 12px 18px;
     font-size: 1rem;
     font-family: 'Orbitron', sans-serif;
@@ -49,21 +46,20 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-#navigation-hub button:hover {
+  }
+  
+  #navigation-hub button:hover {
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
     transform: scale(1.1);
-}
-
-#navigation-hub button:active {
+  }
+  
+  #navigation-hub button:active {
     transform: scale(0.95);
-}
-
-/* 🔹 Main Content Layout */
-main {
+  }
+  
+  main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,10 +70,9 @@ main {
     font-family: 'Orbitron', sans-serif;
     text-align: center;
     margin-top: 150px;
-}
-
-/* 🔹 Sections */
-section {
+  }
+  
+  section {
     background: rgba(255, 255, 255, 0.08);
     padding: 20px;
     margin: 15px 0;
@@ -86,16 +81,15 @@ section {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
     width: 60%;
     text-align: center;
-}
-
-/* 🔹 Notifications */
-#notifications ul {
-    list-style-type: none;
+  }
+  
+  #notifications ul {
+    list-style: none;
     padding: 0;
     margin: 0;
-}
-
-#notifications li {
+  }
+  
+  #notifications li {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -104,17 +98,22 @@ section {
     border-radius: 8px;
     margin-bottom: 10px;
     transition: background 0.3s ease;
-}
-
-#notifications li::before {
+  }
+  
+  #notifications li::before {
     content: "•";
     font-size: 1.5rem;
     color: white;
-}
-
-/* 🔹 Animations */
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
