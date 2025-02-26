@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // parallax
 document.addEventListener("DOMContentLoaded", () => {
-    const stars = document.getElementById("stars");
+    const starsContainer = document.getElementById("stars");
     const nebula1 = document.getElementById("nebula1");
     const nebula2 = document.getElementById("nebula2");
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentX += (targetX - currentX) * easeFactor;
         currentY += (targetY - currentY) * easeFactor;
 
-        stars.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
+        starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
         nebula1.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px) scale(1.02)`;
         nebula2.style.transform = `translate(${currentX * 20}px, ${currentY * 20}px) scale(1.04)`;
 
@@ -118,4 +118,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animateParallax();
+
+    function generateStars() {
+        starsContainer.innerHTML = ""; // Clear existing stars
+        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 8000); // Adjust density
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.opacity = Math.random();
+            starsContainer.appendChild(star);
+        }
+    }
+
+    generateStars(); // Initial star generation
+
+    window.addEventListener("resize", () => {
+        generateStars(); // Regenerate stars on resize
+    });
 });
+

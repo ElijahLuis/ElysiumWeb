@@ -4,6 +4,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors')
+const path = require('path');
 const { body, validationResult } = require('express-validator');
 
 // aws imports
@@ -27,7 +28,7 @@ const dynamoDb = DynamoDBDocumentClient.from(client);
 // middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static('C:/Users/elija/Projects/ElysiumWeb/client'));
+app.use(express.static(path.join(__dirname, '../client')));
 
 // token auth middleware
 const authenticateToken = (req, res, next) => {
