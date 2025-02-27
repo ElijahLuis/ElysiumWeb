@@ -13,74 +13,11 @@
   <div id="stars"></div>
   <div id="immersive-header">
     <h1>Drift Deeper Into Elysium</h1>
+    <button id="journey-btn" class="fade-in">Begin Your Journey</button>
   </div>
-
-  <div id="navigation-hub">
-    <button onclick="window.location.href='avatar.html'">🌌 Customize Avatar</button>
-    <button onclick="window.location.href='quests.html'">📜 View Quests</button>
-    <button onclick="window.location.href='items.html'">🎒 Inventory</button>
-  </div>
-
   <main>
-    <!-- Notifications Section -->
-    <section id="notifications">
-      <h2>Notifications</h2>
-      <ul>
-        <li>✨ New quest unlocked!</li>
-        <li>🏆 Achievement progress updated.</li>
-        <li>🚀 Upcoming event: Galaxy Exploration in 1 hour.</li>
-      </ul>
-    </section>
-
-    <!-- Updates Section -->
-    <section id="updates">
-      <h2>Latest Updates</h2>
-      <p>🌠 Discover the newest content and features added to Elysium Web.</p>
-    </section>
   </main>
   <script src="../scripts/background.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const stars = document.getElementById("stars");
-        
-        if (stars) {
-            stars.style.opacity = "0";
-            stars.style.display = "block";
-            setTimeout(() => {
-                stars.style.transition = "opacity 2s ease-in-out";
-                stars.style.opacity = "1";
-            }, 300);
-        }
-    });
-    
-    window.onload = function () {
-        const stars = document.getElementById("stars");
-        if (!stars) return;
-    
-        let targetX = 0, targetY = 0;
-        let currentX = 0, currentY = 0;
-        const easeFactor = 0.1;
-    
-        document.addEventListener("mousemove", (e) => {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-    
-            targetX = (e.clientX - centerX) / centerX;
-            targetY = (e.clientY - centerY) / centerY;
-        });
-    
-        function animateParallax() {
-            currentX += (targetX - currentX) * easeFactor;
-            currentY += (targetY - currentY) * easeFactor;
-    
-            stars.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
-    
-            requestAnimationFrame(animateParallax);
-        }
-    
-        animateParallax();
-    };
-    </script>    
 </body>
 
 </html>
