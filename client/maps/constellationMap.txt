@@ -1,16 +1,78 @@
-✨ Discovering a Star:
+🌟 Star Discovery & Collection Mechanics
+1. Discovering a Star
+Users encounter a Collectible Star while exploring a realm.
+Upon interaction, the star splits into three truths (small questions or quotes).
+The user must choose one that resonates most with them.
+Their choice adds that truth to their Personal Star Collection.
 
-When a user finds a Collectible Star, it splits into three truths.
-They must choose the one that resonates most—this truth is added to their Personal Star Collection.
+💡 Example Scenario:
+A user exploring the Rift Realm (Sadness & Emotional Pain) finds a star.
+It splits into three truths:
 
-🌠 Trading & Constellations:
+🌟 "Grief is love persevering."
+🌟 "You do not heal by forgetting, but by remembering differently."
+🌟 "Even the stars you can’t see are still there."
 
-Stars can be gifted or traded between users.
-Each star keeps a record of its previous owners, forming a Constellation:
-a visual and symbolic representation of connections between people who have felt similar emotions.
+The user selects the one that resonates most, and it is added to their collection.
+~~~
+2. The Personal Star Collection
 
-🔗 Deepening the Social Aspect:
+Users collect stars over time, forming a constellation map unique to their emotional journey.
 
-Some stars might be untradeable (personal growth stars).
-Users might seek out others with matching stars to expand their constellation.
-Rare stars could exist—maybe stars that only appear in special circumstances, or those that require specific emotional journeys to unlock.
+Each collected star retains:
+✨ The truth they chose.
+📅 The date they discovered it.
+🌌 The realm it came from.
+💡 Design Note:
+
+The collection could visually resemble a starry night sky, with stars grouped by realm.
+Users might zoom in on a star to re-read its truth.
+~~~
+3. Trading & Constellation Formation
+
+Stars can be traded or gifted between users.
+A traded star keeps its entire history of previous owners.
+These connected users form a "Constellation"—a symbolic emotional network.
+
+💡 Example Scenario:
+A user trades their Haven Star (Hope) to another user in the Abyss Realm (Fear).
+Now, the star’s history shows:
+
+🌟 Elijah (original owner) → transferred to Alex → transferred to Maya.
+This star’s constellation visually links all three users.
+~~~
+4. Special & Rare Stars
+
+A. Untradeable "Core Stars"
+Some stars are personal growth milestones and cannot be traded.
+Example: A star from Ascendia (Confidence) after overcoming self-doubt.
+
+B. Legendary Stars
+Rare stars that only appear under certain emotional conditions.
+Maybe after an intense moment of self-reflection, a hidden star appears.
+Example: A user navigating Paradoxus (Confusion) deeply questions their reality and triggers a rare star with a unique truth about clarity and uncertainty.
+
+C. Companion Stars
+Some stars only unlock when traded.
+These require another user’s participation—encouraging shared reflection.
+Example: A “Bravery” Star from Ember can only be unlocked when gifted to another user.
+~~~
+5. User Interaction with Constellations
+Users can view their constellation—showing stars they collected and those they share with others.
+Privacy settings allow users to choose whether their constellation is public or private.
+Constellations may have unlockable rewards (visuals, reflections, or insights).
+
+💡 Example:
+
+A user sees three people who share a star about healing from grief.
+They now feel less alone, knowing others have walked the same path.
+~~~
+6. Floating User Thoughts & Their Role
+Floating Thoughts appear in each realm, shaped by Insight, Bravery, Resonance, and Momentum.
+Popular thoughts in each realm may be transformed into Collectible Stars.
+This means users' words could become truths that others collect.
+
+💡 Example:
+A user writes: “Fear doesn’t go away, but you can learn to walk with it.”
+If it gains high Resonance & Bravery, it becomes a star in the Abyss Realm for others to discover.
+
