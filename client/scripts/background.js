@@ -1,4 +1,3 @@
-// stars
 document.addEventListener("DOMContentLoaded", () => {
     const starContainer = document.getElementById("stars");
     const numberOfStars = 15;
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         star.style.animationDelay = `${Math.random() * 5}s`;
 
-        starContainer.appendChild(star);
+        starsContainer.appendChild(star);
     }
 
     for (let i = 0; i < numberOfStars; i++) {
@@ -59,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentGradientIndex = nextGradientIndex;
     }
 
-    setInterval(updateGradients, 120000);
+    setInterval(updateGradients, 60000);
     updateGradients(); 
 });
 
@@ -82,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateParallax() {
         currentX += (targetX - currentX) * easeFactor;
         currentY += (targetY - currentY) * easeFactor;
-
         starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
         requestAnimationFrame(animateParallax);
     }

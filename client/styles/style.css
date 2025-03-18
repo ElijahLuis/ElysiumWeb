@@ -21,6 +21,7 @@ body::after {
     height: 100vh;
     opacity: 0;
     transition: opacity 2s ease-in-out;
+    pointer-events: none;
 }
 
 @keyframes fadeGradient {
@@ -88,11 +89,15 @@ h1 {
     100% { opacity: 0; z-index: -10; }
 }
 
+<<<<<<< HEAD
 /* --------------------------
    4) STARS & PARALLAX
 -------------------------- */
 
 /* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
+=======
+/* Stars container */
+>>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
 #stars {
     position: absolute;
     top: 0;
@@ -101,6 +106,10 @@ h1 {
     height: 100%;
     pointer-events: none;
     will-change: transform;
+<<<<<<< HEAD
+=======
+    transition: transform 0.1s ease-out;
+>>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
 }
 
 .star {
@@ -136,7 +145,6 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 10;
 }
 
 #enterButton {
@@ -213,7 +221,6 @@ h1 {
     transition: opacity 0.5s ease, transform 0.5s ease;
     display: none;
     letter-spacing: 2px;
-    z-index: 10;
 }
 
 .modal.active {
