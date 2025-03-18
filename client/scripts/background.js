@@ -1,7 +1,7 @@
 // stars
 document.addEventListener("DOMContentLoaded", () => {
     const starContainer = document.getElementById("stars");
-    const numberOfStars = 100;
+    const numberOfStars = 15;
 
     function createStar() {
         const star = document.createElement("div");
@@ -24,31 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < numberOfStars; i++) {
         createStar();
     }
-});
- 
-// floating nebulas
-document.addEventListener("DOMContentLoaded", () => {
-    const nebula1 = document.getElementById("nebula1");
-    const nebula2 = document.getElementById("nebula2");
-
-    function randomNebulaColor() {
-        const colors = [
-            "rgba(72, 61, 139, 0.3)", // Deep purple
-            "rgba(75, 0, 130, 0.3)",  // Indigo
-            "rgba(139, 0, 139, 0.3)", // Dark magenta
-            "rgba(0, 0, 128, 0.3)",   // Midnight blue
-            "rgba(30, 144, 255, 0.3)" // Deep sky blue
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function changeNebulaColor() {
-        nebula1.style.background = `radial-gradient(circle, ${randomNebulaColor()}, transparent 70%)`;
-        nebula2.style.background = `radial-gradient(circle, ${randomNebulaColor()}, transparent 70%)`;
-    }
-
-    setInterval(changeNebulaColor, 30000);
-    changeNebulaColor();
 });
 
 // gradient colors
@@ -91,8 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // parallax
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
-    const nebula1 = document.getElementById("nebula1");
-    const nebula2 = document.getElementById("nebula2");
 
     let targetX = 0, targetY = 0;
     let currentX = 0, currentY = 0;
@@ -111,17 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
         currentY += (targetY - currentY) * easeFactor;
 
         starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
-        nebula1.style.transform = `translate(${currentX * 15}px, ${currentY * 15}px) scale(1.02)`;
-        nebula2.style.transform = `translate(${currentX * 20}px, ${currentY * 20}px) scale(1.04)`;
-
         requestAnimationFrame(animateParallax);
     }
 
     animateParallax();
 
     function generateStars() {
-        starsContainer.innerHTML = ""; // Clear existing stars
-        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 8000); // Adjust density
+        starsContainer.innerHTML = ""; 
+        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement("div");
@@ -137,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     generateStars(); // Initial star generation
 
     window.addEventListener("resize", () => {
-        generateStars(); // Regenerate stars on resize
+        generateStars();
     });
 });
 

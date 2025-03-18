@@ -52,12 +52,6 @@ app.get('/api', (req, res) => {
     res.json({ message: 'Heyo from the server! Wut it do?' });
 });
 
-// Updates route placeholder (GET)
-app.get('/api/updates', (req, res) => {
-    res.json({ updates: ["Test feature added", "Bug fixes and improvements"] });
-});
-
-
 // Signup route (POST)
 app.post('/api/signup', async (req, res) => {
     const { email, password, name } = req.body;
