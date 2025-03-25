@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const starsContainer = document.getElementById("stars");
-    if (!starsContainer) return;
-
-    const numberOfStars = 100;
+    const starContainer = document.getElementById("stars");
+    const numberOfStars = 15;
 
     function createStar() {
         const star = document.createElement("div");
@@ -22,19 +20,52 @@ document.addEventListener("DOMContentLoaded", () => {
         starsContainer.appendChild(star);
     }
 
-    function generateStars() {
-        starsContainer.innerHTML = "";
-        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+    for (let i = 0; i < numberOfStars; i++) {
+        createStar();
+    }
+});
 
-        for (let i = 0; i < numStars; i++) {
-            createStar();
-        }
+// gradient colors
+document.addEventListener("DOMContentLoaded", () => {
+    const bodyBefore = document.querySelector("body::before");
+    const bodyAfter = document.querySelector("body::after");
+
+    const gradients = [
+        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night
+        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo
+        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple
+        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk
+    ];
+
+    let currentGradientIndex = 0;
+
+    function updateGradients() {
+        let nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
+        
+        const currentColors = gradients[currentGradientIndex];
+        const nextColors = gradients[nextGradientIndex];
+
+        document.body.style.setProperty(
+            "--gradient-current",
+            `linear-gradient(to bottom, ${currentColors[0]}, ${currentColors[1]}, ${currentColors[2]}, ${currentColors[3]})`
+        );
+
+        document.body.style.setProperty(
+            "--gradient-next",
+            `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
+        );
+
+        currentGradientIndex = nextGradientIndex;
     }
 
-    generateStars();
-    window.addEventListener("resize", generateStars);
+    setInterval(updateGradients, 60000);
+    updateGradients(); 
+});
 
-    // Parallax Effect
+// parallax
+document.addEventListener("DOMContentLoaded", () => {
+    const starsContainer = document.getElementById("stars");
+
     let targetX = 0, targetY = 0;
     let currentX = 0, currentY = 0;
     const easeFactor = 0.1;
@@ -55,4 +86,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animateParallax();
+
+    function generateStars() {
+        starsContainer.innerHTML = ""; 
+        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.opacity = Math.random();
+            starsContainer.appendChild(star);
+        }
+    }
+
+    generateStars(); // Initial star generation
+
+    window.addEventListener("resize", () => {
+        generateStars();
+    });
 });
+

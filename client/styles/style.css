@@ -1,3 +1,7 @@
+/* --------------------------
+   1) GLOBAL & BODY
+-------------------------- */
+
 body {
     margin: 0;
     height: 100vh;
@@ -26,6 +30,10 @@ body::after {
     100% { opacity: 1; }
 }
 
+/* --------------------------
+   2) HEADER & TEXT
+-------------------------- */
+
 header {
     position: absolute;
     top: 40%;
@@ -39,7 +47,7 @@ h1 {
     font-size: 3rem;
     font-family: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 4px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
                  0 0 20px rgba(255, 255, 255, 0.3);
     animation: fadeInUp 2.5s ease-out forwards, headerPulseGlow 5s infinite ease-in-out;
 }
@@ -61,6 +69,10 @@ h1 {
     100% { opacity: 1; transform: translateY(25px); }
 }
 
+/* --------------------------
+   3) FADE OVERLAY
+-------------------------- */
+
 #fadeOverlay {
     position: fixed;
     top: 0;
@@ -72,12 +84,20 @@ h1 {
 }
 
 @keyframes fadeOutOverlay {
-    0% { opacity: 1; z-index: 10; }
-    99% { opacity: 0; z-index: 10; } 
+    0%   { opacity: 1; z-index: 10; }
+    99%  { opacity: 0; z-index: 10; }
     100% { opacity: 0; z-index: -10; }
 }
 
+<<<<<<< HEAD
+/* --------------------------
+   4) STARS & PARALLAX
+-------------------------- */
+
+/* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
+=======
 /* Stars container */
+>>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
 #stars {
     position: absolute;
     top: 0;
@@ -86,7 +106,10 @@ h1 {
     height: 100%;
     pointer-events: none;
     will-change: transform;
+<<<<<<< HEAD
+=======
     transition: transform 0.1s ease-out;
+>>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
 }
 
 .star {
@@ -96,23 +119,26 @@ h1 {
     background: white;
     border-radius: 50%;
     opacity: 0.4;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
     animation: twinkle 3s infinite alternate ease-in-out, starDrift 10s infinite ease-in-out;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 @keyframes starDrift {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-3px); }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-3px); }
     100% { transform: translateY(0px); }
 }
 
 @keyframes twinkle {
-    0% { opacity: 0.2; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
-    50% { opacity: 1; box-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
+    0%   { opacity: 0.2; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
+    50%  { opacity: 1;   box-shadow: 0 0 6px rgba(255, 255, 255, 0.9); }
     100% { opacity: 0.2; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
 }
 
-/* Button Container */
+/* --------------------------
+   5) ENTER BUTTON
+-------------------------- */
+
 #enterButtonContainer {
     position: absolute;
     top: 55%;
@@ -152,16 +178,18 @@ h1 {
     transform: scale(0.98);
 }
 
-/* Auth Modal Styling */
-.modal.active ~ #nebula-container,
+/* --------------------------
+   6) MODAL & BLUR BACKGROUND
+-------------------------- */
+
 .modal.active ~ #stars {
     filter: blur(8px);
     transition: filter 0.5s ease-in-out;
 }
 
 @keyframes modalFloat {
-    0% { transform: translateY(-10px); opacity: 0; }
-    100% { transform: translateY(0px); opacity: 1; }
+    0%   { transform: translateY(-10px); opacity: 0; }
+    100% { transform: translateY(0px);   opacity: 1; }
 }
 
 .modal-content {
@@ -173,7 +201,10 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
-/* Modal */
+/* --------------------------
+   7) MODAL CONTAINER
+-------------------------- */
+
 .modal {
     position: fixed;
     top: 50%;
@@ -203,8 +234,13 @@ h1 {
     color: white;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
+    /* Large double-layered glow can be heavy. Kept it but you can reduce if desired. */
     text-shadow: 0 0 15px rgba(255, 20, 147, 0.7), 0 0 25px rgba(138, 43, 226, 0.7);
 }
+
+/* --------------------------
+   8) TABS & FORMS
+-------------------------- */
 
 .tabs {
     display: flex;
@@ -230,6 +266,7 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 20, 147, 0.7), 0 0 20px rgba(138, 43, 226, 0.7);
 }
 
+/* Form container & inputs */
 .form {
     display: flex;
     flex-direction: column;
@@ -273,6 +310,7 @@ h1 {
     box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
 }
 
+/* Link styling */
 .forgot-password {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
