@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         star.style.animationDelay = `${Math.random() * 5}s`;
 
-        starsContainer.appendChild(star);
+        starContainer.appendChild(star);
     }
 
     for (let i = 0; i < numberOfStars; i++) {
