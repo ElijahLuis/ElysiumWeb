@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const starContainer = document.getElementById("stars");
+    const starsContainer = document.getElementById("stars");
     const numberOfStars = 15;
 
     function createStar() {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         star.style.animationDelay = `${Math.random() * 5}s`;
 
-        starContainer.appendChild(star);
+        starsContainer.appendChild(star);
     }
 
     for (let i = 0; i < numberOfStars; i++) {
