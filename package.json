@@ -1,0 +1,11 @@
+{
+  "name": "elysium-web",
+  "version": "1.0.0",
+  "description": "Static website for Elysium Web",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
