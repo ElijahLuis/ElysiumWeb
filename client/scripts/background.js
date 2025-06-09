@@ -27,8 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // gradient colors
 document.addEventListener("DOMContentLoaded", () => {
-    const bodyBefore = document.querySelector("body::before");
-    const bodyAfter = document.querySelector("body::after");
 
     const gradients = [
         ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night
