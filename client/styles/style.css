@@ -7,11 +7,11 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(to bottom, #000000, #290136, #400144, #290136, #020131);
+    background: var(--gradient-current, linear-gradient(to bottom, #000000, #290136, #400144, #290136, #020131));
     transition: background 1.5s ease-in-out;
 }
 
-body::before, 
+body::before,
 body::after {
     content: "";
     position: absolute;
@@ -22,6 +22,10 @@ body::after {
     opacity: 0;
     transition: opacity 2s ease-in-out;
     pointer-events: none;
+}
+
+body::after {
+    background: var(--gradient-next);
 }
 
 @keyframes fadeGradient {
