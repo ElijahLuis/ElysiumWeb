@@ -90,8 +90,10 @@ h1 {
 }
 
 /* --------------------------
- 4) STARS & PARALLAX
- -------------------------- */
+   4) STARS & PARALLAX
+-------------------------- */
+
+/* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
 #stars {
     position: absolute;
     top: 0;
