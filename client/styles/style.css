@@ -89,15 +89,12 @@ h1 {
     100% { opacity: 0; z-index: -10; }
 }
 
-<<<<<<< HEAD
-/* --------------------------
-   4) STARS & PARALLAX
--------------------------- */
+# --------------------------
+# 4) STARS & PARALLAX
+# --------------------------
 
-/* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
-=======
-/* Stars container */
->>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
+/* Stars container - removed transform transition to avoid conflict
+   with JS-driven parallax updates. */
 #stars {
     position: absolute;
     top: 0;
@@ -106,10 +103,6 @@ h1 {
     height: 100%;
     pointer-events: none;
     will-change: transform;
-<<<<<<< HEAD
-=======
-    transition: transform 0.1s ease-out;
->>>>>>> f594f7accd53cebeaa55ab00510782782d1ab10f
 }
 
 .star {
