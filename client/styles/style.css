@@ -89,12 +89,9 @@ h1 {
     100% { opacity: 0; z-index: -10; }
 }
 
-# --------------------------
-# 4) STARS & PARALLAX
-# --------------------------
-
-/* Stars container - removed transform transition to avoid conflict
-   with JS-driven parallax updates. */
+/* --------------------------
+ 4) STARS & PARALLAX
+ -------------------------- */
 #stars {
     position: absolute;
     top: 0;
