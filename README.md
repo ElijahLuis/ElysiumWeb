@@ -11,3 +11,7 @@ npm start
 ```
 
 This will start a server on [http://localhost:3000](http://localhost:3000). No additional dependencies are required.
+
+## Exploring the Universe demo
+
+After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. The page `pages/universe.html` lets you create short posts tied to an emotion. As people react with different emotions, each post will migrate to the planet that best represents the community response.

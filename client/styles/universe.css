@@ -1,0 +1,64 @@
+#space {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  margin-top: 40px;
+}
+
+.planet {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+#joy { background: #ffca28; top: 10%; left: 10%; }
+#anger { background: #e53935; top: 10%; right: 10%; }
+#sadness { background: #1e88e5; bottom: 10%; left: 15%; }
+#calm { background: #43a047; bottom: 10%; right: 15%; }
+
+.post {
+  position: absolute;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  color: white;
+  font-family: Arial, sans-serif;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+
+#postForm {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+#postText {
+  width: 200px;
+  height: 60px;
+}
+
+#reactionMenu {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
