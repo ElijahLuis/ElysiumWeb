@@ -2,7 +2,6 @@
 // Consolidates all background logic under a single DOMContentLoaded handler
 // Restored from optimized version to maintain performance
 // This is the stable implementation; avoid editing unless necessary
-
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
     if (!starsContainer) return;
@@ -12,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------------
     function generateStars() {
         starsContainer.innerHTML = "";
+
         const count = Math.floor((window.innerWidth * window.innerHeight) / 10000);
         const frag = document.createDocumentFragment();
         for (let i = 0; i < count; i++) {
@@ -63,7 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateGradients();
     setInterval(updateGradients, 60000);
-
+        setTimeout(updateGradients, 60000);
+    }
+    updateGradients();
     // ----------------------
     // Parallax effect
     // ----------------------
