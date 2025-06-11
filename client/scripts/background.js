@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
     const numberOfStars = 15;
+=======
+document.addEventListener("DOMContentLoaded", () => {
+    const starsContainer = document.getElementById("stars");
+    const numberOfStars = 15;
+>>>>>>> 16e806cc9e5cf042820f48044dde2e25123d2ce1
 
     function createStar() {
         const star = document.createElement("div");
@@ -14,14 +20,64 @@ document.addEventListener("DOMContentLoaded", () => {
         star.style.top = `${y}px`;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
+<<<<<<< HEAD
         star.style.animationDelay = `${Math.random() * 5}s`;
 
         starsContainer.appendChild(star);
+=======
+
+        star.style.animationDelay = `${Math.random() * 5}s`;
+
+        starsContainer.appendChild(star);
+>>>>>>> 16e806cc9e5cf042820f48044dde2e25123d2ce1
     }
 
     for (let i = 0; i < numberOfStars; i++) {
         createStar();
     }
+<<<<<<< HEAD
+=======
+});
+
+// gradient colors
+document.addEventListener("DOMContentLoaded", () => {
+
+    const gradients = [
+        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night
+        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo
+        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple
+        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk
+    ];
+
+    let currentGradientIndex = 0;
+
+    function updateGradients() {
+        let nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
+        
+        const currentColors = gradients[currentGradientIndex];
+        const nextColors = gradients[nextGradientIndex];
+
+        document.body.style.setProperty(
+            "--gradient-current",
+            `linear-gradient(to bottom, ${currentColors[0]}, ${currentColors[1]}, ${currentColors[2]}, ${currentColors[3]})`
+        );
+
+        document.body.style.setProperty(
+            "--gradient-next",
+            `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
+        );
+
+        currentGradientIndex = nextGradientIndex;
+    }
+
+    setInterval(updateGradients, 60000);
+    updateGradients(); 
+});
+
+// parallax
+document.addEventListener("DOMContentLoaded", () => {
+    const starsContainer = document.getElementById("stars");
+>>>>>>> 16e806cc9e5cf042820f48044dde2e25123d2ce1
 
     // Parallax variables
     let targetX = 0, targetY = 0;

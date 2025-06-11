@@ -1,6 +1,11 @@
 {
-  "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.731.1",
-    "@aws-sdk/lib-dynamodb": "^3.731.1"
-  }
+  "name": "elysium-web",
+  "version": "1.0.0",
+  "description": "Static website for Elysium Web",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT"
 }
