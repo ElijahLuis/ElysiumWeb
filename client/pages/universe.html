@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysium Universe</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/universe.css">
+</head>
+<body>
+  <div id="stars"></div>
+  <div id="space">
+    <div class="planet" id="joy">Joy</div>
+    <div class="planet" id="anger">Anger</div>
+    <div class="planet" id="sadness">Sadness</div>
+    <div class="planet" id="calm">Calm</div>
+  </div>
+  <form id="postForm">
+    <textarea id="postText" placeholder="Share a thought" required></textarea>
+    <select id="emotionSelect">
+      <option value="joy">Joy</option>
+      <option value="anger">Anger</option>
+      <option value="sadness">Sadness</option>
+      <option value="calm">Calm</option>
+    </select>
+    <button type="submit">Post</button>
+  </form>
+  <div id="reactionMenu" class="hidden">
+    <button data-emotion="joy">😊</button>
+    <button data-emotion="anger">😠</button>
+    <button data-emotion="sadness">😢</button>
+    <button data-emotion="calm">😌</button>
+  </div>
+  <script src="../scripts/background.js"></script>
+  <script src="../scripts/universe.js"></script>
+</body>
+</html>
