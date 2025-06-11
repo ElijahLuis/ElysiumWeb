@@ -1,18 +1,17 @@
-// Optimized background script for the starfield and parallax effects
-// Consolidates all background logic under a single DOMContentLoaded handler
+// Optimized background script for starfield and parallax
+// Combines previous handlers into a single DOMContentLoaded event
 
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
-    if (!starsContainer) return;
 
     // ----------------------
     // Star generation
     // ----------------------
     function generateStars() {
         starsContainer.innerHTML = "";
-        const count = Math.floor((window.innerWidth * window.innerHeight) / 10000);
+        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
         const frag = document.createDocumentFragment();
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < numStars; i++) {
             const star = document.createElement("div");
             star.classList.add("star");
             star.style.left = `${Math.random() * window.innerWidth}px`;
@@ -58,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         currentGradientIndex = nextGradientIndex;
+        setTimeout(updateGradients, 60000);
     }
     updateGradients();
-    setInterval(updateGradients, 60000);
 
     // ----------------------
     // Parallax effect
@@ -81,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateParallax() {
         currentX += (targetX - currentX) * easeFactor;
         currentY += (targetY - currentY) * easeFactor;
-        starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
+        starsContainer.style.transform = `translate(${currentX * parallaxStrength}px, ${currentY * parallaxStrength}px)`;
         requestAnimationFrame(animateParallax);
     }
     animateParallax();
