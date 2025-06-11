@@ -1,33 +1,39 @@
+// Optimized background script for starfield and parallax
+// Combines previous handlers into a single DOMContentLoaded event
+
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
-    const numberOfStars = 15;
 
-    function createStar() {
-        const star = document.createElement("div");
-        star.classList.add("star");
-
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        const size = Math.random() * 1.5 + 1.5;
-
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-
-        star.style.animationDelay = `${Math.random() * 5}s`;
-
-        starsContainer.appendChild(star);
+    // ----------------------
+    // Star generation
+    // ----------------------
+    function generateStars() {
+        starsContainer.innerHTML = "";
+        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.opacity = Math.random();
+            frag.appendChild(star);
+        }
+        starsContainer.appendChild(frag);
     }
 
-    for (let i = 0; i < numberOfStars; i++) {
-        createStar();
-    }
-});
+    generateStars();
 
-// gradient colors
-document.addEventListener("DOMContentLoaded", () => {
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(generateStars, 200);
+    });
 
+    // ----------------------
+    // Gradient colors
+    // ----------------------
     const gradients = [
         ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night
         ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo
@@ -36,10 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let currentGradientIndex = 0;
-
     function updateGradients() {
-        let nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
-        
+        const nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
         const currentColors = gradients[currentGradientIndex];
         const nextColors = gradients[nextGradientIndex];
 
@@ -47,31 +51,28 @@ document.addEventListener("DOMContentLoaded", () => {
             "--gradient-current",
             `linear-gradient(to bottom, ${currentColors[0]}, ${currentColors[1]}, ${currentColors[2]}, ${currentColors[3]})`
         );
-
         document.body.style.setProperty(
             "--gradient-next",
             `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
         );
 
         currentGradientIndex = nextGradientIndex;
+        setTimeout(updateGradients, 60000);
     }
+    updateGradients();
 
-    setInterval(updateGradients, 60000);
-    updateGradients(); 
-});
-
-// parallax
-document.addEventListener("DOMContentLoaded", () => {
-    const starsContainer = document.getElementById("stars");
-
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
+    // ----------------------
+    // Parallax effect
+    // ----------------------
+    let targetX = 0,
+        targetY = 0,
+        currentX = 0,
+        currentY = 0;
     const easeFactor = 0.1;
 
     document.addEventListener("mousemove", (e) => {
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
-
         targetX = (e.clientX - centerX) / centerX;
         targetY = (e.clientY - centerY) / centerY;
     });
@@ -82,28 +83,5 @@ document.addEventListener("DOMContentLoaded", () => {
         starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
         requestAnimationFrame(animateParallax);
     }
-
     animateParallax();
-
-    function generateStars() {
-        starsContainer.innerHTML = ""; 
-        const numStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
-
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement("div");
-            star.classList.add("star");
-            star.style.left = `${Math.random() * window.innerWidth}px`;
-            star.style.top = `${Math.random() * window.innerHeight}px`;
-            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            star.style.opacity = Math.random();
-            starsContainer.appendChild(star);
-        }
-    }
-
-    generateStars(); // Initial star generation
-
-    window.addEventListener("resize", () => {
-        generateStars();
-    });
 });
-
