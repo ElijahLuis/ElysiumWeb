@@ -1,7 +1,38 @@
 /* --------------------------
    1) GLOBAL & BODY
 -------------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+<<<<<<< HEAD
+body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(-45deg,
+        #000000,
+        #290136,
+        #400144,
+        #290136,
+        #020131);
+    background-size: 400% 400%;
+    animation: gradientCycle 60s ease-in-out infinite;
+}
+
+@keyframes gradientCycle {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+=======
 body {
     margin: 0;
     height: 100vh;
@@ -32,6 +63,7 @@ body::after {
     0% { opacity: 1; }
     50% { opacity: 0; }
     100% { opacity: 1; }
+>>>>>>> 16e806cc9e5cf042820f48044dde2e25123d2ce1
 }
 
 /* --------------------------
@@ -96,8 +128,12 @@ h1 {
 /* --------------------------
    4) STARS & PARALLAX
 -------------------------- */
+<<<<<<< HEAD
+/* Stars container */
+=======
 
 /* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
+>>>>>>> 16e806cc9e5cf042820f48044dde2e25123d2ce1
 #stars {
     position: absolute;
     top: 0;
