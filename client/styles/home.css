@@ -8,7 +8,7 @@ body {
       #290136,
       #020131);
   background-size: 400% 400%;
-  animation: gradientCycle 35s ease-in-out infinite;
+  animation: gradientCycle 45s ease-in-out infinite;
   display: flex;
   justify-content: center;
   align-items: center;

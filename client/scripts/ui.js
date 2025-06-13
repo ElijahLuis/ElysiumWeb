@@ -7,7 +7,7 @@
     const loginButton = document.querySelector("#login-form .submit-btn");
     const tabsContainer = document.querySelector('.tabs');
 
-    function fadeOutElement(element, duration = 500) {
+    function fadeOutElement(element, duration = 800) {
         if (!element) return;
         element.style.animation = 'none';
         element.style.setProperty('--fade-duration', `${duration}ms`);
@@ -23,7 +23,7 @@
         element.addEventListener('transitionend', hide);
     }
 
-    function fadeInElement(element, duration = 500) {
+    function fadeInElement(element, duration = 800) {
         if (element) {
             element.style.display = 'block';
             element.style.setProperty('--fade-duration', `${duration}ms`);
@@ -84,7 +84,7 @@
 
                 const overlay = document.createElement("div");
                 overlay.classList.add("login-overlay", "fade-transition");
-                overlay.style.setProperty("--fade-duration", "1500ms");
+                overlay.style.setProperty("--fade-duration", "2000ms");
                 document.body.appendChild(overlay);
 
                 overlay.addEventListener(
@@ -101,12 +101,12 @@
                 });
                 setTimeout(() => {
                     window.location.href = "../pages/home.html";
-                }, 1600);
+                }, 2100);
             };
 
             authModal.addEventListener("transitionend", startOverlay);
             // fade auth modal first so it visibly disappears
-            fadeOutElement(authModal, 800);
+            fadeOutElement(authModal, 1000);
         });
     } else {
         console.warn("Login button not found in DOM.");

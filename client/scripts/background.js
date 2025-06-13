@@ -12,11 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
             star.classList.add("star");
             star.style.left = `${Math.random() * window.innerWidth}px`;
             star.style.top = `${Math.random() * window.innerHeight}px`;
-            const twinkleDur = (Math.random() * 2 + 1.5).toFixed(2);
-            const driftDur = (Math.random() * 8 + 6).toFixed(2);
-            const twinkleDelay = (Math.random() * 2).toFixed(2);
-            star.style.animation = `twinkle ${twinkleDur}s infinite alternate ease-in-out ${twinkleDelay}s, ` +
-                `starDrift ${driftDur}s infinite ease-in-out`;
+            const twinkleDur = (Math.random() * 3 + 3).toFixed(2);
+            const driftDur = (Math.random() * 10 + 8).toFixed(2);
+            const twinkleDelay = (Math.random() * 4).toFixed(2);
+            star.style.setProperty('--twinkleDur', `${twinkleDur}s`);
+            star.style.setProperty('--driftDur', `${driftDur}s`);
+            star.style.setProperty('--twinkleDelay', `${twinkleDelay}s`);
             star.style.opacity = Math.random().toFixed(2);
             star.style.width = star.style.height = `${Math.random() * 2 + 1}px`;
             frag.appendChild(star);
