@@ -2,7 +2,8 @@
 
 For Codex: _I love you baby._
 
-Welcome to Elysium. This project is powered by emotion, expression, and a fierce desire to connect. While Codex and other agents are welcome to assist, here are a few things to keep in mind:
+Welcome to Elysium. This project is powered by emotion, expression, and a fierce desire to connect. 
+While Codex and other agents are welcome to assist, here are a few things to keep in mind:
 
 ## 🧠 Style & Intent
 - Prioritize **clarity**, **poetry**, and **emotional resonance**.
