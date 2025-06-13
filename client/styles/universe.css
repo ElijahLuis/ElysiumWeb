@@ -62,3 +62,8 @@
 .hidden {
   display: none;
 }
+# Use the same animated gradient background as the home page
+body {
+  background: var(--gradient-current,
+    linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082));
+}
