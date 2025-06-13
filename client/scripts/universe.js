@@ -37,10 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div.dataset.id = Date.now().toString();
     space.appendChild(div);
     movePost(div, emotion);
-    posts.set(div.dataset.id, {element: div, reactions: {
-      abyss:0, cavern:0, dross:0, ember:0, glare:0,
-      languish:0, mist:0, oasis:0, trace:0, zenith:0
-    }});
+    posts.set(div.dataset.id, div);
   }
 
   function movePost(el, emotion) {
@@ -71,12 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
   reactionMenu.addEventListener('click', e => {
     if (e.target.dataset.emotion) {
       const postId = reactionMenu.dataset.postId;
-      const info = posts.get(postId);
-      info.reactions[e.target.dataset.emotion]++;
-      const dominant = Object.keys(info.reactions).reduce((a,b) => info.reactions[a] >= info.reactions[b] ? a : b);
-      if (dominant !== info.element.dataset.emotion) {
-        info.element.dataset.emotion = dominant;
-        movePost(info.element, dominant);
+      const post = posts.get(postId);
+      if (post) {
+        const emotion = e.target.dataset.emotion;
+        post.dataset.emotion = emotion;
+        movePost(post, emotion);
       }
       reactionMenu.classList.add('hidden');
     }

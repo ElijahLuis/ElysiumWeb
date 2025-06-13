@@ -3,10 +3,15 @@
   width: 100%;
   height: 80vh;
   margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  gap: 40px;
 }
 
 .planet {
-  position: absolute;
+  position: relative;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -18,16 +23,16 @@
   text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
 
-#abyss { background: #4a148c; top: 5%; left: 5%; }
-#cavern { background: #00695c; top: 5%; left: 35%; }
-#dross { background: #5d4037; top: 5%; right: 5%; }
-#ember { background: #d84315; top: 35%; left: 10%; }
-#glare { background: #fdd835; top: 25%; right: 10%; }
-#languish { background: #1565c0; bottom: 35%; left: 40%; }
-#mist { background: #90a4ae; bottom: 35%; right: 30%; }
-#oasis { background: #26a69a; bottom: 10%; left: 10%; }
-#trace { background: #ad1457; bottom: 10%; right: 10%; }
-#zenith { background: #ffd54f; top: 45%; left: 45%; }
+#abyss { background: #4a148c; }
+#cavern { background: #00695c; }
+#dross { background: #5d4037; }
+#ember { background: #d84315; }
+#glare { background: #fdd835; }
+#languish { background: #1565c0; }
+#mist { background: #90a4ae; }
+#oasis { background: #26a69a; }
+#trace { background: #ad1457; }
+#zenith { background: #ffd54f; }
 
 .post {
   position: absolute;
