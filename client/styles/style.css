@@ -13,9 +13,13 @@ body {
     position: relative;
     background: linear-gradient(-45deg,
         #000000,
+        #120022,
         #290136,
+        #3d0075,
         #400144,
+        #3d0075,
         #290136,
+        #120022,
         #020131);
     background-size: 400% 400%;
     animation: gradientCycle 60s ease-in-out infinite;
