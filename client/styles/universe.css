@@ -62,3 +62,8 @@
 .hidden {
   display: none;
 }
+
+body {
+  background: var(--gradient-current,
+    linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082));
+}
