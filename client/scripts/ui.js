@@ -8,8 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("login-form");
     const signupForm = document.getElementById("signup-form");
     const loginButton = document.querySelector("#login-form .submit-btn");
+    const signupButton = document.querySelector("#signup-form .submit-btn");
     const stars = document.getElementById("stars");
     const body = document.body;
+
+    function sanitizeInput(value) {
+        return value.replace(/[<>]/g, '').trim();
+    }
+
+    function sanitizeForm(form) {
+        const fields = form.querySelectorAll('input');
+        fields.forEach(field => {
+            if (field.type !== 'checkbox') {
+                field.value = sanitizeInput(field.value);
+            }
+        });
+    }
 
     function fadeOutElement(element, duration = 500) {
         if (element) {
@@ -63,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginButton) {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault();
+            sanitizeForm(loginForm);
             stars.style.transition = "opacity 1.5s ease-out";
             stars.style.opacity = "0";
     
@@ -89,5 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.warn("Login button not found in DOM.");
-    }    
+    }
+
+    if (signupButton) {
+        signupButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            sanitizeForm(signupForm);
+            // Additional sign up logic would go here
+        });
+    }
 });
