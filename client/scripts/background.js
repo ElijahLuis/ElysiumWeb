@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let currentGradientIndex = 0;
+    const fadeDuration = 2000; // match CSS transition duration
     function updateGradients() {
         const nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
         const currentColors = gradients[currentGradientIndex];
@@ -59,7 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
             `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
         );
 
-        currentGradientIndex = nextGradientIndex;
+        // Trigger crossfade
+        document.body.classList.add("fade-gradient");
+        setTimeout(() => {
+            document.body.style.setProperty(
+                "--gradient-current",
+                `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
+            );
+            document.body.classList.remove("fade-gradient");
+            currentGradientIndex = nextGradientIndex;
+        }, fadeDuration);
     }
     updateGradients();
     setInterval(updateGradients, 60000);
