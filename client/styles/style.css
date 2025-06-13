@@ -9,38 +9,32 @@ html, body {
 -------------------------- */
 body {
     margin: 0;
-    height: 100vh;
     overflow: hidden;
     position: relative;
-    background: var(--gradient-current, linear-gradient(to bottom, #000000, #290136, #400144, #290136, #020131));
-    transition: background 1.5s ease-in-out;
+    background: linear-gradient(-45deg,
+        #000000,
+        #120022,
+        #290136,
+        #3d0075,
+        #400144,
+        #3d0075,
+        #290136,
+        #120022,
+        #020131);
+    background-size: 400% 400%;
+    animation: gradientCycle 60s ease-in-out infinite;
 }
 
-body::before,
-body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    pointer-events: none;
-}
-
-body::after {
-    background: var(--gradient-next);
-}
-
-body.fade-gradient::after {
-    opacity: 1;
-}
-
-@keyframes fadeGradient {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+@keyframes gradientCycle {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* --------------------------
