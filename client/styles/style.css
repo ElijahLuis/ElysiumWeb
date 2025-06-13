@@ -12,17 +12,15 @@ body {
     overflow: hidden;
     position: relative;
     background: linear-gradient(-120deg,
-        #000000,
-        #120022,
+        #0a0022,
         #290136,
         #3d0075,
-        #400144,
+        #410146,
         #3d0075,
         #290136,
-        #120022,
         #020131);
     background-size: 400% 400%;
-    animation: gradientCycle 27s ease-in-out infinite;
+    animation: gradientCycle 35s ease-in-out infinite;
 }
 
 @keyframes gradientCycle {
