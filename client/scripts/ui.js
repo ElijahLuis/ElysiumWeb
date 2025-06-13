@@ -6,7 +6,6 @@
     const authModal = document.getElementById("auth-modal");
     const loginButton = document.querySelector("#login-form .submit-btn");
     const tabsContainer = document.querySelector('.tabs');
-    const stars = document.getElementById("stars");
 
     function fadeOutElement(element, duration = 500) {
         if (!element) return;
@@ -67,28 +66,42 @@
         });
     }
 
+    let loginLocked = false;
     if (loginButton) {
         loginButton.addEventListener("click", (event) => {
+            if (loginLocked) return;
+            loginLocked = true;
+            loginButton.disabled = true;
+            setTimeout(() => {
+                loginButton.disabled = false;
+                loginLocked = false;
+            }, 1700);
+
             event.preventDefault();
 
-            const overlay = document.createElement("div");
-            overlay.classList.add("login-overlay", "fade-transition");
-            overlay.style.setProperty("--fade-duration", "1500ms");
-            document.body.appendChild(overlay);
-
-            const redirect = () => {
-                window.location.href = "../pages/home.html";
-            };
-
-            overlay.addEventListener("transitionend", redirect, { once: true });
-
             const startOverlay = () => {
+                authModal.removeEventListener("transitionend", startOverlay);
+
+                const overlay = document.createElement("div");
+                overlay.classList.add("login-overlay", "fade-transition");
+                overlay.style.setProperty("--fade-duration", "1500ms");
+                document.body.appendChild(overlay);
+
+                overlay.addEventListener(
+                    "transitionend",
+                    () => {
+                        overlay.classList.add("overlay-pulse");
+                        window.location.href = "../pages/home.html";
+                    },
+                    { once: true }
+                );
+
                 requestAnimationFrame(() => {
                     overlay.classList.add("fade-in");
                 });
-                authModal.removeEventListener("transitionend", startOverlay);
-                // fallback
-                setTimeout(redirect, 1600);
+                setTimeout(() => {
+                    window.location.href = "../pages/home.html";
+                }, 1600);
             };
 
             authModal.addEventListener("transitionend", startOverlay);

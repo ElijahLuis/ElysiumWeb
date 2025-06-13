@@ -1,5 +1,12 @@
 body {
-  background: var(--gradient-current, linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082));
+  background: linear-gradient(-120deg,
+      #0a0022,
+      #290136,
+      #3d0075,
+      #410146,
+      #3d0075,
+      #290136,
+      #020131);
   background-size: 400% 400%;
   animation: gradientCycle 35s ease-in-out infinite;
   display: flex;
