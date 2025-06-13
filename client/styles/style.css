@@ -1,7 +1,18 @@
+:root {
+    --accent-pink: rgba(255, 20, 147, 0.7);
+    --accent-purple: rgba(138, 43, 226, 0.7);
+    --modal-bg: rgba(255, 255, 255, 0.1);
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 /* --------------------------
@@ -147,7 +158,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: white;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--modal-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -193,7 +204,7 @@ h1 {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     /* Large double-layered glow can be heavy. Kept it but you can reduce if desired. */
-    text-shadow: 0 0 15px rgba(255, 20, 147, 0.7), 0 0 25px rgba(138, 43, 226, 0.7);
+    text-shadow: 0 0 15px var(--accent-pink), 0 0 25px var(--accent-purple);
 }
 
 /* --------------------------
@@ -206,7 +217,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%) scale(0.95);
     width: 350px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--modal-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 15px;
@@ -248,8 +259,8 @@ h1 {
 }
 
 .tab.active {
-    border-bottom: 2px solid rgba(255, 20, 147, 0.7);
-    text-shadow: 0 0 10px rgba(255, 20, 147, 0.7), 0 0 20px rgba(138, 43, 226, 0.7);
+    border-bottom: 2px solid var(--accent-pink);
+    text-shadow: 0 0 10px var(--accent-pink), 0 0 20px var(--accent-purple);
 }
 
 /* Form container & inputs */
@@ -274,7 +285,7 @@ h1 {
 
 .form input:focus {
     background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+    box-shadow: 0 0 8px var(--accent-pink);
     outline: none;
 }
 
@@ -293,7 +304,7 @@ h1 {
 
 .submit-btn:hover {
     background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+    box-shadow: 0 0 12px var(--accent-pink);
 }
 
 /* Link styling */
@@ -306,9 +317,35 @@ h1 {
 }
 
 .forgot-password:hover {
-    color: rgba(255, 20, 147, 1);
+    color: var(--accent-pink);
+}
+
+button:focus-visible,
+input:focus-visible,
+.tab:focus-visible,
+.forgot-password:focus-visible {
+    outline: 2px solid var(--accent-pink);
+    outline-offset: 2px;
 }
 
 .hidden {
     display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    #enterButton {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
 }
