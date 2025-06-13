@@ -359,6 +359,16 @@ input:focus-visible,
     display: none;
 }
 
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
