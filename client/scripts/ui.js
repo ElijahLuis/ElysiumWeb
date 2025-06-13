@@ -10,10 +10,13 @@
 
     function fadeOutElement(element, duration = 500) {
         if (!element) return;
-        // cancel any running CSS animation so the transition can fire
         element.style.animation = 'none';
         element.style.setProperty('--fade-duration', `${duration}ms`);
-        element.classList.add('fade-transition', 'fade-out');
+        element.classList.remove('fade-in');
+        element.classList.add('fade-transition');
+        requestAnimationFrame(() => {
+            element.classList.add('fade-out');
+        });
         const hide = () => {
             element.style.display = 'none';
             element.removeEventListener('transitionend', hide);
@@ -70,23 +73,27 @@
 
             const overlay = document.createElement("div");
             overlay.classList.add("login-overlay", "fade-transition");
-            overlay.style.setProperty('--fade-duration', '1500ms');
+            overlay.style.setProperty("--fade-duration", "1500ms");
             document.body.appendChild(overlay);
 
-            const complete = () => {
+            const redirect = () => {
                 window.location.href = "../pages/home.html";
             };
 
-            overlay.addEventListener("transitionend", complete, { once: true });
+            overlay.addEventListener("transitionend", redirect, { once: true });
 
-            // fade auth modal to reveal overlay underneath
+            const startOverlay = () => {
+                requestAnimationFrame(() => {
+                    overlay.classList.add("fade-in");
+                });
+                authModal.removeEventListener("transitionend", startOverlay);
+                // fallback
+                setTimeout(redirect, 1600);
+            };
+
+            authModal.addEventListener("transitionend", startOverlay);
+            // fade auth modal first so it visibly disappears
             fadeOutElement(authModal, 800);
-
-            requestAnimationFrame(() => {
-                overlay.classList.add("fade-in");
-            });
-            // Fallback if transitionend doesn't fire
-            setTimeout(complete, 1600);
         });
     } else {
         console.warn("Login button not found in DOM.");

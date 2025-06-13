@@ -1,5 +1,7 @@
 body {
   background: var(--gradient-current, linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082));
+  background-size: 400% 400%;
+  animation: gradientCycle 35s ease-in-out infinite;
   display: flex;
   justify-content: center;
   align-items: center;
