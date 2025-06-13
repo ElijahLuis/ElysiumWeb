@@ -31,18 +31,15 @@ body {
         #290136,
         #020131);
     background-size: 400% 400%;
-    animation: gradientCycle 35s ease-in-out infinite;
+    animation: gradientCycle 35s ease-in-out infinite alternate;
 }
 
 @keyframes gradientCycle {
-    0% {
+    from {
         background-position: 0% 50%;
     }
-    50% {
+    to {
         background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
     }
 }
 
