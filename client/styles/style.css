@@ -22,24 +22,29 @@ body {
     margin: 0;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(-120deg,
-        #0a0022,
+    background: linear-gradient(-45deg,
+        #000000,
+        #120022,
         #290136,
         #3d0075,
-        #410146,
+        #400144,
         #3d0075,
         #290136,
+        #120022,
         #020131);
     background-size: 400% 400%;
-    animation: gradientCycle 35s ease-in-out infinite alternate;
+    animation: gradientCycle 60s ease-in-out infinite;
 }
 
 @keyframes gradientCycle {
-    from {
+    0% {
         background-position: 0% 50%;
     }
-    to {
+    50% {
         background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
 
