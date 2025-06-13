@@ -7,7 +7,6 @@ html, body {
 /* --------------------------
    1) GLOBAL & BODY
 -------------------------- */
-
 body {
     margin: 0;
     height: 100vh;
@@ -34,6 +33,10 @@ body::after {
     background: var(--gradient-next);
 }
 
+body.fade-gradient::after {
+    opacity: 1;
+}
+
 @keyframes fadeGradient {
     0% { opacity: 1; }
     50% { opacity: 0; }
@@ -43,7 +46,6 @@ body::after {
 /* --------------------------
    2) HEADER & TEXT
 -------------------------- */
-
 header {
     position: absolute;
     top: 40%;
@@ -82,7 +84,6 @@ h1 {
 /* --------------------------
    3) FADE OVERLAY
 -------------------------- */
-
 #fadeOverlay {
     position: fixed;
     top: 0;
@@ -102,8 +103,6 @@ h1 {
 /* --------------------------
    4) STARS & PARALLAX
 -------------------------- */
-
-/* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
 #stars {
     position: absolute;
     top: 0;

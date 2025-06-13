@@ -47,12 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
             "--gradient-next",
             `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
         );
-
-        currentGradientIndex = nextGradientIndex;
+    // Trigger crossfade
+        document.body.classList.add("fade-gradient");
+        setTimeout(() => {
+            document.body.style.setProperty(
+                "--gradient-current",
+                `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
+            );
+            document.body.classList.remove("fade-gradient");
+            currentGradientIndex = nextGradientIndex;
+        }, fadeDuration);
     }
     updateGradients();
-    setInterval(updateGradients, 60000);
-    
+    setInterval(updateGradients, 5000);
+
     // Parallax effect
     let targetX = 0,
         targetY = 0,
