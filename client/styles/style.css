@@ -332,7 +332,7 @@ input:focus-visible,
    Utilities
 -------------------------- */
 .fade-transition {
-    transition: opacity var(--fade-duration, 0.5s) ease;
+    transition: opacity var(--fade-duration, 0.5s) ease-in-out;
 }
 
 .fade-in {
@@ -351,8 +351,14 @@ input:focus-visible,
     height: 100%;
     background: linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082);
     opacity: 0;
-    transition: opacity 1.5s ease-in;
     z-index: 1;
+    pointer-events: none;
+    animation: overlayPulse 12s ease-in-out infinite;
+}
+
+@keyframes overlayPulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
 }
 
 .hidden {

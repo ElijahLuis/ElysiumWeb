@@ -72,6 +72,7 @@
 
             const overlay = document.createElement("div");
             overlay.classList.add("login-overlay", "fade-transition");
+            overlay.style.setProperty('--fade-duration', '1500ms');
             document.body.appendChild(overlay);
 
             const complete = () => {
