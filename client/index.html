@@ -4,51 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elysium is a portal to a cosmic social experience. Join and explore the universe.">
     <title>Elysium Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="fadeOverlay"></div>
-    <div id="nebula-container">
-        <div class="nebula" id="nebula1"></div>
-        <div class="nebula" id="nebula2"></div>
+    <div id="fadeOverlay" aria-hidden="true"></div>
+    <div id="nebula-container" aria-hidden="true">
+        <div class="nebula" id="nebula1" aria-hidden="true"></div>
+        <div class="nebula" id="nebula2" aria-hidden="true"></div>
     </div>
-    <div id="stars"></div>
-    <header>
-        <h1>Welcome to Elysium</h1>
-    </header>
-    <div id="enterButtonContainer">
-        <button id="enterButton">Enter</button>
-    </div>
-    <div id="auth-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2>Drift Into Elysium</h2>
-            <div class="tabs">
-                <button class="tab active" id="login-tab">Login</button>
-                <button class="tab" id="signup-tab">Sign Up</button>
-            </div>
-            
-            <div id="login-form" class="form">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <label><input type="checkbox"> Remember Me</label>
-                <button class="submit-btn">Login</button>
-                <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
+    <div id="stars" aria-hidden="true"></div>
+    <main>
+        <header>
+            <h1>Welcome to Elysium</h1>
+        </header>
+        <div id="enterButtonContainer">
+            <button id="enterButton">Enter</button>
+        </div>
+        <div id="auth-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Drift Into Elysium</h2>
+                <div class="tabs">
+                    <button class="tab active" id="login-tab">Login</button>
+                    <button class="tab" id="signup-tab">Sign Up</button>
+                </div>
 
-            <div id="signup-form" class="form hidden">
-                <input type="text" placeholder="Username" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
-                <button class="submit-btn">Sign Up</button>
+                <div id="login-form" class="form">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <label><input type="checkbox"> Remember Me</label>
+                    <button class="submit-btn">Login</button>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <div id="signup-form" class="form hidden">
+                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button class="submit-btn">Sign Up</button>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="scripts/background.js"></script>
-    <script src="scripts/ui.js"></script>
+    </main>
+    <footer>
+        <p>&copy; 2023 Elysium Web</p>
+    </footer>
+    <script src="scripts/background.js" defer></script>
+    <script src="scripts/ui.js" defer></script>
 </body>
 
 </html>
