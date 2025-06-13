@@ -351,7 +351,7 @@ input:focus-visible,
     height: 100%;
     background: linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082);
     opacity: 0;
-    z-index: 1;
+    z-index: 1000;
     pointer-events: none;
     animation: overlayPulse 12s ease-in-out infinite;
 }

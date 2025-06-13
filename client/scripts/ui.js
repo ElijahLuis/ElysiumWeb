@@ -67,8 +67,6 @@
     if (loginButton) {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault();
-            stars.style.setProperty('--fade-duration', '1500ms');
-            stars.classList.add('fade-transition', 'fade-out');
 
             const overlay = document.createElement("div");
             overlay.classList.add("login-overlay", "fade-transition");
@@ -80,6 +78,10 @@
             };
 
             overlay.addEventListener("transitionend", complete, { once: true });
+
+            // fade auth modal to reveal overlay underneath
+            fadeOutElement(authModal, 800);
+
             requestAnimationFrame(() => {
                 overlay.classList.add("fade-in");
             });
