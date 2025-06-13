@@ -7,10 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const reactionMenu = document.getElementById('reactionMenu');
 
   const emotionPositions = {
-    joy: () => randomPos(document.getElementById('joy')),
-    anger: () => randomPos(document.getElementById('anger')),
-    sadness: () => randomPos(document.getElementById('sadness')),
-    calm: () => randomPos(document.getElementById('calm')),
+    abyss: () => randomPos(document.getElementById('abyss')),
+    cavern: () => randomPos(document.getElementById('cavern')),
+    dross: () => randomPos(document.getElementById('dross')),
+    ember: () => randomPos(document.getElementById('ember')),
+    glare: () => randomPos(document.getElementById('glare')),
+    languish: () => randomPos(document.getElementById('languish')),
+    mist: () => randomPos(document.getElementById('mist')),
+    oasis: () => randomPos(document.getElementById('oasis')),
+    trace: () => randomPos(document.getElementById('trace')),
+    zenith: () => randomPos(document.getElementById('zenith')),
   };
 
   const posts = new Map();
@@ -31,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
     div.dataset.id = Date.now().toString();
     space.appendChild(div);
     movePost(div, emotion);
-    posts.set(div.dataset.id, {element: div, reactions: {joy:0, anger:0, sadness:0, calm:0}});
+    posts.set(div.dataset.id, {element: div, reactions: {
+      abyss:0, cavern:0, dross:0, ember:0, glare:0,
+      languish:0, mist:0, oasis:0, trace:0, zenith:0
+    }});
   }
 
   function movePost(el, emotion) {
