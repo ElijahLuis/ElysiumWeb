@@ -1,3 +1,4 @@
+// Redirect to universe page
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('journey-btn');
   if (btn) {

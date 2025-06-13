@@ -1,15 +1,8 @@
-// Optimized background script for the starfield and parallax effects
-// Consolidates all background logic under a single DOMContentLoaded handler
-// Restored from optimized version to maintain performance
-// This is the stable implementation; avoid editing unless necessary
-
 document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
     if (!starsContainer) return;
 
-    // ----------------------
     // Star generation
-    // ----------------------
     function generateStars() {
         starsContainer.innerHTML = "";
         const count = Math.floor((window.innerWidth * window.innerHeight) / 10000);
@@ -25,23 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         starsContainer.appendChild(frag);
     }
-
     generateStars();
-
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(generateStars, 200);
     });
 
-    // ----------------------
     // Gradient colors
-    // ----------------------
     const gradients = [
-        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night
-        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo
-        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple
-        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk
+        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night set
+        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo set
+        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple set
+        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk set
     ];
 
     let currentGradientIndex = 0;
@@ -63,10 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateGradients();
     setInterval(updateGradients, 60000);
-
-    // ----------------------
+    
     // Parallax effect
-    // ----------------------
     let targetX = 0,
         targetY = 0,
         currentX = 0,

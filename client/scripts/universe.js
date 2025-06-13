@@ -1,3 +1,4 @@
+// Universe system v1
 document.addEventListener('DOMContentLoaded', () => {
   const space = document.getElementById('space');
   const postForm = document.getElementById('postForm');

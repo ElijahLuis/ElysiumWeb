@@ -1,3 +1,4 @@
+// Front page UI
 document.addEventListener("DOMContentLoaded", () => {
     const enterButton = document.getElementById("enterButton");
     const welcomeText = document.querySelector("header h1");
