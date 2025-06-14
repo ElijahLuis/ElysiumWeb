@@ -65,16 +65,26 @@ body {
 }
 
 /* Layout for the main home sections */
+
+/* Container for profile/check-in and feed columns */
 #home-main {
   margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 40px;
+  width: min(90%, 1100px);
+  margin-inline: auto;
+}
+
+#left-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 40px;
 }
 
 .home-section {
-  width: min(90%, 420px);
+  width: 100%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -109,6 +119,12 @@ body {
   font-size: 1.2rem;
   letter-spacing: 2px;
   color: #ffeeee;
+}
+
+@media (max-width: 768px) {
+  #home-main {
+    grid-template-columns: 1fr;
+  }
 }
 
 .form select {

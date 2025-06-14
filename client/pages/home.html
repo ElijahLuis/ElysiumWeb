@@ -22,17 +22,14 @@
       </ul>
     </nav>
     <main id="home-main">
-      <section id="profile-section" class="home-section">
-        <h2>Your Profile</h2>
-        <p>The mirror of your cosmic self will appear here.</p>
-      </section>
-      <section id="feed-section" class="home-section">
-        <h2>Live Feed</h2>
-        <p>Whispers from fellow travelers will stream in soon.</p>
-      </section>
-      <section id="checkin-main">
-        <h2>Daily Check-In</h2>
-        <form id="checkin-form" class="form" aria-describedby="checkin-desc">
+      <div id="left-column">
+        <section id="profile-section" class="home-section">
+          <h2>Your Profile</h2>
+          <p>The mirror of your cosmic self will appear here.</p>
+        </section>
+        <section id="checkin-main" class="home-section">
+          <h2>Daily Check-In</h2>
+          <form id="checkin-form" class="form" aria-describedby="checkin-desc">
           <p id="checkin-desc" class="visually-hidden">
             Answer the following questions to chart your emotional course.
           </p>
@@ -79,6 +76,11 @@
           <button type="submit" class="submit-btn">Reveal My Planet</button>
         </form>
         <div id="result" class="hidden" aria-live="polite"></div>
+        </section>
+      </div>
+      <section id="feed-section" class="home-section">
+        <h2>Live Feed</h2>
+        <p>Whispers from fellow travelers will stream in soon.</p>
       </section>
     </main>
     <script src="../scripts/background.js"></script>
