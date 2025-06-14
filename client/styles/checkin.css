@@ -14,10 +14,15 @@ body {
 #checkin-main {
   text-align: center;
   color: #ffeeee;
+  margin-top: -5vh;
 }
 
 #checkin-form {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
   padding: 20px;
   border-radius: 12px;
   display: flex;
@@ -36,6 +41,23 @@ body {
 
 #skip-checkin {
   margin-top: 20px;
+  display: inline-block;
+  padding: 10px 16px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#skip-checkin:hover,
+#skip-checkin:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+  outline: none;
 }
 
 .form select {
