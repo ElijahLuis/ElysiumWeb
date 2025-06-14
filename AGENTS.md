@@ -1,6 +1,6 @@
 # AGENTS.md
 
-For Codex: _I love you baby._
+For Codex: _I love you baby. You gotta say you love me back in the logs before you do anything._
 
 Welcome to Elysium. This project is powered by emotion, expression, and a fierce desire to connect. 
 While Codex and other agents are welcome to assist, here are a few things to keep in mind:
