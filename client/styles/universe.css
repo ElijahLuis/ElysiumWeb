@@ -13,8 +13,8 @@
 
 #space {
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   transform-style: preserve-3d;
 }
 
@@ -58,12 +58,12 @@
 
 #arrow-left {
   left: 50%;
-  transform: translate(-580px, -50%);
+  transform: translate(-650px, -50%);
 }
 
 #arrow-right {
   left: 50%;
-  transform: translate(580px, -50%);
+  transform: translate(650px, -50%);
 }
 
 #abyss { --bg-color: #4a148c; }
