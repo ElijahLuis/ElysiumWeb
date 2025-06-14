@@ -1,8 +1,4 @@
-
-export interface CorePlanet {
-  name: string
-  emotion: string
-}
+import { CorePlanet } from '../data/types'
 
 export interface RealmTemplateProps {
   realmName: string
