@@ -37,6 +37,8 @@ The compiled JavaScript will appear in `build/` using the configuration in
 `tsconfig.json`.
 
 ## Realm metadata
+For a high-level overview of planned pages and directory layout, see [lore/site-map.md](lore/site-map.md).
+
 
 Planetary names are stored in `src/data/realmMetadata.ts`. Each entry defines a realm
 by name and is used across the React pages to generate the planetary views.
