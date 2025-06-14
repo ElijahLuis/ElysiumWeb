@@ -1,35 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elysium Universe</title>
-  <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="../styles/universe.css">
-</head>
-<body class="universe-page">
-  <div id="fadeOverlay"></div>
-  <div id="gradientOverlay"></div>
-  <div id="stars"></div>
-  <div id="universe">
-    <div id="space">
-      <div class="planet" id="abyss">Abyss</div>
-      <div class="planet" id="cavern">Cavern</div>
-      <div class="planet" id="dross">Dross</div>
-      <div class="planet" id="ember">Ember</div>
-      <div class="planet" id="glare">Glare</div>
-      <div class="planet" id="languish">Languish</div>
-      <div class="planet" id="mist">Mist</div>
-      <div class="planet" id="oasis">Oasis</div>
-      <div class="planet" id="trace">Trace</div>
-      <div class="planet" id="zenith">Zenith</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elysium Universe</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/universe.css" />
+  </head>
+  <body class="universe-page">
+    <div id="fadeOverlay"></div>
+    <div id="gradientOverlay"></div>
+    <div id="stars"></div>
+    <div id="universe">
+      <div id="space">
+        <div class="planet" id="abyss">Abyss</div>
+        <div class="planet" id="cavern">Cavern</div>
+        <div class="planet" id="dross">Dross</div>
+        <div class="planet" id="ember">Ember</div>
+        <div class="planet" id="glare">Glare</div>
+        <div class="planet" id="languish">Languish</div>
+        <div class="planet" id="mist">Mist</div>
+        <div class="planet" id="oasis">Oasis</div>
+        <div class="planet" id="trace">Trace</div>
+        <div class="planet" id="zenith">Zenith</div>
+      </div>
+      <div id="controls">
+        <button class="arrow" id="arrow-left" aria-label="previous planet">
+          &#9664;
+        </button>
+        <button class="arrow" id="arrow-right" aria-label="next planet">&#9654;</button>
+      </div>
     </div>
-    <div id="controls">
-      <button class="arrow" id="arrow-left" aria-label="previous planet">&#9664;</button>
-      <button class="arrow" id="arrow-right" aria-label="next planet">&#9654;</button>
-    </div>
-  </div>
-  <script src="../scripts/background.js"></script>
-  <script src="../scripts/universe.js"></script>
-</body>
+    <script src="../scripts/background.js"></script>
+    <script src="../scripts/universe.js"></script>
+  </body>
 </html>

@@ -6,16 +6,18 @@
   height: 100%;
   pointer-events: none;
   opacity: 0.65;
-  background: linear-gradient(-45deg,
-      #000000,
-      #120022,
-      #290136,
-      #3d0075,
-      #400144,
-      #3d0075,
-      #290136,
-      #120022,
-      #020131);
+  background: linear-gradient(
+    -45deg,
+    #000000,
+    #120022,
+    #290136,
+    #3d0075,
+    #400144,
+    #3d0075,
+    #290136,
+    #120022,
+    #020131
+  );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
   z-index: -1;
@@ -87,7 +89,10 @@ body.universe-page {
   justify-content: center;
   line-height: 0;
   box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
   user-select: none;
 }
 
@@ -115,13 +120,33 @@ body.universe-page {
   z-index: 10;
 }
 
-#abyss { --bg-color: #380f69; }
-#cavern { --bg-color: #004f45; }
-#dross { --bg-color: #463029; }
-#ember { --bg-color: #a23210; }
-#glare { --bg-color: #bf8600; }
-#languish { --bg-color: #104c90; }
-#mist { --bg-color: #6c7b82; }
-#oasis { --bg-color: #1c7c74; }
-#trace { --bg-color: #820f41; }
-#zenith { --bg-color: #bfa03b; }
+#abyss {
+  --bg-color: #380f69;
+}
+#cavern {
+  --bg-color: #004f45;
+}
+#dross {
+  --bg-color: #463029;
+}
+#ember {
+  --bg-color: #a23210;
+}
+#glare {
+  --bg-color: #bf8600;
+}
+#languish {
+  --bg-color: #104c90;
+}
+#mist {
+  --bg-color: #6c7b82;
+}
+#oasis {
+  --bg-color: #1c7c74;
+}
+#trace {
+  --bg-color: #820f41;
+}
+#zenith {
+  --bg-color: #bfa03b;
+}

@@ -1,5 +1,8 @@
 body {
-  background: var(--gradient-current, linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082));
+  background: var(
+    --gradient-current,
+    linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082)
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,8 +24,13 @@ body {
   border-radius: 12px;
   cursor: pointer;
   backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: journeyGradient 10s ease-in-out infinite, pulseGlow 4s infinite ease-in-out, fadeIn 2.5s ease-out forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation:
+    journeyGradient 10s ease-in-out infinite,
+    pulseGlow 4s infinite ease-in-out,
+    fadeIn 2.5s ease-out forwards;
 }
 
 #journey-btn:hover {
@@ -31,9 +39,15 @@ body {
 }
 
 @keyframes journeyGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .fade-in {
@@ -42,6 +56,10 @@ body {
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

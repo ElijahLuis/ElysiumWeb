@@ -1,64 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A poetic portal into the Elysium universe where emotions drift among the stars." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A poetic portal into the Elysium universe where emotions drift among the stars."
+    />
     <title>Elysium Web – A Voyage of Stars</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <a href="#login-form" class="skip-link">Skip to Login</a>
     <div id="fadeOverlay"></div>
     <div id="nebula-container">
-        <div class="nebula" id="nebula1"></div>
-        <div class="nebula" id="nebula2"></div>
+      <div class="nebula" id="nebula1"></div>
+      <div class="nebula" id="nebula2"></div>
     </div>
     <div id="stars"></div>
     <header>
-        <h1>Welcome to Elysium.</h1>
+      <h1>Welcome to Elysium.</h1>
     </header>
     <main>
-        <div id="enterButtonContainer">
-            <button id="enterButton" aria-label="Enter Elysium login screen">Enter</button>
-        </div>
-    <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-heading">
+      <div id="enterButtonContainer">
+        <button id="enterButton" aria-label="Enter Elysium login screen">Enter</button>
+      </div>
+      <div
+        id="auth-modal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="auth-heading"
+      >
         <div class="modal-content">
-            <h2 id="auth-heading">Drift Into Elysium</h2>
-            <div class="tabs" role="tablist">
-                <button class="tab active" id="login-tab" role="tab" aria-controls="login-form" aria-selected="true" aria-label="Show login form">Login</button>
-                <button class="tab" id="signup-tab" role="tab" aria-controls="signup-form" aria-selected="false" aria-label="Show sign up form">Sign Up</button>
-            </div>
-            
-            <form id="login-form" class="form">
-                <label for="login-email">Email</label>
-                <input id="login-email" type="email" placeholder="Email" required>
-                <label for="login-password">Password</label>
-                <input id="login-password" type="password" placeholder="Password" required>
-                <label for="remember-me"><input id="remember-me" type="checkbox"> Remember Me</label>
-                <button type="submit" class="submit-btn">Login</button>
-                <a href="#" class="forgot-password">Forgot Password?</a>
-            </form>
+          <h2 id="auth-heading">Drift Into Elysium</h2>
+          <div class="tabs" role="tablist">
+            <button
+              class="tab active"
+              id="login-tab"
+              role="tab"
+              aria-controls="login-form"
+              aria-selected="true"
+              aria-label="Show login form"
+            >
+              Login
+            </button>
+            <button
+              class="tab"
+              id="signup-tab"
+              role="tab"
+              aria-controls="signup-form"
+              aria-selected="false"
+              aria-label="Show sign up form"
+            >
+              Sign Up
+            </button>
+          </div>
 
-            <form id="signup-form" class="form hidden">
-                <label for="signup-username">Username</label>
-                <input id="signup-username" type="text" placeholder="Username" required>
-                <label for="signup-email">Email</label>
-                <input id="signup-email" type="email" placeholder="Email" required>
-                <label for="signup-password">Password</label>
-                <input id="signup-password" type="password" placeholder="Password" required>
-                <label for="signup-confirm">Confirm Password</label>
-                <input id="signup-confirm" type="password" placeholder="Confirm Password" required>
-                <button type="submit" class="submit-btn">Sign Up</button>
-            </form>
+          <form id="login-form" class="form">
+            <label for="login-email">Email</label>
+            <input id="login-email" type="email" placeholder="Email" required />
+            <label for="login-password">Password</label>
+            <input
+              id="login-password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <label for="remember-me"
+              ><input id="remember-me" type="checkbox" /> Remember Me</label
+            >
+            <button type="submit" class="submit-btn">Login</button>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </form>
+
+          <form id="signup-form" class="form hidden">
+            <label for="signup-username">Username</label>
+            <input id="signup-username" type="text" placeholder="Username" required />
+            <label for="signup-email">Email</label>
+            <input id="signup-email" type="email" placeholder="Email" required />
+            <label for="signup-password">Password</label>
+            <input
+              id="signup-password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <label for="signup-confirm">Confirm Password</label>
+            <input
+              id="signup-confirm"
+              type="password"
+              placeholder="Confirm Password"
+              required
+            />
+            <button type="submit" class="submit-btn">Sign Up</button>
+          </form>
         </div>
-    </div>
+      </div>
     </main>
     <script src="scripts/background.js"></script>
     <script src="scripts/ui.js"></script>
-</body>
-
+  </body>
 </html>
