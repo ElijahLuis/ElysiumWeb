@@ -41,8 +41,11 @@ html {
 
 body {
   margin: 0;
-  overflow: hidden;
-  scrollbar-gutter: stable;
+  /* allow scrolling but keep the bars invisible */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* Edge */
+  scrollbar-width: none; /* Firefox */
   position: relative;
   background: linear-gradient(
     -45deg,
@@ -58,6 +61,11 @@ body {
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
+}
+
+/* hide scrollbars for WebKit-based browsers */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes gradientCycle {

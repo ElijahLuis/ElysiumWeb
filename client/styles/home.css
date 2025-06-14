@@ -9,7 +9,6 @@ body {
   min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
   margin: 0;
   padding: 0;
 }
