@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const totalPlanets = planets.length;
   const slice = 360 / totalPlanets;
-  // Wider radius to give planets more breathing room
-  const radius = 300;
+  // Increase radius for larger planets
+  const radius = 380;
   let currentIndex = 0;
 
   function placePlanets() {
