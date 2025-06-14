@@ -1,6 +1,6 @@
 # Elysium Web: Core Site Map
 
-This document outlines the initial five feature structure for the project. It mirrors the poetic direction of Elysium while keeping the code base modular and easy to extend.
+This document outlines the initial five feature structure for the project.
 
 ## 1. `/realms`
 A hub for all ten realms. The page presents them as a starmap or interactive grid. Hovering or tapping previews the vibe through color shifts and ambient cues. Each realm links to its dedicated page at `/realms/[realmId]`.
@@ -18,7 +18,6 @@ For wanderers unsure of where to start. The page can gently guide users to a rea
 A minimal, poetic explanation of the project’s philosophy and future plans.
 
 ---
-
 ## Directory Skeleton
 ```
 /public
