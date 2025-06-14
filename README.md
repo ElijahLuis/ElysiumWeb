@@ -2,6 +2,8 @@
 
 This repository contains the static assets for the Elysium Web project. The `client/` directory holds the HTML, CSS and JavaScript that make up the site.
 
+Elysium is a digital cosmos shaped by feeling. Every page and line of code aims to evoke honest reflection. To understand the heart behind this project, read the [core philosophy](lore/core.md) and let emotion guide your journey.
+
 ## Running locally
 
 A small Node server is included to serve the contents of `client/` for development. Run the following commands:
