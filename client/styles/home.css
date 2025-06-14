@@ -10,24 +10,30 @@ body {
 
 /* BYJ Button */
 #journey-btn {
-  padding: 14px 28px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  padding: 14px 32px;
+  font-size: 1.25rem;
+  letter-spacing: 3px;
   font-family: 'Orbitron', sans-serif;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #ffffff;
-  border-radius: 8px;
+  background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
+  background-size: 200% 200%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
   cursor: pointer;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease-in-out;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: journeyGradient 10s ease-in-out infinite, pulseGlow 4s infinite ease-in-out, fadeIn 2.5s ease-out forwards;
 }
 
 #journey-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
   transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes journeyGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .fade-in {

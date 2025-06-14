@@ -4,8 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!btn) return;
 
+  const hasSeenJourney = localStorage.getItem('journeySeen') === 'true';
+
+  if (hasSeenJourney) {
+    btn.style.display = 'none';
+    return;
+  }
+
   btn.addEventListener('click', (e) => {
     e.preventDefault();
+
+    localStorage.setItem('journeySeen', 'true');
 
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
