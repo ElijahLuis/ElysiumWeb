@@ -1,21 +1,24 @@
-import { todo } from 'node:test'
 import React from 'react'
+
+export interface CorePlanet {
+  name: string
+  emotion: string
+}
 
 export interface RealmTemplateProps {
   realmName: string
-  corePlanets: string[]
+  corePlanets: CorePlanet[]
 }
 
-const RealmTemplate: React.FC<RealmTemplateProps> = ({
-  realmName,
-  corePlanets
-}) => {
+const RealmTemplate: React.FC<RealmTemplateProps> = ({ realmName, corePlanets }) => {
   return (
     <div className="realm">
       <h1>{realmName}</h1>
       <ul>
-        {corePlanets.map(planet => (
-          <li key={planet}>{planet}</li>
+        {corePlanets.map(({ name, emotion }) => (
+          <li key={name}>
+            <strong>{name}</strong>: {emotion}
+          </li>
         ))}
       </ul>
     </div>
