@@ -1,34 +1,127 @@
+#gradientOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.65;
+  background: linear-gradient(-45deg,
+      #000000,
+      #120022,
+      #290136,
+      #3d0075,
+      #400144,
+      #3d0075,
+      #290136,
+      #120022,
+      #020131);
+  background-size: 400% 400%;
+  animation: gradientCycle 60s ease-in-out infinite;
+  z-index: -1;
+}
+
+body.universe-page {
+  background: #020131;
+}
+
+#universe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}
+
 #space {
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 40px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 20px;
-  justify-items: center;
+  width: 1000px;
+  height: 1000px;
+  transform-style: preserve-3d;
 }
 
 .planet {
-  position: relative;
-  width: 120px;
-  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(255, 255, 255, 0.9);
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  transition: transform 0.7s ease-out;
+  /* remove transparency so planets appear solid */
+  background: radial-gradient(circle at 30% 30%, #d8d8d8, var(--bg-color, #444));
+  box-shadow: inset -20px -20px 30px rgba(0, 0, 0, 0.6);
 }
 
-#abyss { background: #4a148c; }
-#cavern { background: #00695c; }
-#dross { background: #5d4037; }
-#ember { background: #d84315; }
-#glare { background: #fdd835; }
-#languish { background: #1565c0; }
-#mist { background: #90a4ae; }
-#oasis { background: #26a69a; }
-#trace { background: #ad1457; }
-#zenith { background: #ffd54f; }
+.arrow {
+  position: static;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 20px rgba(255, 136, 194, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.arrow:active {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 14px rgba(255, 136, 194, 0.5);
+  transform: scale(0.95);
+}
+
+#controls {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+#abyss { --bg-color: #380f69; }
+#cavern { --bg-color: #004f45; }
+#dross { --bg-color: #463029; }
+#ember { --bg-color: #a23210; }
+#glare { --bg-color: #bf8600; }
+#languish { --bg-color: #104c90; }
+#mist { --bg-color: #6c7b82; }
+#oasis { --bg-color: #1c7c74; }
+#trace { --bg-color: #820f41; }
+#zenith { --bg-color: #bfa03b; }
