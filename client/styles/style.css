@@ -204,6 +204,66 @@ h1 {
 }
 
 /* --------------------------
+   3.5) NEBULA BACKGROUND
+-------------------------- */
+#nebula-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.nebula {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.65;
+  animation: nebulaDrift 45s ease-in-out infinite;
+}
+
+#nebula1 {
+  top: -10%;
+  left: -5%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 100, 200, 0.8),
+    transparent 70%
+  );
+  animation-duration: 60s;
+}
+
+#nebula2 {
+  bottom: -10%;
+  right: -5%;
+  background: radial-gradient(
+    circle at 70% 70%,
+    rgba(120, 180, 255, 0.8),
+    transparent 70%
+  );
+  animation-duration: 50s;
+}
+
+@keyframes nebulaDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, 3%) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* --------------------------
    4) STARS & PARALLAX
 -------------------------- */
 #stars {
