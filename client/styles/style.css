@@ -4,6 +4,29 @@ html, body {
     padding: 0;
 }
 
+/* Accessibility helper */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    outline: none;
+    z-index: 1000;
+}
+
 /* --------------------------
    1) GLOBAL & BODY
 -------------------------- */
@@ -198,6 +221,11 @@ h1 {
     transform: scale(0.98);
 }
 
+#enterButton:focus {
+    outline: none;
+    box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
 /* --------------------------
    6) MODAL & BLUR BACKGROUND
 -------------------------- */
@@ -279,6 +307,11 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 20, 147, 0.7), 0 0 20px rgba(138, 43, 226, 0.7);
 }
 
+.tab:focus {
+    outline: 2px solid rgba(255, 20, 147, 0.7);
+    outline-offset: 4px;
+}
+
 /* Form container & inputs */
 .form {
     display: flex;
@@ -320,6 +353,11 @@ h1 {
 
 .submit-btn:hover {
     background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
+.submit-btn:focus {
+    outline: none;
     box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
 }
 

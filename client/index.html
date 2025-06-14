@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elysium Web</title>
+    <meta name="description" content="A poetic portal into the Elysium universe where emotions drift among the stars." />
+    <title>Elysium Web – A Voyage of Stars</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <a href="#login-form" class="skip-link">Skip to Login</a>
     <div id="fadeOverlay"></div>
     <div id="nebula-container">
         <div class="nebula" id="nebula1"></div>
@@ -19,15 +21,16 @@
     <header>
         <h1>Welcome to Elysium</h1>
     </header>
-    <div id="enterButtonContainer">
-        <button id="enterButton">Enter</button>
-    </div>
-    <div id="auth-modal" class="modal hidden">
+    <main>
+        <div id="enterButtonContainer">
+            <button id="enterButton" aria-label="Enter Elysium login screen">Enter</button>
+        </div>
+    <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-heading">
         <div class="modal-content">
-            <h2>Drift Into Elysium</h2>
-            <div class="tabs">
-                <button class="tab active" id="login-tab">Login</button>
-                <button class="tab" id="signup-tab">Sign Up</button>
+            <h2 id="auth-heading">Drift Into Elysium</h2>
+            <div class="tabs" role="tablist">
+                <button class="tab active" id="login-tab" role="tab" aria-controls="login-form" aria-selected="true" aria-label="Show login form">Login</button>
+                <button class="tab" id="signup-tab" role="tab" aria-controls="signup-form" aria-selected="false" aria-label="Show sign up form">Sign Up</button>
             </div>
             
             <form id="login-form" class="form">
@@ -53,6 +56,7 @@
             </form>
         </div>
     </div>
+    </main>
     <script src="scripts/background.js"></script>
     <script src="scripts/ui.js"></script>
 </body>
