@@ -31,7 +31,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           <li key={planet}>{planet}</li>
         ))}
       </ul>
-    <audio src={'PLACE-AUDIO-HERE'} autoPlay loop />
+    <audio src={'PLACE-AUDIO-PATH-HERE'} autoPlay loop />
     </div>
   )
 }

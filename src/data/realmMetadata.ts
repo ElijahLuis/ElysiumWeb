@@ -58,7 +58,7 @@ export const realms: Record<string, RealmMeta> = {
   },
   mist: {
     realmName: 'Mist',
-    tagline: 'Veil of mystery',
+    tagline: '--',
     gradientColors: ['#b0c4de', '#4682b4'],
     corePlanets: ['--'],
     //ambientSound: '/assets/audio/mist.mp3',
@@ -66,7 +66,7 @@ export const realms: Record<string, RealmMeta> = {
   },
   oasis: {
     realmName: 'Oasis',
-    tagline: 'Find solace in serenity',
+    tagline: '--',
     gradientColors: ['#006a4e', '#00b4db'],
     corePlanets: ['--'],
     //ambientSound: '/assets/audio/oasis.mp3',
@@ -74,7 +74,7 @@ export const realms: Record<string, RealmMeta> = {
   },
   trace: {
     realmName: 'Trace',
-    tagline: 'Follow the path of light',
+    tagline: '--',
     gradientColors: ['#f0f8ff', '#add8e6'],
     corePlanets: ['--'],
     //ambientSound: '/assets/audio/trace.mp3',
@@ -82,7 +82,7 @@ export const realms: Record<string, RealmMeta> = {
   },
   zenith: {
     realmName: 'Zenith',
-    tagline: 'Rise beyond the horizon',
+    tagline: '--',
     gradientColors: ['#360033', '#0b8793'],
     corePlanets: ['--'],
     //ambientSound: '/assets/audio/zenith.mp3',
