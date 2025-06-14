@@ -225,7 +225,7 @@ h1 {
   max-height: 800px;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.5;
+  opacity: 0.65;
   animation: nebulaDrift 45s ease-in-out infinite;
 }
 
@@ -234,7 +234,7 @@ h1 {
   left: -5%;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 100, 200, 0.6),
+    rgba(255, 100, 200, 0.8),
     transparent 70%
   );
   animation-duration: 60s;
@@ -245,7 +245,7 @@ h1 {
   right: -5%;
   background: radial-gradient(
     circle at 70% 70%,
-    rgba(120, 180, 255, 0.6),
+    rgba(120, 180, 255, 0.8),
     transparent 70%
   );
   animation-duration: 50s;
