@@ -46,16 +46,16 @@ Each cluster has a Core Planet, which is an atomized feeling that defines the cl
 
 Elysium is composed of ten distinct realms, each a vast emotional dimension shaped by the shared inner landscapes of its travelers. 
 These realms serve as immersive reflections of human feeling - fluid, symbolic, and interconnected. The canonical list lives in `src/data/realmMetadata.ts`, where each realm is defined by name. They include:
-* **Oasis** - A tranquil refuge radiating warmth, affection, and serenity. Here, joy is rooted in presence; love flows gently, and peace moves like a soft current beneath the soul.
-* **Abyss** - A desolate, shadowed plane carved by fear, helplessness, and rising panic. Feelings unravel into echoing voids, yet even darkness holds structure and meaning.
-* **Zenith** - The soaring peak of self-possession and purposeful pride. Its landscapes pulse with clarity, moral conviction, and the brilliance of inner alignment.
-* **Languish** - A still, weighted expanse where vitality dulls and desire feels distant. Languish isn't despair, but the slow erosion of spark - a coldness draping over willpower.
-* **Cavern** - A hushed terrain of introspection. Echoing chambers invite confrontation with hidden wounds, while glints of resilience linger in the stone.
-* **Dross** - An industrial wasteland forged from disappointment and decay. Here, impurities surface so that transformation may begin.
-* **Ember** - A realm of smoldering resolve where anger fuels courage. Sparks of passion ignite momentum toward change.
-* **Glare** - A horizon ablaze with jealousy, judgment, and harsh truths. In its light, growth emerges through the burn of honesty.
-* **Mist** - A fog-laden territory of uncertainty and memory. Boundaries blur, and quiet reflection drifts like vapor across the landscape.
-* **Trace** - A borderland of nostalgia and lingering attachments. Past moments flicker like afterimages, urging travelers to acknowledge what remains unfinished.
+* **Oasis** - A refuge of belonging and grateful joy. Peaceful meadows share space with playful springs, nurturing contentment and gentle love.
+* **Abyss** - Depths etched by fear, helplessness, and rising panic. Numb isolation and hopeless dread echo through the void.
+* **Zenith** - The summit of empowerment and pride. Resilience rings like an anvil as liberation brightens the horizon.
+* **Languish** - A cold plateau where despair and grief settle. Numb detachment and isolation drift like heavy fog.
+* **Cavern** - Twisting tunnels of jealousy and contempt. Idolization curdles into obsession while bitterness festers in the dark.
+* **Dross** - A wasteland steeped in revulsion and self-loathing. Violation leaves stains longing to be cleansed.
+* **Ember** - Fields of frustration and reckless daring. Rage smolders beside impatience and aggressive sparks.
+* **Glare** - A searing stage of shame and judgment. Repressed tension magnifies every flaw.
+* **Mist** - A labyrinth of curiosity and doubt. Confusion mingles with surreal wonder along shifting paths.
+* **Trace** - Trails of nostalgia and yearning. Regret and wistful daydreams flicker through memory.
 
 ## Future Vision
 
