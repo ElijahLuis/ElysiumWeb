@@ -22,5 +22,8 @@ coverage/
 # Package output
 *.tgz
 
+# TypeScript build output
+build/
+
 # IDE settings
 .vscode/
