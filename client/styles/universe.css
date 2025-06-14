@@ -16,7 +16,6 @@
   width: 700px;
   height: 700px;
   transform-style: preserve-3d;
-  transition: transform 0.7s ease-out;
 }
 
 .planet {
@@ -34,6 +33,7 @@
   text-shadow: 0 0 10px rgba(255,255,255,0.8);
   transform-style: preserve-3d;
   transform: translate(-50%, -50%);
+  transition: transform 0.7s ease-out;
   /* remove transparency so planets appear solid */
   background: radial-gradient(circle at 30% 30%, #ffffff, var(--bg-color, #444));
   box-shadow: inset -20px -20px 30px rgba(0, 0, 0, 0.6);
@@ -54,12 +54,12 @@
 
 #arrow-left {
   left: 50%;
-  transform: translate(-520px, -50%);
+  transform: translate(-460px, -50%);
 }
 
 #arrow-right {
   left: 50%;
-  transform: translate(520px, -50%);
+  transform: translate(460px, -50%);
 }
 
 #abyss { --bg-color: #4a148c; }
