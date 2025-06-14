@@ -30,7 +30,7 @@ export const realms: Record<string, RealmMeta> = {
     gradientColors: ['#4a4a4a', '#b0b0b0'],
     corePlanets: ['--'],
     //ambientSound: '/assets/audio/dross.mp3',
-    particleStyle: 'spark',    
+    particleStyle: 'spark',
   },
   ember: {
     realmName: 'Ember',

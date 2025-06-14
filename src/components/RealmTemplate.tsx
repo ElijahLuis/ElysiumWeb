@@ -6,7 +6,7 @@ export interface RealmTemplateProps {
   tagline: string
   gradientColors: [string, string]
   corePlanets: string[]
-//ambientSound: string
+  //ambientSound: string
   particleStyle: string
 }
 
@@ -15,7 +15,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
   tagline,
   gradientColors,
   corePlanets,
-//ambientSound,
+  //ambientSound,
   particleStyle,
 }) => {
   const backgroundStyle = {
@@ -31,7 +31,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           <li key={planet}>{planet}</li>
         ))}
       </ul>
-    <audio src={'PLACE-AUDIO-PATH-HERE'} autoPlay loop />
+      <audio src={'PLACE-AUDIO-PATH-HERE'} autoPlay loop />
     </div>
   )
 }
