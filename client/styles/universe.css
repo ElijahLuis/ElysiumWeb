@@ -1,3 +1,30 @@
+#gradientOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.65;
+  background: linear-gradient(-45deg,
+      #000000,
+      #120022,
+      #290136,
+      #3d0075,
+      #400144,
+      #3d0075,
+      #290136,
+      #120022,
+      #020131);
+  background-size: 400% 400%;
+  animation: gradientCycle 60s ease-in-out infinite;
+  z-index: -1;
+}
+
+body.universe-page {
+  background: #020131;
+}
+
 #universe {
   position: absolute;
   top: 50%;
