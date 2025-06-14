@@ -1,3 +1,4 @@
+import React from 'react'
 import { CorePlanet } from '../data/types'
 
 export interface RealmTemplateProps {
