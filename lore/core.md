@@ -45,16 +45,23 @@ Each realm is a distinct emotional world. Every realm contains 2-5 emotion clust
 Each cluster has a Core Planet, which is an atomized feeling that defines the cluster.
 
 Elysium is composed of ten distinct realms, each a vast emotional dimension shaped by the shared inner landscapes of its travelers. 
-These realms serve as immersive reflections of human feeling—fluid, symbolic, and interconnected. Among them:
+These realms serve as immersive reflections of human feeling-fluid, symbolic, and interconnected. They include:
 
-* **Oasis** - A tranquil refuge radiating warmth, affection, and serenity. Here, joy is not performative but rooted in presence; love flows gently, and peace feels like a soft current beneath the soul.
-* **Abyss** - A desolate, shadowed plane carved by fear, helplessness, emptiness, and rising panic. In this realm, feelings unravel into echoing voids, but even darkness holds structure and meaning.
-* **Zenith** - The soaring peak of self-possession and purposeful pride. Its landscapes pulse with clarity, moral conviction, and the brilliance of inner alignment...an ever-rising arc of becoming.
-* **Languish** - A still, weighted expanse where vitality dulls and desire feels distant. Languish isn't despair, but the slow erosion of spark. A numbness that drapes over willpower.
+(UNDER CONSTRUCTION)
+* **Oasis** - A tranquil refuge radiating warmth, affection, and serenity. Here, joy is rooted in presence; love flows gently, and peace moves like a soft current beneath the soul.
+* **Abyss** - A desolate, shadowed plane carved by fear, helplessness, and rising panic. Feelings unravel into echoing voids, yet even darkness holds structure and meaning.
+* **Zenith** - The soaring peak of self-possession and purposeful pride. Its landscapes pulse with clarity, moral conviction, and the brilliance of inner alignment.
+* **Languish** - A still, weighted expanse where vitality dulls and desire feels distant. Languish isn't despair, but the slow erosion of spark - a coldness draping over willpower.
+* **Cavern** - A hushed terrain of introspection. Echoing chambers invite confrontation with hidden wounds, while glints of resilience linger in the stone.
+* **Dross** - An industrial wasteland forged from disappointment and decay. Here, impurities surface so that transformation may begin.
+* **Ember** - A realm of smoldering resolve where anger fuels courage. Sparks of passion ignite momentum toward change.
+* **Glare** - A horizon ablaze with jealousy, judgment, and harsh truths. In its light, growth emerges through the burn of honesty.
+* **Mist** - A fog-laden territory of uncertainty and memory. Boundaries blur, and quiet reflection drifts like vapor across the landscape.
+* **Trace** - A borderland of nostalgia and lingering attachments. Past moments flicker like afterimages, urging travelers to acknowledge what remains unfinished.
 
 ## Future Vision
 
-Elysium will become a living dictionary of emotion-a place where users can:
+Elysium will become a living dictionary of emotion - a place where users can:
 * Name how they feel
 * Contribute to emotion constellations
 * Build legacy through emotional clarity
