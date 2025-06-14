@@ -1,8 +1,6 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
-
-// The client lives one level above this file
 const root = path.join(__dirname, '..', 'client')
 const port = process.env.PORT || 3000
 
