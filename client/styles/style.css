@@ -156,6 +156,7 @@ h1 {
   width: 100%;
   height: 100%;
   background: black;
+  pointer-events: none;
   animation: fadeOutOverlay 2.5s ease-out forwards;
 }
 
