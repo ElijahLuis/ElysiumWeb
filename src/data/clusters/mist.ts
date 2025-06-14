@@ -1,27 +1,24 @@
-export interface EmotionCluster {
-  name: string
-  emotions: string[]
-}
+import { EmotionCluster } from '../types'
 
 export const clusters: EmotionCluster[] = [
   {
     name: 'Lucid Thread',
-    emotions: ['curious', 'intrigue', 'spark', 'suspense']
+    emotions: ['curious', 'intrigue', 'spark', 'suspense'],
   },
   {
     name: 'Ancient Quiet',
-    emotions: ['awe', 'wonder', 'reverence', 'timelessness']
+    emotions: ['awe', 'wonder', 'reverence', 'timelessness'],
   },
   {
     name: 'Fractal Maze',
-    emotions: ['confusion', 'ambiguity', 'unease', 'lost', 'disoriented', 'bewildered']
+    emotions: ['confusion', 'ambiguity', 'unease', 'lost', 'disoriented', 'bewildered'],
   },
   {
     name: 'Shallow Anchor',
-    emotions: ['doubt', 'skeptical', 'suspicious', 'distrust', 'second guessing']
+    emotions: ['doubt', 'skeptical', 'suspicious', 'distrust', 'second guessing'],
   },
   {
     name: 'Myriad Glitch',
-    emotions: ['surreal', 'uncanny', 'absurd', 'nonsensical', 'paradoxical']
-  }
+    emotions: ['surreal', 'uncanny', 'absurd', 'nonsensical', 'paradoxical'],
+  },
 ]

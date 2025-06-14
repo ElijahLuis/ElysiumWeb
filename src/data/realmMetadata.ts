@@ -12,5 +12,5 @@ export const realms: Record<string, RealmMeta> = {
   mist: { realmName: 'Mist' },
   oasis: { realmName: 'Oasis' },
   trace: { realmName: 'Trace' },
-  zenith: { realmName: 'Zenith' }
+  zenith: { realmName: 'Zenith' },
 }

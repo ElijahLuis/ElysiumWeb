@@ -41,6 +41,10 @@ The compiled JavaScript will appear in `build/` using the configuration in
 Planetary names are stored in `src/data/realmMetadata.ts`. Each entry defines a realm
 by name and is used across the React pages to generate the planetary views.
 
+Emotion clusters for each realm live in `src/data/clusters/`. Their matching core
+planets are listed in `src/data/planets/`. The shared interfaces `EmotionCluster`
+and `CorePlanet` reside in `src/data/types.ts` so these structures stay consistent.
+
 ## Exploring the Universe demo
 
 After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. The page `pages/universe.html` lets you create short posts tied to an emotion. As people react with different emotions, each post will migrate to the planet that best represents the community response.

@@ -1,23 +1,20 @@
-export interface EmotionCluster {
-  name: string
-  emotions: string[]
-}
+import { EmotionCluster } from '../types'
 
 export const clusters: EmotionCluster[] = [
   {
     name: 'Putrid Force',
-    emotions: ['disgust', 'repulsion', 'revulsion']
+    emotions: ['disgust', 'repulsion', 'revulsion'],
   },
   {
     name: 'Tarry Bone',
-    emotions: ['self-loathing', 'unclean', 'stained', 'contaminated']
+    emotions: ['self-loathing', 'unclean', 'stained', 'contaminated'],
   },
   {
     name: 'Stolen Doll',
-    emotions: ['violated', 'dehumanized', 'fetishized', 'used', 'exploited']
+    emotions: ['violated', 'dehumanized', 'fetishized', 'used', 'exploited'],
   },
   {
     name: 'Pale Shiver',
-    emotions: ['malaise', 'nauseated', 'itchy', 'sweaty', 'stinky']
-  }
+    emotions: ['malaise', 'nauseated', 'itchy', 'sweaty', 'stinky'],
+  },
 ]
