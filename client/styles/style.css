@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -101,7 +101,7 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
@@ -123,7 +123,8 @@ h1 {
   color: #ffffff;
   text-decoration: none;
   font-family: 'Orbitron', sans-serif;
-  padding: 6px 12px;
+  font-size: 1.2rem;
+  padding: 8px 16px;
   border-radius: 8px;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -250,7 +251,7 @@ h1 {
    3.5) NEBULA BACKGROUND
 -------------------------- */
 #nebula-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -310,7 +311,7 @@ h1 {
    4) STARS & PARALLAX
 -------------------------- */
 #stars {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
