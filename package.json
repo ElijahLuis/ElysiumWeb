@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "format": "prettier --write client/**/* server/index.js test/**/*.js"
   },
   "author": "",
   "license": "MIT"
