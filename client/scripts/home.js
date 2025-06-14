@@ -4,18 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!btn) return;
 
-  const hasSeenJourney = localStorage.getItem('journeySeen') === 'true';
-
-  if (hasSeenJourney) {
-    btn.style.display = 'none';
-    return;
-  }
-
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    localStorage.setItem('journeySeen', 'true');
-
+  /**
+   * Fade gracefully to the universe page.
+   */
+  const driftToUniverse = () => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -35,5 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       window.location.href = 'universe.html';
     }, 750);
+  };
+
+  const hasSeenJourney = localStorage.getItem('journeySeen') === 'true';
+
+  if (hasSeenJourney) {
+    btn.style.display = 'none';
+    driftToUniverse();
+    return;
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    localStorage.setItem('journeySeen', 'true');
+
+    driftToUniverse();
   });
 });
