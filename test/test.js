@@ -25,7 +25,8 @@ function fetch(pathname) {
 }
 
 async function run() {
-  const heart = spawn('node', ['server.js'], { env: { ...process.env, PORT } })
+  const serverPath = path.join(__dirname, '..', 'server', 'server.js')
+  const heart = spawn('node', [serverPath], { env: { ...process.env, PORT } })
   await wait(500)
 
   try {
