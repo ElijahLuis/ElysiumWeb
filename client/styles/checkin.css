@@ -1,0 +1,92 @@
+body {
+  background: var(
+    --gradient-current,
+    linear-gradient(to bottom, #000000, #001f3f, #3d0075, #4b0082)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#checkin-main {
+  text-align: center;
+  color: #ffeeee;
+  margin-top: -5vh;
+}
+
+#checkin-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(90%, 360px);
+  margin: 0 auto;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: #ffeeee;
+}
+
+#skip-checkin {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 16px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#skip-checkin:hover,
+#skip-checkin:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+  outline: none;
+}
+
+.form select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-align: center;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
