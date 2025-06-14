@@ -1,3 +1,4 @@
+import { todo } from 'node:test'
 import React from 'react'
 
 export interface RealmTemplateProps {
@@ -5,7 +6,7 @@ export interface RealmTemplateProps {
   tagline: string
   gradientColors: [string, string]
   corePlanets: string[]
-  ambientSound: string
+//ambientSound: string
   particleStyle: string
 }
 
@@ -14,7 +15,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
   tagline,
   gradientColors,
   corePlanets,
-  ambientSound,
+//ambientSound,
   particleStyle,
 }) => {
   const backgroundStyle = {
@@ -30,7 +31,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           <li key={planet}>{planet}</li>
         ))}
       </ul>
-      <audio src={ambientSound} autoPlay loop />
+    <audio src={'PLACE-AUDIO-HERE'} autoPlay loop />
     </div>
   )
 }
