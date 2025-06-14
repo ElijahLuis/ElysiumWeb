@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         signupButton.addEventListener("click", (event) => {
             event.preventDefault();
             sanitizeForm(signupForm);
-            // Additional sign up logic would go here
+            // Additional sign up logic goes here
         });
     }
 });
