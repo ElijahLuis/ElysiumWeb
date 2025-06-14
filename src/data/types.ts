@@ -8,3 +8,8 @@ export interface CorePlanet {
   emotion: string
   satellites?: string[]
 }
+
+export interface RealmDetail {
+  clusters: EmotionCluster[]
+  corePlanets: CorePlanet[]
+}
