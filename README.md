@@ -22,6 +22,18 @@ npm run format
 
 This uses Prettier with our project's settings in `.prettierrc` to polish files in `client/`, `server/index.js`, and `test/`.
 
+## Compiling the `src` directory
+
+React components live in `src/` and are written in TypeScript. After installing
+dependencies run:
+
+```bash
+npm run build
+```
+
+The compiled JavaScript will appear in `build/` using the configuration in
+`tsconfig.json`.
+
 ## Exploring the Universe demo
 
 After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. The page `pages/universe.html` lets you create short posts tied to an emotion. As people react with different emotions, each post will migrate to the planet that best represents the community response.
