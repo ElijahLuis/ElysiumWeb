@@ -11,21 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Increase radius for larger planets
   const radius = 380;
   let currentIndex = 0;
+  let angle = 0;
 
   function placePlanets() {
     planets.forEach((planet, i) => {
-      const angle = i * slice;
-      planet.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+      const anglePos = i * slice;
+      planet.style.transform = `translate(-50%, -50%) rotateY(${anglePos}deg) translateZ(${radius}px)`;
     });
   }
 
   function spinRing() {
-    ring.style.transform = `rotateY(${-currentIndex * slice}deg)`;
+    ring.style.transform = `rotateY(${angle}deg)`;
   }
 
   if (leftArrow) {
     leftArrow.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + totalPlanets) % totalPlanets;
+      angle += slice;
       spinRing();
     });
   }
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (rightArrow) {
     rightArrow.addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % totalPlanets;
+      angle -= slice;
       spinRing();
     });
   }
