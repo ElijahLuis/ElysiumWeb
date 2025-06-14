@@ -34,6 +34,7 @@ body {
 body {
   margin: 0;
   overflow: hidden;
+  scrollbar-gutter: stable;
   position: relative;
   background: linear-gradient(
     -45deg,
@@ -99,8 +100,9 @@ h1 {
 #main-nav {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   padding: 20px 0;
   display: flex;
   justify-content: center;
