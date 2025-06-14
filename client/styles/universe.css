@@ -44,26 +44,43 @@
 }
 
 .arrow {
-  background: none;
-  border: none;
+  position: static;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
   user-select: none;
 }
 
-#arrow-left {
-  left: 50%;
-  transform: translate(-650px, -50%);
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
 }
 
-#arrow-right {
+.arrow:active {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0.95);
+}
+
+#controls {
+  position: absolute;
+  bottom: 6%;
   left: 50%;
-  transform: translate(650px, -50%);
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
 }
 
 #abyss { --bg-color: #4a148c; }
