@@ -1,9 +1,14 @@
 import { CorePlanet } from '../types'
 
 export const corePlanets: CorePlanet[] = [
+  // Silent Chase - fear
   { name: 'Nocturnis', emotion: 'fear' },
-  { name: 'Thalix', emotion: 'helplessness' },
+  // Hollow Veil - emptiness
   { name: 'Umbrak', emotion: 'emptiness' },
-  { name: 'Abyzeth', emotion: 'hopelessness' },
+  // Frozen Nerve - panic
   { name: 'Nerveris', emotion: 'panic' },
+  // Bound Breath - helplessness
+  { name: 'Thalix', emotion: 'helplessness' },
+  // Null Horizon - hopelessness
+  { name: 'Abyzeth', emotion: 'hopelessness' },
 ]
