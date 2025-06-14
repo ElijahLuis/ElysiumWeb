@@ -74,7 +74,7 @@ body {
   align-items: start;
   gap: 64px;
   width: min(95%, 1100px);
-  margin-left: 5%;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -94,6 +94,11 @@ body {
   padding: 20px;
   color: #ffeeee;
   text-align: center;
+}
+
+#feed-section {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #checkin-main {
