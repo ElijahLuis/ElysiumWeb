@@ -78,7 +78,20 @@ h1 {
     letter-spacing: 4px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
                  0 0 20px rgba(255, 255, 255, 0.3);
-    animation: fadeInUp 2.5s ease-out forwards, headerPulseGlow 5s infinite ease-in-out;
+    background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 2.5s ease-out forwards,
+               headerPulseGlow 5s infinite ease-in-out,
+               headerGradient 15s ease-in-out infinite;
+}
+
+/* A gentle shifting gradient for the welcome title */
+@keyframes headerGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes headerPulseGlow {
