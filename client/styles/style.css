@@ -31,9 +31,21 @@ body {
 /* --------------------------
    1) GLOBAL & BODY
 -------------------------- */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  overflow: hidden;
+  /* allow scrolling but keep the bars invisible */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* Edge */
+  scrollbar-width: none; /* Firefox */
   position: relative;
   background: linear-gradient(
     -45deg,
@@ -49,6 +61,11 @@ body {
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
+}
+
+/* hide scrollbars for WebKit-based browsers */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes gradientCycle {
@@ -100,6 +117,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   padding: 20px 0;
   display: flex;
