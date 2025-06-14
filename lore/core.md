@@ -45,9 +45,7 @@ Each realm is a distinct emotional world. Every realm contains 2-5 emotion clust
 Each cluster has a Core Planet, which is an atomized feeling that defines the cluster.
 
 Elysium is composed of ten distinct realms, each a vast emotional dimension shaped by the shared inner landscapes of its travelers. 
-These realms serve as immersive reflections of human feeling-fluid, symbolic, and interconnected. They include:
-
-(UNDER CONSTRUCTION)
+These realms serve as immersive reflections of human feeling - fluid, symbolic, and interconnected. The canonical list lives in `src/data/realmMetadata.ts`, where each realm is defined by name. They include:
 * **Oasis** - A tranquil refuge radiating warmth, affection, and serenity. Here, joy is rooted in presence; love flows gently, and peace moves like a soft current beneath the soul.
 * **Abyss** - A desolate, shadowed plane carved by fear, helplessness, and rising panic. Feelings unravel into echoing voids, yet even darkness holds structure and meaning.
 * **Zenith** - The soaring peak of self-possession and purposeful pride. Its landscapes pulse with clarity, moral conviction, and the brilliance of inner alignment.
