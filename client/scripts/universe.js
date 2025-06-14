@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const totalPlanets = planets.length;
   const slice = 360 / totalPlanets;
-  const radius = 380;
+  const radius = 420;
   let angle = 0;
 
   function updatePlanets() {
