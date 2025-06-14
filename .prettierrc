@@ -1,6 +1,10 @@
 {
   "tabWidth": 2,
   "singleQuote": true,
-  "semi": true,
-  "trailingComma": "none"
+  "semi": false,
+  "trailingComma": "es5",
+  "printWidth": 88,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "format": "prettier --write ."
 }
