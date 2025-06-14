@@ -54,6 +54,27 @@ async function run() {
       'style.css should have text/css content-type'
     )
 
+    // the landing page of our voyage
+    const home = await fetch('/pages/home.html')
+    assert.strictEqual(home.statusCode, 200, 'home page should return 200')
+    assert.ok(
+      home.data.includes('journey-btn'),
+      'home page should invite the journey',
+    )
+
+    // scripts guiding the celestial carousel
+    const universeScript = await fetch('/scripts/universe.js')
+    assert.strictEqual(
+      universeScript.statusCode,
+      200,
+      'universe.js should return 200',
+    )
+    assert.strictEqual(
+      universeScript.headers['content-type'],
+      'application/javascript',
+      'universe.js should have application/javascript content-type',
+    )
+
     console.log('All tests passed.')
   } finally {
     heart.kill()
