@@ -6,10 +6,7 @@ export interface RealmTemplateProps {
   corePlanets: string[]
 }
 
-const RealmTemplate: React.FC<RealmTemplateProps> = ({
-  realmName,
-  corePlanets
-}) => {
+const RealmTemplate: React.FC<RealmTemplateProps> = ({ realmName, corePlanets }) => {
   return (
     <div className="realm">
       <h1>{realmName}</h1>

@@ -29,10 +29,8 @@ export const realms: Record<string, RealmMeta> = {
   },
   trace: {
     realmName: 'Trace',
-
   },
   zenith: {
     realmName: 'Zenith',
-
   },
 }
