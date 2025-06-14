@@ -2,9 +2,9 @@
   "name": "elysium-web",
   "version": "1.0.0",
   "description": "Static website for Elysium Web",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/server.js",
     "test": "node test/test.js",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\""
   },
