@@ -1,16 +1,25 @@
-#space {
+#universe {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 40px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 20px;
-  justify-items: center;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}
+
+#space {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease-out;
 }
 
 .planet {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -20,7 +29,25 @@
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
   text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
 }
+
+.arrow {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  user-select: none;
+}
+
+#arrow-left { left: 5%; }
+#arrow-right { right: 5%; }
 
 #abyss { background: #4a148c; }
 #cavern { background: #00695c; }
