@@ -87,7 +87,6 @@ h1 {
                headerGradient 15s ease-in-out infinite;
 }
 
-/* A gentle shifting gradient for the welcome title */
 @keyframes headerGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -260,8 +259,7 @@ h1 {
     color: white;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
-    /* Large double-layered glow can be heavy. Kept it but you can reduce if desired. */
-    text-shadow: 0 0 15px rgba(255, 20, 147, 0.7), 0 0 25px rgba(138, 43, 226, 0.7);
+    text-shadow: 0 0 15px rgba(255, 20, 147, 0.6), 0 0 25px rgba(138, 43, 226, 0.6);
 }
 
 /* --------------------------
