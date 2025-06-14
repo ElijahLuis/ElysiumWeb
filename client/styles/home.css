@@ -63,3 +63,79 @@ body {
     opacity: 1;
   }
 }
+
+/* Layout for the main home sections */
+#home-main {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.home-section {
+  width: min(90%, 420px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  color: #ffeeee;
+  text-align: center;
+}
+
+#checkin-main {
+  margin-top: -5vh;
+}
+
+#checkin-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(90%, 360px);
+  margin: 0 auto;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: #ffeeee;
+}
+
+.form select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-align: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

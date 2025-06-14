@@ -61,6 +61,14 @@ async function run() {
       home.data.includes('main-nav'),
       'home page should render navigation',
     )
+    assert.ok(
+      home.data.includes('profile-section'),
+      'home page should include profile area',
+    )
+    assert.ok(
+      home.data.includes('feed-section'),
+      'home page should include live feed',
+    )
 
     // scripts guiding the celestial carousel
     const universeScript = await fetch('/scripts/universe.js')
