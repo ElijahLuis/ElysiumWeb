@@ -15,7 +15,9 @@ function fetch(pathname) {
     http.get({ hostname: 'localhost', port: PORT, path: pathname }, res => {
       let data = '';
       res.on('data', chunk => (data += chunk));
-      res.on('end', () => resolve({ statusCode: res.statusCode, data }));
+      res.on('end', () =>
+        resolve({ statusCode: res.statusCode, headers: res.headers, data })
+      );
     }).on('error', reject);
   });
 }
@@ -33,6 +35,21 @@ async function run() {
 
     const missing = await fetch('/does-not-exist');
     assert.strictEqual(missing.statusCode, 404, 'missing page should return 404');
+
+    const universe = await fetch('/pages/universe.html');
+    assert.strictEqual(universe.statusCode, 200, 'universe page should return 200');
+    assert.ok(
+      universe.data.includes('universe-page'),
+      'universe page should contain its unique class'
+    );
+
+    const css = await fetch('/styles/style.css');
+    assert.strictEqual(css.statusCode, 200, 'style.css should return 200');
+    assert.strictEqual(
+      css.headers['content-type'],
+      'text/css',
+      'style.css should have text/css content-type'
+    );
 
     console.log('All tests passed.');
   } finally {
