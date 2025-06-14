@@ -31,18 +31,8 @@ body {
 /* --------------------------
    1) GLOBAL & BODY
 -------------------------- */
-
 html {
   box-sizing: border-box;
-  /* allow scrolling but keep the bars invisible */
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none; /* Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-html::-webkit-scrollbar {
-  display: none;
 }
 
 *, *::before, *::after {
