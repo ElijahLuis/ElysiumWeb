@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         resizeTimeout = setTimeout(generateStars, 200);
     });
 
-
     // Parallax effect
     let targetX = 0,
         targetY = 0,

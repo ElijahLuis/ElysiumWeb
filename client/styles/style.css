@@ -81,6 +81,7 @@ h1 {
     background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
     background-size: 400% 400%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: fadeInUp 2.5s ease-out forwards,
                headerPulseGlow 5s infinite ease-in-out,

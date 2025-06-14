@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!btn) return;
 
-  /**
-   * Fade gracefully to the universe page.
-   */
   const driftToUniverse = () => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
@@ -39,9 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-
     localStorage.setItem('journeySeen', 'true');
-
     driftToUniverse();
   });
 });
