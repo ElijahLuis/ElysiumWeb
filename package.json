@@ -6,8 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "test": "node test/test.js",
-    "format": "prettier --write client/**/* server/index.js test/**/*.js"
+    "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\""
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }
