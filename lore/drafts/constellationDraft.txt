@@ -32,7 +32,7 @@ Users might zoom in on a star to re-read its truth.
 
 Stars can be traded or gifted between users.
 A traded star keeps its entire history of previous owners.
-These connected users form a "Constellation"—a symbolic emotional network.
+These connected users form a "Constellation"-a symbolic emotional network.
 
 💡 Example Scenario:
 A user trades their Haven Star (Hope) to another user in the Abyss Realm (Fear).
@@ -54,11 +54,11 @@ Example: A user navigating Paradoxus (Confusion) deeply questions their reality 
 
 C. Companion Stars
 Some stars only unlock when traded.
-These require another user’s participation—encouraging shared reflection.
+These require another user’s participation-encouraging shared reflection.
 Example: A “Bravery” Star from Ember can only be unlocked when gifted to another user.
 ~~~
 5. User Interaction with Constellations
-Users can view their constellation—showing stars they collected and those they share with others.
+Users can view their constellation-showing stars they collected and those they share with others.
 Privacy settings allow users to choose whether their constellation is public or private.
 Constellations may have unlockable rewards (visuals, reflections, or insights).
 
