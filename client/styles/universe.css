@@ -66,7 +66,7 @@ body.universe-page {
   transform: translate(-50%, -50%);
   transition: transform 0.7s ease-out;
   /* remove transparency so planets appear solid */
-  background: radial-gradient(circle at 30% 30%, #ffffff, var(--bg-color, #444));
+  background: radial-gradient(circle at 30% 30%, #d8d8d8, var(--bg-color, #444));
   box-shadow: inset -20px -20px 30px rgba(0, 0, 0, 0.6);
 }
 
@@ -115,13 +115,13 @@ body.universe-page {
   z-index: 10;
 }
 
-#abyss { --bg-color: #4a148c; }
-#cavern { --bg-color: #00695c; }
-#dross { --bg-color: #5d4037; }
-#ember { --bg-color: #d84315; }
-#glare { --bg-color: #ffb300; }
-#languish { --bg-color: #1565c0; }
-#mist { --bg-color: #90a4ae; }
-#oasis { --bg-color: #26a69a; }
-#trace { --bg-color: #ad1457; }
-#zenith { --bg-color: #ffd54f; }
+#abyss { --bg-color: #380f69; }
+#cavern { --bg-color: #004f45; }
+#dross { --bg-color: #463029; }
+#ember { --bg-color: #a23210; }
+#glare { --bg-color: #bf8600; }
+#languish { --bg-color: #104c90; }
+#mist { --bg-color: #6c7b82; }
+#oasis { --bg-color: #1c7c74; }
+#trace { --bg-color: #820f41; }
+#zenith { --bg-color: #bfa03b; }
