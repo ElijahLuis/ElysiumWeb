@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rightArrow = document.getElementById('arrow-right')
   const selectButton = document.getElementById('select-button')
   const overlay = document.getElementById('realm-overlay')
+  let yesBtn, noBtn
 
   const totalPlanets = planets.length
   const slice = 360 / totalPlanets
@@ -119,18 +120,60 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  function hideOverlay() {
+    if (!overlay) return
+    overlay.classList.remove('active')
+    setTimeout(() => {
+      overlay.classList.add('hidden')
+      overlay.innerHTML = ''
+    }, 400)
+    if (yesBtn) yesBtn.removeEventListener('click', confirmTravel)
+    if (noBtn) noBtn.removeEventListener('click', revertSelection)
+  }
+
+  function revertSelection() {
+    hideOverlay()
+    planets.forEach(p => {
+      p.classList.remove('faded', 'focused')
+    })
+    const active = planets[currentIndex]
+    const match = active.style.transform.match(/scale\(([^)]+)\)/)
+    if (match) {
+      const scale = parseFloat(match[1])
+      const newScale = scale / 1.2
+      active.style.transform = active.style.transform.replace(
+        /scale\([^)]+\)/,
+        `scale(${newScale})`
+      )
+    }
+    if (selectButton) {
+      selectButton.classList.remove('fade-out')
+      selectButton.classList.add('fade-in')
+    }
+    focused = false
+  }
+
+  function confirmTravel() {
+    alert('Traveled to realm successfully!')
+    revertSelection()
+  }
+
   function showOverlay(realmKey) {
     if (!overlay) return
     const data = overlayData[realmKey]
     if (!data) return
+
     overlay.innerHTML = ''
+
     const name = document.createElement('h2')
     name.textContent = realmKey.charAt(0).toUpperCase() + realmKey.slice(1)
+
     const icon = document.createElement('div')
     icon.textContent = data.icon
     icon.className = 'overlay-icon'
     icon.style.fontSize = '3rem'
     icon.style.margin = '20px 0'
+
     const list = document.createElement('ul')
     list.className = 'overlay-features'
     data.features.forEach(f => {
@@ -138,18 +181,47 @@ document.addEventListener('DOMContentLoaded', () => {
       li.textContent = f
       list.appendChild(li)
     })
+
+    const confirm = document.createElement('div')
+    confirm.className = 'overlay-confirm'
+
+    const question = document.createElement('p')
+    question.textContent = `Travel to ${name.textContent}?`
+
+    yesBtn = document.createElement('button')
+    yesBtn.textContent = 'Yes'
+    yesBtn.className = 'confirm-btn'
+
+    noBtn = document.createElement('button')
+    noBtn.textContent = 'No'
+    noBtn.className = 'confirm-btn'
+
+    confirm.appendChild(question)
+    confirm.appendChild(yesBtn)
+    confirm.appendChild(noBtn)
+
     overlay.appendChild(name)
     overlay.appendChild(icon)
     overlay.appendChild(list)
+    overlay.appendChild(confirm)
+
+    overlay.classList.remove('hidden')
     overlay.classList.add('active')
+
     setTimeout(() => icon.classList.add('show'), 50)
     setTimeout(() => list.classList.add('show'), 250)
+    setTimeout(() => confirm.classList.add('show'), 450)
+
+    yesBtn.addEventListener('click', confirmTravel)
+    noBtn.addEventListener('click', revertSelection)
   }
 
   if (selectButton) {
     selectButton.addEventListener('click', () => {
       if (focused) return
       focused = true
+      selectButton.classList.remove('fade-in')
+      selectButton.classList.add('fade-out')
       const active = planets[currentIndex]
       planets.forEach((p, i) => {
         if (i === currentIndex) {
