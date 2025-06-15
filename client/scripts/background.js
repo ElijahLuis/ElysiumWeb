@@ -5,14 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Star generation
   function generateStars() {
     starsContainer.innerHTML = ''
-    const count = Math.floor((window.innerWidth * window.innerHeight) / 8000)
+    const count = Math.floor((window.innerWidth * window.innerHeight) / 3000)
     const frag = document.createDocumentFragment()
     for (let i = 0; i < count; i++) {
       const star = document.createElement('div')
       star.classList.add('star')
       star.style.left = `${Math.random() * window.innerWidth}px`
       star.style.top = `${Math.random() * window.innerHeight}px`
-      star.style.animationDuration = `${Math.random() * 3 + 2}s`
+      const size = Math.random() * 1.5 + 1
+      star.style.width = `${size}px`
+      star.style.height = `${size}px`
+      star.style.animationDuration = `${Math.random() * 2 + 2}s`
       star.style.opacity = Math.random()
       frag.appendChild(star)
     }
