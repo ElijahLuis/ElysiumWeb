@@ -183,6 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = overlayData[realmKey]
     if (!data) return
 
+    const source = document.getElementById(realmKey)
+    if (source) {
+      const glow = getComputedStyle(source).getPropertyValue('--glow-color')
+      if (glow) overlay.style.setProperty('--glow-color', glow.trim())
+    }
+
     overlay.innerHTML = ''
 
     const name = document.createElement('h2')

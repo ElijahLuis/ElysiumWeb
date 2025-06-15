@@ -184,14 +184,17 @@ body.universe-page {
   width: 60%;
   max-width: 500px;
   padding: 40px 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  box-shadow:
+    0 4px 20px rgba(31, 26, 31, 0.6),
+    0 0 25px var(--glow-color, rgba(255, 255, 255, 0.5));
   color: #ffeeee;
   text-align: center;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease-in;
@@ -203,9 +206,15 @@ body.universe-page {
   pointer-events: auto;
 }
 
+#realm-overlay h2 {
+  margin-top: 0;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
 #realm-overlay .overlay-icon,
 #realm-overlay .overlay-features {
   opacity: 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   transition: opacity 0.4s ease;
 }
 
@@ -221,6 +230,7 @@ body.universe-page {
   gap: 12px;
   align-items: center;
   opacity: 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   transition: opacity 0.4s ease;
 }
 
@@ -271,35 +281,46 @@ body.universe-page {
 
 #realm-overlay li {
   margin: 4px 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
 }
 
 #abyss {
   --bg-color: #380f69;
+  --glow-color: #9c87b4;
 }
 #cavern {
   --bg-color: #004f45;
+  --glow-color: #80a7a2;
 }
 #dross {
   --bg-color: #463029;
+  --glow-color: #a39894;
 }
 #ember {
   --bg-color: #a23210;
+  --glow-color: #d19988;
 }
 #glare {
   --bg-color: #bf8600;
+  --glow-color: #dfc380;
 }
 #languish {
   --bg-color: #104c90;
+  --glow-color: #88a6c8;
 }
 #mist {
   --bg-color: #6c7b82;
+  --glow-color: #b6bdc1;
 }
 #oasis {
   --bg-color: #1c7c74;
+  --glow-color: #8ebeba;
 }
 #trace {
   --bg-color: #820f41;
+  --glow-color: #c187a0;
 }
 #zenith {
   --bg-color: #bfa03b;
+  --glow-color: #dfd09d;
 }
