@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!form || !result) return
 
 
+  // Softly shields our words from harm
   function escapeHTML(str) {
     const map = {
       '&': '&amp;',
@@ -51,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const key = realms[index]
     const { realm, planets } = planetMap[key]
     const name = planets[Math.floor(Math.random() * planets.length)]
-    result.innerHTML = `Your path points toward <strong>${name}</strong> of the <em>${realm}</em> realm.`
+    const safeName = escapeHTML(name)
+    const safeRealm = escapeHTML(realm)
+    result.innerHTML = `Your path points toward <strong>${safeName}</strong> of the <em>${safeRealm}</em> realm.`
     result.classList.remove('hidden')
     form.classList.add('hidden')
   })
