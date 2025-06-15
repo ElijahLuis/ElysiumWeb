@@ -183,6 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = overlayData[realmKey]
     if (!data) return
 
+    const source = document.getElementById(realmKey)
+    if (source) {
+      const glow = getComputedStyle(source).getPropertyValue('--glow-color')
+      if (glow) overlay.style.setProperty('--glow-color', glow.trim())
+    }
+
     overlay.innerHTML = ''
 
     const name = document.createElement('h2')
@@ -191,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const icon = document.createElement('div')
     icon.textContent = data.icon
     icon.className = 'overlay-icon'
-    icon.style.fontSize = '3rem'
+    icon.style.fontSize = '3.5rem'
     icon.style.margin = '20px 0'
 
     const list = document.createElement('ul')
@@ -217,9 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
     noBtn.textContent = 'No'
     noBtn.className = 'confirm-btn'
 
+    const btnGroup = document.createElement('div')
+    btnGroup.className = 'confirm-btn-group'
+    btnGroup.appendChild(yesBtn)
+    btnGroup.appendChild(noBtn)
+
     confirm.appendChild(question)
-    confirm.appendChild(yesBtn)
-    confirm.appendChild(noBtn)
+    confirm.appendChild(btnGroup)
 
     overlay.appendChild(name)
     overlay.appendChild(icon)

@@ -59,7 +59,7 @@ body.universe-page {
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.7),
@@ -184,12 +184,18 @@ body.universe-page {
   width: 60%;
   max-width: 500px;
   padding: 40px 30px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 20px rgba(31, 26, 31, 0.6),
+    0 0 25px var(--glow-color, rgba(255, 255, 255, 0.5));
+  color: #ffeeee;
   text-align: center;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease-in;
@@ -201,10 +207,22 @@ body.universe-page {
   pointer-events: auto;
 }
 
+#realm-overlay h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
 #realm-overlay .overlay-icon,
 #realm-overlay .overlay-features {
   opacity: 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   transition: opacity 0.4s ease;
+}
+
+#realm-overlay .overlay-icon {
+  font-size: 3.5rem;
 }
 
 #realm-overlay .overlay-icon.show,
@@ -216,10 +234,22 @@ body.universe-page {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
   opacity: 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   transition: opacity 0.4s ease;
+}
+
+#realm-overlay .overlay-confirm p {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+#realm-overlay .confirm-btn-group {
+  display: flex;
+  gap: 16px;
 }
 
 #realm-overlay .overlay-confirm.show {
@@ -227,19 +257,19 @@ body.universe-page {
 }
 
 .confirm-btn {
-  padding: 0 24px;
-  height: 46px;
-  border-radius: 23px;
+  padding: 0 32px;
+  height: 56px;
+  border-radius: 28px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
+  box-shadow: 0 0 16px var(--glow-color, rgba(255, 255, 255, 0.5));
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
@@ -250,13 +280,13 @@ body.universe-page {
 .confirm-btn:hover {
   background: rgba(255, 255, 255, 0.25);
   box-shadow:
-    0 0 20px rgba(255, 136, 194, 0.6),
+    0 0 20px var(--glow-color, rgba(255, 255, 255, 0.6)),
     0 0 12px rgba(255, 255, 255, 0.35);
 }
 
 .confirm-btn:active {
   background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 14px rgba(255, 136, 194, 0.5);
+  box-shadow: 0 0 14px var(--glow-color, rgba(255, 255, 255, 0.5));
   transform: scale(0.95);
 }
 
@@ -268,36 +298,51 @@ body.universe-page {
 }
 
 #realm-overlay li {
-  margin: 4px 0;
+  margin: 8px 0;
+  color: var(--glow-color, #ffffff);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+  font-size: 1.4rem;
 }
 
 #abyss {
-  --bg-color: #380f69;
+  --bg-color: #1f0640; /* darker backdrop */
+  --glow-color: #d6bfff; /* brighter glow */
 }
 #cavern {
-  --bg-color: #004f45;
+  --bg-color: #002f2a;
+  --glow-color: #c6efe9;
 }
 #dross {
-  --bg-color: #463029;
+  --bg-color: #301e19;
+  --glow-color: #e4d5cd;
 }
 #ember {
-  --bg-color: #a23210;
+  --bg-color: #791a08;
+  --glow-color: #f1c4b4;
 }
 #glare {
-  --bg-color: #bf8600;
+  --bg-color: #704e00;
+  --glow-color: #ffe5b0;
 }
 #languish {
-  --bg-color: #104c90;
+  --bg-color: #0b3567;
+  --glow-color: #c1d8f3;
 }
 #mist {
-  --bg-color: #6c7b82;
+  --bg-color: #4d5a61;
+  --glow-color: #e6ecf0;
 }
 #oasis {
-  --bg-color: #1c7c74;
+  --bg-color: #0f4a48;
+  --glow-color: #c4f7f3;
 }
 #trace {
-  --bg-color: #820f41;
+  --bg-color: #4f062a;
+  --glow-color: #f5c6da;
 }
 #zenith {
-  --bg-color: #bfa03b;
+  --bg-color: #8c6c22;
+  --glow-color: #fff7c9;
 }
