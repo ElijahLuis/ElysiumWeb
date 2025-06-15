@@ -3,7 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result')
   if (!form || !result) return
 
-  // A selection of planets sprinkled across each realm
+
+  function escapeHTML(str) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }
+    return str.replace(/[&<>"']/g, m => map[m])
+  }
+  
   const planetMap = {
     abyss: { realm: 'Abyss', planets: ['Nocturnis', 'Umbrak', 'Nerveris'] },
     cavern: { realm: 'Cavern', planets: ['Bedesto', 'Thirsa', 'Kerelos'] },
@@ -36,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
       parseInt(sel.value, 10)
     )
     const avg = values.reduce((a, b) => a + b, 0) / values.length
-
     const index = Math.min(realms.length - 1, Math.floor((avg - 1) / 0.4))
     const key = realms[index]
     const { realm, planets } = planetMap[key]
