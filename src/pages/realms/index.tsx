@@ -1,12 +1,11 @@
 import createRealmPage from './createRealmPage'
+import { realms } from '../../data/realmMetadata'
 
-export const AbyssPage = createRealmPage('abyss')
-export const CavernPage = createRealmPage('cavern')
-export const DrossPage = createRealmPage('dross')
-export const EmberPage = createRealmPage('ember')
-export const GlarePage = createRealmPage('glare')
-export const LanguishPage = createRealmPage('languish')
-export const MistPage = createRealmPage('mist')
-export const OasisPage = createRealmPage('oasis')
-export const TracePage = createRealmPage('trace')
-export const ZenithPage = createRealmPage('zenith')
+export const realmPages: Record<keyof typeof realms, React.FC> = Object.fromEntries(
+  (Object.keys(realms) as (keyof typeof realms)[]).map(key => [
+    key,
+    createRealmPage(key),
+  ])
+) as Record<keyof typeof realms, React.FC>
+
+export default realmPages
