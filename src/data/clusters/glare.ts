@@ -2,7 +2,7 @@ import { EmotionCluster } from '../types'
 
 export const clusters: EmotionCluster[] = [
   {
-    name: 'Fractured Stage',
+    name: 'Fallen Eye',
     emotions: ['shame', 'humiliation', 'exposure', 'unworthiness'],
   },
   {
@@ -10,7 +10,7 @@ export const clusters: EmotionCluster[] = [
     emotions: ['repressed', 'tension', 'avoidance', 'self-denial'],
   },
   {
-    name: 'Glaring Eye',
+    name: 'Raucous Laugh',
     emotions: ['judged', 'mocked', 'spotlighted', 'accused'],
   },
 ]
