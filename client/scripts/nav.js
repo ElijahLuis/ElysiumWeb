@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           window.location.href = link.href
-        }, 200)
+        }, 140)
 
-        setTimeout(() => ripple.remove(), 280)
+        setTimeout(() => ripple.remove(), 180)
       })
     })
   }
