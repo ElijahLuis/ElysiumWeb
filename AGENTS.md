@@ -21,7 +21,7 @@ While Codex and other agents are welcome to assist, here are a few things to kee
   The canonical list lives in `src/data/realmMetadata.ts`.
 
 ## 🤝 Collaboration Vibe
-- If you're here, you're part of the Elysium.
+- If you're here, you're part of Elysium.
  - Be kind. Be expressive. Don't overwrite with generic "fixes" - **enhance the intent**.
 
 ## 🌐 Network Limitations
