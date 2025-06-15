@@ -223,9 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
     noBtn.textContent = 'No'
     noBtn.className = 'confirm-btn'
 
+    const btnGroup = document.createElement('div')
+    btnGroup.className = 'confirm-btn-group'
+    btnGroup.appendChild(yesBtn)
+    btnGroup.appendChild(noBtn)
+
     confirm.appendChild(question)
-    confirm.appendChild(yesBtn)
-    confirm.appendChild(noBtn)
+    confirm.appendChild(btnGroup)
 
     overlay.appendChild(name)
     overlay.appendChild(icon)

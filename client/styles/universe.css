@@ -234,7 +234,7 @@ body.universe-page {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
   opacity: 0;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
@@ -243,7 +243,13 @@ body.universe-page {
 
 #realm-overlay .overlay-confirm p {
   margin: 0 0 10px;
-  font-size: 1.1rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+#realm-overlay .confirm-btn-group {
+  display: flex;
+  gap: 16px;
 }
 
 #realm-overlay .overlay-confirm.show {
@@ -251,19 +257,19 @@ body.universe-page {
 }
 
 .confirm-btn {
-  padding: 0 24px;
-  height: 46px;
-  border-radius: 23px;
+  padding: 0 32px;
+  height: 56px;
+  border-radius: 28px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
+  box-shadow: 0 0 16px var(--glow-color, rgba(255, 255, 255, 0.5));
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
@@ -274,13 +280,13 @@ body.universe-page {
 .confirm-btn:hover {
   background: rgba(255, 255, 255, 0.25);
   box-shadow:
-    0 0 20px rgba(255, 136, 194, 0.6),
+    0 0 20px var(--glow-color, rgba(255, 255, 255, 0.6)),
     0 0 12px rgba(255, 255, 255, 0.35);
 }
 
 .confirm-btn:active {
   background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 14px rgba(255, 136, 194, 0.5);
+  box-shadow: 0 0 14px var(--glow-color, rgba(255, 255, 255, 0.5));
   transform: scale(0.95);
 }
 
