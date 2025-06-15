@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result')
   if (!form || !result) return
 
+  function escapeHTML(str) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }
+    return str.replace(/[&<>"']/g, m => map[m])
+  }
+
   const planetMap = {
     abyss: { name: 'Nocturnis', realm: 'Abyss' },
     languish: { name: 'Dolenza', realm: 'Languish' },
@@ -26,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else key = 'zenith'
 
     const { name, realm } = planetMap[key]
-    result.innerHTML = `Your path points toward <strong>${name}</strong> of the <em>${realm}</em> realm.`
+    result.innerHTML = `Your path points toward <strong>${escapeHTML(name)}</strong> of the <em>${escapeHTML(realm)}</em> realm.`
     result.classList.remove('hidden')
     form.classList.add('hidden')
   })
