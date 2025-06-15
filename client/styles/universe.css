@@ -59,7 +59,7 @@ body.universe-page {
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.7),
@@ -195,6 +195,7 @@ body.universe-page {
   color: #ffeeee;
   text-align: center;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease-in;
@@ -208,6 +209,8 @@ body.universe-page {
 
 #realm-overlay h2 {
   margin-top: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
 }
 
@@ -216,6 +219,10 @@ body.universe-page {
   opacity: 0;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   transition: opacity 0.4s ease;
+}
+
+#realm-overlay .overlay-icon {
+  font-size: 3.5rem;
 }
 
 #realm-overlay .overlay-icon.show,
@@ -234,6 +241,11 @@ body.universe-page {
   transition: opacity 0.4s ease;
 }
 
+#realm-overlay .overlay-confirm p {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
 #realm-overlay .overlay-confirm.show {
   opacity: 1;
 }
@@ -248,7 +260,7 @@ body.universe-page {
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 2px;
   cursor: pointer;
   box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
@@ -282,45 +294,46 @@ body.universe-page {
 #realm-overlay li {
   margin: 4px 0;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
 }
 
 #abyss {
-  --bg-color: #380f69;
-  --glow-color: #9c87b4;
+  --bg-color: #1f0640; /* darker backdrop */
+  --glow-color: #d6bfff; /* brighter glow */
 }
 #cavern {
-  --bg-color: #004f45;
-  --glow-color: #80a7a2;
+  --bg-color: #002f2a;
+  --glow-color: #c6efe9;
 }
 #dross {
-  --bg-color: #463029;
-  --glow-color: #a39894;
+  --bg-color: #301e19;
+  --glow-color: #e4d5cd;
 }
 #ember {
-  --bg-color: #a23210;
-  --glow-color: #d19988;
+  --bg-color: #791a08;
+  --glow-color: #f1c4b4;
 }
 #glare {
-  --bg-color: #bf8600;
-  --glow-color: #dfc380;
+  --bg-color: #704e00;
+  --glow-color: #ffe5b0;
 }
 #languish {
-  --bg-color: #104c90;
-  --glow-color: #88a6c8;
+  --bg-color: #0b3567;
+  --glow-color: #c1d8f3;
 }
 #mist {
-  --bg-color: #6c7b82;
-  --glow-color: #b6bdc1;
+  --bg-color: #4d5a61;
+  --glow-color: #e6ecf0;
 }
 #oasis {
-  --bg-color: #1c7c74;
-  --glow-color: #8ebeba;
+  --bg-color: #0f4a48;
+  --glow-color: #c4f7f3;
 }
 #trace {
-  --bg-color: #820f41;
-  --glow-color: #c187a0;
+  --bg-color: #4f062a;
+  --glow-color: #f5c6da;
 }
 #zenith {
-  --bg-color: #bfa03b;
-  --glow-color: #dfd09d;
+  --bg-color: #8c6c22;
+  --glow-color: #fff7c9;
 }

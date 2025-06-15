@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const icon = document.createElement('div')
     icon.textContent = data.icon
     icon.className = 'overlay-icon'
-    icon.style.fontSize = '3rem'
+    icon.style.fontSize = '3.5rem'
     icon.style.margin = '20px 0'
 
     const list = document.createElement('ul')
