@@ -41,11 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const hue = Math.floor(Math.random() * 360)
         ripple.style.background = `radial-gradient(circle,
             hsla(${hue}, 100%, 70%, 0) 40%,
-            hsla(${hue}, 100%, 70%, 0.6) 45%,
-            hsla(${hue}, 100%, 70%, 0.9) 50%,
-            hsla(${hue}, 100%, 70%, 0.6) 55%,
-            hsla(${hue}, 100%, 70%, 0) 60%)`
-        ripple.style.boxShadow = `0 0 8px hsla(${hue}, 100%, 70%, 0.8)`
+            hsla(${hue}, 100%, 70%, 1) 45%,
+            hsla(${hue}, 100%, 70%, 1) 50%,
+            hsla(${hue}, 100%, 70%, 0) 55%)`
+        ripple.style.boxShadow = `0 0 6px hsla(${hue}, 100%, 70%, 0.9)`
 
         link.appendChild(ripple)
 
