@@ -2,28 +2,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
+  const overlay = document.getElementById('fadeOverlay')
+
   // Star generation
   function generateStars() {
     starsContainer.innerHTML = ''
-    const count = Math.floor((window.innerWidth * window.innerHeight) / 10000)
+    const count = Math.floor((window.innerWidth * window.innerHeight) / 3500)
     const frag = document.createDocumentFragment()
     for (let i = 0; i < count; i++) {
       const star = document.createElement('div')
       star.classList.add('star')
       star.style.left = `${Math.random() * window.innerWidth}px`
       star.style.top = `${Math.random() * window.innerHeight}px`
-      star.style.animationDuration = `${Math.random() * 3 + 2}s`
+      const size = Math.random() * 1.5 + 1
+      star.style.width = `${size}px`
+      star.style.height = `${size}px`
+      star.style.animationDuration = `${Math.random() * 2 + 2}s`
       star.style.opacity = Math.random()
       frag.appendChild(star)
     }
     starsContainer.appendChild(frag)
   }
-  generateStars()
-  let resizeTimeout
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout)
-    resizeTimeout = setTimeout(generateStars, 200)
-  })
+  function initStars() {
+    generateStars()
+    let resizeTimeout
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(generateStars, 200)
+    })
+  }
+
+  if (overlay) {
+    overlay.addEventListener(
+      'animationend',
+      () => {
+        initStars()
+      },
+      { once: true }
+    )
+  } else {
+    initStars()
+  }
 
   // Parallax effect
   let targetX = 0,
