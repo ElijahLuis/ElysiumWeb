@@ -18,26 +18,38 @@ const mimeTypes = {
 }
 
 function serveFile(filePath, res) {
-  fs.readFile(filePath, (err, content) => {
+  const ext = path.extname(filePath).toLowerCase()
+  const contentType = mimeTypes[ext] || 'application/octet-stream'
+  const stream = fs.createReadStream(filePath)
+  stream.on('error', () => {
+    res.writeHead(404)
+    res.end('Not found')
+  })
+  res.writeHead(200, { 'Content-Type': contentType })
+  stream.pipe(res)
+}
+
+const server = http.createServer((req, res) => {
+  const requestPath = decodeURI(req.url.split('?')[0])
+  let filePath = path.normalize(path.join(root, requestPath))
+
+  if (!filePath.startsWith(root)) {
+    res.writeHead(404)
+    res.end('Not found')
+    return
+  }
+
+  if (requestPath === '/' || requestPath.endsWith('/')) {
+    filePath = path.join(filePath, 'index.html')
+  }
+
+  fs.stat(filePath, (err, stats) => {
     if (err) {
       res.writeHead(404)
       res.end('Not found')
       return
     }
-    const ext = path.extname(filePath).toLowerCase()
-    const contentType = mimeTypes[ext] || 'application/octet-stream'
-    res.writeHead(200, { 'Content-Type': contentType })
-    res.end(content)
-  })
-}
-
-const server = http.createServer((req, res) => {
-  let filePath = path.join(root, req.url)
-  if (req.url === '/' || req.url.endsWith('/')) {
-    filePath = path.join(root, req.url, 'index.html')
-  }
-  fs.stat(filePath, (err, stats) => {
-    if (!err && stats.isDirectory()) {
+    if (stats.isDirectory()) {
       filePath = path.join(filePath, 'index.html')
     }
     serveFile(filePath, res)

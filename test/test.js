@@ -81,6 +81,9 @@ async function run() {
       'universe.js should have application/javascript content-type'
     );
 
+    const traversal = await fetch('/../server/server.js');
+    assert.strictEqual(traversal.statusCode, 404, 'traversal attempt should return 404');
+
     console.log('All tests passed.');
   } finally {
     heart.kill();
