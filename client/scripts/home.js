@@ -1,10 +1,9 @@
-// Redirect to universe page
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('journey-btn')
 
   if (!btn) return
 
-  const driftToUniverse = () => {
+  const driftToHome = () => {
     const overlay = document.createElement('div')
     overlay.style.position = 'fixed'
     overlay.style.top = '0'
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     setTimeout(() => {
-      window.location.href = 'universe.html'
+      window.location.href = 'home.html'
     }, 750)
   }
 
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hasSeenJourney) {
     btn.style.display = 'none'
-    driftToUniverse()
+    driftToHome()
     return
   }
 
