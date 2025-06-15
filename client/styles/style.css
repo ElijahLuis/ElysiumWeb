@@ -3,7 +3,8 @@
 :root {
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   --primary-color: #ffeeee;
-  --primary-spacing: 1px;
+  /* Slightly wider spacing for clarity */
+  --primary-spacing: 1.5px;
 }
 
 html,
