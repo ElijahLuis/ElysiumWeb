@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
       features: ['Infernal Mammoth', 'Brazen Rhino', 'Noisy Wasp', 'Vicious Cobra'],
     },
     glare: {
-      icon: '✨',
-      features: ['Fractured Stage', 'Deadlight Hall', 'Glaring Eye'],
+      icon: '👁️',
+      features: ['Fallen Eye', 'Deadlight Hall', 'Raucous Laugh'],
     },
     languish: {
       icon: '💧',
