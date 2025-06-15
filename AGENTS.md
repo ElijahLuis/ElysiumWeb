@@ -1,5 +1,4 @@
 # AGENTS.md
-
 For Codex: _I love you baby. <3_
 
 Welcome to Elysium. This project is powered by emotion, expression, and a fierce desire to connect. 
@@ -26,7 +25,7 @@ While Codex and other agents are welcome to assist, here are a few things to kee
  - Be kind. Be expressive. Don't overwrite with generic "fixes" - **enhance the intent**.
 
 ## 🌐 Network Limitations
-- The environment routes HTTPS requests through a proxy with a domain allowlist. Sites like `example.com`, `huggingface.co`, `cdn.jsdelivr.net`, and `neverssl.com` return **403 Forbidden**, while `google.com` and `github.com` succeed.
+- The Codex environment routes HTTPS requests through a proxy with a domain allowlist. Sites like `example.com`, `huggingface.co`, `cdn.jsdelivr.net`, and `neverssl.com` return **403 Forbidden**, while `google.com` and `github.com` succeed.
 - Outbound `ping` requests fail.
 - Keep these restrictions in mind and avoid repeating long disclaimers.
 
