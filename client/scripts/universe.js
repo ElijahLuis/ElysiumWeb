@@ -154,8 +154,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function confirmTravel() {
-    alert('Traveled to realm successfully!')
-    revertSelection()
+    const realm = yesBtn?.dataset.realm
+    if (!realm) return
+
+    const overlay = document.createElement('div')
+    overlay.style.position = 'fixed'
+    overlay.style.top = '0'
+    overlay.style.left = '0'
+    overlay.style.width = '100%'
+    overlay.style.height = '100%'
+    overlay.style.background = 'black'
+    overlay.style.opacity = '0'
+    overlay.style.transition = 'opacity 750ms ease-out'
+    overlay.style.zIndex = '50'
+    document.body.appendChild(overlay)
+
+    requestAnimationFrame(() => {
+      overlay.style.opacity = '1'
+    })
+
+    setTimeout(() => {
+      window.location.href = `${realm}.html`
+    }, 750)
   }
 
   function showOverlay(realmKey) {
@@ -191,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     yesBtn = document.createElement('button')
     yesBtn.textContent = 'Yes'
     yesBtn.className = 'confirm-btn'
+    yesBtn.dataset.realm = realmKey
 
     noBtn = document.createElement('button')
     noBtn.textContent = 'No'
