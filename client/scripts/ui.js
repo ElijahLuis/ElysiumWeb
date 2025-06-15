@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body
 
   function sanitizeInput(value) {
-    return value.replace(/[<>]/g, '').trim()
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .trim()
   }
 
   function sanitizeForm(form) {
