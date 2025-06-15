@@ -147,11 +147,29 @@ h1 {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-#main-nav a:hover,
+#main-nav a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
 #main-nav a:focus {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
-  outline: none;
+  outline: 2px dashed #fff;
+  outline-offset: 4px;
+}
+
+#main-nav a[aria-current='page'] {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 12px rgba(173, 216, 230, 0.7);
+}
+
+@media (max-width: 600px) {
+  #main-nav ul {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
 }
 
 @keyframes headerGradient {
