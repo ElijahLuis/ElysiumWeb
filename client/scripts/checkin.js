@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result')
   if (!form || !result) return
 
+
   function escapeHTML(str) {
     const map = {
       '&': '&amp;',
@@ -13,33 +14,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return str.replace(/[&<>"']/g, m => map[m])
   }
-
+  
   const planetMap = {
-    abyss: { name: 'Nocturnis', realm: 'Abyss' },
-    languish: { name: 'Dolenza', realm: 'Languish' },
-    mist: { name: 'Verio', realm: 'Mist' },
-    oasis: { name: 'Merulo', realm: 'Oasis' },
-    zenith: { name: 'Milenios', realm: 'Zenith' },
+    abyss: { realm: 'Abyss', planets: ['Nocturnis', 'Umbrak', 'Nerveris'] },
+    cavern: { realm: 'Cavern', planets: ['Bedesto', 'Thirsa', 'Kerelos'] },
+    dross: { realm: 'Dross', planets: ['Graskul', 'Exulith'] },
+    ember: { realm: 'Ember', planets: ['Fureza', 'Romana', 'Agnera'] },
+    glare: { realm: 'Glare', planets: ['Rassembar', 'Censyr'] },
+    languish: { realm: 'Languish', planets: ['Dolenza', 'Sedra', 'Trosta'] },
+    mist: { realm: 'Mist', planets: ['Verio', 'Zonder', 'Obsceris'] },
+    oasis: { realm: 'Oasis', planets: ['Merulo', 'Solene', 'Lubovu'] },
+    trace: { realm: 'Trace', planets: ['Yorell', 'Renmor'] },
+    zenith: { realm: 'Zenith', planets: ['Milenios', 'Eladon', 'Kalyra'] },
   }
+
+  const realms = [
+    'abyss',
+    'cavern',
+    'dross',
+    'ember',
+    'glare',
+    'languish',
+    'mist',
+    'oasis',
+    'trace',
+    'zenith',
+  ]
 
   form.addEventListener('submit', e => {
     e.preventDefault()
     const values = Array.from(form.querySelectorAll('select')).map(sel =>
-      parseInt(sel.value, 10),
+      parseInt(sel.value, 10)
     )
     const avg = values.reduce((a, b) => a + b, 0) / values.length
-
-    let key = 'mist'
-    if (avg <= 2) key = 'abyss'
-    else if (avg <= 2.8) key = 'languish'
-    else if (avg <= 3.6) key = 'mist'
-    else if (avg <= 4.3) key = 'oasis'
-    else key = 'zenith'
-
-    const { name, realm } = planetMap[key]
-    result.innerHTML = `Your path points toward <strong>${escapeHTML(name)}</strong> of the <em>${escapeHTML(realm)}</em> realm.`
+    const index = Math.min(realms.length - 1, Math.floor((avg - 1) / 0.4))
+    const key = realms[index]
+    const { realm, planets } = planetMap[key]
+    const name = planets[Math.floor(Math.random() * planets.length)]
+    result.innerHTML = `Your path points toward <strong>${name}</strong> of the <em>${realm}</em> realm.`
     result.classList.remove('hidden')
     form.classList.add('hidden')
   })
 })
-
