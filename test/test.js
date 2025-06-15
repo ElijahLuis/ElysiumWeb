@@ -29,6 +29,10 @@ async function run() {
   spawnSync('npx', ['tsc', '--module', 'commonjs', '--outDir', 'build_test'], {
     stdio: 'inherit',
   })
+  // run the full build and ensure output exists
+  spawnSync('npm', ['run', 'build'], { stdio: 'inherit' })
+  const buildOutput = path.join(__dirname, '..', 'build', 'data', 'realmData.js')
+  assert.ok(fs.existsSync(buildOutput), 'build should create compiled files')
   const serverPath = path.join(__dirname, '..', 'server', 'server.js');
   const heart = spawn('node', [serverPath], { env: { ...process.env, PORT } });
   await wait(500);
@@ -86,11 +90,24 @@ async function run() {
     );
 
     const { loadRealmDetail } = require('../build_test/data/realmData.js');
+    const { realms } = require('../build_test/data/realmMetadata.js');
     const fallback = await loadRealmDetail('missing');
     assert.ok(
       Array.isArray(fallback.corePlanets) && fallback.corePlanets.length === 0,
       'loadRealmDetail should return empty detail for missing realm'
     );
+
+    for (const key of Object.keys(realms)) {
+      const detail = await loadRealmDetail(key);
+      assert.ok(
+        Array.isArray(detail.clusters),
+        `realm ${key} should have clusters array`
+      );
+      assert.ok(
+        Array.isArray(detail.corePlanets),
+        `realm ${key} should have corePlanets array`
+      );
+    }
 
     const traversal = await fetch('/../server/server.js');
     assert.strictEqual(traversal.statusCode, 404, 'traversal attempt should return 404');
