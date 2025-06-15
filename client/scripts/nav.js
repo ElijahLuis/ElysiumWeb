@@ -37,6 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ripple.style.left = `${event.clientX - rect.left - size / 2}px`
         ripple.style.top = `${event.clientY - rect.top - size / 2}px`
 
+        // vibrant hue for this ripple
+        const hue = Math.floor(Math.random() * 360)
+        ripple.style.background = `radial-gradient(circle,
+            hsla(${hue}, 100%, 70%, 0) 40%,
+            hsla(${hue}, 100%, 70%, 0.6) 45%,
+            hsla(${hue}, 100%, 70%, 0.9) 50%,
+            hsla(${hue}, 100%, 70%, 0.6) 55%,
+            hsla(${hue}, 100%, 70%, 0) 60%)`
+        ripple.style.boxShadow = `0 0 8px hsla(${hue}, 100%, 70%, 0.8)`
+
         link.appendChild(ripple)
 
         ripple.addEventListener(
