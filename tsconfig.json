@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2019",
     "module": "ESNext",
+    "moduleResolution": "node",
     "jsx": "react",
+    "lib": ["dom", "es2019"],
+    "types": ["node"],
     "rootDir": "src",
     "outDir": "build",
     "strict": true,
