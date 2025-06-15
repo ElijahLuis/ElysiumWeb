@@ -605,7 +605,7 @@ h1 {
 #realm-space {
   margin: 130px auto;
   width: min(95%, 500px);
-  min-height: 60vh;
+  /* hug the content */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -620,6 +620,12 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+}
+
+#realm-space .realm-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-top: -10px;
 }
 
 #realm-space .select-btn {
