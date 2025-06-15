@@ -39,11 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         link.appendChild(ripple)
 
-        setTimeout(() => {
-          window.location.href = link.href
-        }, 140)
-
-        setTimeout(() => ripple.remove(), 180)
+        ripple.addEventListener(
+          'animationend',
+          () => {
+            ripple.remove()
+            window.location.href = link.href
+          },
+          { once: true }
+        )
       })
     })
   }
