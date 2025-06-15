@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+:root {
+  --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
+  --primary-color: #ffeeee;
+}
+
 html,
 body {
   min-height: 100vh;
@@ -49,6 +56,8 @@ body {
   -ms-overflow-style: none; /* Edge */
   scrollbar-width: none; /* Firefox */
   position: relative;
+  font-family: var(--primary-font);
+  color: var(--primary-color);
   background: linear-gradient(
     -45deg,
     #000000,
@@ -68,6 +77,16 @@ body {
 /* hide scrollbars for WebKit-based browsers */
 body::-webkit-scrollbar {
   display: none;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
 }
 
 @keyframes gradientCycle {
