@@ -598,3 +598,50 @@ h1 {
 .hidden {
   display: none;
 }
+/* --------------------------
+   9) REALM SPACE
+-------------------------- */
+
+#realm-space {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  color: #ffeeee;
+}
+
+#realm-space .select-btn {
+  padding: 0 32px;
+  height: 64px;
+  border-radius: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+#realm-space .select-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 20px rgba(255, 136, 194, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+#realm-space .select-btn:active {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 14px rgba(255, 136, 194, 0.5);
+  transform: scale(0.95);
+}
