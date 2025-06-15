@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div id="transitionOverlay" class="hidden"></div>
+    <div id="fadeOverlay"></div>
     <div id="nebula-container">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
@@ -79,7 +79,9 @@
       </div>
       <section id="feed-section" class="home-section">
         <h2 class="stellar-heading">Live Feed</h2>
-        <p>Whispers from fellow travelers will stream in soon.</p>
+        <ul id="live-feed" class="feed-list">
+          <li class="feed-item">New transmissions will shimmer here.</li>
+        </ul>
       </section>
     </main>
     <script src="../scripts/background.js"></script>

@@ -11,7 +11,6 @@ body {
   padding: 0;
 }
 
-
 /* Layout for the main home sections */
 
 /* Container for profile/check-in and feed columns */
@@ -47,6 +46,24 @@ body {
 #feed-section {
   margin-left: auto;
   margin-right: auto;
+}
+
+#live-feed {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 #checkin-main {
@@ -89,7 +106,9 @@ body {
   background: rgba(255, 255, 255, 0.15);
   color: white;
   text-align: center;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .form select:focus {

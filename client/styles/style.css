@@ -321,31 +321,6 @@ h1 {
   animation-duration: 1s;
 }
 
-#transitionOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  opacity: 0;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.fade-to-black {
-  animation: fadeToBlack 1s ease-out forwards;
-}
-
-@keyframes fadeToBlack {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes fadeOutOverlay {
   0% {
     opacity: 1;
