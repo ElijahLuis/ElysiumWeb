@@ -133,22 +133,20 @@ h1 {
   letter-spacing: 2px;
 }
 
-#main-nav .brand {
-  font-family: 'Orbitron', sans-serif;
+#main-nav .brand-link {
+  font-family: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
+  letter-spacing: 2px;
+  text-decoration: none;
   background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: headerGradient 15s ease-in-out infinite;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
-}
-
-#main-nav .brand-link {
-  text-decoration: none;
-  color: inherit;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  padding: 0;
 }
 
 #main-nav ul {
@@ -159,7 +157,7 @@ h1 {
   gap: 24px;
 }
 
-#main-nav a {
+#main-nav a:not(.brand-link) {
   position: relative;
   overflow: hidden;
   color: #ffffff;
@@ -173,13 +171,11 @@ h1 {
     background 0.3s ease,
     box-shadow 0.3s ease;
 }
-
-#main-nav a:hover {
+#main-nav a:not(.brand-link):hover {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
 }
-
-#main-nav a:focus {
+#main-nav a:not(.brand-link):focus {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
   outline: none;
@@ -198,17 +194,17 @@ h1 {
     rgba(255, 20, 147, 0.6) 40%,
     rgba(255, 255, 255, 0) 70%
   );
-  animation: rippleSpread 0.45s ease-out forwards;
+  animation: rippleSpread 0.25s ease-out forwards;
 }
 
 @keyframes rippleSpread {
   to {
-    transform: scale(4);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
 
-#main-nav a[aria-current='page'] {
+#main-nav a:not(.brand-link)[aria-current='page'] {
   background: rgba(255, 255, 255, 0.35);
   box-shadow: 0 0 12px rgba(173, 216, 230, 0.7);
 }
