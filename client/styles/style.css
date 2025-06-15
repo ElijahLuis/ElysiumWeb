@@ -314,11 +314,11 @@ h1 {
   height: 100%;
   background: black;
   pointer-events: none;
-  animation: fadeOutOverlay 2.5s ease-out forwards;
+  animation: fadeOutOverlay 1.25s ease-out forwards;
 }
 
 #fadeOverlay.quick {
-  animation-duration: 1s;
+  animation-duration: 0.75s;
 }
 
 @keyframes fadeOutOverlay {
