@@ -7,22 +7,29 @@ import { RealmDetail } from './types'
 export async function loadRealmDetail(
   realmKey: keyof typeof realms,
 ): Promise<RealmDetail> {
-  const mod = await import(`./realms/${realmKey}`)
-  return { clusters: mod.clusters, corePlanets: mod.corePlanets }
+  try {
+    const mod = await import(`./realms/${realmKey}`)
+    return { clusters: mod.clusters, corePlanets: mod.corePlanets }
+  } catch (err) {
+    console.error(`Failed to load realm detail for '${realmKey}':`, err)
+    return { clusters: [], corePlanets: [] }
+  }
 }
 
 /**
  * Load data for all realms at once. Results are cached after first call.
  */
-let cached: Record<keyof typeof realms, RealmDetail> | null = null
-export async function getAllRealmData(): Promise<Record<keyof typeof realms, RealmDetail>> {
+let cached: Partial<Record<keyof typeof realms, RealmDetail>> | null = null
+export async function getAllRealmData(): Promise<Partial<Record<keyof typeof realms, RealmDetail>>> {
   if (cached) return cached
-  const entries = await Promise.all(
-    (Object.keys(realms) as (keyof typeof realms)[]).map(async key => [
-      key,
-      await loadRealmDetail(key),
-    ] as const),
-  )
-  cached = Object.fromEntries(entries) as Record<keyof typeof realms, RealmDetail>
+  const entries: [keyof typeof realms, RealmDetail][] = []
+  for (const key of Object.keys(realms) as (keyof typeof realms)[]) {
+    const detail = await loadRealmDetail(key)
+    if (!detail.clusters.length && !detail.corePlanets.length) {
+      console.warn(`Realm '${key}' detail missing; using empty defaults`)
+    }
+    entries.push([key, detail])
+  }
+  cached = Object.fromEntries(entries) as Partial<Record<keyof typeof realms, RealmDetail>>
   return cached
 }

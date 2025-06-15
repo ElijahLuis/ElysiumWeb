@@ -1,4 +1,4 @@
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -25,6 +25,10 @@ function fetch(pathname) {
 }
 
 async function run() {
+  // compile TypeScript sources for tests
+  spawnSync('npx', ['tsc', '--module', 'commonjs', '--outDir', 'build_test'], {
+    stdio: 'inherit',
+  })
   const serverPath = path.join(__dirname, '..', 'server', 'server.js');
   const heart = spawn('node', [serverPath], { env: { ...process.env, PORT } });
   await wait(500);
@@ -79,6 +83,13 @@ async function run() {
       universeScript.headers['content-type'],
       'application/javascript',
       'universe.js should have application/javascript content-type'
+    );
+
+    const { loadRealmDetail } = require('../build_test/data/realmData.js');
+    const fallback = await loadRealmDetail('missing');
+    assert.ok(
+      Array.isArray(fallback.corePlanets) && fallback.corePlanets.length === 0,
+      'loadRealmDetail should return empty detail for missing realm'
     );
 
     const traversal = await fetch('/../server/server.js');
