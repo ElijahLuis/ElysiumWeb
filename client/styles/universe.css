@@ -70,6 +70,31 @@ body.universe-page {
   /* remove transparency so planets appear solid */
   background: radial-gradient(circle at 30% 30%, #d8d8d8, var(--bg-color, #444));
   box-shadow: inset -20px -20px 30px rgba(0, 0, 0, 0.6);
+  /* hide overflowing texture */
+  overflow: hidden;
+}
+
+/* subtle swirling texture to give each realm a living surface */
+.planet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 65% 65%, rgba(255, 255, 255, 0.15), transparent 60%);
+  mix-blend-mode: overlay;
+  animation: realmSwirl 40s linear infinite;
+}
+
+@keyframes realmSwirl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .arrow {
