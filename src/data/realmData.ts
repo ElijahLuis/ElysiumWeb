@@ -16,20 +16,3 @@ export async function loadRealmDetail(
   }
 }
 
-/**
- * Load data for all realms at once. Results are cached after first call.
- */
-let cached: Partial<Record<keyof typeof realms, RealmDetail>> | null = null
-export async function getAllRealmData(): Promise<Partial<Record<keyof typeof realms, RealmDetail>>> {
-  if (cached) return cached
-  const entries: [keyof typeof realms, RealmDetail][] = []
-  for (const key of Object.keys(realms) as (keyof typeof realms)[]) {
-    const detail = await loadRealmDetail(key)
-    if (!detail.clusters.length && !detail.corePlanets.length) {
-      console.warn(`Realm '${key}' detail missing; using empty defaults`)
-    }
-    entries.push([key, detail])
-  }
-  cached = Object.fromEntries(entries) as Partial<Record<keyof typeof realms, RealmDetail>>
-  return cached
-}
