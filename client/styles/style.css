@@ -136,13 +136,14 @@ h1 {
 #main-nav .brand {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
+  font-weight: 600;
   background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: headerGradient 15s ease-in-out infinite;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
 }
 
 #main-nav .brand-link {

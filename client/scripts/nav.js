@@ -26,14 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function enableRipples(nav) {
     nav.querySelectorAll('a:not(.brand-link)').forEach(link => {
       link.addEventListener('click', event => {
+        event.preventDefault()
+
         const ripple = document.createElement('span')
         const rect = link.getBoundingClientRect()
         const size = Math.max(rect.width, rect.height)
+
         ripple.className = 'ripple'
         ripple.style.width = ripple.style.height = `${size}px`
         ripple.style.left = `${event.clientX - rect.left - size / 2}px`
         ripple.style.top = `${event.clientY - rect.top - size / 2}px`
+
         link.appendChild(ripple)
+
+        setTimeout(() => {
+          window.location.href = link.href
+        }, 300)
+
         setTimeout(() => ripple.remove(), 450)
       })
     })
