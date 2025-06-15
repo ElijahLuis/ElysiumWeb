@@ -3,6 +3,7 @@
 :root {
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   --primary-color: #ffeeee;
+  --primary-spacing: 1px;
 }
 
 html,
@@ -58,6 +59,7 @@ body {
   position: relative;
   font-family: var(--primary-font);
   color: var(--primary-color);
+  letter-spacing: var(--primary-spacing);
   background: linear-gradient(
     -45deg,
     #000000,
@@ -87,6 +89,7 @@ h6,
 p {
   font-family: var(--primary-font);
   color: var(--primary-color);
+  letter-spacing: var(--primary-spacing);
 }
 
 @keyframes gradientCycle {
@@ -129,6 +132,17 @@ h1 {
     fadeInUp 2.5s ease-out forwards,
     headerPulseGlow 5s infinite ease-in-out,
     headerGradient 15s ease-in-out infinite;
+}
+
+.stellar-heading {
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: headerGradient 15s ease-in-out infinite;
 }
 
 /* --------------------------
