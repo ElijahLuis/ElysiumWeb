@@ -680,7 +680,7 @@ h1 {
 -------------------------- */
 
 #realm-space {
-  margin: 130px auto;
+  margin: 200px auto;
   width: min(95%, 500px);
   /* hug the content */
   display: flex;
@@ -750,15 +750,16 @@ h1 {
    10) CLUSTER BUBBLES
 -------------------------- */
 .cluster-bubbles {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  place-items: center;
+  gap: 32px;
+  margin-top: 40px;
 }
 
 .cluster {
   position: relative;
+  margin-top: var(--offset, 0);
   animation: bubbleFloat 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
@@ -766,11 +767,22 @@ h1 {
 .cluster-bubble {
   appearance: none;
   position: relative;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  padding: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border: none;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 192, 203, 0.6) 40%, rgba(255, 192, 203, 0.35) 70%, rgba(255, 192, 203, 0.2));
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 192, 203, 0.6) 40%,
+    rgba(255, 192, 203, 0.35) 70%,
+    rgba(255, 192, 203, 0.2)
+  );
   color: #5a004f;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.3rem;
@@ -789,7 +801,11 @@ h1 {
   width: 40%;
   height: 40%;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
   pointer-events: none;
   transform: rotate(-30deg);
 }
@@ -830,12 +846,11 @@ h1 {
 }
 
 @keyframes bubbleFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-12px);
   }
 }
-
-

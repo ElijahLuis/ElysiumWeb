@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.cluster').forEach(cluster => {
     const delay = Math.random() * 6
     cluster.style.setProperty('--delay', `${delay}s`)
+    const offset = Math.floor(Math.random() * 40)
+    cluster.style.setProperty('--offset', `${offset}px`)
   })
 
   document.querySelectorAll('.cluster-bubble').forEach(button => {
