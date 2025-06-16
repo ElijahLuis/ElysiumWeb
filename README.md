@@ -23,6 +23,9 @@ npm run build
 
 The compiled JavaScript will appear in `build/` using the configuration in
 `tsconfig.json`.
+Running this command also renders each realm page to static HTML in
+`client/pages/` using the latest data. If you edit any templates or realm
+details, run `npm run build` again to refresh the pages.
 
 ## Realm metadata
 For a high-level overview of planned pages and directory layout, see [lore/site-map.md](lore/site-map.md).

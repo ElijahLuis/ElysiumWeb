@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "test": "node test/test.js",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
-    "build": "tsc"
+    "build": "tsc && node scripts/renderRealms.mjs"
   },
   "author": "",
   "license": "MIT",
@@ -17,5 +17,9 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }
