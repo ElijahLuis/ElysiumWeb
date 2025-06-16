@@ -5,12 +5,14 @@ export interface RealmTemplateProps {
   realmName: string
   corePlanets: CorePlanet[]
   clusters: EmotionCluster[]
+  icon: string
 }
 
 const RealmTemplate: React.FC<RealmTemplateProps> = ({
   realmName,
   corePlanets,
   clusters,
+  icon,
 }: RealmTemplateProps) => {
   return (
     <div className="realm">
@@ -39,22 +41,10 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           )
         })}
       </div>
-      <section id="feed-section">
-        <h2 className="stellar-heading">Live Feed</h2>
-        <ul id="live-feed" aria-live="polite">
-          <li className="feed-item">
-            <time className="feed-time">10:30 AM</time>
-            <p className="feed-text">Nova just joined the cosmic voyage.</p>
-          </li>
-          <li className="feed-item">
-            <time className="feed-time">10:25 AM</time>
-            <p className="feed-text">Lumen earned the Explorer badge.</p>
-          </li>
-          <li className="feed-item">
-            <time className="feed-time">10:00 AM</time>
-            <p className="feed-text">Stella shared a glowing reflection.</p>
-          </li>
-        </ul>
+      <section id="realm-space" className="realm-section">
+        <div className="realm-icon">{icon}</div>
+        <h2>Realm Space</h2>
+        <button className="select-btn">Visit {realmName} Space</button>
       </section>
     </div>
   )

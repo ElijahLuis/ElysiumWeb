@@ -3,6 +3,7 @@ import path from 'path'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { realms } from '../build/data/realmMetadata.js'
+import { realmIcons } from '../build/data/realmIcons.js'
 import { loadRealmDetail } from '../build/data/realmData.js'
 import RealmTemplateModule from '../build/components/RealmTemplate.js'
 const RealmTemplate = RealmTemplateModule.default || RealmTemplateModule
@@ -18,6 +19,7 @@ for (const key of Object.keys(realms)) {
       realmName: realms[key].realmName,
       corePlanets: detail.corePlanets,
       clusters: detail.clusters,
+      icon: realmIcons[key] || '',
     })
   )
 

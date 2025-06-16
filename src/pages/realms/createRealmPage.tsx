@@ -1,6 +1,7 @@
 import React from 'react'
 import RealmTemplate from '../../components/RealmTemplate'
 import { realms } from '../../data/realmMetadata'
+import { realmIcons } from '../../data/realmIcons'
 import { loadRealmDetail } from '../../data/realmData'
 import { useEffect, useState } from 'react'
 import type { RealmDetail } from '../../data/types'
@@ -19,6 +20,7 @@ const createRealmPage = (realmKey: keyof typeof realms): React.FC => () => {
       realmName={realm.realmName}
       corePlanets={detail.corePlanets}
       clusters={detail.clusters}
+      icon={realmIcons[realmKey]}
     />
   )
 }
