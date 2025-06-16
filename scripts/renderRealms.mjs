@@ -17,6 +17,7 @@ for (const key of Object.keys(realms)) {
     React.createElement(RealmTemplate, {
       realmName: realms[key].realmName,
       corePlanets: detail.corePlanets,
+      clusters: detail.clusters,
     })
   )
 
@@ -39,6 +40,7 @@ for (const key of Object.keys(realms)) {
     <main id="react-root">${body}</main>
     <script src="../scripts/background.js"></script>
     <script src="../scripts/nav.js"></script>
+    <script src="../scripts/clusters.js"></script>
   </body>
 </html>`
 
