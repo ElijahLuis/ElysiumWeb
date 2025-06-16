@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elysium - Explore</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+  </head>
+  <body>
+    <div id="fadeOverlay"></div>
+    <div id="nebula-container">
+      <div class="nebula" id="nebula1"></div>
+      <div class="nebula" id="nebula2"></div>
+    </div>
+    <div id="stars"></div>
+    <nav id="main-nav" aria-label="primary"></nav>
+    <main id="explore-main">
+      <section id="explore-section" class="home-section">
+        <h2 class="stellar-heading">Choose Your Path</h2>
+        <form id="explore-form" class="form" aria-describedby="explore-desc">
+          <p id="explore-desc" class="visually-hidden">
+            Answer these prompts to reveal a realm aligned with your heart.
+          </p>
+          <label for="e1">Energy for adventure</label>
+          <select id="e1" name="e1">
+            <option value="1">1 - Faint</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 - Boundless</option>
+          </select>
+          <label for="e2">Drawn to light or shadow</label>
+          <select id="e2" name="e2">
+            <option value="1">1 - Deep Shadow</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 - Brilliant Light</option>
+          </select>
+          <label for="e3">Need for connection</label>
+          <select id="e3" name="e3">
+            <option value="1">1 - Solitary</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 - Seeking Community</option>
+          </select>
+          <button type="submit" class="submit-btn">Show Realm</button>
+        </form>
+        <div id="explore-result" class="hidden" aria-live="polite"></div>
+      </section>
+    </main>
+    <script src="../scripts/background.js"></script>
+    <script src="../scripts/nav.js"></script>
+    <script src="../scripts/explore.js"></script>
+  </body>
+</html>
