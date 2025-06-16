@@ -8,7 +8,7 @@ export async function loadRealmDetail(
   realmKey: keyof typeof realms,
 ): Promise<RealmDetail> {
   try {
-    const mod = await import(`./realms/${realmKey}`)
+    const mod = await import(`./realms/${realmKey}.js`)
     return { clusters: mod.clusters, corePlanets: mod.corePlanets }
   } catch (err) {
     console.error(`Failed to load realm detail for '${realmKey}':`, err)
