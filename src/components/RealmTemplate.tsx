@@ -31,11 +31,16 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
               </button>
               <div className="cluster-menu" hidden>
                 {planet && <h2>{planet.name}</h2>}
-                <ul>
-                  {cluster.emotions.map(emotion => (
-                    <li key={emotion}>{emotion}</li>
-                  ))}
-                </ul>
+                {cluster.emotions[0] && (
+                  <div className="core-emotion">{cluster.emotions[0]}</div>
+                )}
+                {cluster.emotions.length > 1 && (
+                  <ul>
+                    {cluster.emotions.slice(1).map(emotion => (
+                      <li key={emotion}>{emotion}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           )
