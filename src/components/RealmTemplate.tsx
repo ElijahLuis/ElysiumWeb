@@ -15,7 +15,7 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
   icon,
 }: RealmTemplateProps) => {
   return (
-    <div className="realm">
+    <div className={`realm realm-${realmName.toLowerCase()}`}>
       <h1>{realmName}</h1>
       <div className="cluster-bubbles">
         {clusters.map((cluster, i) => {
@@ -29,10 +29,15 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
               >
                 {cluster.name}
               </button>
-              <div className="cluster-menu" hidden>
+              <div className="cluster-menu">
                 {planet && <h2>{planet.name}</h2>}
                 {cluster.emotions[0] && (
-                  <div className="core-emotion">{cluster.emotions[0]}</div>
+                  <>
+                    <div className="core-emotion">{cluster.emotions[0]}</div>
+                    {cluster.emotions.length > 1 && (
+                      <hr className="cluster-divider" />
+                    )}
+                  </>
                 )}
                 {cluster.emotions.length > 1 && (
                   <ul>

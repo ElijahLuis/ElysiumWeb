@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     cluster.style.setProperty('--offset', `${offset}px`)
   })
 
-  document.querySelectorAll('.cluster-bubble').forEach(button => {
-    const menu = button.nextElementSibling
+  document.querySelectorAll('.cluster').forEach(cluster => {
+    const button = cluster.querySelector('.cluster-bubble')
+    if (!button) return
     button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true'
-      button.setAttribute('aria-expanded', String(!expanded))
-      if (menu) menu.hidden = expanded
+      const isOpen = cluster.classList.toggle('open')
+      button.setAttribute('aria-expanded', String(isOpen))
     })
   })
 })

@@ -748,7 +748,18 @@ h1 {
 
 /* --------------------------
    10) CLUSTER BUBBLES
--------------------------- */
+ -------------------------- */
+/* realm bubble color variables */
+.realm-abyss { --bubble-color: #d6bfff; --bubble-text: #1f0640; }
+.realm-cavern { --bubble-color: #c6efe9; --bubble-text: #002f2a; }
+.realm-dross { --bubble-color: #e4d5cd; --bubble-text: #301e19; }
+.realm-ember { --bubble-color: #f1c4b4; --bubble-text: #791a08; }
+.realm-glare { --bubble-color: #ffe5b0; --bubble-text: #704e00; }
+.realm-languish { --bubble-color: #c1d8f3; --bubble-text: #0b3567; }
+.realm-mist { --bubble-color: #e6ecf0; --bubble-text: #4d5a61; }
+.realm-oasis { --bubble-color: #c4f7f3; --bubble-text: #0f4a48; }
+.realm-trace { --bubble-color: #f5c6da; --bubble-text: #4f062a; }
+.realm-zenith { --bubble-color: #fff7c9; --bubble-text: #8c6c22; }
 .cluster-bubbles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -778,19 +789,17 @@ h1 {
   border: none;
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 192, 203, 0.6) 40%,
-    rgba(255, 192, 203, 0.35) 70%,
-    rgba(255, 192, 203, 0.2)
+    #ffffff,
+    var(--bubble-color) 60%
   );
-  color: #5a004f;
+  color: var(--bubble-text);
   font-family: 'Orbitron', sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   word-break: break-word;
   cursor: pointer;
   box-shadow:
     inset 0 0 8px rgba(255, 255, 255, 0.7),
-    0 0 12px rgba(255, 136, 194, 0.6);
+    0 0 12px var(--bubble-color);
   transition: transform 0.2s ease;
 }
 
@@ -816,11 +825,19 @@ h1 {
   transform: scale(1.1);
 }
 
+.cluster.open .cluster-bubble,
+.cluster-bubble[aria-expanded='true'] {
+  transform: scale(1.15);
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 16px var(--bubble-color);
+}
+
 .cluster-menu {
   position: absolute;
   top: 110%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -8px);
   min-width: 180px;
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -829,6 +846,21 @@ h1 {
   color: #ffeeee;
   text-align: center;
   z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cluster.open .cluster-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.cluster-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 6px 0;
 }
 
 .cluster-menu h2 {
