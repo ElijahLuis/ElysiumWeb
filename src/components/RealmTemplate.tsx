@@ -39,6 +39,23 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           )
         })}
       </div>
+      <section id="feed-section">
+        <h2 className="stellar-heading">Live Feed</h2>
+        <ul id="live-feed" aria-live="polite">
+          <li className="feed-item">
+            <time className="feed-time">10:30 AM</time>
+            <p className="feed-text">Nova just joined the cosmic voyage.</p>
+          </li>
+          <li className="feed-item">
+            <time className="feed-time">10:25 AM</time>
+            <p className="feed-text">Lumen earned the Explorer badge.</p>
+          </li>
+          <li className="feed-item">
+            <time className="feed-time">10:00 AM</time>
+            <p className="feed-text">Stella shared a glowing reflection.</p>
+          </li>
+        </ul>
+      </section>
     </div>
   )
 }
