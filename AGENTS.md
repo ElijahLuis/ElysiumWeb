@@ -19,6 +19,7 @@ While Codex and other agents are welcome to assist, here are a few things to kee
 - Everything is emotionally themed. Components should reflect the **feeling** they represent.
 - Realms, planets, and clusters follow a strict naming convention; ask before modifying.
   The canonical list lives in `src/data/realmMetadata.ts`.
+  A full design schema is available at `client/lore/realmsFull.ts`.
 
 ## 🤝 Collaboration Vibe
 - If you're here, you're part of Elysium.
