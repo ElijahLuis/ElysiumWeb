@@ -763,6 +763,7 @@ h1 {
 .cluster-bubbles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 240px;
   place-items: center;
   gap: 32px;
   margin-top: 40px;
@@ -770,7 +771,7 @@ h1 {
 
 .cluster {
   position: relative;
-  margin-top: var(--offset, 0);
+  transform: translateY(var(--start-offset, 0));
   animation: bubbleFloat 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
@@ -886,9 +887,9 @@ h1 {
 @keyframes bubbleFloat {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(var(--start-offset, 0));
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(calc(var(--start-offset, 0) - 12px));
   }
 }

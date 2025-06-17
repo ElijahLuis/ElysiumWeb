@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.cluster').forEach(cluster => {
-    const delay = Math.random() * 6
+    const delay = -(Math.random() * 6)
     cluster.style.setProperty('--delay', `${delay}s`)
-    const offset = Math.floor(Math.random() * 40)
-    cluster.style.setProperty('--offset', `${offset}px`)
+    const start = Math.floor(Math.random() * 80) - 40
+    cluster.style.setProperty('--start-offset', `${start}px`)
   })
 
   document.querySelectorAll('.cluster').forEach(cluster => {
