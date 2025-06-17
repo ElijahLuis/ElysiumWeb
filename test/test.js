@@ -26,11 +26,22 @@ function fetch(pathname) {
 
 async function run() {
   // compile TypeScript sources for tests
-  spawnSync('npx', ['tsc', '--module', 'commonjs', '--outDir', 'build_test'], {
-    stdio: 'inherit',
-  })
+  const compile = spawnSync(
+    'npx',
+    ['tsc', '--module', 'commonjs', '--outDir', 'build_test'],
+    {
+      stdio: 'inherit',
+    },
+  )
+  if (compile.status !== 0) {
+    throw new Error('TypeScript compilation failed')
+  }
+
   // run the full build and ensure output exists
-  spawnSync('npm', ['run', 'build'], { stdio: 'inherit' })
+  const build = spawnSync('npm', ['run', 'build'], { stdio: 'inherit' })
+  if (build.status !== 0) {
+    throw new Error('npm run build failed')
+  }
   const buildOutput = path.join(__dirname, '..', 'build', 'data', 'realmData.js')
   assert.ok(fs.existsSync(buildOutput), 'build should create compiled files')
   const serverPath = path.join(__dirname, '..', 'server', 'server.js');
