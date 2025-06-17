@@ -6,6 +6,7 @@ export interface RealmTemplateProps {
   corePlanets: CorePlanet[]
   clusters: EmotionCluster[]
   icon: string
+  color: string
 }
 
 const RealmTemplate: React.FC<RealmTemplateProps> = ({
@@ -13,9 +14,13 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
   corePlanets,
   clusters,
   icon,
+  color,
 }: RealmTemplateProps) => {
   return (
-    <div className={`realm realm-${realmName.toLowerCase()}`}>
+    <div
+      className={`realm realm-${realmName.toLowerCase()}`}
+      style={{ '--realm-color': color } as React.CSSProperties}
+    >
       <h1>{realmName}</h1>
       <section id="realm-space" className="realm-section">
         <div className="cluster-bubbles">

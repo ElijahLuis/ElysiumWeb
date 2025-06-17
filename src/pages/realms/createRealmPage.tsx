@@ -6,23 +6,26 @@ import { loadRealmDetail } from '../../data/realmData'
 import { useEffect, useState } from 'react'
 import type { RealmDetail } from '../../data/types'
 
-const createRealmPage = (realmKey: keyof typeof realms): React.FC => () => {
-  const realm = realms[realmKey]
-  const [detail, setDetail] = useState<RealmDetail | null>(null)
+const createRealmPage =
+  (realmKey: keyof typeof realms): React.FC =>
+  () => {
+    const realm = realms[realmKey]
+    const [detail, setDetail] = useState<RealmDetail | null>(null)
 
-  useEffect(() => {
-    loadRealmDetail(realmKey).then(d => setDetail(d))
-  }, [])
+    useEffect(() => {
+      loadRealmDetail(realmKey).then(d => setDetail(d))
+    }, [])
 
-  if (!detail) return null
-  return (
-    <RealmTemplate
-      realmName={realm.realmName}
-      corePlanets={detail.corePlanets}
-      clusters={detail.clusters}
-      icon={realmIcons[realmKey]}
-    />
-  )
-}
+    if (!detail) return null
+    return (
+      <RealmTemplate
+        realmName={realm.realmName}
+        corePlanets={detail.corePlanets}
+        clusters={detail.clusters}
+        icon={realmIcons[realmKey]}
+        color={realm.color}
+      />
+    )
+  }
 
 export default createRealmPage
