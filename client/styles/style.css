@@ -699,7 +699,7 @@ h1 {
   align-items: center;
   text-align: center;
   gap: 32px;
-  padding: 50px 30px;
+  padding: 50px 30px calc(50px + var(--divider-shift, 0));
   color: #ffeeee;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -765,8 +765,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  transform: translateY(var(--divider-shift, 0));
-  transition: transform 0.4s ease;
+  margin-top: var(--divider-shift, 0);
+  transition: margin-top 0.4s ease;
 }
 
 #elysium-main .elysium-article {
@@ -796,6 +796,11 @@ h1 {
   color: #ffeeee;
   text-align: center;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+}
+
+.elysium-section ul {
+  list-style: none;
+  padding-left: 0;
 }
 
 #elysium-main table {
@@ -857,6 +862,41 @@ h1 {
 .realm-zenith {
   --bubble-color: #ffeba3;
   --bubble-text: #b68625;
+}
+
+.realm-name {
+  font-weight: bold;
+}
+
+.realm-abyss.realm-name {
+  color: #bf9dff;
+}
+.realm-cavern.realm-name {
+  color: #9ef2e3;
+}
+.realm-dross.realm-name {
+  color: #f0c9b3;
+}
+.realm-ember.realm-name {
+  color: #ffb194;
+}
+.realm-glare.realm-name {
+  color: #ffd96a;
+}
+.realm-languish.realm-name {
+  color: #86bfff;
+}
+.realm-mist.realm-name {
+  color: #cfe8f8;
+}
+.realm-oasis.realm-name {
+  color: #76ffe5;
+}
+.realm-trace.realm-name {
+  color: #ffa3c0;
+}
+.realm-zenith.realm-name {
+  color: #ffeba3;
 }
 .cluster-bubbles {
   display: grid;
@@ -974,10 +1014,9 @@ h1 {
 .realm-divider {
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 30px 0;
+  margin: 30px 0 var(--divider-shift, 0);
   width: 90%;
-  transform: translateY(var(--divider-shift, 0));
-  transition: transform 0.4s ease;
+  transition: margin-bottom 0.4s ease;
 }
 
 .cluster-menu h2 {
