@@ -139,6 +139,9 @@ h1 {
 .realm > h1 {
   margin-top: 80px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: boxFloat 14s ease-in-out infinite;
 }
 
 .stellar-heading {
