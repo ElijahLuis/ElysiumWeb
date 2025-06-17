@@ -4,14 +4,14 @@ export interface RealmMeta {
 }
 
 export const realms: Record<string, RealmMeta> = {
-  abyss: { realmName: 'Abyss', color: '#d6bfff' },
-  cavern: { realmName: 'Cavern', color: '#c6efe9' },
-  dross: { realmName: 'Dross', color: '#e4d5cd' },
-  ember: { realmName: 'Ember', color: '#f1c4b4' },
-  glare: { realmName: 'Glare', color: '#ffe5b0' },
-  languish: { realmName: 'Languish', color: '#c1d8f3' },
-  mist: { realmName: 'Mist', color: '#e6ecf0' },
-  oasis: { realmName: 'Oasis', color: '#c4f7f3' },
-  trace: { realmName: 'Trace', color: '#f5c6da' },
-  zenith: { realmName: 'Zenith', color: '#fff7c9' },
+  abyss: { realmName: 'Abyss', color: '#bf9dff' },
+  cavern: { realmName: 'Cavern', color: '#9ef2e3' },
+  dross: { realmName: 'Dross', color: '#f0c9b3' },
+  ember: { realmName: 'Ember', color: '#ffb194' },
+  glare: { realmName: 'Glare', color: '#ffd96a' },
+  languish: { realmName: 'Languish', color: '#86bfff' },
+  mist: { realmName: 'Mist', color: '#cfe8f8' },
+  oasis: { realmName: 'Oasis', color: '#76ffe5' },
+  trace: { realmName: 'Trace', color: '#ffa3c0' },
+  zenith: { realmName: 'Zenith', color: '#ffeba3' },
 }

@@ -752,44 +752,44 @@ h1 {
  -------------------------- */
 /* realm bubble color variables */
 .realm-abyss {
-  --bubble-color: #d6bfff;
-  --bubble-text: #1f0640;
+  --bubble-color: #bf9dff;
+  --bubble-text: #23034a;
 }
 .realm-cavern {
-  --bubble-color: #c6efe9;
-  --bubble-text: #002f2a;
+  --bubble-color: #9ef2e3;
+  --bubble-text: #004d44;
 }
 .realm-dross {
-  --bubble-color: #e4d5cd;
-  --bubble-text: #301e19;
+  --bubble-color: #f0c9b3;
+  --bubble-text: #5a2f1f;
 }
 .realm-ember {
-  --bubble-color: #f1c4b4;
-  --bubble-text: #791a08;
+  --bubble-color: #ffb194;
+  --bubble-text: #9e290f;
 }
 .realm-glare {
-  --bubble-color: #ffe5b0;
-  --bubble-text: #704e00;
+  --bubble-color: #ffd96a;
+  --bubble-text: #a06f00;
 }
 .realm-languish {
-  --bubble-color: #c1d8f3;
-  --bubble-text: #0b3567;
+  --bubble-color: #86bfff;
+  --bubble-text: #0d4d98;
 }
 .realm-mist {
-  --bubble-color: #e6ecf0;
-  --bubble-text: #4d5a61;
+  --bubble-color: #cfe8f8;
+  --bubble-text: #61757d;
 }
 .realm-oasis {
-  --bubble-color: #c4f7f3;
-  --bubble-text: #0f4a48;
+  --bubble-color: #76ffe5;
+  --bubble-text: #157f79;
 }
 .realm-trace {
-  --bubble-color: #f5c6da;
-  --bubble-text: #4f062a;
+  --bubble-color: #ffa3c0;
+  --bubble-text: #7a143d;
 }
 .realm-zenith {
-  --bubble-color: #fff7c9;
-  --bubble-text: #8c6c22;
+  --bubble-color: #ffeba3;
+  --bubble-text: #b68625;
 }
 .cluster-bubbles {
   display: grid;

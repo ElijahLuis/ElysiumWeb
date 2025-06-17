@@ -89,15 +89,28 @@ body.universe-page {
 }
 
 .planet-inner::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 85%;
-  height: 12%;
+  width: 86%;
+  height: 14%;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%);
   transform: translate(-50%, -50%) rotateX(65deg);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.planet-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, transparent, var(--glow-color));
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  animation: colorDrift 20s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -340,44 +353,44 @@ body.universe-page {
 }
 
 #abyss {
-  --bg-color: #1f0640; /* darker backdrop */
-  --glow-color: #d6bfff; /* brighter glow */
+  --bg-color: #23034a;
+  --glow-color: #bf9dff;
 }
 #cavern {
-  --bg-color: #002f2a;
-  --glow-color: #c6efe9;
+  --bg-color: #004d44;
+  --glow-color: #9ef2e3;
 }
 #dross {
-  --bg-color: #301e19;
-  --glow-color: #e4d5cd;
+  --bg-color: #5a2f1f;
+  --glow-color: #f0c9b3;
 }
 #ember {
-  --bg-color: #791a08;
-  --glow-color: #f1c4b4;
+  --bg-color: #9e290f;
+  --glow-color: #ffb194;
 }
 #glare {
-  --bg-color: #704e00;
-  --glow-color: #ffe5b0;
+  --bg-color: #a06f00;
+  --glow-color: #ffd96a;
 }
 #languish {
-  --bg-color: #0b3567;
-  --glow-color: #c1d8f3;
+  --bg-color: #0d4d98;
+  --glow-color: #86bfff;
 }
 #mist {
-  --bg-color: #4d5a61;
-  --glow-color: #e6ecf0;
+  --bg-color: #61757d;
+  --glow-color: #cfe8f8;
 }
 #oasis {
-  --bg-color: #0f4a48;
-  --glow-color: #c4f7f3;
+  --bg-color: #157f79;
+  --glow-color: #76ffe5;
 }
 #trace {
-  --bg-color: #4f062a;
-  --glow-color: #f5c6da;
+  --bg-color: #7a143d;
+  --glow-color: #ffa3c0;
 }
 #zenith {
-  --bg-color: #8c6c22;
-  --glow-color: #fff7c9;
+  --bg-color: #b68625;
+  --glow-color: #ffeba3;
 }
 
 @keyframes planetSpin {
@@ -396,5 +409,17 @@ body.universe-page {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes colorDrift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(60deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
   }
 }
