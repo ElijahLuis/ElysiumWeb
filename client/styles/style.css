@@ -793,12 +793,13 @@ h1 {
 }
 .cluster-bubbles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 240px));
   grid-auto-rows: 320px;
   place-items: center;
   gap: 32px;
   margin: 0 auto 20px;
   width: 100%;
+  justify-content: center;
 }
 
 .cluster {
@@ -807,6 +808,7 @@ h1 {
   transform: translate(var(--shift-x, 0), var(--start-offset, 0));
   animation: bubbleFloat 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  animation-fill-mode: both;
 }
 .cluster.open {
   z-index: 3;
@@ -903,6 +905,8 @@ h1 {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin: 30px 0;
   width: 90%;
+  transform: translateY(var(--divider-shift, 0));
+  transition: transform 0.4s ease;
 }
 
 .cluster-menu h2 {
