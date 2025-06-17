@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     zenith: { realmName: 'Zenith' },
   };
 
-  const keys = Object.keys(realms);
-  const step = 4 / keys.length; // map range 1-5 onto realm indices
 
   function escapeHTML(str) {
     const map = {
@@ -36,13 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const values = Array.from(form.querySelectorAll('select')).map(sel =>
-      parseInt(sel.value, 10),
-    );
-    const avg = values.reduce((a, b) => a + b, 0) / values.length;
-    const index = Math.min(keys.length - 1, Math.floor((avg - 1) / step));
-    const key = keys[index];
-    const name = escapeHTML(realms[key].realmName);
+    const chosen = form.querySelector('input[name="realm"]:checked');
+    if (!chosen) return;
+    const key = chosen.value;
+    const name = escapeHTML(realms[key]?.realmName || key);
     result.innerHTML = `You feel the pull of <strong>${name}</strong>.`;
     result.classList.remove('hidden');
     form.classList.add('hidden');
