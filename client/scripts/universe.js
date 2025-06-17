@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const planets = Array.from(ring.querySelectorAll('.planet'))
 
-  planets.forEach(p => {
+  planets.forEach((p) => {
     const inner = document.createElement('span')
     inner.className = 'planet-inner'
     inner.textContent = p.textContent || ''
@@ -19,6 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const selectButton = document.getElementById('select-button')
   const overlay = document.getElementById('realm-overlay')
   let yesBtn, noBtn
+  let lastFocus
+
+  // keep focus cycling within the overlay when it is active
+  function trapFocus(e) {
+    if (!overlay || !overlay.classList.contains('active')) return
+    if (e.key !== 'Tab') return
+
+    const focusable = overlay.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    )
+    if (focusable.length === 0) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      }
+    } else if (document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
+  }
 
   const totalPlanets = planets.length
   const slice = 360 / totalPlanets
@@ -69,11 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400)
     if (yesBtn) yesBtn.removeEventListener('click', confirmTravel)
     if (noBtn) noBtn.removeEventListener('click', revertSelection)
+    // release focus trap and return focus to the element that opened the dialog
+    overlay.removeEventListener('keydown', trapFocus)
+    overlay.removeAttribute('tabindex')
+    if (lastFocus && lastFocus.focus) lastFocus.focus()
   }
 
   function revertSelection() {
     hideOverlay()
-    planets.forEach(p => {
+    planets.forEach((p) => {
       p.classList.remove('faded', 'focused')
     })
     const active = planets[currentIndex]
@@ -83,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const newScale = scale / 1.2
       active.style.transform = active.style.transform.replace(
         /scale\([^)]+\)/,
-        `scale(${newScale})`
+        `scale(${newScale})`,
       )
     }
     if (selectButton) {
@@ -142,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const list = document.createElement('ul')
     list.className = 'overlay-features'
-    data.features.forEach(f => {
+    data.features.forEach((f) => {
       const li = document.createElement('li')
       li.textContent = f
       list.appendChild(li)
@@ -178,6 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     overlay.classList.remove('hidden')
     overlay.classList.add('active')
+    // make the overlay focusable and store the element that was focused previously
+    overlay.setAttribute('tabindex', '-1')
+    lastFocus = document.activeElement
+    // trap focus inside the overlay so keyboard users stay within the dialog
+    overlay.addEventListener('keydown', trapFocus)
 
     setTimeout(() => icon.classList.add('show'), 50)
     setTimeout(() => list.classList.add('show'), 250)
@@ -185,6 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     yesBtn.addEventListener('click', confirmTravel)
     noBtn.addEventListener('click', revertSelection)
+    // direct keyboard focus to the first actionable element in the dialog
+    yesBtn.focus()
   }
 
   if (selectButton) {
@@ -202,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newScale = scale * 1.2
             p.style.transform = p.style.transform.replace(
               /scale\([^)]+\)/,
-              `scale(${newScale})`
+              `scale(${newScale})`,
             )
           }
           p.classList.add('focused')
