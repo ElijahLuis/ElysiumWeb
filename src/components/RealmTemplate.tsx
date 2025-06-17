@@ -54,9 +54,11 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
           })}
         </div>
         <hr className="realm-divider" />
-        <div className="realm-icon">{icon}</div>
-        <h2>Realm Space</h2>
-        <button className="select-btn">Visit {realmName} Space</button>
+        <div className="realm-bottom">
+          <div className="realm-icon">{icon}</div>
+          <h2>Realm Space</h2>
+          <button className="select-btn">Visit {realmName} Space</button>
+        </div>
       </section>
     </div>
   )

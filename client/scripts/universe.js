@@ -4,12 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const planets = Array.from(ring.querySelectorAll('.planet'))
 
+  const overlayInfo = window.overlayData || {}
+
   planets.forEach((p) => {
+    const name = p.textContent || ''
+    const data = overlayInfo[p.id] || {}
+
     const inner = document.createElement('span')
     inner.className = 'planet-inner'
-    inner.textContent = p.textContent || ''
+
+    const label = document.createElement('span')
+    label.className = 'planet-label'
+    label.textContent = name
+
+    const icon = document.createElement('span')
+    icon.className = 'planet-icon'
+    if (data.icon) icon.textContent = data.icon
+
+    inner.appendChild(label)
+    inner.appendChild(icon)
+
     const delay = -Math.random() * 8
     inner.style.animationDelay = `${delay}s, ${delay}s`
+
     p.textContent = ''
     p.appendChild(inner)
   })

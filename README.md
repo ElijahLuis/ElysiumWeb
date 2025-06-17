@@ -36,5 +36,7 @@ Emotion clusters for each realm live in `src/data/clusters/`.
 Their matching core planets are listed in `src/data/planets/`. 
 The shared interfaces `EmotionCluster` and `CorePlanet` reside in `src/data/types.ts` so these structures stay consistent.
 
+For a holistic look at every realm, cluster, and planet, see the full design schema in `client/lore/realmsFull.ts`.
+
 ## Exploring the Universe demo
 After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. More to be added in the future. 
