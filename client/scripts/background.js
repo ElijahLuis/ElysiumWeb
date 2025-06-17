@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!starsContainer) return
 
   const overlay = document.getElementById('fadeOverlay')
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  ).matches
 
   // Star generation
   function generateStars() {
@@ -38,31 +41,34 @@ document.addEventListener('DOMContentLoaded', () => {
       () => {
         initStars()
       },
-      { once: true }
+      { once: true },
     )
   } else {
     initStars()
   }
 
-  // Parallax effect
+  // Parallax effect respects reduced-motion preference
   let targetX = 0,
     targetY = 0,
     currentX = 0,
     currentY = 0
   const easeFactor = 0.1
 
-  document.addEventListener('mousemove', e => {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
-  })
+  if (!reduceMotion) {
+    document.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      targetX = (e.clientX - centerX) / centerX
+      targetY = (e.clientY - centerY) / centerY
+    })
 
-  function animateParallax() {
-    currentX += (targetX - currentX) * easeFactor
-    currentY += (targetY - currentY) * easeFactor
-    starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
-    requestAnimationFrame(animateParallax)
+    function animateParallax() {
+      currentX += (targetX - currentX) * easeFactor
+      currentY += (targetY - currentY) * easeFactor
+      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
+      requestAnimationFrame(animateParallax)
+    }
+
+    animateParallax()
   }
-  animateParallax()
 })
