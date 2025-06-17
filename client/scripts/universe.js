@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!ring) return
 
   const planets = Array.from(ring.querySelectorAll('.planet'))
-  let currentInner = null
-  let dragStartX = 0
-  let dragStartDeg = 0
 
   planets.forEach(p => {
     const inner = document.createElement('span')
@@ -15,32 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     inner.style.animationDelay = `${delay}s, ${delay}s`
     p.textContent = ''
     p.appendChild(inner)
-
-    inner.addEventListener('mousedown', e => {
-      currentInner = inner
-      dragStartX = e.clientX
-      const match = inner.style.transform.match(/rotateY\(([^)]+)deg\)/)
-      dragStartDeg = match ? parseFloat(match[1]) : 0
-      inner.classList.add('dragging')
-      inner.style.animationPlayState = 'paused'
-    })
   })
 
-  document.addEventListener('mousemove', e => {
-    if (!currentInner) return
-    const delta = e.clientX - dragStartX
-    const deg = dragStartDeg + delta
-    currentInner.style.transform = `rotateY(${deg}deg)`
-  })
-
-  document.addEventListener('mouseup', () => {
-    if (!currentInner) return
-    const match = currentInner.style.transform.match(/rotateY\(([^)]+)deg\)/)
-    dragStartDeg = match ? parseFloat(match[1]) : 0
-    currentInner.classList.remove('dragging')
-    currentInner.style.animationPlayState = 'running'
-    currentInner = null
-  })
   const leftArrow = document.getElementById('arrow-left')
   const rightArrow = document.getElementById('arrow-right')
   const selectButton = document.getElementById('select-button')
