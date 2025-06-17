@@ -137,7 +137,7 @@ h1 {
 
 /* Style realm page headings */
 .realm > h1 {
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -680,16 +680,14 @@ h1 {
 -------------------------- */
 
 #realm-space {
-  margin: 120px auto;
-  width: min(95%, 500px);
-  /* hug the content */
+  margin: 80px auto 120px;
+  width: min(95%, 900px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 20px;
-  padding: 40px 20px;
+  gap: 32px;
+  padding: 50px 30px;
   color: #ffeeee;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -697,6 +695,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  animation: boxFloat 16s ease-in-out infinite;
 }
 
 #realm-space .realm-icon {
@@ -796,8 +795,8 @@ h1 {
   grid-auto-rows: 300px;
   place-items: center;
   gap: 32px;
-  margin: 40px auto 0;
-  max-width: 900px;
+  margin: 0 auto 20px;
+  width: 100%;
 }
 
 .cluster {
@@ -897,6 +896,13 @@ h1 {
   margin: 6px 0;
 }
 
+.realm-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 30px 0;
+  width: 80%;
+}
+
 .cluster-menu h2 {
   margin: 0 0 8px;
   font-size: 1rem;
@@ -924,5 +930,15 @@ h1 {
   }
   50% {
     transform: translate(var(--shift-x, 0), calc(var(--start-offset, 0) - 12px));
+  }
+}
+
+@keyframes boxFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

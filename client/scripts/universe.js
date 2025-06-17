@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const inner = document.createElement('span')
     inner.className = 'planet-inner'
     inner.textContent = p.textContent || ''
+    const delay = -Math.random() * 8
+    inner.style.animationDelay = `${delay}s, ${delay}s`
     p.textContent = ''
     p.appendChild(inner)
   })

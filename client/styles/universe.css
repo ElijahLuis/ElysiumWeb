@@ -79,6 +79,7 @@ body.universe-page {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  animation-fill-mode: both;
   animation:
     planetSpin 40s linear infinite,
     planetFloat 8s ease-in-out infinite;
