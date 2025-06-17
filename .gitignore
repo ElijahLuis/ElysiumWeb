@@ -23,6 +23,7 @@ coverage/
 
 # TypeScript build output
 build/
+build_test/
 
 # IDE settings
 .vscode/
