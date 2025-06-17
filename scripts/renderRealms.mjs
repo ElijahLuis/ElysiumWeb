@@ -20,6 +20,7 @@ for (const key of Object.keys(realms)) {
       corePlanets: detail.corePlanets,
       clusters: detail.clusters,
       icon: realmIcons[key] || '',
+      color: realms[key].color,
     })
   )
 

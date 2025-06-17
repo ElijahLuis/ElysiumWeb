@@ -137,8 +137,11 @@ h1 {
 
 /* Style realm page headings */
 .realm > h1 {
-  margin-top: 140px;
+  margin-top: 80px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: boxFloat 14s ease-in-out infinite;
 }
 
 .stellar-heading {
@@ -680,16 +683,14 @@ h1 {
 -------------------------- */
 
 #realm-space {
-  margin: 200px auto;
-  width: min(95%, 500px);
-  /* hug the content */
+  margin: 80px auto 120px;
+  width: min(95%, 900px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 20px;
-  padding: 40px 20px;
+  gap: 32px;
+  padding: 50px 30px;
   color: #ffeeee;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -697,6 +698,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  animation: boxFloat 16s ease-in-out infinite;
 }
 
 #realm-space .realm-icon {
@@ -711,6 +713,8 @@ h1 {
   font-size: 1.5rem;
   letter-spacing: 3px;
   text-transform: uppercase;
+  color: var(--realm-color, #ffeeee);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
 #realm-space .select-btn {
@@ -750,29 +754,67 @@ h1 {
    10) CLUSTER BUBBLES
  -------------------------- */
 /* realm bubble color variables */
-.realm-abyss { --bubble-color: #d6bfff; --bubble-text: #1f0640; }
-.realm-cavern { --bubble-color: #c6efe9; --bubble-text: #002f2a; }
-.realm-dross { --bubble-color: #e4d5cd; --bubble-text: #301e19; }
-.realm-ember { --bubble-color: #f1c4b4; --bubble-text: #791a08; }
-.realm-glare { --bubble-color: #ffe5b0; --bubble-text: #704e00; }
-.realm-languish { --bubble-color: #c1d8f3; --bubble-text: #0b3567; }
-.realm-mist { --bubble-color: #e6ecf0; --bubble-text: #4d5a61; }
-.realm-oasis { --bubble-color: #c4f7f3; --bubble-text: #0f4a48; }
-.realm-trace { --bubble-color: #f5c6da; --bubble-text: #4f062a; }
-.realm-zenith { --bubble-color: #fff7c9; --bubble-text: #8c6c22; }
+.realm-abyss {
+  --bubble-color: #bf9dff;
+  --bubble-text: #23034a;
+}
+.realm-cavern {
+  --bubble-color: #9ef2e3;
+  --bubble-text: #004d44;
+}
+.realm-dross {
+  --bubble-color: #f0c9b3;
+  --bubble-text: #5a2f1f;
+}
+.realm-ember {
+  --bubble-color: #ffb194;
+  --bubble-text: #9e290f;
+}
+.realm-glare {
+  --bubble-color: #ffd96a;
+  --bubble-text: #a06f00;
+}
+.realm-languish {
+  --bubble-color: #86bfff;
+  --bubble-text: #0d4d98;
+}
+.realm-mist {
+  --bubble-color: #cfe8f8;
+  --bubble-text: #61757d;
+}
+.realm-oasis {
+  --bubble-color: #76ffe5;
+  --bubble-text: #157f79;
+}
+.realm-trace {
+  --bubble-color: #ffa3c0;
+  --bubble-text: #7a143d;
+}
+.realm-zenith {
+  --bubble-color: #ffeba3;
+  --bubble-text: #b68625;
+}
 .cluster-bubbles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 240px));
+  grid-auto-rows: 320px;
   place-items: center;
   gap: 32px;
-  margin-top: 40px;
+  margin: 0 auto 20px;
+  width: 100%;
+  justify-content: center;
 }
 
 .cluster {
   position: relative;
-  margin-top: var(--offset, 0);
+  margin-top: var(--layout-offset, 0);
+  transform: translate(var(--shift-x, 0), var(--start-offset, 0));
   animation: bubbleFloat 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  animation-fill-mode: both;
+}
+.cluster.open {
+  z-index: 3;
 }
 
 .cluster-bubble {
@@ -787,11 +829,7 @@ h1 {
   justify-content: center;
   text-align: center;
   border: none;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #ffffff,
-    var(--bubble-color) 60%
-  );
+  background: radial-gradient(circle at 30% 30%, #ffffff, var(--bubble-color) 60%);
   color: var(--bubble-text);
   font-family: 'Orbitron', sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
@@ -848,7 +886,9 @@ h1 {
   z-index: 2;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cluster.open .cluster-menu {
@@ -863,9 +903,21 @@ h1 {
   margin: 6px 0;
 }
 
+.realm-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 30px 0;
+  width: 90%;
+  transform: translateY(var(--divider-shift, 0));
+  transition: transform 0.4s ease;
+}
+
 .cluster-menu h2 {
   margin: 0 0 8px;
   font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--realm-color, #ffeeee);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 
 .cluster-menu ul {
@@ -886,9 +938,19 @@ h1 {
 @keyframes bubbleFloat {
   0%,
   100% {
+    transform: translate(var(--shift-x, 0), var(--start-offset, 0));
+  }
+  50% {
+    transform: translate(var(--shift-x, 0), calc(var(--start-offset, 0) - 12px));
+  }
+}
+
+@keyframes boxFloat {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
   }
 }

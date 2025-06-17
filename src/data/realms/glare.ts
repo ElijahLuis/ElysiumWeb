@@ -8,6 +8,7 @@ export const corePlanets = planetData
 
 const realm: Realm = {
   realmName: realms['glare'].realmName,
+  color: realms['glare'].color,
   clusters,
   corePlanets,
 }
