@@ -72,6 +72,18 @@ body.universe-page {
   box-shadow: inset -20px -20px 30px rgba(0, 0, 0, 0.6);
 }
 
+.planet-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation:
+    planetSpin 40s linear infinite,
+    planetFloat 8s ease-in-out infinite;
+}
+
 .arrow {
   position: static;
   width: 56px;
@@ -345,4 +357,23 @@ body.universe-page {
 #zenith {
   --bg-color: #8c6c22;
   --glow-color: #fff7c9;
+}
+
+@keyframes planetSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes planetFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

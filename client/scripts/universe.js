@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!ring) return
 
   const planets = Array.from(ring.querySelectorAll('.planet'))
+  planets.forEach(p => {
+    const inner = document.createElement('span')
+    inner.className = 'planet-inner'
+    inner.textContent = p.textContent || ''
+    p.textContent = ''
+    p.appendChild(inner)
+  })
   const leftArrow = document.getElementById('arrow-left')
   const rightArrow = document.getElementById('arrow-right')
   const selectButton = document.getElementById('select-button')

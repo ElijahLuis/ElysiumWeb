@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     cluster.style.setProperty('--start-offset', `${start}px`)
     const layout = Math.floor(Math.random() * 60) - 30
     cluster.style.setProperty('--layout-offset', `${layout}px`)
+    const shift = Math.floor(Math.random() * 60) - 30
+    cluster.style.setProperty('--shift-x', `${shift}px`)
   })
 
   document.querySelectorAll('.cluster').forEach(cluster => {
