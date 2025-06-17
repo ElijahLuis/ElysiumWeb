@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     cluster.style.setProperty('--delay', `${delay}s`)
     const start = Math.floor(Math.random() * 80) - 40
     cluster.style.setProperty('--start-offset', `${start}px`)
+    const layout = Math.floor(Math.random() * 60) - 30
+    cluster.style.setProperty('--layout-offset', `${layout}px`)
   })
 
   document.querySelectorAll('.cluster').forEach(cluster => {

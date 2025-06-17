@@ -137,7 +137,7 @@ h1 {
 
 /* Style realm page headings */
 .realm > h1 {
-  margin-top: 140px;
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -680,7 +680,7 @@ h1 {
 -------------------------- */
 
 #realm-space {
-  margin: 200px auto;
+  margin: 120px auto;
   width: min(95%, 500px);
   /* hug the content */
   display: flex;
@@ -750,20 +750,50 @@ h1 {
    10) CLUSTER BUBBLES
  -------------------------- */
 /* realm bubble color variables */
-.realm-abyss { --bubble-color: #d6bfff; --bubble-text: #1f0640; }
-.realm-cavern { --bubble-color: #c6efe9; --bubble-text: #002f2a; }
-.realm-dross { --bubble-color: #e4d5cd; --bubble-text: #301e19; }
-.realm-ember { --bubble-color: #f1c4b4; --bubble-text: #791a08; }
-.realm-glare { --bubble-color: #ffe5b0; --bubble-text: #704e00; }
-.realm-languish { --bubble-color: #c1d8f3; --bubble-text: #0b3567; }
-.realm-mist { --bubble-color: #e6ecf0; --bubble-text: #4d5a61; }
-.realm-oasis { --bubble-color: #c4f7f3; --bubble-text: #0f4a48; }
-.realm-trace { --bubble-color: #f5c6da; --bubble-text: #4f062a; }
-.realm-zenith { --bubble-color: #fff7c9; --bubble-text: #8c6c22; }
+.realm-abyss {
+  --bubble-color: #d6bfff;
+  --bubble-text: #1f0640;
+}
+.realm-cavern {
+  --bubble-color: #c6efe9;
+  --bubble-text: #002f2a;
+}
+.realm-dross {
+  --bubble-color: #e4d5cd;
+  --bubble-text: #301e19;
+}
+.realm-ember {
+  --bubble-color: #f1c4b4;
+  --bubble-text: #791a08;
+}
+.realm-glare {
+  --bubble-color: #ffe5b0;
+  --bubble-text: #704e00;
+}
+.realm-languish {
+  --bubble-color: #c1d8f3;
+  --bubble-text: #0b3567;
+}
+.realm-mist {
+  --bubble-color: #e6ecf0;
+  --bubble-text: #4d5a61;
+}
+.realm-oasis {
+  --bubble-color: #c4f7f3;
+  --bubble-text: #0f4a48;
+}
+.realm-trace {
+  --bubble-color: #f5c6da;
+  --bubble-text: #4f062a;
+}
+.realm-zenith {
+  --bubble-color: #fff7c9;
+  --bubble-text: #8c6c22;
+}
 .cluster-bubbles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-auto-rows: 240px;
+  grid-auto-rows: 300px;
   place-items: center;
   gap: 32px;
   margin-top: 40px;
@@ -771,9 +801,13 @@ h1 {
 
 .cluster {
   position: relative;
+  margin-top: var(--layout-offset, 0);
   transform: translateY(var(--start-offset, 0));
   animation: bubbleFloat 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+}
+.cluster.open {
+  z-index: 3;
 }
 
 .cluster-bubble {
@@ -788,11 +822,7 @@ h1 {
   justify-content: center;
   text-align: center;
   border: none;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #ffffff,
-    var(--bubble-color) 60%
-  );
+  background: radial-gradient(circle at 30% 30%, #ffffff, var(--bubble-color) 60%);
   color: var(--bubble-text);
   font-family: 'Orbitron', sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
@@ -849,7 +879,9 @@ h1 {
   z-index: 2;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .cluster.open .cluster-menu {
