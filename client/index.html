@@ -12,19 +12,25 @@
   </head>
 
   <body>
+    <noscript class="no-js-warning"
+      >Elysium's wonders shimmer with JavaScript. Without it, some features stay
+      asleep.</noscript
+    >
     <a href="#login-form" class="skip-link">Skip to Login</a>
-    <div id="fadeOverlay"></div>
-    <div id="nebula-container">
+    <div id="fadeOverlay" aria-hidden="true"></div>
+    <div id="nebula-container" aria-hidden="true">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
     </div>
-    <div id="stars"></div>
+    <div id="stars" aria-hidden="true"></div>
     <header>
       <h1>Welcome to Elysium.</h1>
     </header>
     <main>
       <div id="enterButtonContainer">
-        <button id="enterButton" aria-label="Enter Elysium login screen">Enter</button>
+        <button id="enterButton" aria-label="Enter Elysium login screen">
+          Enter
+        </button>
       </div>
       <div
         id="auth-modal"
@@ -59,42 +65,76 @@
           </div>
 
           <form id="login-form" class="form">
-            <label for="login-email">Email</label>
-            <input id="login-email" type="email" placeholder="Email" required />
-            <label for="login-password">Password</label>
-            <input
-              id="login-password"
-              type="password"
-              placeholder="Password"
-              required
-            />
-            <label for="remember-me"
-              ><input id="remember-me" type="checkbox" /> Remember Me</label
-            >
-            <button type="submit" class="submit-btn">Login</button>
-            <a href="#" class="forgot-password">Forgot Password?</a>
+            <fieldset>
+              <legend>Login to Elysium</legend>
+              <label for="login-email">Email</label>
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Email"
+                required
+              />
+              <label for="login-password">Password</label>
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Password"
+                required
+              />
+              <label for="remember-me"
+                ><input id="remember-me" name="remember" type="checkbox" />
+                Remember Me</label
+              >
+              <button type="submit" class="submit-btn">Login</button>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </fieldset>
           </form>
 
           <form id="signup-form" class="form hidden">
-            <label for="signup-username">Username</label>
-            <input id="signup-username" type="text" placeholder="Username" required />
-            <label for="signup-email">Email</label>
-            <input id="signup-email" type="email" placeholder="Email" required />
-            <label for="signup-password">Password</label>
-            <input
-              id="signup-password"
-              type="password"
-              placeholder="Password"
-              required
-            />
-            <label for="signup-confirm">Confirm Password</label>
-            <input
-              id="signup-confirm"
-              type="password"
-              placeholder="Confirm Password"
-              required
-            />
-            <button type="submit" class="submit-btn">Sign Up</button>
+            <fieldset>
+              <legend>Create a New Account</legend>
+              <label for="signup-username">Username</label>
+              <input
+                id="signup-username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                placeholder="Username"
+                required
+              />
+              <label for="signup-email">Email</label>
+              <input
+                id="signup-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Email"
+                required
+              />
+              <label for="signup-password">Password</label>
+              <input
+                id="signup-password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Password"
+                required
+              />
+              <label for="signup-confirm">Confirm Password</label>
+              <input
+                id="signup-confirm"
+                name="confirm"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Confirm Password"
+                required
+              />
+              <button type="submit" class="submit-btn">Sign Up</button>
+            </fieldset>
           </form>
         </div>
       </div>
