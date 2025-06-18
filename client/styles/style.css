@@ -995,8 +995,6 @@ code {
 }
 .cluster.open {
   z-index: 3;
-  grid-row: span 2;
-  align-self: start;
 }
 
 .cluster-bubble {

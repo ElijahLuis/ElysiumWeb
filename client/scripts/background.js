@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (!reduceMotion) {
-    document.addEventListener('pointermove', updatePointer)
-    document.addEventListener('mousemove', updatePointer)
+    window.addEventListener('pointermove', updatePointer)
+    window.addEventListener('mousemove', updatePointer)
     requestAnimationFrame(animate)
   }
 })
