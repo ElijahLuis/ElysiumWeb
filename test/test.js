@@ -91,15 +91,15 @@ async function run() {
       'universe page should return 200',
     )
 
-    const elysium = await fetch('/pages/elysium.html')
+    const about = await fetch('/pages/about.html')
     assert.strictEqual(
-      elysium.statusCode,
+      about.statusCode,
       200,
-      'elysium page should return 200',
+      'about page should return 200',
     )
     assert.ok(
-      elysium.data.includes('Core Philosophy'),
-      'elysium page should contain philosophy heading',
+      about.data.includes('Core Philosophy'),
+      'about page should contain philosophy heading',
     )
     assert.ok(
       universe.data.includes('universe-page'),

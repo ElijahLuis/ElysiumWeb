@@ -26,29 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cluster.classList.add('open')
       button.setAttribute('aria-expanded', 'true')
       active = cluster
-      requestAnimationFrame(updateDivider)
     })
 
     cluster.addEventListener('mouseleave', () => {
       cluster.classList.remove('open')
       button.setAttribute('aria-expanded', 'false')
       if (active === cluster) active = null
-      requestAnimationFrame(updateDivider)
     })
   })
 })
-
-function updateDivider() {
-  const section = document.getElementById('realm-space')
-  if (!section) return
-  const openMenus = document.querySelectorAll('.cluster.open .cluster-menu')
-
-  let maxHeight = 0
-  openMenus.forEach(menu => {
-    const h = menu.scrollHeight
-    if (h > maxHeight) maxHeight = h
-  })
-
-  const shift = openMenus.length === 0 ? '0px' : `${Math.min(maxHeight + 20, 200)}px`
-  section.style.setProperty('--divider-shift', shift)
-}
