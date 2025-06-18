@@ -47,28 +47,29 @@ document.addEventListener('DOMContentLoaded', () => {
     initStars()
   }
 
-  // Parallax effect respects reduced-motion preference
+  // Parallax effect
+  const ease = 0.08
   let targetX = 0,
     targetY = 0,
     currentX = 0,
     currentY = 0
-  const easeFactor = 0.1
+
+  function onPointerMove(e) {
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+  }
+
+  function step() {
+    currentX += (targetX - currentX) * ease
+    currentY += (targetY - currentY) * ease
+    starsContainer.style.transform = `translate3d(${currentX * 16}px, ${currentY * 16}px, 0)`
+    requestAnimationFrame(step)
+  }
 
   if (!reduceMotion) {
-    document.addEventListener('mousemove', (e) => {
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      targetX = (e.clientX - centerX) / centerX
-      targetY = (e.clientY - centerY) / centerY
-    })
-
-    function animateParallax() {
-      currentX += (targetX - currentX) * easeFactor
-      currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
-      requestAnimationFrame(animateParallax)
-    }
-
-    animateParallax()
+    document.addEventListener('pointermove', onPointerMove)
+    requestAnimationFrame(step)
   }
 })
