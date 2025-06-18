@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ).matches
 
   // Star generation
+  let starsInit = false
+
   function generateStars() {
     starsContainer.innerHTML = ''
     const count = Math.floor((window.innerWidth * window.innerHeight) / 3500)
@@ -26,7 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     starsContainer.appendChild(frag)
   }
+
   function initStars() {
+    if (starsInit) return
+    starsInit = true
     generateStars()
     let resizeTimeout
     window.addEventListener('resize', () => {
@@ -35,24 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  if (overlay) {
-    const style = getComputedStyle(overlay)
-    if (style.animationName !== 'none') {
-      overlay.addEventListener(
-        'animationend',
-        () => {
-          console.log('fade overlay animation ended')
-          initStars()
-        },
-        { once: true },
-      )
-    } else {
-      initStars()
-    }
+  if (overlay && overlay.classList.contains('start')) {
+    overlay.addEventListener(
+      'animationend',
+      () => {
+        console.log('fade overlay animation ended')
+        initStars()
+      },
+      { once: true },
+    )
   } else {
-    initStars()
-  }
-  if (location.hostname === 'localhost') {
     initStars()
   }
 
@@ -61,21 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
     targetY = 0,
     currentX = 0,
     currentY = 0
-  const easeFactor = 0.1
-  const intensity = 25
+  const easeFactor = 0.08
+  const intensity = 15
 
   if (!reduceMotion) {
-    document.addEventListener('pointermove', (e) => {
+    const updatePointer = (e) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
       targetX = (e.clientX - centerX) / centerX
       targetY = (e.clientY - centerY) / centerY
-    })
+    }
+    window.addEventListener('mousemove', updatePointer)
+    window.addEventListener('pointermove', updatePointer)
 
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor
       currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate(${currentX * intensity}px, ${currentY * intensity}px)`
+      starsContainer.style.transform = `translate3d(${currentX * intensity}px, ${currentY * intensity}px, 0)`
       requestAnimationFrame(animateParallax)
     }
 
