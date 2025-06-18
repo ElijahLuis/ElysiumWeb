@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentX = 0,
     currentY = 0
 
+  // capture mouse and pointer movement relative to screen center
   function updatePointer(e) {
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
@@ -61,16 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
     targetY = (e.clientY - centerY) / centerY
   }
 
+  // ease stars toward pointer position
   function animate() {
     currentX += (targetX - currentX) * ease
     currentY += (targetY - currentY) * ease
-    starsContainer.style.transform = `translate(${currentX * 12}px, ${currentY * 12}px)`
+    starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
     requestAnimationFrame(animate)
   }
 
   if (!reduceMotion) {
+    document.addEventListener('mousemove', updatePointer)
     window.addEventListener('pointermove', updatePointer)
-    window.addEventListener('mousemove', updatePointer)
     requestAnimationFrame(animate)
   }
 })
