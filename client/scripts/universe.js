@@ -142,20 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const realm = yesBtn?.dataset.realm
     if (!realm) return
 
-    const overlay = document.createElement('div')
-    overlay.style.position = 'fixed'
-    overlay.style.top = '0'
-    overlay.style.left = '0'
-    overlay.style.width = '100%'
-    overlay.style.height = '100%'
-    overlay.style.background = 'black'
-    overlay.style.opacity = '0'
-    overlay.style.transition = 'opacity 750ms ease-out'
-    overlay.style.zIndex = '50'
-    document.body.appendChild(overlay)
+    const fadeOverlay = document.createElement('div')
+    fadeOverlay.style.position = 'fixed'
+    fadeOverlay.style.top = '0'
+    fadeOverlay.style.left = '0'
+    fadeOverlay.style.width = '100%'
+    fadeOverlay.style.height = '100%'
+    fadeOverlay.style.background = 'black'
+    fadeOverlay.style.opacity = '0'
+    fadeOverlay.style.transition = 'opacity 750ms ease-out'
+    fadeOverlay.style.zIndex = '50'
+    document.body.appendChild(fadeOverlay)
 
     requestAnimationFrame(() => {
-      overlay.style.opacity = '1'
+      fadeOverlay.style.opacity = '1'
     })
 
     setTimeout(() => {

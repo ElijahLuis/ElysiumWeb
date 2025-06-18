@@ -560,12 +560,12 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  width: 350px;
+  width: 450px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
   opacity: 0;
   transition:
@@ -622,7 +622,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   letter-spacing: 2px;
 }
 
@@ -633,6 +633,7 @@ h1 {
   border: none;
   background: rgba(255, 255, 255, 0.15);
   color: white;
+  width: 100%;
   text-align: center;
   transition:
     background 0.3s ease,
@@ -1064,3 +1065,39 @@ h1 {
     transform: translateY(-10px);
   }
 }
+
+/* Star collection icon */
+.collect-star {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+.collect-star:hover {
+  transform: scale(1.2);
+}
+#star-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1001;
+  text-align: center;
+}
+#star-overlay button {
+  display: block;
+  margin: 8px auto;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
