@@ -622,7 +622,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
   letter-spacing: 2px;
 }
 
@@ -645,6 +645,10 @@ h1 {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
   outline: none;
+}
+
+.form input[type='checkbox'] {
+  width: auto;
 }
 
 .form input[type='checkbox']:focus {
@@ -707,6 +711,14 @@ h1 {
   color: rgba(255, 20, 147, 1);
 }
 
+code {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
 .header-icon {
   margin-right: 6px;
 }
@@ -719,7 +731,7 @@ h1 {
 -------------------------- */
 
 #realm-space {
-  margin: 80px auto 120px;
+  margin: 60px auto 80px;
   width: min(95%, 900px);
   display: flex;
   flex-direction: column;
@@ -832,6 +844,10 @@ h1 {
   margin: 0 auto;
   text-align: left;
   width: fit-content;
+}
+.elysium-section p,
+.elysium-section li {
+  line-height: 1.6;
 }
 
 #realm-system li {
@@ -1076,6 +1092,7 @@ h1 {
 
 .cluster-menu li {
   font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 @keyframes bubbleFloat {
@@ -1140,4 +1157,3 @@ h1 {
   color: inherit;
   cursor: pointer;
 }
-

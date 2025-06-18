@@ -36,13 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (overlay) {
-    overlay.addEventListener(
-      'animationend',
-      () => {
-        initStars()
-      },
-      { once: true },
-    )
+    const style = getComputedStyle(overlay)
+    if (style.animationName !== 'none') {
+      overlay.addEventListener(
+        'animationend',
+        () => {
+          initStars()
+        },
+        { once: true },
+      )
+    } else {
+      initStars()
+    }
   } else {
     initStars()
   }
