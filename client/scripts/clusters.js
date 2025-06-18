@@ -28,10 +28,10 @@ function updateDivider() {
 
   let maxHeight = 0
   openMenus.forEach(menu => {
-    const h = menu.getBoundingClientRect().height
+    const h = menu.scrollHeight
     if (h > maxHeight) maxHeight = h
   })
 
-  const shift = openMenus.length === 0 ? '0px' : `${maxHeight + 20}px`
+  const shift = openMenus.length === 0 ? '0px' : `${Math.min(maxHeight + 20, 200)}px`
   section.style.setProperty('--divider-shift', shift)
 }
