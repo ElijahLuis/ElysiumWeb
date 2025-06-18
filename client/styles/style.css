@@ -448,7 +448,6 @@ h1 {
   height: 100%;
   pointer-events: none;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
 }
 
 .star {

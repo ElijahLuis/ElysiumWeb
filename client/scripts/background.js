@@ -33,17 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(resizeTimeout)
       resizeTimeout = setTimeout(generateStars, 200)
     })
-    startParallax()
   }
 
-  if (overlay && overlay.classList.contains('start')) {
-    overlay.addEventListener(
-      'animationend',
-      () => {
-        initStars()
-      },
-      { once: true },
-    )
+  if (overlay) {
+    const style = getComputedStyle(overlay)
+    if (style.animationName !== 'none') {
+      overlay.addEventListener(
+        'animationend',
+        () => {
+          initStars()
+        },
+        { once: true },
+      )
+    } else {
+      initStars()
+    }
   } else {
     initStars()
   }
@@ -52,13 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let targetX = 0,
     targetY = 0,
     currentX = 0,
-    currentY = 0,
-    parallaxActive = false
+    currentY = 0
   const easeFactor = 0.1
 
-  function startParallax() {
-    if (parallaxActive || reduceMotion) return
-    parallaxActive = true
+  if (!reduceMotion) {
     document.addEventListener('mousemove', (e) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor
       currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
+      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
       requestAnimationFrame(animateParallax)
     }
 
