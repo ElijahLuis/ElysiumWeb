@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const startKey = window.location.hash.replace('#', '')
   if (startKey) {
-    const idx = planets.findIndex(p => p.id === startKey)
+    const idx = planets.findIndex((p) => p.id === startKey)
     if (idx >= 0) {
       currentIndex = idx
       angle = -slice * idx
@@ -93,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const rad = (theta * Math.PI) / 180
       const depth = (1 + Math.cos(rad)) / 2
       const scale = 0.2 + 0.8 * depth * depth
-      planet.style.transform = `translate(-50%, -50%) rotateY(${theta}deg) translateZ(${radius}px) rotateY(${-theta}deg) scale(${scale})`
+      planet.style.setProperty('--theta', `${theta}deg`)
+      planet.style.setProperty('--radius', `${radius}px`)
+      planet.style.setProperty('--scale', scale)
       planet.style.zIndex = Math.round(scale * 100)
       planet.classList.toggle('active', i === currentIndex)
     })
@@ -138,17 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
     hideOverlay()
     planets.forEach((p) => {
       p.classList.remove('faded', 'focused')
+      p.style.removeProperty('--scale-mult')
     })
     const active = planets[currentIndex]
-    const match = active.style.transform.match(/scale\(([^)]+)\)/)
-    if (match) {
-      const scale = parseFloat(match[1])
-      const newScale = scale / 1.2
-      active.style.transform = active.style.transform.replace(
-        /scale\([^)]+\)/,
-        `scale(${newScale})`,
-      )
-    }
+    active.style.removeProperty('--scale-mult')
     if (selectButton) {
       selectButton.classList.remove('fade-out')
       selectButton.classList.add('fade-in')
@@ -259,18 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const active = planets[currentIndex]
       planets.forEach((p, i) => {
         if (i === currentIndex) {
-          const match = p.style.transform.match(/scale\(([^)]+)\)/)
-          if (match) {
-            const scale = parseFloat(match[1])
-            const newScale = scale * 1.2
-            p.style.transform = p.style.transform.replace(
-              /scale\([^)]+\)/,
-              `scale(${newScale})`,
-            )
-          }
+          p.style.setProperty('--scale-mult', 1.2)
           p.classList.add('focused')
         } else {
           p.classList.add('faded')
+          p.style.removeProperty('--scale-mult')
         }
       })
       const realmKey = active.id

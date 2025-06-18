@@ -132,8 +132,8 @@ body {
 }
 
 .feed-avatar {
-  width: 96px;
-  height: 96px;
+  width: 90px;
+  height: 90px;
   flex-shrink: 0;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
@@ -218,7 +218,6 @@ body {
   line-height: 1.6;
   text-align: center;
 }
-
 
 #explore-form {
   gap: 20px;
