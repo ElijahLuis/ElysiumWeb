@@ -1,7 +1,8 @@
 ;(function () {
   function ripple(element, event, onEnd) {
     const rect = element.getBoundingClientRect()
-    const size = Math.min(Math.max(rect.width, rect.height) * 1.1, 160)
+    // use a small, consistent ring size for smoother performance
+    const size = 80
     const ring = document.createElement('span')
     ring.className = 'ripple'
     ring.style.width = ring.style.height = `${size}px`
