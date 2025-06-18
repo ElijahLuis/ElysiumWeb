@@ -1,7 +1,7 @@
 ;(function () {
   function ripple(element, event, onEnd) {
     const rect = element.getBoundingClientRect()
-    const size = Math.max(rect.width, rect.height) * 1.1
+    const size = Math.min(Math.max(rect.width, rect.height) * 1.1, 160)
     const ring = document.createElement('span')
     ring.className = 'ripple'
     ring.style.width = ring.style.height = `${size}px`
@@ -35,14 +35,12 @@
   window.createRainbowRipple = ripple
 
   document.addEventListener('DOMContentLoaded', () => {
-    document
-      .querySelectorAll('button:not(.cluster-bubble)')
-      .forEach(btn => {
-        if (getComputedStyle(btn).position === 'static') {
-          btn.style.position = 'relative'
-        }
-        btn.style.overflow = 'hidden'
-        btn.addEventListener('click', e => ripple(btn, e))
-      })
+    document.querySelectorAll('button:not(.cluster-bubble)').forEach((btn) => {
+      if (getComputedStyle(btn).position === 'static') {
+        btn.style.position = 'relative'
+      }
+      btn.style.overflow = 'hidden'
+      btn.addEventListener('click', (e) => ripple(btn, e))
+    })
   })
 })()

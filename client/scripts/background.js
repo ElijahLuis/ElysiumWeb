@@ -49,29 +49,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Parallax effect respects reduced-motion preference
   if (!reduceMotion) {
-    let posX = 0,
-      posY = 0,
-      goalX = 0,
-      goalY = 0
-    const easing = 0.12
+    let pointerX = 0,
+      pointerY = 0,
+      currentX = 0,
+      currentY = 0
+    const ease = 0.08
+    let animating = false
 
-    const updatePointer = e => {
-      const x = e.clientX / window.innerWidth - 0.5
-      const y = e.clientY / window.innerHeight - 0.5
-      goalX = x * 20
-      goalY = y * 20
+    function update() {
+      currentX += (pointerX - currentX) * ease
+      currentY += (pointerY - currentY) * ease
+      starsContainer.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`
+      if (
+        Math.abs(currentX - pointerX) > 0.1 ||
+        Math.abs(currentY - pointerY) > 0.1
+      ) {
+        requestAnimationFrame(update)
+      } else {
+        animating = false
+      }
     }
 
-    window.addEventListener('pointermove', updatePointer)
-    window.addEventListener('mousemove', updatePointer)
-
-    function step() {
-      posX += (goalX - posX) * easing
-      posY += (goalY - posY) * easing
-      starsContainer.style.transform = `translate3d(${posX}px, ${posY}px, 0)`
-      requestAnimationFrame(step)
+    const trackPointer = (e) => {
+      pointerX = (e.clientX / window.innerWidth - 0.5) * 30
+      pointerY = (e.clientY / window.innerHeight - 0.5) * 30
+      if (!animating) {
+        animating = true
+        requestAnimationFrame(update)
+      }
     }
 
-    step()
+    window.addEventListener('pointermove', trackPointer)
+    window.addEventListener('mousemove', trackPointer)
   }
 })
