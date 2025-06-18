@@ -75,6 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0
   let focused = false
 
+  const startKey = window.location.hash.replace('#', '')
+  if (startKey) {
+    const idx = planets.findIndex(p => p.id === startKey)
+    if (idx >= 0) {
+      currentIndex = idx
+      angle = -slice * idx
+    }
+  }
+
   // overlay details provided globally by overlayData.js
   const overlayData = window.overlayData || {}
 

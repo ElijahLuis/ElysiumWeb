@@ -108,7 +108,7 @@ body {
   flex-direction: column;
   gap: 20px;
   border-left: 2px solid rgba(255, 255, 255, 0.5);
-  box-shadow: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .feed-item {
@@ -132,8 +132,8 @@ body {
 }
 
 .feed-avatar {
-  width: 36px;
-  height: 36px;
+  width: 96px;
+  height: 96px;
   flex-shrink: 0;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
@@ -207,6 +207,11 @@ body {
   outline: none;
 }
 
+#explore-form option {
+  color: #000;
+  background: #fff;
+}
+
 .explore-desc {
   max-width: 600px;
   margin: 0 auto 20px;
@@ -216,7 +221,7 @@ body {
 
 
 #explore-form {
-  gap: 24px;
+  gap: 20px;
 }
 
 #explore-form label {
@@ -251,6 +256,13 @@ body {
 
 #explore-result .result-name:hover {
   color: #ffffff;
+}
+
+.explore-divider {
+  width: 80%;
+  margin: 20px auto;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .visually-hidden {

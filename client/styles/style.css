@@ -495,11 +495,13 @@ h1 {
 -------------------------- */
 
 #enterButtonContainer {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
 }
 
 #enterButton {
+  position: relative;
+  overflow: hidden;
   padding: 10px 20px;
   font-size: 1.75rem;
   font-family: 'Orbitron', sans-serif;
@@ -580,12 +582,12 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  width: 700px;
+  width: 820px;
   background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 60px;
+  padding: 80px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 30px rgba(31, 26, 31, 0.5);
   opacity: 0;
@@ -643,7 +645,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 56px;
   letter-spacing: 2px;
 }
 
