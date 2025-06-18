@@ -841,7 +841,7 @@ code {
 
 #elysium-main .elysium-article {
   margin: 130px auto 80px;
-  width: min(90%, 800px);
+  width: min(95%, 1000px);
   display: flex;
   flex-direction: column;
   gap: 40px;

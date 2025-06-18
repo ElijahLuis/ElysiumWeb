@@ -55,14 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
       currentY = 0
     const ease = 0.1
 
-    function track(e) {
+    function handleMove(x, y) {
       const cx = window.innerWidth / 2
       const cy = window.innerHeight / 2
-      targetX = ((e.clientX - cx) / cx) * 20
-      targetY = ((e.clientY - cy) / cy) * 20
+      targetX = ((x - cx) / cx) * 20
+      targetY = ((y - cy) / cy) * 20
     }
 
-    window.addEventListener('pointermove', track, { passive: true })
+    function track(e) {
+      handleMove(e.clientX, e.clientY)
+    }
+
+    function trackTouch(e) {
+      if (e.touches && e.touches[0]) {
+        const t = e.touches[0]
+        handleMove(t.clientX, t.clientY)
+      }
+    }
+
+    window.addEventListener('mousemove', track, { passive: true })
+    window.addEventListener('touchmove', trackTouch, { passive: true })
 
     function animate() {
       currentX += (targetX - currentX) * ease

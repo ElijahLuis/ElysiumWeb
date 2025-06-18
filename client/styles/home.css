@@ -219,6 +219,14 @@ body {
   text-align: center;
 }
 
+#explore-intro .stellar-heading {
+  font-size: 2.4rem;
+}
+
+#explore-intro .explore-desc {
+  font-size: 1.3rem;
+}
+
 #explore-form {
   gap: 12px;
 }
