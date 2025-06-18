@@ -54,30 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Parallax effect respects reduced-motion preference
-  let targetX = 0,
-    targetY = 0,
-    currentX = 0,
-    currentY = 0
-  const easeFactor = 0.08
-  const intensity = 15
-
   if (!reduceMotion) {
-    const updatePointer = (e) => {
+    let targetX = 0,
+      targetY = 0,
+      currentX = 0,
+      currentY = 0
+    const ease = 0.08
+    const range = 18
+    let ticking = false
+
+    const updatePointer = (x, y) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
-      targetX = (e.clientX - centerX) / centerX
-      targetY = (e.clientY - centerY) / centerY
-    }
-    window.addEventListener('mousemove', updatePointer)
-    window.addEventListener('pointermove', updatePointer)
-
-    function animateParallax() {
-      currentX += (targetX - currentX) * easeFactor
-      currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate3d(${currentX * intensity}px, ${currentY * intensity}px, 0)`
-      requestAnimationFrame(animateParallax)
+      targetX = ((x - centerX) / centerX) * range
+      targetY = ((y - centerY) / centerY) * range
+      if (!ticking) {
+        requestAnimationFrame(step)
+        ticking = true
+      }
     }
 
-    animateParallax()
+    const pointerMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        updatePointer(e.touches[0].clientX, e.touches[0].clientY)
+      } else {
+        updatePointer(e.clientX, e.clientY)
+      }
+    }
+
+    function step() {
+      currentX += (targetX - currentX) * ease
+      currentY += (targetY - currentY) * ease
+      starsContainer.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translateZ(0)`
+      if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+        requestAnimationFrame(step)
+      } else {
+        ticking = false
+      }
+    }
+
+    window.addEventListener('pointermove', pointerMove, { passive: true })
+    window.addEventListener('mousemove', pointerMove, { passive: true })
+    window.addEventListener('touchmove', pointerMove, { passive: true })
   }
 })
