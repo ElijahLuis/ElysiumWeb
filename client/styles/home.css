@@ -220,13 +220,13 @@ body {
 }
 
 #explore-form {
-  gap: 20px;
+  gap: 12px;
 }
 
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 #explore-result {

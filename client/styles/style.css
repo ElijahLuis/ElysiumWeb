@@ -212,6 +212,7 @@ h1 {
 #main-nav a:not(.brand-link) {
   position: relative;
   overflow: hidden;
+  display: inline-block;
   color: #ffffff;
   text-decoration: none;
   font-family: 'Orbitron', sans-serif;

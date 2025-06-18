@@ -35,12 +35,14 @@
   window.createRainbowRipple = ripple
 
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('button').forEach(btn => {
-      if (getComputedStyle(btn).position === 'static') {
-        btn.style.position = 'relative'
-      }
-      btn.style.overflow = 'hidden'
-      btn.addEventListener('click', e => ripple(btn, e))
-    })
+    document
+      .querySelectorAll('button:not(.cluster-bubble)')
+      .forEach(btn => {
+        if (getComputedStyle(btn).position === 'static') {
+          btn.style.position = 'relative'
+        }
+        btn.style.overflow = 'hidden'
+        btn.addEventListener('click', e => ripple(btn, e))
+      })
   })
 })()
