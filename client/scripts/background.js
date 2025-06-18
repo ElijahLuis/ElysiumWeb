@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ).matches
 
   // Star generation
-  let starsInit = false
-
   function generateStars() {
     starsContainer.innerHTML = ''
     const count = Math.floor((window.innerWidth * window.innerHeight) / 3500)
@@ -28,10 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     starsContainer.appendChild(frag)
   }
-
   function initStars() {
-    if (starsInit) return
-    starsInit = true
     generateStars()
     let resizeTimeout
     window.addEventListener('resize', () => {
@@ -40,61 +35,45 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  if (overlay && overlay.classList.contains('start')) {
-    overlay.addEventListener(
-      'animationend',
-      () => {
-        console.log('fade overlay animation ended')
-        initStars()
-      },
-      { once: true },
-    )
+  if (overlay) {
+    const style = getComputedStyle(overlay)
+    if (style.animationName !== 'none') {
+      overlay.addEventListener(
+        'animationend',
+        () => {
+          initStars()
+        },
+        { once: true },
+      )
+    } else {
+      initStars()
+    }
   } else {
     initStars()
   }
 
   // Parallax effect respects reduced-motion preference
-  if (!reduceMotion) {
-    let targetX = 0,
-      targetY = 0,
-      currentX = 0,
-      currentY = 0
-    const ease = 0.08
-    const range = 18
-    let ticking = false
+  let targetX = 0,
+    targetY = 0,
+    currentX = 0,
+    currentY = 0
+  const easeFactor = 0.1
 
-    const updatePointer = (x, y) => {
+  if (!reduceMotion) {
+    document.addEventListener('mousemove', (e) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
-      targetX = ((x - centerX) / centerX) * range
-      targetY = ((y - centerY) / centerY) * range
-      if (!ticking) {
-        requestAnimationFrame(step)
-        ticking = true
-      }
+      targetX = (e.clientX - centerX) / centerX
+      targetY = (e.clientY - centerY) / centerY
+    })
+
+    function animateParallax() {
+      currentX += (targetX - currentX) * easeFactor
+      currentY += (targetY - currentY) * easeFactor
+      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
+      requestAnimationFrame(animateParallax)
     }
 
-    const pointerMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        updatePointer(e.touches[0].clientX, e.touches[0].clientY)
-      } else {
-        updatePointer(e.clientX, e.clientY)
-      }
-    }
-
-    function step() {
-      currentX += (targetX - currentX) * ease
-      currentY += (targetY - currentY) * ease
-      starsContainer.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translateZ(0)`
-      if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
-        requestAnimationFrame(step)
-      } else {
-        ticking = false
-      }
-    }
-
-    window.addEventListener('pointermove', pointerMove, { passive: true })
-    window.addEventListener('mousemove', pointerMove, { passive: true })
-    window.addEventListener('touchmove', pointerMove, { passive: true })
+    animateParallax()
   }
 })
