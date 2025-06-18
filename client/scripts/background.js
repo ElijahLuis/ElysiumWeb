@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
+  const nebula1 = document.getElementById('nebula1')
+  const nebula2 = document.getElementById('nebula2')
+
   const overlay = document.getElementById('fadeOverlay')
   const reduceMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
@@ -65,7 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor
       currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
+      const x = currentX * 10
+      const y = currentY * 10
+      starsContainer.style.transform = `translate(${x}px, ${y}px)`
+      if (nebula1) nebula1.style.transform = `translate(${x * 1.5}px, ${y * 1.5}px) scale(1.02)`
+      if (nebula2) nebula2.style.transform = `translate(${x * 2}px, ${y * 2}px) scale(1.04)`
       requestAnimationFrame(animateParallax)
     }
 
