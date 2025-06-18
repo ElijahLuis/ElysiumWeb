@@ -48,31 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Parallax effect respects reduced-motion preference
-  const ease = 0.08
-  let targetX = 0,
-    targetY = 0,
-    currentX = 0,
-    currentY = 0
+  const ease = 0.06
+  const pointer = { x: 0, y: 0 }
+  const offset = { x: 0, y: 0 }
 
-  // capture mouse and pointer movement relative to screen center
-  function updatePointer(e) {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
+  function trackPointer(e) {
+    pointer.x = e.clientX / window.innerWidth - 0.5
+    pointer.y = e.clientY / window.innerHeight - 0.5
   }
 
-  // ease stars toward pointer position
-  function animate() {
-    currentX += (targetX - currentX) * ease
-    currentY += (targetY - currentY) * ease
-    starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
-    requestAnimationFrame(animate)
+  function step() {
+    offset.x += (pointer.x - offset.x) * ease
+    offset.y += (pointer.y - offset.y) * ease
+    starsContainer.style.transform = `translate3d(${offset.x * 15}px, ${offset.y * 15}px, 0)`
+    requestAnimationFrame(step)
   }
 
   if (!reduceMotion) {
-    document.addEventListener('mousemove', updatePointer)
-    window.addEventListener('pointermove', updatePointer)
-    requestAnimationFrame(animate)
+    window.addEventListener('pointermove', trackPointer)
+    requestAnimationFrame(step)
   }
 })
