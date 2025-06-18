@@ -40,6 +40,13 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+#explore-main {
+  margin-top: 130px;
+  width: min(95%, 700px);
+  margin-left: auto;
+  margin-right: auto;
+}
 #profile-main a {
   color: #9ef2e3;
   text-shadow: 0 0 6px rgba(158, 242, 227, 0.6);
@@ -207,16 +214,9 @@ body {
   text-align: center;
 }
 
-.explore-list {
-  margin: 0 auto 20px;
-  max-width: 400px;
-  text-align: left;
-  list-style: disc;
-  padding-left: 20px;
-}
 
 #explore-form {
-  gap: 20px;
+  gap: 32px;
 }
 
 .visually-hidden {
