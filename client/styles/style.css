@@ -240,6 +240,7 @@ h1 {
   pointer-events: none;
   transform: scale(0);
   opacity: 1;
+  will-change: transform, opacity;
   animation: rippleSpread 0.24s ease-out forwards;
 }
 
@@ -572,7 +573,7 @@ h1 {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 80px;
+  padding: 60px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 30px rgba(31, 26, 31, 0.5);
   opacity: 0;
@@ -640,8 +641,12 @@ fieldset legend {
 }
 
 #auth-heading {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff80ab, #9ae1ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 136, 194, 0.7);
 }
 
 .form label {

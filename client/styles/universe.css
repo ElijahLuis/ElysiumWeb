@@ -20,6 +20,7 @@
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
+  will-change: background-position;
   z-index: -1;
 }
 
@@ -45,6 +46,7 @@ body.universe-page {
   width: 1000px;
   height: 1000px;
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .planet {
@@ -84,6 +86,7 @@ body.universe-page {
   border-radius: 50%;
   cursor: default;
   user-select: none;
+  will-change: transform;
   animation-fill-mode: both;
   animation:
     planetSpin 40s linear infinite,

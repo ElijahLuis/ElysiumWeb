@@ -51,21 +51,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const ease = 0.06
   const pointer = { x: 0, y: 0 }
   const offset = { x: 0, y: 0 }
+  let animating = false
 
   function trackPointer(e) {
     pointer.x = e.clientX / window.innerWidth - 0.5
     pointer.y = e.clientY / window.innerHeight - 0.5
+    if (!animating) {
+      animating = true
+      requestAnimationFrame(step)
+    }
   }
 
   function step() {
     offset.x += (pointer.x - offset.x) * ease
     offset.y += (pointer.y - offset.y) * ease
     starsContainer.style.transform = `translate3d(${offset.x * 15}px, ${offset.y * 15}px, 0)`
-    requestAnimationFrame(step)
+
+    if (Math.abs(pointer.x - offset.x) > 0.001 || Math.abs(pointer.y - offset.y) > 0.001) {
+      requestAnimationFrame(step)
+    } else {
+      animating = false
+    }
   }
 
   if (!reduceMotion) {
     window.addEventListener('pointermove', trackPointer)
-    requestAnimationFrame(step)
+    window.addEventListener('mousemove', trackPointer)
   }
 })
