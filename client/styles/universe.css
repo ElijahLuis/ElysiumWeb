@@ -88,6 +88,10 @@ body.universe-page {
     planetFloat 8s ease-in-out infinite;
 }
 
+.paused .planet-inner {
+  animation-play-state: paused;
+}
+
 .planet-label {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.6rem;
@@ -276,7 +280,7 @@ body.universe-page {
 
 #realm-overlay h2 {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   font-size: 2rem;
   letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
@@ -291,7 +295,7 @@ body.universe-page {
 
 #realm-overlay .overlay-icon {
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 #realm-overlay .overlay-icon.show,

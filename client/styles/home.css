@@ -216,7 +216,41 @@ body {
 
 
 #explore-form {
-  gap: 32px;
+  gap: 24px;
+}
+
+#explore-form label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+#explore-result {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#explore-result .result-intro {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+#explore-result .result-icon {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+
+#explore-result .result-name {
+  display: block;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  text-decoration: none;
+  color: #9ef2e3;
+}
+
+#explore-result .result-name:hover {
+  color: #ffffff;
 }
 
 .visually-hidden {

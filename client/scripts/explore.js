@@ -6,18 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('explore-result');
   if (!form || !result) return;
 
+  function fadeOut(el) {
+    el.style.transition = 'opacity 500ms ease-out';
+    el.style.opacity = '0';
+    setTimeout(() => el.classList.add('hidden'), 500);
+  }
+
+  function fadeIn(el) {
+    el.classList.remove('hidden');
+    el.style.opacity = '0';
+    requestAnimationFrame(() => {
+      el.style.transition = 'opacity 500ms ease-in';
+      el.style.opacity = '1';
+    });
+  }
+
   // realm names from src/data/realmMetadata.ts
   const realms = {
-    abyss: { realmName: 'Abyss' },
-    cavern: { realmName: 'Cavern' },
-    dross: { realmName: 'Dross' },
-    ember: { realmName: 'Ember' },
-    glare: { realmName: 'Glare' },
-    languish: { realmName: 'Languish' },
-    mist: { realmName: 'Mist' },
-    oasis: { realmName: 'Oasis' },
-    trace: { realmName: 'Trace' },
-    zenith: { realmName: 'Zenith' },
+    abyss: { realmName: 'Abyss', icon: '🕳️' },
+    cavern: { realmName: 'Cavern', icon: '🪨' },
+    dross: { realmName: 'Dross', icon: '☣️' },
+    ember: { realmName: 'Ember', icon: '🔥' },
+    glare: { realmName: 'Glare', icon: '👁️' },
+    languish: { realmName: 'Languish', icon: '💧' },
+    mist: { realmName: 'Mist', icon: '🌫️' },
+    oasis: { realmName: 'Oasis', icon: '🌴' },
+    trace: { realmName: 'Trace', icon: '🌀' },
+    zenith: { realmName: 'Zenith', icon: '🚀' },
   };
 
   const keys = Object.keys(realms);
@@ -57,9 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const top = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
     const key = top ? top[0] : keys[0];
-    const name = escapeHTML(realms[key].realmName);
-    result.innerHTML = `You feel the pull of <strong>${name}</strong>.`;
-    result.classList.remove('hidden');
-    form.classList.add('hidden');
+    const { realmName, icon } = realms[key];
+    const name = escapeHTML(realmName);
+    result.innerHTML = `\n      <p class="result-intro">You feel the pull of</p>\n      <div class="result-icon">${icon}</div>\n      <a class="result-name" href="universe.html#${key}">${name.toUpperCase()}</a>`;
+    fadeOut(form);
+    setTimeout(() => fadeIn(result), 500);
   });
 });

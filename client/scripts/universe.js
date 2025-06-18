@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('realm-overlay')
   let yesBtn, noBtn
   let lastFocus
+  const ringElem = ring
+
+  function pauseFloat(ms = 700) {
+    if (!ringElem) return
+    ringElem.classList.add('paused')
+    if (ms > 0) setTimeout(() => ringElem.classList.remove('paused'), ms)
+  }
 
   // keep focus cycling within the overlay when it is active
   function trapFocus(e) {
@@ -86,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (leftArrow) {
     leftArrow.addEventListener('click', () => {
       if (focused) return
+      pauseFloat()
       angle += slice
       currentIndex = (currentIndex - 1 + totalPlanets) % totalPlanets
       updatePlanets()
@@ -95,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (rightArrow) {
     rightArrow.addEventListener('click', () => {
       if (focused) return
+      pauseFloat()
       angle -= slice
       currentIndex = (currentIndex + 1) % totalPlanets
       updatePlanets()
@@ -135,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selectButton.classList.remove('fade-out')
       selectButton.classList.add('fade-in')
     }
+    pauseFloat(700)
     focused = false
   }
 
@@ -147,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fadeOverlay.classList.remove('start')
       fadeOverlay.classList.add('fade-in')
     }
+    pauseFloat(0)
 
     setTimeout(() => {
       window.location.href = `${realm}.html`
@@ -235,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       focused = true
       selectButton.classList.remove('fade-in')
       selectButton.classList.add('fade-out')
+      pauseFloat(0)
       const active = planets[currentIndex]
       planets.forEach((p, i) => {
         if (i === currentIndex) {

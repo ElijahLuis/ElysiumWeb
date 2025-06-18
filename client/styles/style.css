@@ -580,12 +580,12 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  width: 600px;
+  width: 700px;
   background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 50px;
+  padding: 60px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 30px rgba(31, 26, 31, 0.5);
   opacity: 0;
@@ -645,6 +645,16 @@ h1 {
   flex-direction: column;
   gap: 48px;
   letter-spacing: 2px;
+}
+
+fieldset legend {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+#auth-heading {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
 }
 
 .form label {
@@ -1187,4 +1197,29 @@ code {
   border: none;
   color: inherit;
   cursor: pointer;
+}
+
+/* Realm space placeholder window */
+.space-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 80%;
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  z-index: 1002;
+  text-align: center;
+}
+.space-window.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
