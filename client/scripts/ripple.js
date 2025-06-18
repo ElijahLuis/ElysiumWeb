@@ -1,7 +1,7 @@
 ;(function () {
   function ripple(element, event, onEnd) {
     const rect = element.getBoundingClientRect()
-    const size = Math.max(rect.width, rect.height) * 1.5
+    const size = Math.max(rect.width, rect.height) * 1.1
     const ring = document.createElement('span')
     ring.className = 'ripple'
     ring.style.width = ring.style.height = `${size}px`

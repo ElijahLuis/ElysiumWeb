@@ -242,7 +242,7 @@ h1 {
   transform: scale(0);
   opacity: 1;
   will-change: transform, opacity;
-  animation: rippleSpread 0.24s ease-out forwards;
+  animation: rippleSpread 0.3s ease-out forwards;
 }
 
 
