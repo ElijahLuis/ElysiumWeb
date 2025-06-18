@@ -61,9 +61,36 @@ body {
   text-align: center;
 }
 
+.home-section p,
+.home-section li {
+  line-height: 1.7;
+}
+
 #feed-section {
   margin-left: auto;
   margin-right: auto;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.profile-name {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
 }
 
 #live-feed {
@@ -178,6 +205,18 @@ body {
   margin: 0 auto 20px;
   line-height: 1.6;
   text-align: center;
+}
+
+.explore-list {
+  margin: 0 auto 20px;
+  max-width: 400px;
+  text-align: left;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+#explore-form {
+  gap: 20px;
 }
 
 .visually-hidden {

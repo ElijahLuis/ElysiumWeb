@@ -144,13 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fadeOverlay = document.getElementById('fadeOverlay')
     if (fadeOverlay) {
-      fadeOverlay.style.animation = 'none'
-      fadeOverlay.style.opacity = '0'
-      fadeOverlay.style.zIndex = '10'
-      requestAnimationFrame(() => {
-        fadeOverlay.style.transition = 'opacity 750ms ease-out'
-        fadeOverlay.style.opacity = '1'
-      })
+      fadeOverlay.classList.remove('start')
+      fadeOverlay.classList.add('fade-in')
     }
 
     setTimeout(() => {

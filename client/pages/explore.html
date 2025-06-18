@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles/home.css" />
   </head>
   <body>
-    <div id="fadeOverlay"></div>
+    <div id="fadeOverlay" class="start" class="start"></div>
     <div id="nebula-container">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
@@ -24,6 +24,12 @@
           legacy of clarity. Here you’ll find kindred spirits who understand
           without long explanations.
         </p>
+        <ul class="explore-list">
+          <li>Name how they feel</li>
+          <li>Contribute to emotion constellations</li>
+          <li>Build legacy through emotional clarity</li>
+          <li>Find others who understand them without needing to explain</li>
+        </ul>
         <form id="explore-form" class="form" aria-describedby="explore-desc">
           <label for="e1">Energy for adventure</label>
           <select id="e1" name="e1">
@@ -64,6 +70,20 @@
             <option value="3">3 - Steady</option>
             <option value="4">4 - Strong</option>
             <option value="5">5 - Unshakeable</option>
+          </select>
+          <label for="e6">When darkness looms, you...</label>
+          <select id="e6" name="e6">
+            <option value="abyss">Dive inward</option>
+            <option value="mist">Seek answers</option>
+            <option value="oasis">Reach for comfort</option>
+            <option value="zenith">Stand tall</option>
+          </select>
+          <label for="e7">Joy arrives when you...</label>
+          <select id="e7" name="e7">
+            <option value="zenith">Celebrate achievement</option>
+            <option value="trace">Relive memories</option>
+            <option value="ember">Chase excitement</option>
+            <option value="oasis">Share gratitude</option>
           </select>
           <button type="submit" class="submit-btn">Show Realm</button>
         </form>

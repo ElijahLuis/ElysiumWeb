@@ -332,11 +332,18 @@ h1 {
   height: 100%;
   background: black;
   pointer-events: none;
+  opacity: 0;
+  z-index: -10;
+  transition: opacity 0.75s ease-out;
+}
+
+#fadeOverlay.start {
   animation: fadeOutOverlay 1.25s ease-out forwards;
 }
 
-#fadeOverlay.quick {
-  animation-duration: 0.75s;
+#fadeOverlay.fade-in {
+  opacity: 1;
+  z-index: 10;
 }
 
 @keyframes fadeOutOverlay {
@@ -560,13 +567,14 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  width: 520px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 15px;
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  width: 600px;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 30px rgba(31, 26, 31, 0.5);
   opacity: 0;
   transition:
     opacity 0.5s ease,
@@ -622,8 +630,12 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   letter-spacing: 2px;
+}
+
+.form label {
+  margin-bottom: 6px;
 }
 
 .form input {
@@ -639,6 +651,7 @@ h1 {
     background 0.3s ease,
     box-shadow 0.3s ease;
   letter-spacing: 2px;
+  margin-bottom: 4px;
 }
 
 .form input:focus {
@@ -648,7 +661,8 @@ h1 {
 }
 
 .form input[type='checkbox'] {
-  width: auto;
+  width: 20px;
+  height: 20px;
 }
 
 .form input[type='checkbox']:focus {
@@ -714,9 +728,11 @@ h1 {
 code {
   font-family: 'Orbitron', monospace;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2px 4px;
+  color: #fff5a5;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2px 6px;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .header-icon {
@@ -971,6 +987,8 @@ code {
 }
 .cluster.open {
   z-index: 3;
+  grid-row: span 2;
+  align-self: start;
 }
 
 .cluster-bubble {
@@ -1025,7 +1043,7 @@ code {
 
 .cluster.open .cluster-bubble,
 .cluster-bubble[aria-expanded='true'] {
-  transform: scale(1.15);
+  transform: scale(1.3);
   box-shadow:
     inset 0 0 8px rgba(255, 255, 255, 0.9),
     0 0 16px var(--bubble-color);
