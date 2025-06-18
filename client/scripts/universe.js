@@ -142,21 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const realm = yesBtn?.dataset.realm
     if (!realm) return
 
-    const fadeOverlay = document.createElement('div')
-    fadeOverlay.style.position = 'fixed'
-    fadeOverlay.style.top = '0'
-    fadeOverlay.style.left = '0'
-    fadeOverlay.style.width = '100%'
-    fadeOverlay.style.height = '100%'
-    fadeOverlay.style.background = 'black'
-    fadeOverlay.style.opacity = '0'
-    fadeOverlay.style.transition = 'opacity 750ms ease-out'
-    fadeOverlay.style.zIndex = '50'
-    document.body.appendChild(fadeOverlay)
-
-    requestAnimationFrame(() => {
-      fadeOverlay.style.opacity = '1'
-    })
+    const fadeOverlay = document.getElementById('fadeOverlay')
+    if (fadeOverlay) {
+      fadeOverlay.style.animation = 'none'
+      fadeOverlay.style.opacity = '0'
+      fadeOverlay.style.zIndex = '10'
+      requestAnimationFrame(() => {
+        fadeOverlay.style.transition = 'opacity 750ms ease-out'
+        fadeOverlay.style.opacity = '1'
+      })
+    }
 
     setTimeout(() => {
       window.location.href = `${realm}.html`

@@ -622,7 +622,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   letter-spacing: 2px;
 }
 
@@ -647,6 +647,18 @@ h1 {
   outline: none;
 }
 
+.form input[type='checkbox']:focus {
+  box-shadow: none;
+}
+
+.remember-label {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
 .submit-btn {
   padding: 12px;
   font-size: 1.2rem;
@@ -660,6 +672,8 @@ h1 {
     background 0.3s ease,
     box-shadow 0.3s ease;
   letter-spacing: 2px;
+  width: 100%;
+  margin-top: 4px;
 }
 
 .submit-btn:hover {
@@ -670,6 +684,11 @@ h1 {
 .submit-btn:focus {
   outline: none;
   box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
+.login-btn,
+.signup-btn {
+  margin-top: 12px;
 }
 
 /* Link styling */
@@ -686,6 +705,10 @@ h1 {
 
 .forgot-password:hover {
   color: rgba(255, 20, 147, 1);
+}
+
+.header-icon {
+  margin-right: 6px;
 }
 
 .hidden {
@@ -800,11 +823,15 @@ h1 {
   color: #ffeeee;
   text-align: center;
   box-shadow: 0 4px 20px rgba(31, 26, 31, 0.4);
+  animation: boxFloat 20s ease-in-out infinite;
 }
 
 .elysium-section ul {
-  list-style: none;
-  padding-left: 0;
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 auto;
+  text-align: left;
+  width: fit-content;
 }
 
 #realm-system li {
@@ -1098,6 +1125,11 @@ h1 {
   border-radius: 10px;
   z-index: 1001;
   text-align: center;
+}
+#star-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 #star-overlay button {
   display: block;

@@ -2,9 +2,10 @@
   if (typeof document === 'undefined') return;
   document.addEventListener('DOMContentLoaded', () => {
     const realm = (window.location.pathname.split('/').pop() || '').replace('.html','');
-    const star = document.createElement('div');
+    const star = document.createElement('button');
     star.id = 'collect-star';
     star.className = 'collect-star';
+    star.setAttribute('aria-label', 'Collect a star');
     star.textContent = '⭐';
     document.body.appendChild(star);
 
@@ -17,6 +18,7 @@
     function showChoices() {
       const overlay = document.createElement('div');
       overlay.id = 'star-overlay';
+      const list = document.createElement('ul');
       truths.forEach(truth => {
         const btn = document.createElement('button');
         btn.className = 'truth-btn';
@@ -28,8 +30,21 @@
           overlay.textContent = 'Star saved \u2728';
           setTimeout(() => overlay.remove(), 800);
         });
-        overlay.appendChild(btn);
+        const li = document.createElement('li');
+        li.appendChild(btn);
+        list.appendChild(li);
       });
+      overlay.appendChild(list);
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) overlay.remove();
+      });
+      document.addEventListener(
+        'keydown',
+        e => {
+          if (e.key === 'Escape') overlay.remove();
+        },
+        { once: true },
+      );
       document.body.appendChild(overlay);
     }
 

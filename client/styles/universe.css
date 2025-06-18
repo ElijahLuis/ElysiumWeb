@@ -276,6 +276,7 @@ body.universe-page {
 
 #realm-overlay h2 {
   margin-top: 0;
+  margin-bottom: 10px;
   font-size: 2rem;
   letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
@@ -290,6 +291,7 @@ body.universe-page {
 
 #realm-overlay .overlay-icon {
   font-size: 3.5rem;
+  margin-bottom: 20px;
 }
 
 #realm-overlay .overlay-icon.show,

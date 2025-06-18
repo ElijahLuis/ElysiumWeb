@@ -40,6 +40,14 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+#profile-main a {
+  color: #9ef2e3;
+  text-shadow: 0 0 6px rgba(158, 242, 227, 0.6);
+  transition: color 0.3s ease;
+}
+#profile-main a:hover {
+  color: #ffffff;
+}
 
 .home-section {
   width: 100%;
@@ -65,10 +73,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-left: 2px solid rgba(255, 255, 255, 0.25);
+  border-left: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .feed-item {
+  display: flex;
+  gap: 10px;
   position: relative;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -88,6 +99,11 @@ body {
   height: 8px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
+}
+
+.feed-avatar {
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .feed-time {
@@ -146,6 +162,14 @@ body {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
   outline: none;
+}
+
+#explore-info {
+  list-style: disc;
+  margin: 0 auto 10px;
+  padding-left: 20px;
+  width: fit-content;
+  text-align: left;
 }
 
 .visually-hidden {
