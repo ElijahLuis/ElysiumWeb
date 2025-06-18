@@ -77,5 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
     result.innerHTML = `\n      <p class="result-intro">You feel the pull of</p>\n      <div class="result-icon">${icon}</div>\n      <a class="result-name" href="universe.html#${key}">${name.toUpperCase()}</a>`;
     fadeOut(form);
     setTimeout(() => fadeIn(result), 500);
+
+    const link = result.querySelector('.result-name');
+    if (link) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const overlay = document.getElementById('fadeOverlay');
+        if (overlay) overlay.classList.add('fade-in');
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 600);
+      });
+    }
   });
 });
