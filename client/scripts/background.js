@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(resizeTimeout)
       resizeTimeout = setTimeout(generateStars, 200)
     })
+    startParallax()
   }
 
   if (overlay && overlay.classList.contains('start')) {
@@ -51,10 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let targetX = 0,
     targetY = 0,
     currentX = 0,
-    currentY = 0
+    currentY = 0,
+    parallaxActive = false
   const easeFactor = 0.1
 
-  if (!reduceMotion) {
+  function startParallax() {
+    if (parallaxActive || reduceMotion) return
+    parallaxActive = true
     document.addEventListener('mousemove', (e) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
