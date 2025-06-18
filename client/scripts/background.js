@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.addEventListener(
         'animationend',
         () => {
+          console.log('fade overlay animation ended')
           initStars()
         },
         { once: true },
@@ -51,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     initStars()
   }
+  if (location.hostname === 'localhost') {
+    initStars()
+  }
 
   // Parallax effect respects reduced-motion preference
   let targetX = 0,
@@ -58,9 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     currentX = 0,
     currentY = 0
   const easeFactor = 0.1
+  const intensity = 25
 
   if (!reduceMotion) {
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener('pointermove', (e) => {
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
       targetX = (e.clientX - centerX) / centerX
@@ -70,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor
       currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
+      starsContainer.style.transform = `translate(${currentX * intensity}px, ${currentY * intensity}px)`
       requestAnimationFrame(animateParallax)
     }
 
