@@ -17,7 +17,7 @@
       asleep.</noscript
     >
     <a href="#login-form" class="skip-link">Skip to Login</a>
-    <div id="fadeOverlay" aria-hidden="true"></div>
+    <div id="fadeOverlay" class="start" aria-hidden="true"></div>
     <div id="nebula-container" aria-hidden="true">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
@@ -25,13 +25,13 @@
     <div id="stars" aria-hidden="true"></div>
     <header>
       <h1>Welcome to Elysium.</h1>
-    </header>
-    <main>
       <div id="enterButtonContainer">
         <button id="enterButton" aria-label="Enter Elysium login screen">
           Enter
         </button>
       </div>
+    </header>
+    <main>
       <div
         id="auth-modal"
         class="modal hidden"
@@ -85,13 +85,13 @@
                 placeholder="Password"
                 required
               />
-              <label for="remember-me"
-                ><input id="remember-me" name="remember" type="checkbox" />
-                Remember Me</label
-              >
-              <button type="submit" class="submit-btn">Login</button>
-              <a href="#" class="forgot-password">Forgot Password?</a>
+              <label for="remember-me" class="remember-label"
+                >Remember Me
+                <input id="remember-me" name="remember" type="checkbox" />
+              </label>
+              <button type="submit" class="submit-btn login-btn">Login</button>
             </fieldset>
+            <a href="#" class="forgot-password">Forgot Password?</a>
           </form>
 
           <form id="signup-form" class="form hidden">
@@ -133,7 +133,9 @@
                 placeholder="Confirm Password"
                 required
               />
-              <button type="submit" class="submit-btn">Sign Up</button>
+              <button type="submit" class="submit-btn signup-btn">
+                Sign Up
+              </button>
             </fieldset>
           </form>
         </div>

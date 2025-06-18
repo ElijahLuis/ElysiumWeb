@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  if (overlay) {
+  if (overlay && overlay.classList.contains('start')) {
     overlay.addEventListener(
       'animationend',
       () => {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor
       currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
+      starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
       requestAnimationFrame(animateParallax)
     }
 

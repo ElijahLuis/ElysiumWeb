@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div id="fadeOverlay"></div>
+    <div id="fadeOverlay" class="start" class="start"></div>
     <div id="nebula-container">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
@@ -81,16 +81,32 @@
         <h2 class="stellar-heading">Live Feed</h2>
         <ul id="live-feed" class="feed-list" aria-live="polite">
           <li class="feed-item">
-            <time class="feed-time">10:30 AM</time>
-            <p class="feed-text">Nova just joined the cosmic voyage.</p>
+            <span class="feed-avatar" aria-hidden="true"></span>
+            <div class="feed-body">
+              <time class="feed-time">10:30 AM</time>
+              <p class="feed-text">Nova just joined the cosmic voyage.</p>
+            </div>
           </li>
           <li class="feed-item">
-            <time class="feed-time">10:25 AM</time>
-            <p class="feed-text">Lumen earned the Explorer badge.</p>
+            <span class="feed-avatar" aria-hidden="true"></span>
+            <div class="feed-body">
+              <time class="feed-time">10:25 AM</time>
+              <p class="feed-text">Lumen earned the Explorer badge.</p>
+            </div>
           </li>
           <li class="feed-item">
-            <time class="feed-time">10:00 AM</time>
-            <p class="feed-text">Stella shared a glowing reflection.</p>
+            <span class="feed-avatar" aria-hidden="true"></span>
+            <div class="feed-body">
+              <time class="feed-time">10:12 AM</time>
+              <p class="feed-text">Vesper discovered a hidden cluster.</p>
+            </div>
+          </li>
+          <li class="feed-item">
+            <span class="feed-avatar" aria-hidden="true"></span>
+            <div class="feed-body">
+              <time class="feed-time">10:00 AM</time>
+              <p class="feed-text">Stella shared a glowing reflection.</p>
+            </div>
           </li>
         </ul>
       </section>

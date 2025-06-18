@@ -45,6 +45,8 @@ for (const key of Object.keys(realms)) {
     <script src="../scripts/background.js"></script>
     <script src="../scripts/nav.js"></script>
     <script src="../scripts/clusters.js"></script>
+    ${key === 'abyss' ? '<script src="../scripts/stars.js"></script>' : ''}
+    <script src="../scripts/space.js"></script>
   </body>
 </html>`
 

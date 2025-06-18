@@ -54,13 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fadeInElement = fadeInElement
 
   if (enterButton) {
-    enterButton.addEventListener('click', () => {
+    enterButton.addEventListener('click', event => {
+      const rect = enterButton.getBoundingClientRect()
+      const size = Math.max(rect.width, rect.height) * 2
+      const ring = document.createElement('span')
+      ring.className = 'enter-ring'
+      ring.style.width = ring.style.height = `${size}px`
+      ring.style.left = `${event.clientX - rect.left - size / 2}px`
+      ring.style.top = `${event.clientY - rect.top - size / 2}px`
+      enterButton.appendChild(ring)
+      ring.addEventListener('animationend', () => ring.remove(), { once: true })
+
       fadeOutElement(welcomeText)
       fadeOutElement(enterButton)
       setTimeout(() => {
         fadeInElement(authModal)
         authModal.classList.add('active')
-      }, 500)
+      }, 600)
     })
   } else {
     console.warn('Enter button not found in DOM.')

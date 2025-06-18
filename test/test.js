@@ -90,6 +90,17 @@ async function run() {
       200,
       'universe page should return 200',
     )
+
+    const elysium = await fetch('/pages/elysium.html')
+    assert.strictEqual(
+      elysium.statusCode,
+      200,
+      'elysium page should return 200',
+    )
+    assert.ok(
+      elysium.data.includes('Core Philosophy'),
+      'elysium page should contain philosophy heading',
+    )
     assert.ok(
       universe.data.includes('universe-page'),
       'universe page should contain its unique class',
@@ -161,6 +172,28 @@ async function run() {
       traversal.statusCode,
       404,
       'traversal attempt should return 404',
+    )
+
+    const starScript = fs.readFileSync(
+      path.join(ROOT, 'client', 'scripts', 'stars.js'),
+      'utf-8',
+    )
+    const { JSDOM } = require('jsdom')
+    const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+      runScripts: 'dangerously',
+      url: 'https://example.com/pages/testrealm.html',
+    })
+    dom.window.eval(starScript)
+    dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'))
+    const starIcon = dom.window.document.querySelector('.collect-star')
+    assert.ok(starIcon, 'star icon should be injected')
+    starIcon.click()
+    const firstOption = dom.window.document.querySelector('#star-overlay button')
+    assert.ok(firstOption, 'overlay should show truth options')
+    firstOption.click()
+    assert.ok(
+      dom.window.localStorage.getItem('elysium-truth-testrealm'),
+      'selecting a truth should store value in localStorage',
     )
 
     console.log('All tests passed.')
