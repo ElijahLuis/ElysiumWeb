@@ -35,59 +35,40 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  if (overlay) {
-    const style = getComputedStyle(overlay)
-    if (style.animationName !== 'none') {
-      overlay.addEventListener(
-        'animationend',
-        () => {
-          console.log('overlay animation end')
-          initStars()
-        },
-        { once: true },
-      )
-    } else {
-      initStars()
-    }
+  if (overlay && overlay.classList.contains('start')) {
+    overlay.addEventListener(
+      'animationend',
+      () => {
+        initStars()
+      },
+      { once: true },
+    )
   } else {
     initStars()
   }
 
-  // Parallax effect - stars drift gently with the cursor
-  let pointerX = 0,
-    pointerY = 0,
+  // Parallax effect respects reduced-motion preference
+  let targetX = 0,
+    targetY = 0,
     currentX = 0,
     currentY = 0
-  const ease = 0.05
-  const intensity = 20
-  let running = false
-
-  function trackPointer(e) {
-    const x = e.clientX ?? e.touches?.[0]?.clientX
-    const y = e.clientY ?? e.touches?.[0]?.clientY
-    const w = window.innerWidth
-    const h = window.innerHeight
-    pointerX = (x / w - 0.5) * 2
-    pointerY = (y / h - 0.5) * 2
-    if (!running) {
-      running = true
-      requestAnimationFrame(step)
-    }
-  }
-
-  function step() {
-    currentX += (pointerX - currentX) * ease
-    currentY += (pointerY - currentY) * ease
-    starsContainer.style.transform = `translate3d(${currentX * intensity}px, ${currentY * intensity}px, 0)`
-    if (Math.abs(pointerX - currentX) > 0.001 || Math.abs(pointerY - currentY) > 0.001) {
-      requestAnimationFrame(step)
-    } else {
-      running = false
-    }
-  }
+  const easeFactor = 0.1
 
   if (!reduceMotion) {
-    window.addEventListener('mousemove', trackPointer)
-    window.addEventListener('touchmove', trackPointer, { passive: true })
+    document.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      targetX = (e.clientX - centerX) / centerX
+      targetY = (e.clientY - centerY) / centerY
+    })
+
+    function animateParallax() {
+      currentX += (targetX - currentX) * easeFactor
+      currentY += (targetY - currentY) * easeFactor
+      starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
+      requestAnimationFrame(animateParallax)
+    }
+
+    animateParallax()
   }
 })
