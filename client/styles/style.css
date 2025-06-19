@@ -426,15 +426,15 @@ h1 {
 /* --------------------------
    4) STARS & PARALLAX
 -------------------------- */
+/* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
 #stars {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   will-change: transform;
-  transform: translateZ(0);
 }
 
 .star {
@@ -697,8 +697,8 @@ fieldset legend {
   gap: 4px;
 }
 
-#login-form input:not([type="checkbox"]),
-#signup-form input:not([type="checkbox"]),
+#login-form input:not([type='checkbox']),
+#signup-form input:not([type='checkbox']),
 #login-form .submit-btn,
 #signup-form .submit-btn {
   width: 100%;
