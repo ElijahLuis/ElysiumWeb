@@ -23,8 +23,8 @@ const Stars: React.FC = () => {
         const size = Math.random() * 1.5 + 1
         star.style.width = `${size}px`
         star.style.height = `${size}px`
-        star.style.animationDuration = `${Math.random() * 2 + 2}s`
-        star.style.opacity = Math.random().toString()
+        star.style.animationDuration = `${Math.random() * 4 + 1}s`
+        star.style.opacity = (Math.random() * 0.7 + 0.3).toString()
         frag.appendChild(star)
       }
       container.appendChild(frag)

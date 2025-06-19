@@ -22,8 +22,13 @@ function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
     targetY = (y - centerY) / centerY
   }
 
-  const onPointer = (e) => {
+  const onMouseMove = (e) => {
     updateTarget(e.clientX, e.clientY)
+  }
+
+  const onTouchMove = (e) => {
+    const t = e.touches[0]
+    if (t) updateTarget(t.clientX, t.clientY)
   }
 
   const onTilt = (e) => {
@@ -40,13 +45,15 @@ function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  document.addEventListener('pointermove', onPointer)
+  window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('touchmove', onTouchMove, { passive: true })
   window.addEventListener('deviceorientation', onTilt)
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      document.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('touchmove', onTouchMove)
       window.removeEventListener('deviceorientation', onTilt)
       cancelAnimationFrame(frameId)
     },
@@ -82,7 +89,8 @@ function startBackground() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           r: Math.random() * 1.5 + 0.5,
-          base: Math.random() * 0.6 + 0.2,
+          base: Math.random() * 0.8 + 0.2,
+          speed: Math.random() * 0.0015 + 0.0005,
           phase: Math.random() * Math.PI * 2,
         })
       }
@@ -91,7 +99,7 @@ function startBackground() {
     function draw(time = 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       for (const s of stars) {
-        const alpha = s.base + Math.sin(time / 1000 + s.phase) * s.base
+        const alpha = s.base * (0.5 + 0.5 * Math.sin(time * s.speed + s.phase))
         ctx.fillStyle = `rgba(255,255,255,${alpha})`
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
