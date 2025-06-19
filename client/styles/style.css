@@ -146,7 +146,7 @@ h1 {
 
 /* Style realm page headings */
 .realm > h1 {
-  margin-top: 80px;
+  margin-top: 120px;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -212,6 +212,7 @@ h1 {
 #main-nav a:not(.brand-link) {
   position: relative;
   overflow: hidden;
+  display: inline-block;
   color: #ffffff;
   text-decoration: none;
   font-family: 'Orbitron', sans-serif;
@@ -240,9 +241,9 @@ h1 {
   pointer-events: none;
   transform: scale(0);
   opacity: 1;
-  animation: rippleSpread 0.24s ease-out forwards;
+  will-change: transform, opacity;
+  animation: rippleSpread 0.35s ease-out forwards;
 }
-
 
 @keyframes rippleSpread {
   to {
@@ -433,6 +434,7 @@ h1 {
   height: 100%;
   pointer-events: none;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .star {
@@ -568,11 +570,14 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
   width: 820px;
-  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
-  padding: 80px;
+  padding: 60px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 30px rgba(31, 26, 31, 0.5);
   opacity: 0;
@@ -640,8 +645,12 @@ fieldset legend {
 }
 
 #auth-heading {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ff80ab, #9ae1ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 136, 194, 0.7);
 }
 
 .form label {
@@ -673,6 +682,7 @@ fieldset legend {
 .form input[type='checkbox'] {
   width: 20px;
   height: 20px;
+  margin: 0;
 }
 
 .form input[type='checkbox']:focus {
@@ -682,9 +692,18 @@ fieldset legend {
 .remember-label {
   font-size: 0.9rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
+}
+
+#login-form input:not([type="checkbox"]),
+#signup-form input:not([type="checkbox"]),
+#login-form .submit-btn,
+#signup-form .submit-btn {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .submit-btn {
@@ -834,7 +853,7 @@ code {
 
 #elysium-main .elysium-article {
   margin: 130px auto 80px;
-  width: min(90%, 800px);
+  width: min(95%, 1000px);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -995,8 +1014,6 @@ code {
 }
 .cluster.open {
   z-index: 3;
-  grid-row: span 2;
-  align-self: start;
 }
 
 .cluster-bubble {

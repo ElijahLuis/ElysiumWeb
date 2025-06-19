@@ -98,8 +98,8 @@ async function run() {
       'about page should return 200',
     )
     assert.ok(
-      about.data.includes('Core Philosophy'),
-      'about page should contain philosophy heading',
+      about.data.includes('About Elysium'),
+      'about page should contain about heading',
     )
     assert.ok(
       universe.data.includes('universe-page'),

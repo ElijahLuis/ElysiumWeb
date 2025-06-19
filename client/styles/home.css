@@ -46,6 +46,9 @@ body {
   width: min(95%, 700px);
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 #profile-main a {
   color: #9ef2e3;
@@ -87,8 +90,8 @@ body {
 }
 
 .profile-avatar {
-  width: 120px;
-  height: 120px;
+  width: 135px;
+  height: 135px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
@@ -219,14 +222,22 @@ body {
   text-align: center;
 }
 
+#explore-intro .stellar-heading {
+  font-size: 2.4rem;
+}
+
+#explore-intro .explore-desc {
+  font-size: 1.1rem;
+}
+
 #explore-form {
-  gap: 20px;
+  gap: 12px;
 }
 
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 #explore-result {
@@ -257,12 +268,6 @@ body {
   color: #ffffff;
 }
 
-.explore-divider {
-  width: 80%;
-  margin: 20px auto;
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
 
 .visually-hidden {
   position: absolute;

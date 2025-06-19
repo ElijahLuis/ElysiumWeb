@@ -159,13 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeOverlay = document.getElementById('fadeOverlay')
     if (fadeOverlay) {
       fadeOverlay.classList.remove('start')
+      void fadeOverlay.offsetWidth
       fadeOverlay.classList.add('fade-in')
     }
     pauseFloat(0)
 
     setTimeout(() => {
       window.location.href = `${realm}.html`
-    }, 750)
+    }, 600)
   }
 
   function showOverlay(realmKey) {
