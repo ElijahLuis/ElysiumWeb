@@ -1,15 +1,13 @@
 // Initialize the starfield once the page is ready
-document.addEventListener('DOMContentLoaded', startBackground)
-
-function startBackground() {
+document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
-  // ----- Star generation -----
+  const overlay = document.getElementById('fadeOverlay')
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   function generateStars() {
     starsContainer.innerHTML = ''
-
-    // Scale star count with the viewport for a dense sky
     const count = Math.floor((window.innerWidth * window.innerHeight) / 2500)
     const frag = document.createDocumentFragment()
 
@@ -18,48 +16,46 @@ function startBackground() {
       star.classList.add('star')
       star.style.left = `${Math.random() * window.innerWidth}px`
       star.style.top = `${Math.random() * window.innerHeight}px`
-
-      // Random twinkle and drift speeds with staggered start times
-      const twinkle = (Math.random() * 2 + 2).toFixed(2)
-      const drift = (Math.random() * 10 + 10).toFixed(2)
-      const delay = (Math.random() * 4).toFixed(2)
-      star.style.animationDuration = `${twinkle}s, ${drift}s`
-      star.style.animationDelay = `${delay}s, 0s`
-
-      star.style.opacity = (Math.random() * 0.7 + 0.3).toFixed(2)
+      const size = Math.random() * 1.5 + 1
+      star.style.width = `${size}px`
+      star.style.height = `${size}px`
+      star.style.animationDuration = `${Math.random() * 2 + 2}s`
+      star.style.opacity = Math.random()
       frag.appendChild(star)
     }
 
     starsContainer.appendChild(frag)
   }
 
-  generateStars()
+  function initStars() {
+    generateStars()
+    let resizeTimeout
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(generateStars, 200)
+    })
+  }
 
-  let resizeTimeout
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout)
-    resizeTimeout = setTimeout(generateStars, 200)
-  })
+  if (overlay && overlay.classList.contains('start')) {
+    overlay.addEventListener(
+      'animationend',
+      () => {
+        initStars()
+      },
+      { once: true },
+    )
+  } else {
+    initStars()
+  }
 
-  // ----- Parallax effect -----
-  const reduceMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches
+  // Parallax
   if (reduceMotion) return
 
   let targetX = 0,
     targetY = 0,
     currentX = 0,
     currentY = 0
-  const ease = 0.08
-
-  function updatePointer(e) {
-    const { clientX, clientY } = e.touches ? e.touches[0] : e
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (clientX - centerX) / centerX
-    targetY = (clientY - centerY) / centerY
-  }
+  const ease = 0.1
 
   function animate() {
     currentX += (targetX - currentX) * ease
@@ -68,8 +64,26 @@ function startBackground() {
     requestAnimationFrame(animate)
   }
 
-  window.addEventListener('pointermove', updatePointer, { passive: true })
-  window.addEventListener('touchmove', updatePointer, { passive: true })
+  window.addEventListener('mousemove', (e) => {
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+  })
+
+  window.addEventListener(
+    'touchmove',
+    (e) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      targetX = (touch.clientX - centerX) / centerX
+      targetY = (touch.clientY - centerY) / centerY
+    },
+    { passive: true },
+  )
+
   animate()
-}
+})
 
