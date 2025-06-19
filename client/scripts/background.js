@@ -1,89 +1,79 @@
-// Initialize the starfield once the page is ready
-document.addEventListener('DOMContentLoaded', () => {
-  const starsContainer = document.getElementById('stars')
-  if (!starsContainer) return
+document.addEventListener("DOMContentLoaded", () => {
+    const starsContainer = document.getElementById("stars");
+    if (!starsContainer) return;
 
-  const overlay = document.getElementById('fadeOverlay')
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  function generateStars() {
-    starsContainer.innerHTML = ''
-    const count = Math.floor((window.innerWidth * window.innerHeight) / 2500)
-    const frag = document.createDocumentFragment()
-
-    for (let i = 0; i < count; i++) {
-      const star = document.createElement('div')
-      star.classList.add('star')
-      star.style.left = `${Math.random() * window.innerWidth}px`
-      star.style.top = `${Math.random() * window.innerHeight}px`
-      const size = Math.random() * 1.5 + 1
-      star.style.width = `${size}px`
-      star.style.height = `${size}px`
-      star.style.animationDuration = `${Math.random() * 2 + 2}s`
-      star.style.opacity = Math.random()
-      frag.appendChild(star)
+    // Star generation
+    function generateStars() {
+        starsContainer.innerHTML = "";
+        const count = Math.floor((window.innerWidth * window.innerHeight) / 10000);
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.opacity = Math.random();
+            frag.appendChild(star);
+        }
+        starsContainer.appendChild(frag);
     }
 
-    starsContainer.appendChild(frag)
-  }
+    generateStars();
 
-  function initStars() {
-    generateStars()
-    let resizeTimeout
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout)
-      resizeTimeout = setTimeout(generateStars, 200)
-    })
-  }
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(generateStars, 200);
+    });
 
-  if (overlay && overlay.classList.contains('start')) {
-    overlay.addEventListener(
-      'animationend',
-      () => {
-        initStars()
-      },
-      { once: true },
-    )
-  } else {
-    initStars()
-  }
+    // Gradient colors
+    const gradients = [
+        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night set
+        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo set
+        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple set
+        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk set
+    ];
 
-  // Parallax
-  if (reduceMotion) return
+    let currentGradientIndex = 0;
+    function updateGradients() {
+        const nextGradientIndex = (currentGradientIndex + 1) % gradients.length;
+        const currentColors = gradients[currentGradientIndex];
+        const nextColors = gradients[nextGradientIndex];
 
-  let targetX = 0,
-    targetY = 0,
-    currentX = 0,
-    currentY = 0
-  const ease = 0.1
+        document.body.style.setProperty(
+            "--gradient-current",
+            `linear-gradient(to bottom, ${currentColors[0]}, ${currentColors[1]}, ${currentColors[2]}, ${currentColors[3]})`
+        );
+        document.body.style.setProperty(
+            "--gradient-next",
+            `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`
+        );
 
-  function animate() {
-    currentX += (targetX - currentX) * ease
-    currentY += (targetY - currentY) * ease
-    starsContainer.style.transform = `translate3d(${currentX * 12}px, ${currentY * 12}px, 0)`
-    requestAnimationFrame(animate)
-  }
+        currentGradientIndex = nextGradientIndex;
+    }
+    updateGradients();
+    setInterval(updateGradients, 60000);
 
-  window.addEventListener('mousemove', (e) => {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
-  })
+    // Parallax effect
+    let targetX = 0,
+        targetY = 0,
+        currentX = 0,
+        currentY = 0;
+    const easeFactor = 0.1;
 
-  window.addEventListener(
-    'touchmove',
-    (e) => {
-      const touch = e.touches[0]
-      if (!touch) return
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      targetX = (touch.clientX - centerX) / centerX
-      targetY = (touch.clientY - centerY) / centerY
-    },
-    { passive: true },
-  )
+    document.addEventListener("mousemove", (e) => {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        targetX = (e.clientX - centerX) / centerX;
+        targetY = (e.clientY - centerY) / centerY;
+    });
 
-  animate()
-})
-
+    function animateParallax() {
+        currentX += (targetX - currentX) * easeFactor;
+        currentY += (targetY - currentY) * easeFactor;
+        starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`;
+        requestAnimationFrame(animateParallax);
+    }
+    animateParallax();
+});
