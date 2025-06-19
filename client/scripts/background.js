@@ -2,10 +2,15 @@
  * Gentle parallax for a given element.
  * Exported globally so React pages can hook in.
  */
-function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
+function createParallax(
+  container,
+  { multiplier = 12, ease = 0.1, zIndex = 0 } = {},
+) {
   if (!container) return { destroy() {} }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     return { destroy() {} }
+
+  container.style.zIndex = zIndex
 
   let targetX = 0,
     targetY = 0,
@@ -13,13 +18,20 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     currentY = 0,
     frameId
 
-  const onMove = (e) => {
-    const source = 'touches' in e ? e.touches[0] : e
-    if (!source) return
+  const onPointer = (e) => {
+    const src = 'touches' in e ? e.touches[0] : e
+    if (!src) return
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (source.clientX - centerX) / centerX
-    targetY = (source.clientY - centerY) / centerY
+    targetX = (src.clientX - centerX) / centerX
+    targetY = (src.clientY - centerY) / centerY
+  }
+
+  const onTilt = (e) => {
+    if (e.beta == null || e.gamma == null) return
+    const maxTilt = 30
+    targetX = e.gamma / maxTilt
+    targetY = e.beta / maxTilt
   }
 
   const animate = () => {
@@ -29,14 +41,16 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  window.addEventListener('pointermove', onMove)
-  window.addEventListener('touchmove', onMove, { passive: true })
+  window.addEventListener('mousemove', onPointer)
+  window.addEventListener('touchmove', onPointer, { passive: true })
+  window.addEventListener('deviceorientation', onTilt)
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('touchmove', onMove)
+      window.removeEventListener('mousemove', onPointer)
+      window.removeEventListener('touchmove', onPointer)
+      window.removeEventListener('deviceorientation', onTilt)
       cancelAnimationFrame(frameId)
     },
   }
