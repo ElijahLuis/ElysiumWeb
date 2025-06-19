@@ -1,12 +1,13 @@
 /**
  * Gentle parallax for a given element.
  * Exported globally so React pages can hook in.
+ * The star field itself is drawn on a canvas so
+ * parallax works across static and React pages.
  */
 function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
   if (!container) return { destroy() {} }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     return { destroy() {} }
-
 
   let targetX = 0,
     targetY = 0,
@@ -14,13 +15,20 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     currentY = 0,
     frameId
 
-  const onPointer = (e) => {
-    const src = 'touches' in e ? e.touches[0] : e
-    if (!src) return
+  const onMouse = (e) => {
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (src.clientX - centerX) / centerX
-    targetY = (src.clientY - centerY) / centerY
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+  }
+
+  const onTouch = (e) => {
+    const t = e.touches[0]
+    if (!t) return
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (t.clientX - centerX) / centerX
+    targetY = (t.clientY - centerY) / centerY
   }
 
   const onTilt = (e) => {
@@ -37,13 +45,15 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  window.addEventListener('pointermove', onPointer)
+  window.addEventListener('mousemove', onMouse)
+  window.addEventListener('touchmove', onTouch, { passive: true })
   window.addEventListener('deviceorientation', onTilt)
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      window.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('mousemove', onMouse)
+      window.removeEventListener('touchmove', onTouch)
       window.removeEventListener('deviceorientation', onTilt)
       cancelAnimationFrame(frameId)
     },
@@ -59,37 +69,53 @@ function startBackground() {
 
     const overlay = document.getElementById('fadeOverlay')
 
+    const canvas = document.createElement('canvas')
+    canvas.id = 'starCanvas'
+    starsContainer.appendChild(canvas)
+    const ctx = canvas.getContext('2d')
+    let stars = []
+
+    const resize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      generateStars()
+    }
+
     function generateStars() {
-      starsContainer.innerHTML = ''
-      const count = Math.floor((window.innerWidth * window.innerHeight) / 3500)
-      const frag = document.createDocumentFragment()
+      const count = Math.floor((canvas.width * canvas.height) / 2500)
+      stars = []
       for (let i = 0; i < count; i++) {
-        const star = document.createElement('div')
-        star.classList.add('star')
-        star.style.left = `${Math.random() * window.innerWidth}px`
-        star.style.top = `${Math.random() * window.innerHeight}px`
-        const size = Math.random() * 1.5 + 1
-        star.style.width = `${size}px`
-        star.style.height = `${size}px`
-        star.style.animationDuration = `${Math.random() * 2 + 2}s`
-        star.style.opacity = Math.random()
-        frag.appendChild(star)
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.5,
+          base: Math.random() * 0.6 + 0.2,
+          phase: Math.random() * Math.PI * 2,
+        })
       }
-      starsContainer.appendChild(frag)
+    }
+
+    function draw(time = 0) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      for (const s of stars) {
+        const alpha = s.base + Math.sin(time / 1000 + s.phase) * s.base
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`
+        ctx.beginPath()
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
+        ctx.fill()
+      }
+      requestAnimationFrame(draw)
     }
 
     let parallaxInstance
 
     function initStars() {
-      generateStars()
+      resize()
+      draw()
       if (!parallaxInstance) {
         parallaxInstance = createParallax(starsContainer)
       }
-      let resizeTimeout
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout)
-        resizeTimeout = setTimeout(generateStars, 200)
-      })
+      window.addEventListener('resize', resize)
     }
 
     if (overlay && overlay.classList.contains('start')) {
