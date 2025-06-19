@@ -13,13 +13,13 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     currentY = 0,
     frameId
 
-  const onMove = e => {
-    const touch = 'touches' in e ? e.touches[0] : e
-    if (!touch) return
+  const onMove = (e) => {
+    const source = 'touches' in e ? e.touches[0] : e
+    if (!source) return
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (touch.clientX - centerX) / centerX
-    targetY = (touch.clientY - centerY) / centerY
+    targetX = (source.clientX - centerX) / centerX
+    targetY = (source.clientY - centerY) / centerY
   }
 
   const animate = () => {
@@ -29,13 +29,13 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  window.addEventListener('mousemove', onMove)
+  window.addEventListener('pointermove', onMove)
   window.addEventListener('touchmove', onMove, { passive: true })
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('pointermove', onMove)
       window.removeEventListener('touchmove', onMove)
       cancelAnimationFrame(frameId)
     },
@@ -69,8 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     starsContainer.appendChild(frag)
   }
 
+  let parallaxInstance
+
   function initStars() {
     generateStars()
+    if (!parallaxInstance) {
+      parallaxInstance = createParallax(starsContainer)
+    }
     let resizeTimeout
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout)
@@ -90,7 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     initStars()
   }
-
-  // Parallax
-  createParallax(starsContainer)
 })
