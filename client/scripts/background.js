@@ -4,7 +4,7 @@
  * The star field itself is drawn on a canvas so
  * parallax works across static and React pages.
  */
-function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
+function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
   if (!container) return { destroy() {} }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     return { destroy() {} }
@@ -15,20 +15,15 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     currentY = 0,
     frameId
 
-  const onMouse = (e) => {
+  const updateTarget = (x, y) => {
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
+    targetX = (x - centerX) / centerX
+    targetY = (y - centerY) / centerY
   }
 
-  const onTouch = (e) => {
-    const t = e.touches[0]
-    if (!t) return
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (t.clientX - centerX) / centerX
-    targetY = (t.clientY - centerY) / centerY
+  const onPointer = (e) => {
+    updateTarget(e.clientX, e.clientY)
   }
 
   const onTilt = (e) => {
@@ -45,15 +40,13 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  window.addEventListener('mousemove', onMouse)
-  window.addEventListener('touchmove', onTouch, { passive: true })
+  document.addEventListener('pointermove', onPointer)
   window.addEventListener('deviceorientation', onTilt)
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      window.removeEventListener('mousemove', onMouse)
-      window.removeEventListener('touchmove', onTouch)
+      document.removeEventListener('pointermove', onPointer)
       window.removeEventListener('deviceorientation', onTilt)
       cancelAnimationFrame(frameId)
     },
