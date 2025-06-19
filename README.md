@@ -14,7 +14,7 @@ npm start
 This will start a server on [http://localhost:3000](http://localhost:3000). No additional dependencies are required.
 
 ## Star field and parallax
-The night sky behind every page is created in `client/scripts/background.js`. It generates roughly **300** twinkling stars and eases them with a simple mouse‑driven parallax so the cosmos gently follows your movement.
+The night sky behind every page is painted by `client/scripts/background.js`. It dynamically scatters hundreds of twinkling stars—scaled to your screen size—and eases them with a smooth mouse‑driven parallax so the cosmos gently follows your movement.
 
 ## Compiling the `src` directory
 React components live in `src/` and are written in TypeScript. After installing
