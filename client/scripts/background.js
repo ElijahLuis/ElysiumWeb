@@ -105,6 +105,7 @@ function startBackground() {
     function initStars() {
       resize()
       draw()
+      starsContainer.style.opacity = '1'
       if (!parallaxInstance) {
         parallaxInstance = createParallax(starsContainer)
       }

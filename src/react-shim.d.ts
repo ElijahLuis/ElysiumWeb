@@ -8,12 +8,14 @@ declare namespace React {
   interface RefObject<T> {
     readonly current: T | null
   }
+  function useRef<T = any>(initial: T | null): RefObject<T>
 }
 
 declare module 'react' {
   const React: any
   export function useEffect(effect: any, deps?: any[]): void
   export function useState<T = any>(initial?: T): [T, (v: T) => void]
+  export function useRef<T = any>(initial: T | null): React.RefObject<T>
   export const createElement: any
   export const Component: any
   export type FC<P = {}> = React.FC<P>
