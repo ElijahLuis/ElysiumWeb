@@ -1,9 +1,54 @@
+/**
+ * Gentle parallax for a given element.
+ * Exported globally so React pages can hook in.
+ */
+function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
+  if (!container) return { destroy() {} }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+    return { destroy() {} }
+
+  let targetX = 0,
+    targetY = 0,
+    currentX = 0,
+    currentY = 0,
+    frameId
+
+  const onMove = e => {
+    const touch = 'touches' in e ? e.touches[0] : e
+    if (!touch) return
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (touch.clientX - centerX) / centerX
+    targetY = (touch.clientY - centerY) / centerY
+  }
+
+  const animate = () => {
+    currentX += (targetX - currentX) * ease
+    currentY += (targetY - currentY) * ease
+    container.style.transform = `translate3d(${currentX * multiplier}px, ${currentY * multiplier}px, 0)`
+    frameId = requestAnimationFrame(animate)
+  }
+
+  window.addEventListener('mousemove', onMove)
+  window.addEventListener('touchmove', onMove, { passive: true })
+  frameId = requestAnimationFrame(animate)
+
+  return {
+    destroy() {
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('touchmove', onMove)
+      cancelAnimationFrame(frameId)
+    },
+  }
+}
+
+window.createParallax = createParallax
+
 document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
   const overlay = document.getElementById('fadeOverlay')
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   function generateStars() {
     starsContainer.innerHTML = ''
@@ -47,40 +92,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Parallax
-  if (reduceMotion) return
-
-  let targetX = 0,
-    targetY = 0,
-    currentX = 0,
-    currentY = 0
-  const ease = 0.1
-
-  function animate() {
-    currentX += (targetX - currentX) * ease
-    currentY += (targetY - currentY) * ease
-    starsContainer.style.transform = `translate3d(${currentX * 12}px, ${currentY * 12}px, 0)`
-    requestAnimationFrame(animate)
-  }
-
-  window.addEventListener('mousemove', (e) => {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
-  })
-
-  window.addEventListener(
-    'touchmove',
-    (e) => {
-      const touch = e.touches[0]
-      if (!touch) return
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      targetX = (touch.clientX - centerX) / centerX
-      targetY = (touch.clientY - centerY) / centerY
-    },
-    { passive: true },
-  )
-
-  animate()
+  createParallax(starsContainer)
 })
