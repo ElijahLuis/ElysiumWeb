@@ -44,7 +44,7 @@ function createParallax(container, { multiplier = 12, ease = 0.1 } = {}) {
 
 window.createParallax = createParallax
 
-document.addEventListener('DOMContentLoaded', () => {
+function startBackground() {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
@@ -95,4 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     initStars()
   }
-})
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startBackground)
+} else {
+  startBackground()
+}
