@@ -3,11 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!starsContainer) return
 
   const overlay = document.getElementById('fadeOverlay')
-  const reduceMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)',
-  ).matches
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Star generation
   function generateStars() {
     starsContainer.innerHTML = ''
     const count = Math.floor((window.innerWidth * window.innerHeight) / 3500)
@@ -49,34 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initStars()
   }
 
-  // Parallax effect respects reduced-motion preference
+  // Parallax
+  if (reduceMotion) return
+
   let targetX = 0,
     targetY = 0,
     currentX = 0,
     currentY = 0
-  const easeFactor = 0.08
+  const ease = 0.1
 
-  function updatePointer(e) {
-    const x = e.clientX ?? (e.touches && e.touches[0]?.clientX)
-    const y = e.clientY ?? (e.touches && e.touches[0]?.clientY)
-    if (x === undefined || y === undefined) return
+  function animate() {
+    currentX += (targetX - currentX) * ease
+    currentY += (targetY - currentY) * ease
+    starsContainer.style.transform = `translate3d(${currentX * 12}px, ${currentY * 12}px, 0)`
+    requestAnimationFrame(animate)
+  }
+
+  window.addEventListener('mousemove', (e) => {
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (x - centerX) / centerX
-    targetY = (y - centerY) / centerY
-  }
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+  })
 
-  function animateParallax() {
-    currentX += (targetX - currentX) * easeFactor
-    currentY += (targetY - currentY) * easeFactor
-    starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
-    requestAnimationFrame(animateParallax)
-  }
+  window.addEventListener(
+    'touchmove',
+    (e) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      targetX = (touch.clientX - centerX) / centerX
+      targetY = (touch.clientY - centerY) / centerY
+    },
+    { passive: true },
+  )
 
-  if (!reduceMotion) {
-    window.addEventListener('pointermove', updatePointer)
-    window.addEventListener('mousemove', updatePointer)
-    window.addEventListener('touchmove', updatePointer, { passive: true })
-    animateParallax()
-  }
+  animate()
 })

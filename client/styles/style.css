@@ -697,8 +697,8 @@ fieldset legend {
   gap: 4px;
 }
 
-#login-form input,
-#signup-form input,
+#login-form input:not([type="checkbox"]),
+#signup-form input:not([type="checkbox"]),
 #login-form .submit-btn,
 #signup-form .submit-btn {
   width: 100%;
