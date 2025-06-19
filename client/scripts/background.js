@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     starsContainer.appendChild(frag)
   }
+
   function initStars() {
     generateStars()
     let resizeTimeout
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.addEventListener(
       'animationend',
       () => {
+        console.log('overlay ended')
         initStars()
       },
       { once: true },
@@ -52,26 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
     targetY = 0,
     currentX = 0,
     currentY = 0
-  const easeFactor = 0.1
+  const easeFactor = 0.08
 
   function updatePointer(e) {
+    const x = e.clientX ?? (e.touches && e.touches[0]?.clientX)
+    const y = e.clientY ?? (e.touches && e.touches[0]?.clientY)
+    if (x === undefined || y === undefined) return
     const centerX = window.innerWidth / 2
     const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
+    targetX = (x - centerX) / centerX
+    targetY = (y - centerY) / centerY
+  }
+
+  function animateParallax() {
+    currentX += (targetX - currentX) * easeFactor
+    currentY += (targetY - currentY) * easeFactor
+    starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
+    requestAnimationFrame(animateParallax)
   }
 
   if (!reduceMotion) {
     window.addEventListener('pointermove', updatePointer)
     window.addEventListener('mousemove', updatePointer)
-
-    function animateParallax() {
-      currentX += (targetX - currentX) * easeFactor
-      currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`
-      requestAnimationFrame(animateParallax)
-    }
-
+    window.addEventListener('touchmove', updatePointer, { passive: true })
     animateParallax()
   }
 })
