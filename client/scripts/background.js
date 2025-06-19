@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.addEventListener(
         'animationend',
         () => {
+          console.log('overlay animation end')
           initStars()
         },
         { once: true },
@@ -58,22 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
     currentX = 0,
     currentY = 0
   const easeFactor = 0.1
+  let rafId = null
+
+  function updatePointer(e) {
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+    if (!rafId) rafId = requestAnimationFrame(animateParallax)
+  }
+
+  function animateParallax() {
+    currentX += (targetX - currentX) * easeFactor
+    currentY += (targetY - currentY) * easeFactor
+    starsContainer.style.transform = `translate3d(${currentX * 15}px, ${currentY * 15}px, 0)`
+    rafId = requestAnimationFrame(animateParallax)
+  }
 
   if (!reduceMotion) {
-    document.addEventListener('mousemove', (e) => {
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      targetX = (e.clientX - centerX) / centerX
-      targetY = (e.clientY - centerY) / centerY
-    })
-
-    function animateParallax() {
-      currentX += (targetX - currentX) * easeFactor
-      currentY += (targetY - currentY) * easeFactor
-      starsContainer.style.transform = `translate(${currentX * 10}px, ${currentY * 10}px)`
-      requestAnimationFrame(animateParallax)
-    }
-
-    animateParallax()
+    window.addEventListener('pointermove', updatePointer)
+    window.addEventListener('mousemove', updatePointer)
   }
 })
