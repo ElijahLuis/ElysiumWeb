@@ -1,15 +1,13 @@
 import { useEffect, useRef } from 'react'
+import useParallax from '../hooks/useParallax'
 
 const Stars: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
+  useParallax(containerRef)
 
   useEffect(() => {
     const container = containerRef.current!
     if (!container) return
-
-    const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
 
     function generateStars() {
       container.innerHTML = ''
@@ -39,30 +37,6 @@ const Stars: React.FC = () => {
 
     window.addEventListener('resize', handleResize)
 
-    let pointerX = 0,
-      pointerY = 0,
-      currentX = 0,
-      currentY = 0
-
-    if (!reduceMotion) {
-      const updatePointer = (e: PointerEvent) => {
-        pointerX = e.clientX / window.innerWidth - 0.5
-        pointerY = e.clientY / window.innerHeight - 0.5
-      }
-
-      window.addEventListener('pointermove', updatePointer, { passive: true })
-
-      const animate = () => {
-        currentX += (pointerX - currentX) * 0.05
-        currentY += (pointerY - currentY) * 0.05
-        if (container) {
-          container.style.transform = `translate3d(${currentX * 30}px, ${currentY * 30}px, 0)`
-        }
-        requestAnimationFrame(animate)
-      }
-
-      requestAnimationFrame(animate)
-    }
 
     // fade in
     requestAnimationFrame(() => {

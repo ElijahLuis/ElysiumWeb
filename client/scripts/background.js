@@ -4,7 +4,7 @@
  * The star field itself is drawn on a canvas so
  * parallax works across static and React pages.
  */
-function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
+function createParallax(container, { multiplier = 16, ease = 0.08 } = {}) {
   if (!container) return { destroy() {} }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     return { destroy() {} }
@@ -15,27 +15,27 @@ function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
     currentY = 0,
     frameId
 
-  const updateTarget = (x, y) => {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (x - centerX) / centerX
-    targetY = (y - centerY) / centerY
+  const update = (x, y) => {
+    const cx = window.innerWidth / 2
+    const cy = window.innerHeight / 2
+    targetX = (x - cx) / cx
+    targetY = (y - cy) / cy
   }
 
-  const onMouseMove = (e) => {
-    updateTarget(e.clientX, e.clientY)
+  const onPointer = (e) => {
+    update(e.clientX, e.clientY)
   }
 
-  const onTouchMove = (e) => {
+  const onTouch = (e) => {
     const t = e.touches[0]
-    if (t) updateTarget(t.clientX, t.clientY)
+    if (t) update(t.clientX, t.clientY)
   }
 
   const onTilt = (e) => {
     if (e.beta == null || e.gamma == null) return
-    const maxTilt = 30
-    targetX = e.gamma / maxTilt
-    targetY = e.beta / maxTilt
+    const max = 30
+    targetX = e.gamma / max
+    targetY = e.beta / max
   }
 
   const animate = () => {
@@ -45,15 +45,15 @@ function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
     frameId = requestAnimationFrame(animate)
   }
 
-  window.addEventListener('mousemove', onMouseMove)
-  window.addEventListener('touchmove', onTouchMove, { passive: true })
+  window.addEventListener('pointermove', onPointer)
+  window.addEventListener('touchmove', onTouch, { passive: true })
   window.addEventListener('deviceorientation', onTilt)
   frameId = requestAnimationFrame(animate)
 
   return {
     destroy() {
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('touchmove', onTouchMove)
+      window.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('touchmove', onTouch)
       window.removeEventListener('deviceorientation', onTilt)
       cancelAnimationFrame(frameId)
     },
@@ -63,15 +63,22 @@ function createParallax(container, { multiplier = 14, ease = 0.1 } = {}) {
 window.createParallax = createParallax
 
 function startBackground() {
+  let current = null
+  let parallaxInstance = null
+  let resizeHandler
+
   const init = () => {
     const starsContainer = document.getElementById('stars')
-    if (!starsContainer) return false
+    if (!starsContainer || starsContainer === current) return !!starsContainer
+
+    current = starsContainer
 
     const overlay = document.getElementById('fadeOverlay')
 
-    const canvas = document.createElement('canvas')
+    const existing = starsContainer.querySelector('#starCanvas')
+    const canvas = existing || document.createElement('canvas')
     canvas.id = 'starCanvas'
-    starsContainer.appendChild(canvas)
+    if (!existing) starsContainer.appendChild(canvas)
     const ctx = canvas.getContext('2d')
     let stars = []
 
@@ -80,6 +87,8 @@ function startBackground() {
       canvas.height = window.innerHeight
       generateStars()
     }
+    resizeHandler && window.removeEventListener('resize', resizeHandler)
+    resizeHandler = resize
 
     function generateStars() {
       const count = Math.floor((canvas.width * canvas.height) / 2500)
@@ -108,26 +117,18 @@ function startBackground() {
       requestAnimationFrame(draw)
     }
 
-    let parallaxInstance
+    parallaxInstance && parallaxInstance.destroy()
 
     function initStars() {
       resize()
       draw()
       starsContainer.style.opacity = '1'
-      if (!parallaxInstance) {
-        parallaxInstance = createParallax(starsContainer)
-      }
+      parallaxInstance = createParallax(starsContainer)
       window.addEventListener('resize', resize)
     }
 
     if (overlay && overlay.classList.contains('start')) {
-      overlay.addEventListener(
-        'animationend',
-        () => {
-          initStars()
-        },
-        { once: true },
-      )
+      overlay.addEventListener('animationend', initStars, { once: true })
     } else {
       initStars()
     }
@@ -136,9 +137,10 @@ function startBackground() {
   }
 
   if (!init()) {
-    const observer = new MutationObserver(() => {
-      if (init()) observer.disconnect()
-    })
+    const observer = new MutationObserver(init)
+    observer.observe(document.body, { childList: true, subtree: true })
+  } else {
+    const observer = new MutationObserver(init)
     observer.observe(document.body, { childList: true, subtree: true })
   }
 }
