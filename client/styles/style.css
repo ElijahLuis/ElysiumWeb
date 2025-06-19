@@ -61,11 +61,8 @@ html {
 
 body {
   margin: 0;
-  /* allow scrolling but keep the bars invisible */
   overflow-y: auto;
   overflow-x: hidden;
-  -ms-overflow-style: none; /* Edge */
-  scrollbar-width: none; /* Firefox */
   position: relative;
   font-family: var(--primary-font);
   color: var(--primary-color);
@@ -86,9 +83,8 @@ body {
   animation: gradientCycle 60s ease-in-out infinite;
 }
 
-/* hide scrollbars for WebKit-based browsers */
-body::-webkit-scrollbar {
-  display: none;
+body.landing {
+  overflow: hidden;
 }
 
 h2,

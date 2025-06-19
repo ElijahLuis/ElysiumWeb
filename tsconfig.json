@@ -5,7 +5,6 @@
     "moduleResolution": "node",
     "jsx": "react",
     "lib": ["dom", "es2019"],
-    "types": ["node"],
     "rootDir": "src",
     "outDir": "build",
     "strict": true,
