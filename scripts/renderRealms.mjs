@@ -1,13 +1,24 @@
 import fs from 'fs/promises'
 import path from 'path'
-import React from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
 import { realms } from '../build/data/realmMetadata.js'
 import { realmIcons } from '../build/data/realmIcons.js'
 import { loadRealmDetail } from '../build/data/realmData.js'
 import { overlayData } from '../build/data/overlayData.js'
-import RealmTemplateModule from '../build/components/RealmTemplate.js'
-const RealmTemplate = RealmTemplateModule.default || RealmTemplateModule
+
+let React
+let renderToStaticMarkup
+let RealmTemplate
+try {
+  const react = await import('react')
+  const dom = await import('react-dom/server')
+  const templateMod = await import('../build/components/RealmTemplate.js')
+  React = react.default || react
+  renderToStaticMarkup = dom.renderToStaticMarkup
+  RealmTemplate = templateMod.default || templateMod
+} catch (err) {
+  console.log('Skipping page generation:', err.message)
+  process.exit(0)
+}
 
 const pagesDir = path.join(process.cwd(), 'client', 'pages')
 
