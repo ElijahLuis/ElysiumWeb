@@ -54,13 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     currentY = 0
   const easeFactor = 0.1
 
+  function updatePointer(e) {
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
+    targetX = (e.clientX - centerX) / centerX
+    targetY = (e.clientY - centerY) / centerY
+  }
+
   if (!reduceMotion) {
-    document.addEventListener('mousemove', (e) => {
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      targetX = (e.clientX - centerX) / centerX
-      targetY = (e.clientY - centerY) / centerY
-    })
+    window.addEventListener('pointermove', updatePointer)
+    window.addEventListener('mousemove', updatePointer)
 
     function animateParallax() {
       currentX += (targetX - currentX) * easeFactor

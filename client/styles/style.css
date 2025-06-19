@@ -245,7 +245,6 @@ h1 {
   animation: rippleSpread 0.35s ease-out forwards;
 }
 
-
 @keyframes rippleSpread {
   to {
     transform: scale(1.3);
@@ -571,7 +570,10 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
   width: 820px;
-  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -680,7 +682,7 @@ fieldset legend {
 .form input[type='checkbox'] {
   width: 20px;
   height: 20px;
-  margin-top: 4px;
+  margin: 0;
 }
 
 .form input[type='checkbox']:focus {
@@ -691,7 +693,8 @@ fieldset legend {
   font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
 
 #login-form input,
