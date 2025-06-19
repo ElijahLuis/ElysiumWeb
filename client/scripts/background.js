@@ -53,31 +53,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initStars()
   }
 
-  // Parallax effect respects reduced-motion preference
-  let targetX = 0,
-    targetY = 0,
+  // Parallax effect - stars drift gently with the cursor
+  let pointerX = 0,
+    pointerY = 0,
     currentX = 0,
     currentY = 0
-  const easeFactor = 0.1
-  let rafId = null
+  const ease = 0.05
+  const intensity = 20
+  let running = false
 
-  function updatePointer(e) {
-    const centerX = window.innerWidth / 2
-    const centerY = window.innerHeight / 2
-    targetX = (e.clientX - centerX) / centerX
-    targetY = (e.clientY - centerY) / centerY
-    if (!rafId) rafId = requestAnimationFrame(animateParallax)
+  function trackPointer(e) {
+    const x = e.clientX ?? e.touches?.[0]?.clientX
+    const y = e.clientY ?? e.touches?.[0]?.clientY
+    const w = window.innerWidth
+    const h = window.innerHeight
+    pointerX = (x / w - 0.5) * 2
+    pointerY = (y / h - 0.5) * 2
+    if (!running) {
+      running = true
+      requestAnimationFrame(step)
+    }
   }
 
-  function animateParallax() {
-    currentX += (targetX - currentX) * easeFactor
-    currentY += (targetY - currentY) * easeFactor
-    starsContainer.style.transform = `translate3d(${currentX * 15}px, ${currentY * 15}px, 0)`
-    rafId = requestAnimationFrame(animateParallax)
+  function step() {
+    currentX += (pointerX - currentX) * ease
+    currentY += (pointerY - currentY) * ease
+    starsContainer.style.transform = `translate3d(${currentX * intensity}px, ${currentY * intensity}px, 0)`
+    if (Math.abs(pointerX - currentX) > 0.001 || Math.abs(pointerY - currentY) > 0.001) {
+      requestAnimationFrame(step)
+    } else {
+      running = false
+    }
   }
 
   if (!reduceMotion) {
-    window.addEventListener('pointermove', updatePointer)
-    window.addEventListener('mousemove', updatePointer)
+    window.addEventListener('mousemove', trackPointer)
+    window.addEventListener('touchmove', trackPointer, { passive: true })
   }
 })
