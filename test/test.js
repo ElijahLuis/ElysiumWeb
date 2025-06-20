@@ -135,6 +135,7 @@ async function run() {
       'nav partial should contain nav element',
     )
 
+
     const universeScript = await fetch('/scripts/universe.js')
     assert.strictEqual(
       universeScript.statusCode,
@@ -147,8 +148,33 @@ async function run() {
       'universe.js should have application/javascript content-type',
     )
 
+    const overlayScript = await fetch('/scripts/overlayData.js')
+    assert.strictEqual(
+      overlayScript.statusCode,
+      200,
+      'overlayData.js should return 200',
+    )
+    assert.strictEqual(
+      overlayScript.headers['content-type'],
+      'application/javascript',
+      'overlayData.js should have application/javascript content-type',
+    )
+
     const { loadRealmDetail } = require('../build_test/data/realmData.js')
     const { realms } = require('../build_test/data/realmMetadata.js')
+    // verify that each realm page is served and contains its name
+    for (const [key, meta] of Object.entries(realms)) {
+      const realmPage = await fetch(`/pages/${key}.html`)
+      assert.strictEqual(
+        realmPage.statusCode,
+        200,
+        `${key} page should return 200`,
+      )
+      assert.ok(
+        realmPage.data.includes(meta.realmName),
+        `${key} page should include realm name`,
+      )
+    }
     const fallback = await loadRealmDetail('missing')
     assert.ok(
       Array.isArray(fallback.corePlanets) && fallback.corePlanets.length === 0,

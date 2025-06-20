@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Star generation
     function generateStars() {
         starsContainer.innerHTML = "";
-        const count = Math.floor((window.innerWidth * window.innerHeight) / 10000);
+        // more stars by increasing density
+        const DENSITY = 4000;
+        const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
         const frag = document.createDocumentFragment();
         for (let i = 0; i < count; i++) {
             const star = document.createElement("div");

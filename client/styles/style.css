@@ -86,6 +86,11 @@ body {
   animation: gradientCycle 60s ease-in-out infinite;
 }
 
+/* index page should stay still */
+body.no-scroll {
+  overflow-y: hidden;
+}
+
 /* hide scrollbars for WebKit-based browsers */
 body::-webkit-scrollbar {
   display: none;
