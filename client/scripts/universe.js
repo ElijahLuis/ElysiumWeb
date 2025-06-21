@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
       window.location.href = `${realm}.html`
-    }, 600)
+    }, 450)
   }
 
   function showOverlay(realmKey) {

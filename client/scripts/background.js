@@ -2,10 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
 
-  // Star generation
   function generateStars() {
+    starsContainer.style.opacity = '0'
     starsContainer.innerHTML = ''
-    // more stars by increasing density
     const DENSITY = 4000
     const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY)
     const frag = document.createDocumentFragment()
@@ -15,10 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
       star.style.left = `${Math.random() * window.innerWidth}px`
       star.style.top = `${Math.random() * window.innerHeight}px`
       star.style.animationDuration = `${Math.random() * 3 + 2}s`
-      star.style.opacity = Math.random()
+      star.style.opacity = Math.random().toString()
       frag.appendChild(star)
     }
     starsContainer.appendChild(frag)
+    requestAnimationFrame(() => {
+      starsContainer.style.opacity = '1'
+    })
   }
 
   generateStars()
@@ -29,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeTimeout = setTimeout(generateStars, 200)
   })
 
-  // Parallax effect
   const prefersReduced = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches

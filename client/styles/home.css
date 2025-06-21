@@ -198,10 +198,13 @@ body {
   border: none;
   background: rgba(255, 255, 255, 0.15);
   color: white;
+  width: 65%;
   text-align: center;
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form select:focus {
@@ -232,6 +235,36 @@ body {
 
 #explore-form {
   gap: 12px;
+}
+
+#explore-form select,
+#explore-form .submit-btn {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#explore-form .submit-btn {
+  padding: 12px 28px;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+#explore-form .submit-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
+#explore-form .submit-btn:active {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0.95);
 }
 
 #explore-form label {
