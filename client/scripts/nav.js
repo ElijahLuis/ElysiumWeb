@@ -5,18 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!placeholder) return
 
   fetch('../partials/nav.html')
-    .then(res => res.text())
-    .then(html => {
+    .then((res) => res.text())
+    .then((html) => {
       placeholder.outerHTML = html
       const nav = document.getElementById('main-nav')
       highlightCurrentPage(nav)
       enableRipples(nav)
+      setupAutohide(nav)
     })
-    .catch(err => console.error('Navigation failed to load', err))
+    .catch((err) => console.error('Navigation failed to load', err))
 
   function highlightCurrentPage(nav) {
     const page = window.location.pathname.split('/').pop()
-    nav.querySelectorAll('a[href]:not(.brand-link)').forEach(link => {
+    nav.querySelectorAll('a[href]:not(.brand-link)').forEach((link) => {
       if (link.getAttribute('href') === page) {
         link.setAttribute('aria-current', 'page')
       }
@@ -24,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function enableRipples(nav) {
-    nav.querySelectorAll('a:not(.brand-link)').forEach(link => {
-      link.addEventListener('click', event => {
+    nav.querySelectorAll('a:not(.brand-link)').forEach((link) => {
+      link.addEventListener('click', (event) => {
         event.preventDefault()
         if (window.createRainbowRipple) {
           createRainbowRipple(link, event, () => {
@@ -36,5 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
     })
+  }
+
+  function setupAutohide(nav) {
+    let hideTimeout
+    const scheduleHide = () => {
+      hideTimeout = setTimeout(() => nav.classList.add('nav-hidden'), 1000)
+    }
+
+    nav.addEventListener('mouseenter', () => {
+      clearTimeout(hideTimeout)
+      nav.classList.remove('nav-hidden')
+    })
+    nav.addEventListener('mouseleave', scheduleHide)
+
+    scheduleHide()
   }
 })
