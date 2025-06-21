@@ -455,7 +455,9 @@ h1 {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  will-change: transform;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  will-change: transform, opacity;
 }
 
 .star {
@@ -663,6 +665,10 @@ h1 {
 fieldset legend {
   font-size: 1.3rem;
   margin-bottom: 20px;
+  width: 65%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #auth-heading {
@@ -675,7 +681,11 @@ fieldset legend {
 }
 
 .form label {
-  margin-bottom: 6px;
+  display: block;
+  width: 65%;
+  margin: 0 auto 6px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .form input {
@@ -685,7 +695,7 @@ fieldset legend {
   border: none;
   background: rgba(255, 255, 255, 0.15);
   color: white;
-  width: 85%;
+  width: 65%;
   text-align: center;
   transition:
     background 0.3s ease,
@@ -724,7 +734,7 @@ fieldset legend {
 #signup-form input:not([type='checkbox']),
 #login-form .submit-btn,
 #signup-form .submit-btn {
-  width: 85%;
+  width: 65%;
   margin-left: auto;
   margin-right: auto;
 }
