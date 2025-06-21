@@ -55,5 +55,3 @@ To orient yourself quickly, here are the spots most often visited:
 - `src/data/realmMetadata.ts` – holds the canonical list of realm names.
 - `client/scripts/background.js` – paints the starry backdrop.
 
-More notes live in [docs/improvements.md](docs/improvements.md).
-
