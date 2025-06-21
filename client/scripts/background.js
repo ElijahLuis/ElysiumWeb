@@ -29,34 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeTimeout = setTimeout(generateStars, 200)
   })
 
-  // Gradient colors
-  const gradients = [
-    ['#000000', '#020c1b', '#0a1f44', '#273a7f'], // Deep blue night set
-    ['#020c1b', '#0a1f44', '#273a7f', '#3b3f80'], // Twilight indigo set
-    ['#0a1f44', '#273a7f', '#3b3f80', '#484c91'], // Celestial purple set
-    ['#273a7f', '#3b3f80', '#484c91', '#2a2e5a'], // Cosmic dusk set
-  ]
-
-  let currentGradientIndex = 0
-  function updateGradients() {
-    const nextGradientIndex = (currentGradientIndex + 1) % gradients.length
-    const currentColors = gradients[currentGradientIndex]
-    const nextColors = gradients[nextGradientIndex]
-
-    document.body.style.setProperty(
-      '--gradient-current',
-      `linear-gradient(to bottom, ${currentColors[0]}, ${currentColors[1]}, ${currentColors[2]}, ${currentColors[3]})`,
-    )
-    document.body.style.setProperty(
-      '--gradient-next',
-      `linear-gradient(to bottom, ${nextColors[0]}, ${nextColors[1]}, ${nextColors[2]}, ${nextColors[3]})`,
-    )
-
-    currentGradientIndex = nextGradientIndex
-  }
-  updateGradients()
-  setInterval(updateGradients, 60000)
-
   // Parallax effect
   const prefersReduced = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
