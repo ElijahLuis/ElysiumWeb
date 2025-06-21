@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     nav.addEventListener('mouseleave', scheduleHide)
 
-    document.addEventListener('mousemove', (e) => {
-      if (
-        nav.classList.contains('nav-hidden') &&
-        e.clientY <= nav.offsetHeight + 20
-      ) {
+    const revealOnApproach = (e) => {
+      if (nav.classList.contains('nav-hidden') && e.clientY <= 50) {
         nav.classList.remove('nav-hidden')
       }
-    })
+    }
+
+    document.addEventListener('mousemove', revealOnApproach)
+    document.addEventListener('touchstart', revealOnApproach)
 
     scheduleHide()
   }

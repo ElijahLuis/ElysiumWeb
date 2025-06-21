@@ -685,13 +685,15 @@ fieldset legend {
   border: none;
   background: rgba(255, 255, 255, 0.15);
   color: white;
-  width: 100%;
+  width: 85%;
   text-align: center;
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease;
   letter-spacing: 2px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form input:focus {
@@ -722,9 +724,9 @@ fieldset legend {
 #signup-form input:not([type='checkbox']),
 #login-form .submit-btn,
 #signup-form .submit-btn {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .submit-btn {
