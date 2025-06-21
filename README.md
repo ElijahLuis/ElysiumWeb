@@ -44,4 +44,16 @@ The shared interfaces `EmotionCluster` and `CorePlanet` reside in `src/data/type
 For a holistic look at every realm, cluster, and planet, see the full design schema in `client/lore/realmsFull.ts`.
 
 ## Exploring the Universe demo
-After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. More to be added in the future. 
+After logging in you can navigate to the planetary view by clicking **Begin Your Journey**. More to be added in the future.
+
+## Key paths
+To orient yourself quickly, here are the spots most often visited:
+
+- `server/server.js` – the lightweight Node server.
+- `scripts/renderRealms.mjs` – compiles TypeScript realms into static pages.
+- `scripts/buildOverlayData.mjs` – writes `client/scripts/overlayData.js`.
+- `src/data/realmMetadata.ts` – holds the canonical list of realm names.
+- `client/scripts/background.js` – paints the starry backdrop.
+
+More notes live in [docs/improvements.md](docs/improvements.md).
+
