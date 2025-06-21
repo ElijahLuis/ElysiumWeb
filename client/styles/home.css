@@ -207,6 +207,11 @@ body {
   margin-right: auto;
 }
 
+#checkin-form select {
+  width: 100%;
+  max-width: 34ch;
+}
+
 .form select:focus {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
