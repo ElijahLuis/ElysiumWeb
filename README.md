@@ -27,7 +27,9 @@ npm run build
 The compiled JavaScript will appear in `build/` using the configuration in
 `tsconfig.json`.
 Running this command also renders each realm page to static HTML in
-`client/pages/` using the latest data. If you edit any templates or realm
+`client/pages/` using the latest data and writes a small helper script
+`client/scripts/overlayData.js` so the universe page can read overlay
+descriptions without the TypeScript sources. If you edit any templates or realm
 details, run `npm run build` again to refresh the pages.
 
 ## Realm metadata

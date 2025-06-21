@@ -1,6 +1,4 @@
-// Overlay data is now embedded directly so realm pages
-// work even when the TypeScript build output is absent.
-// This mirrors the structure in src/data/overlayData.ts
+// Generated from src/data/overlayData.ts
 export const overlayData = {
   abyss: {
     icon: '🕳️',
@@ -24,19 +22,38 @@ export const overlayData = {
   },
   dross: {
     icon: '☣️',
-    features: ['Putrid Force', 'Tarry Bone', 'Stolen Doll', 'Pale Shiver']
+    features: [
+      'Putrid Force',
+      'Tarry Bone',
+      'Stolen Doll',
+      'Pale Shiver'
+    ]
   },
   ember: {
     icon: '🔥',
-    features: ['Infernal Mammoth', 'Brazen Rhino', 'Noisy Wasp', 'Vicious Cobra']
+    features: [
+      'Infernal Mammoth',
+      'Brazen Rhino',
+      'Noisy Wasp',
+      'Vicious Cobra'
+    ]
   },
   glare: {
     icon: '👁️',
-    features: ['Fallen Eye', 'Deadlight Hall', 'Raucous Laugh']
+    features: [
+      'Fallen Eye',
+      'Deadlight Hall',
+      'Raucous Laugh'
+    ]
   },
   languish: {
     icon: '💧',
-    features: ['Glass Crypt', 'Blank Prism', 'Sapphire Chamber', 'Empty House']
+    features: [
+      'Glass Crypt',
+      'Blank Prism',
+      'Sapphire Chamber',
+      'Empty House'
+    ]
   },
   mist: {
     icon: '🌫️',
@@ -62,7 +79,12 @@ export const overlayData = {
   },
   trace: {
     icon: '🌀',
-    features: ['Sepia Garden', 'Word Cemetery', 'Aurora Shadow', 'Butterfly Canopy']
+    features: [
+      'Sepia Garden',
+      'Word Cemetery',
+      'Aurora Shadow',
+      'Butterfly Canopy'
+    ]
   },
   zenith: {
     icon: '🚀',
@@ -73,7 +95,6 @@ export const overlayData = {
       'Omega Threshold'
     ]
   }
-}
+};
 
-// expose globally for universe.js to consume
 window.overlayData = overlayData;
