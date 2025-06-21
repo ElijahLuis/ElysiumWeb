@@ -25,5 +25,8 @@ coverage/
 build/
 build_test/
 
+# Linting cache
+.eslintcache
+
 # IDE settings
 .vscode/

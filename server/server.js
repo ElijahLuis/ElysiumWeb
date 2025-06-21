@@ -17,10 +17,17 @@ const mimeTypes = {
   '.woff2': 'font/woff2',
 }
 
-// Gracefully send a plain 404 when the requested file slips through our fingers.
+// Gracefully serve the poetic 404 page when the requested file slips away.
 function send404(res) {
-  res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
-  res.end('Not found')
+  const page = path.join(root, '404.html')
+  if (fs.existsSync(page)) {
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' })
+    fs.createReadStream(page).pipe(res)
+  } else {
+    // Fallback to simple text if the page is missing
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
+    res.end('Not found')
+  }
 }
 
 function serveFile(filePath, res) {
