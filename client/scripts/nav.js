@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  // Hide the nav after a pause and reveal it when the pointer nears the top
   function setupAutohide(nav) {
     let hideTimeout
     const scheduleHide = () => {
@@ -50,6 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.remove('nav-hidden')
     })
     nav.addEventListener('mouseleave', scheduleHide)
+
+    document.addEventListener('mousemove', (e) => {
+      if (
+        nav.classList.contains('nav-hidden') &&
+        e.clientY <= nav.offsetHeight + 20
+      ) {
+        nav.classList.remove('nav-hidden')
+      }
+    })
 
     scheduleHide()
   }

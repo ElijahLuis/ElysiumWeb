@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (overlay) overlay.classList.add('fade-in');
         setTimeout(() => {
           window.location.href = link.href;
-        }, 600);
+        }, 450);
       });
     }
   });

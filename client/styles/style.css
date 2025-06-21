@@ -356,7 +356,7 @@ h1 {
   pointer-events: none;
   opacity: 0;
   z-index: -10;
-  transition: opacity 0.75s ease-out;
+  transition: opacity 0.45s ease-out;
   will-change: opacity;
 }
 
