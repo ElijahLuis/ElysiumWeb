@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "test": "node test/test.js",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
-    "build": "tsc && node scripts/renderRealms.mjs"
+    "build": "tsc && node scripts/buildOverlayData.mjs && node scripts/renderRealms.mjs"
   },
   "author": "",
   "license": "MIT",
