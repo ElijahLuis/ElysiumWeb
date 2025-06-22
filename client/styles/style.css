@@ -2,9 +2,18 @@
 
 :root {
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
-  --primary-color: #ffeeee;
+  --primary-color: #ffcccc;
   /* Slightly wider spacing for clarity */
   --primary-spacing: 1.5px;
+  --ripple-color: var(--realm-color, #ff69b4);
+  --gradient-alpha: 0.75;
+  --default-gradient: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
+    rgba(2, 12, 27, var(--gradient-alpha, 0.75)),
+    rgba(10, 31, 68, var(--gradient-alpha, 0.75)),
+    rgba(39, 58, 127, var(--gradient-alpha, 0.75))
+  );
 }
 
 html,
@@ -70,17 +79,9 @@ body {
   font-family: var(--primary-font);
   color: var(--primary-color);
   letter-spacing: var(--primary-spacing);
-  background: linear-gradient(
-    -45deg,
-    #000000,
-    #120022,
-    #290136,
-    #3d0075,
-    #400144,
-    #3d0075,
-    #290136,
-    #120022,
-    #020131
+  background: var(
+    --gradient-current,
+    var(--default-gradient)
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
@@ -272,6 +273,23 @@ h1 {
     flex-direction: column;
     gap: 12px;
     align-items: center;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  #main-nav {
+    gap: 24px;
+    padding: 20px 28px;
+  }
+  #main-nav ul {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1025px) {
+  #main-nav {
+    gap: 32px;
+    padding: 24px 40px;
   }
 }
 

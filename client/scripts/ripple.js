@@ -14,13 +14,18 @@
     if (styles.position === 'static') element.style.position = 'relative'
     if (styles.overflow !== 'hidden') element.style.overflow = 'hidden'
 
-    const hue = Math.floor(Math.random() * 360)
+    function hexWithAlpha(hex, alpha) {
+      const value = hex.replace('#', '')
+      return `#${value}${alpha}`
+    }
+    const computed = getComputedStyle(element)
+    const base = (computed.getPropertyValue('--ripple-color') || '#ff69b4').trim()
     ring.style.background = `radial-gradient(circle,
-      hsla(${hue},100%,70%,0) 40%,
-      hsla(${hue},100%,70%,1) 45%,
-      hsla(${hue},100%,70%,1) 50%,
-      hsla(${hue},100%,70%,0) 55%)`
-    ring.style.boxShadow = `0 0 6px hsla(${hue},100%,70%,0.9)`
+      ${hexWithAlpha(base, '00')} 40%,
+      ${hexWithAlpha(base, 'ff')} 45%,
+      ${hexWithAlpha(base, 'ff')} 50%,
+      ${hexWithAlpha(base, '00')} 55%)`
+    ring.style.boxShadow = `0 0 6px ${hexWithAlpha(base, 'e6')}`
 
     element.appendChild(ring)
     ring.addEventListener(

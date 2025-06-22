@@ -19,7 +19,10 @@ const RealmTemplate: React.FC<RealmTemplateProps> = ({
   return (
     <div
       className={`realm realm-${realmName.toLowerCase()}`}
-      style={{ '--realm-color': color } as React.CSSProperties}
+      style={{
+        '--realm-color': color,
+        '--ripple-color': color,
+      } as React.CSSProperties}
     >
       <h1>{realmName}</h1>
       <section id="realm-space" className="realm-section">
