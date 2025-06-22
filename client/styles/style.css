@@ -6,6 +6,13 @@
   /* Slightly wider spacing for clarity */
   --primary-spacing: 1.5px;
   --ripple-color: var(--realm-color, #ff69b4);
+  --default-gradient: linear-gradient(
+    to bottom,
+    #000000,
+    #020c1b,
+    #0a1f44,
+    #273a7f
+  );
 }
 
 html,
@@ -71,17 +78,9 @@ body {
   font-family: var(--primary-font);
   color: var(--primary-color);
   letter-spacing: var(--primary-spacing);
-  background: linear-gradient(
-    -45deg,
-    #000000,
-    #120022,
-    #290136,
-    #3d0075,
-    #400144,
-    #3d0075,
-    #290136,
-    #120022,
-    #020131
+  background: var(
+    --gradient-current,
+    var(--default-gradient)
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
