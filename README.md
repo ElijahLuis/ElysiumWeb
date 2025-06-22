@@ -4,6 +4,15 @@ This repository contains the static assets for the Elysium Web project. The `cli
 
 Elysium is a digital cosmos shaped by feeling. Every page and line of code aims to evoke honest reflection. To understand the heart behind this project, read the [core philosophy](lore/core.md) and let emotion guide your journey.
 
+## Key Paths
+These folders are signposts through the cosmos:
+
+- `client/` – static HTML, CSS and JavaScript for the site
+- `src/` – React components and TypeScript sources
+- `server/` – a lightweight Node server used during development
+- `scripts/` – build helpers that render pages and overlay data
+- `test/` – automated checks run with `npm test`
+
 ## Running locally
 A small Node server is included to serve the contents of `client/` for development. Run the following command, which builds the TypeScript and then starts the server:
 
@@ -37,6 +46,24 @@ Running this command also renders each realm page to static HTML in
 `client/scripts/overlayData.js` so the universe page can read overlay
 descriptions without the TypeScript sources. If you edit any templates or realm
 details, run `npm run build` again to refresh the pages.
+
+## Testing
+Automated tests ensure pages render and the server responds as expected. Before
+running them, install all dependencies so `typescript` and `jsdom` are
+available:
+
+```bash
+npm install
+```
+
+Then execute:
+
+```bash
+npm test
+```
+
+This command compiles the TypeScript to a temporary folder, builds the site, and
+verifies each realm page serves correctly.
 
 ## Realm metadata
 For a high-level overview of planned pages and directory layout, see [lore/site-map.md](lore/site-map.md).
