@@ -2,7 +2,13 @@ import http, { IncomingMessage, ServerResponse } from 'http'
 import fs from 'fs'
 import path from 'path'
 
-const root = path.join(__dirname, '..', 'client')
+// Locate the client folder whether we're running from the TypeScript sources
+// or the compiled build output. When running `npm start` the server lives in
+// `build/server`, otherwise it's inside `server`.
+const builtRoot = path.join(__dirname, '..', 'client')
+const root = fs.existsSync(builtRoot)
+  ? builtRoot
+  : path.join(__dirname, '..', '..', 'client')
 const port = process.env.PORT || 3000
 
 const mimeTypes: Record<string, string> = {

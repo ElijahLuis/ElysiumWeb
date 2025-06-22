@@ -50,7 +50,7 @@ async function run() {
   const buildOutput = path.join(ROOT, 'build', 'src', 'data', 'realmData.js')
   assert.ok(fs.existsSync(buildOutput), 'build should create compiled files')
 
-  const { realms: builtRealms } = require('../build/data/realmMetadata.js')
+  const { realms: builtRealms } = require('../build/src/data/realmMetadata.js')
   for (const [key, meta] of Object.entries(builtRealms)) {
     const pagePath = path.join(ROOT, 'client', 'pages', `${key}.html`)
     assert.ok(fs.existsSync(pagePath), `${key}.html should exist after build`)
