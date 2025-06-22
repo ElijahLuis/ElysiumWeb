@@ -1,3 +1,15 @@
+:root {
+  --overlay-color-1: #000000;
+  --overlay-color-2: #120022;
+  --overlay-color-3: #290136;
+  --overlay-color-4: #3d0075;
+  --overlay-color-5: #400144;
+  --overlay-color-6: #3d0075;
+  --overlay-color-7: #290136;
+  --overlay-color-8: #120022;
+  --overlay-color-9: #020131;
+}
+
 #gradientOverlay {
   position: fixed;
   top: 0;
@@ -8,15 +20,15 @@
   opacity: 0.65;
   background: linear-gradient(
     -45deg,
-    #000000,
-    #120022,
-    #290136,
-    #3d0075,
-    #400144,
-    #3d0075,
-    #290136,
-    #120022,
-    #020131
+    var(--overlay-color-1, #000000),
+    var(--overlay-color-2, #120022),
+    var(--overlay-color-3, #290136),
+    var(--overlay-color-4, #3d0075),
+    var(--overlay-color-5, #400144),
+    var(--overlay-color-6, #3d0075),
+    var(--overlay-color-7, #290136),
+    var(--overlay-color-8, #120022),
+    var(--overlay-color-9, #020131)
   );
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;

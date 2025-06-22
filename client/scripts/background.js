@@ -30,12 +30,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Gradient colors
-    const gradients = [
-        ["#000000", "#020c1b", "#0a1f44", "#273a7f"], // Deep blue night set
-        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"], // Twilight indigo set
-        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"], // Celestial purple set
-        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"], // Cosmic dusk set
-    ];
+    function adjust(hex, amt) {
+        const col = hex.startsWith('#') ? hex.slice(1) : hex
+        const num = parseInt(col, 16)
+        const r = (num >> 16) + amt
+        const g = ((num >> 8) & 0xff) + amt
+        const b = (num & 0xff) + amt
+        return (
+            '#' +
+            (
+                0x1000000 +
+                (Math.max(0, Math.min(255, r)) << 16) +
+                (Math.max(0, Math.min(255, g)) << 8) +
+                Math.max(0, Math.min(255, b))
+            )
+                .toString(16)
+                .slice(1)
+        )
+    }
+
+    function buildGradients(base) {
+        return [
+            [adjust(base, -120), adjust(base, -80), adjust(base, -40), base],
+            [adjust(base, -80), adjust(base, -40), base, adjust(base, 40)],
+            [adjust(base, -40), base, adjust(base, 40), adjust(base, 80)],
+            [base, adjust(base, 40), adjust(base, 80), adjust(base, 40)],
+        ]
+    }
+
+    const realmEl = document.querySelector('.realm')
+    const realmColor =
+        realmEl && getComputedStyle(realmEl).getPropertyValue('--realm-color')
+    const gradients = realmColor ? buildGradients(realmColor.trim()) : [
+        ["#000000", "#020c1b", "#0a1f44", "#273a7f"],
+        ["#020c1b", "#0a1f44", "#273a7f", "#3b3f80"],
+        ["#0a1f44", "#273a7f", "#3b3f80", "#484c91"],
+        ["#273a7f", "#3b3f80", "#484c91", "#2a2e5a"],
+    ]
 
     let currentGradientIndex = 0;
     function updateGradients() {

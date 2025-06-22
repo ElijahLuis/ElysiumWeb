@@ -2,9 +2,10 @@
 
 :root {
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
-  --primary-color: #ffeeee;
+  --primary-color: #ffcccc;
   /* Slightly wider spacing for clarity */
   --primary-spacing: 1.5px;
+  --ripple-color: var(--realm-color, #ff69b4);
 }
 
 html,
@@ -272,6 +273,23 @@ h1 {
     flex-direction: column;
     gap: 12px;
     align-items: center;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  #main-nav {
+    gap: 24px;
+    padding: 20px 28px;
+  }
+  #main-nav ul {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1025px) {
+  #main-nav {
+    gap: 32px;
+    padding: 24px 40px;
   }
 }
 
