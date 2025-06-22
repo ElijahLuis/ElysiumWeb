@@ -29,15 +29,30 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeTimeout = setTimeout(generateStars, 200)
   })
 
-  // Parallax effect with optional override
+  // Parallax effect with optional overrides
   const prefersReduced = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches
-  // ?parallax=1 can be used to enable motion even when reduced-motion is set
-  const urlParams = new URLSearchParams(window.location.search)
-  const forceParallax = urlParams.get('parallax') === '1'
 
-  if (!prefersReduced || forceParallax) {
+  const urlParams = new URLSearchParams(window.location.search)
+  const param = urlParams.get('parallax')
+
+  try {
+    if (param !== null) localStorage.setItem('parallax', param)
+  } catch (e) {
+    // localStorage may be unavailable; ignore failures
+  }
+
+  let stored = null
+  try {
+    stored = localStorage.getItem('parallax')
+  } catch (e) {}
+
+  let enableParallax = !prefersReduced
+  if (stored === '1') enableParallax = true
+  if (stored === '0') enableParallax = false
+
+  if (enableParallax) {
     let targetX = 0,
       targetY = 0,
       currentX = 0,

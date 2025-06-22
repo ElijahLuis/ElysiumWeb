@@ -25,8 +25,11 @@ No additional dependencies are required for watch mode.
 The night sky behind every page is created in `client/scripts/background.js`. It
 generates twinkling stars and eases them with a gentle mouse-driven parallax so
 the cosmos drifts with you. If your operating system prefers reduced motion the
-effect is suppressed for accessibility. Add `?parallax=1` to the URL to force it
-on when needed.
+effect is suppressed for accessibility.
+
+To permanently override this, append `?parallax=1` or `?parallax=0` to any page
+URL. The choice is stored in local storage so your preference carries across the
+site.
 
 ## Compiling the `src` directory
 
