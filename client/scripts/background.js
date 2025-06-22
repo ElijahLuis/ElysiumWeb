@@ -49,12 +49,45 @@ document.addEventListener("DOMContentLoaded", () => {
         )
     }
 
+    function toRgba(hex, alpha) {
+        const col = hex.startsWith('#') ? hex.slice(1) : hex
+        const num = parseInt(col, 16)
+        const r = num >> 16
+        const g = (num >> 8) & 0xff
+        const b = num & 0xff
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`
+    }
+
     function buildGradients(base) {
+        const bodyStyles = getComputedStyle(document.body)
+        const alpha = parseFloat(
+            bodyStyles.getPropertyValue('--gradient-alpha') || '0.75',
+        )
         return [
-            [adjust(base, -120), adjust(base, -80), adjust(base, -40), base],
-            [adjust(base, -80), adjust(base, -40), base, adjust(base, 40)],
-            [adjust(base, -40), base, adjust(base, 40), adjust(base, 80)],
-            [base, adjust(base, 40), adjust(base, 80), adjust(base, 40)],
+            [
+                toRgba(adjust(base, -160), alpha),
+                toRgba(adjust(base, -120), alpha),
+                toRgba(adjust(base, -80), alpha),
+                toRgba(adjust(base, -40), alpha),
+            ],
+            [
+                toRgba(adjust(base, -120), alpha),
+                toRgba(adjust(base, -80), alpha),
+                toRgba(adjust(base, -40), alpha),
+                toRgba(base, alpha),
+            ],
+            [
+                toRgba(adjust(base, -80), alpha),
+                toRgba(adjust(base, -40), alpha),
+                toRgba(base, alpha),
+                toRgba(adjust(base, 40), alpha),
+            ],
+            [
+                toRgba(adjust(base, -40), alpha),
+                toRgba(base, alpha),
+                toRgba(adjust(base, 40), alpha),
+                toRgba(adjust(base, -20), alpha),
+            ],
         ]
     }
 

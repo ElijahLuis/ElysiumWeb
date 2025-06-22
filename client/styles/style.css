@@ -6,12 +6,13 @@
   /* Slightly wider spacing for clarity */
   --primary-spacing: 1.5px;
   --ripple-color: var(--realm-color, #ff69b4);
+  --gradient-alpha: 0.75;
   --default-gradient: linear-gradient(
     to bottom,
-    #000000,
-    #020c1b,
-    #0a1f44,
-    #273a7f
+    rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
+    rgba(2, 12, 27, var(--gradient-alpha, 0.75)),
+    rgba(10, 31, 68, var(--gradient-alpha, 0.75)),
+    rgba(39, 58, 127, var(--gradient-alpha, 0.75))
   );
 }
 

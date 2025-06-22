@@ -8,6 +8,7 @@
   --overlay-color-7: #290136;
   --overlay-color-8: #120022;
   --overlay-color-9: #020131;
+  --overlay-alpha: 0.55;
 }
 
 #gradientOverlay {
@@ -17,7 +18,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.65;
+  opacity: var(--overlay-alpha, 0.65);
   background: linear-gradient(
     -45deg,
     var(--overlay-color-1, #000000),
