@@ -24,11 +24,23 @@ function send404(res: ServerResponse): void {
   res.end('Not found')
 }
 
-function serveFile(filePath: string, res: ServerResponse): void {
+function serveFile(
+  filePath: string,
+  req: IncomingMessage,
+  res: ServerResponse,
+): void {
   const ext = path.extname(filePath).toLowerCase()
   const contentType = mimeTypes[ext] || 'application/octet-stream'
+
+  if (req.method === 'HEAD') {
+    res.writeHead(200, { 'Content-Type': contentType })
+    res.end()
+    return
+  }
+
   const stream = fs.createReadStream(filePath)
-  stream.on('error', () => {
+  stream.on('error', (err) => {
+    console.error(`Error reading ${filePath}:`, err)
     send404(res)
   })
   res.writeHead(200, { 'Content-Type': contentType })
@@ -50,13 +62,14 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse) => 
 
   fs.stat(filePath, (err, stats) => {
     if (err) {
+      console.error(`Failed to access ${filePath}:`, err)
       send404(res)
       return
     }
     if (stats.isDirectory()) {
       filePath = path.join(filePath, 'index.html')
     }
-    serveFile(filePath, res)
+    serveFile(filePath, req, res)
   })
 })
 

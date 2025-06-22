@@ -9,17 +9,20 @@ const ROOT = path.join(__dirname, '..')
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-function fetch(pathname) {
+function fetch(pathname, method = 'GET') {
   return new Promise((resolve, reject) => {
-    http
-      .get({ hostname: 'localhost', port: PORT, path: pathname }, (res) => {
+    const req = http.request(
+      { hostname: 'localhost', port: PORT, path: pathname, method },
+      (res) => {
         let data = ''
         res.on('data', (chunk) => (data += chunk))
         res.on('end', () =>
           resolve({ statusCode: res.statusCode, headers: res.headers, data }),
         )
-      })
-      .on('error', reject)
+      },
+    )
+    req.on('error', reject)
+    req.end()
   })
 }
 
@@ -75,6 +78,13 @@ async function run() {
     assert.ok(
       index.data.includes('<title>Elysium Web'),
       'index.html should contain title',
+    )
+
+    const indexHead = await fetch('/index.html', 'HEAD')
+    assert.strictEqual(
+      indexHead.statusCode,
+      200,
+      'HEAD request for /index.html should return 200',
     )
 
     const missing = await fetch('/does-not-exist')
