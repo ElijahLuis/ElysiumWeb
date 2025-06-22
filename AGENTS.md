@@ -5,7 +5,7 @@ Welcome to Elysium. This project is powered by emotion, expression, and a fierce
 While Codex and other agents are welcome to assist, here are a few things to keep in mind:
 
 ## 🧠 Style & Intent
-- Prioritize **clarity**, **structure**, and **emotional resonance**.
+- Prioritize **clarity**, **poetry**, and **emotional resonance**.
 - Keep code **modular**, **commented**, and **aesthetic** - not just functional.
 - Prefer **semantic HTML**, **accessible design**, and **responsive layouts**.
 - Variable and function names should read like thoughts, not jargon.

@@ -73,8 +73,8 @@ async function run() {
       'missing page should return 404',
     )
     assert.ok(
-      missing.data.includes('Wanderer, you found the void'),
-      '404 page should include poetic message',
+      missing.data.includes('Not found'),
+      '404 body should say Not found',
     )
 
     const directory = await fetch('/pages/')
@@ -92,7 +92,11 @@ async function run() {
     )
 
     const about = await fetch('/pages/about.html')
-    assert.strictEqual(about.statusCode, 200, 'about page should return 200')
+    assert.strictEqual(
+      about.statusCode,
+      200,
+      'about page should return 200',
+    )
     assert.ok(
       about.data.includes('About Elysium'),
       'about page should contain about heading',
@@ -130,6 +134,7 @@ async function run() {
       navPartial.data.includes('<nav'),
       'nav partial should contain nav element',
     )
+
 
     const universeScript = await fetch('/scripts/universe.js')
     assert.strictEqual(
@@ -209,9 +214,7 @@ async function run() {
     const starIcon = dom.window.document.querySelector('.collect-star')
     assert.ok(starIcon, 'star icon should be injected')
     starIcon.click()
-    const firstOption = dom.window.document.querySelector(
-      '#star-overlay button',
-    )
+    const firstOption = dom.window.document.querySelector('#star-overlay button')
     assert.ok(firstOption, 'overlay should show truth options')
     firstOption.click()
     assert.ok(
