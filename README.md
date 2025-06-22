@@ -22,7 +22,11 @@ No additional dependencies are required for watch mode.
 
 ## Star field and parallax
 
-The night sky behind every page is created in `client/scripts/background.js`. It generates twinkling stars and eases them with a simple mouse‑driven parallax so the cosmos gently follows your movement.
+The night sky behind every page is created in `client/scripts/background.js`. It
+generates twinkling stars and eases them with a gentle mouse-driven parallax so
+the cosmos drifts with you. If your operating system prefers reduced motion the
+effect is suppressed for accessibility. Add `?parallax=1` to the URL to force it
+on when needed.
 
 ## Compiling the `src` directory
 
