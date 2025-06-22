@@ -47,6 +47,17 @@ async function run() {
   const buildOutput = path.join(ROOT, 'build', 'data', 'realmData.js')
   assert.ok(fs.existsSync(buildOutput), 'build should create compiled files')
 
+  const { realms: builtRealms } = require('../build/data/realmMetadata.js')
+  for (const [key, meta] of Object.entries(builtRealms)) {
+    const pagePath = path.join(ROOT, 'client', 'pages', `${key}.html`)
+    assert.ok(fs.existsSync(pagePath), `${key}.html should exist after build`)
+    const contents = fs.readFileSync(pagePath, 'utf-8')
+    assert.ok(
+      contents.includes(meta.realmName),
+      `${key}.html should include realm name`,
+    )
+  }
+
   await withServer(async () => {
     const indexPath = path.join(ROOT, 'client', 'index.html')
     assert.ok(fs.existsSync(indexPath), 'index.html should exist')
