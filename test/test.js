@@ -278,6 +278,32 @@ async function run() {
       'fallback nav should show links when fetch fails',
     )
 
+    const activeDom = new JSDOM(
+      '<!doctype html><html><body><nav id="main-nav" aria-label="primary"></nav></body></html>',
+      {
+        runScripts: 'dangerously',
+        url: 'https://example.com/pages/about.html',
+      },
+    )
+    activeDom.window.fetch = () =>
+      Promise.resolve({
+        text: () =>
+          Promise.resolve(
+            '<nav id="main-nav" aria-label="primary"><a href="home.html">Home</a><a href="about.html">About</a></nav>',
+          ),
+      })
+    activeDom.window.eval(navScript)
+    activeDom.window.document.dispatchEvent(
+      new activeDom.window.Event('DOMContentLoaded'),
+    )
+    await wait(0)
+    const aboutLink = activeDom.window.document.querySelector('a[href="about.html"]')
+    assert.strictEqual(
+      aboutLink.getAttribute('aria-current'),
+      'page',
+      'active link should have aria-current',
+    )
+
     console.log('All tests passed.')
   })
 }
