@@ -3,7 +3,7 @@ import path from 'path'
 import util from 'util'
 
 // Load the compiled overlayData from the TypeScript build
-const { overlayData } = await import('../build/data/overlayData.js')
+const { overlayData } = await import('../build/src/data/overlayData.js')
 
 const outputPath = path.join('client', 'scripts', 'overlayData.js')
 

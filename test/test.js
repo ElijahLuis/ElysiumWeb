@@ -44,7 +44,7 @@ async function run() {
   runCommand('npx', ['tsc', '--module', 'commonjs', '--outDir', 'build_test'])
   runCommand('npm', ['run', 'build'])
 
-  const buildOutput = path.join(ROOT, 'build', 'data', 'realmData.js')
+  const buildOutput = path.join(ROOT, 'build', 'src', 'data', 'realmData.js')
   assert.ok(fs.existsSync(buildOutput), 'build should create compiled files')
 
   await withServer(async () => {
@@ -160,8 +160,8 @@ async function run() {
       'overlayData.js should have application/javascript content-type',
     )
 
-    const { loadRealmDetail } = require('../build_test/data/realmData.js')
-    const { realms } = require('../build_test/data/realmMetadata.js')
+    const { loadRealmDetail } = require('../build_test/src/data/realmData.js')
+    const { realms } = require('../build_test/src/data/realmMetadata.js')
     // verify that each realm page is served and contains its name
     for (const [key, meta] of Object.entries(realms)) {
       const realmPage = await fetch(`/pages/${key}.html`)
