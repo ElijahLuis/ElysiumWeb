@@ -113,11 +113,7 @@ async function run() {
     )
 
     const about = await fetch('/pages/about.html')
-    assert.strictEqual(
-      about.statusCode,
-      200,
-      'about page should return 200',
-    )
+    assert.strictEqual(about.statusCode, 200, 'about page should return 200')
     assert.ok(
       about.data.includes('About Elysium'),
       'about page should contain about heading',
@@ -155,7 +151,6 @@ async function run() {
       navPartial.data.includes('<nav'),
       'nav partial should contain nav element',
     )
-
 
     const universeScript = await fetch('/scripts/universe.js')
     assert.strictEqual(
@@ -258,6 +253,29 @@ async function run() {
     assert.ok(
       dom.window.localStorage.getItem('elysium-truth-testrealm'),
       'selecting a truth should store value in localStorage',
+    )
+
+    const navScript = fs.readFileSync(
+      path.join(ROOT, 'client', 'scripts', 'nav.js'),
+      'utf-8',
+    )
+    const navDom = new JSDOM(
+      '<!doctype html><html><body><nav id="main-nav" aria-label="primary"></nav></body></html>',
+      {
+        runScripts: 'dangerously',
+        url: 'https://example.com/pages/zenith.html',
+      },
+    )
+    navDom.window.fetch = () => Promise.reject(new Error('fail'))
+    navDom.window.eval(navScript)
+    navDom.window.document.dispatchEvent(
+      new navDom.window.Event('DOMContentLoaded'),
+    )
+    await wait(0)
+    const fallbackNav = navDom.window.document.querySelector('#main-nav')
+    assert.ok(
+      fallbackNav.querySelector('a[href="home.html"]'),
+      'fallback nav should show links when fetch fails',
     )
 
     console.log('All tests passed.')
