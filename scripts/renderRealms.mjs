@@ -29,10 +29,23 @@ for (const key of Object.keys(realmPages)) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover the truths within the ${realm.realmName} realm." />
+    <title>${realm.realmName} Realm</title>
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
+    <div id="fadeOverlay" class="start"></div>
+    <div id="nebula-container">
+      <div class="nebula" id="nebula1"></div>
+      <div class="nebula" id="nebula2"></div>
+    </div>
+    <div id="stars"></div>
+    <nav id="main-nav" aria-label="primary"></nav>
     <main id="react-root">${markup}</main>
+    <script defer src="../scripts/background.js"></script>
+    <script defer src="../scripts/nav.js"></script>
+    <script defer src="../scripts/clusters.js"></script>
+    <script defer src="../scripts/space.js"></script>
   </body>
 </html>\n`
 
