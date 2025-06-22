@@ -25,12 +25,15 @@
 
       const overlay = document.createElement('div')
       overlay.id = 'star-overlay'
+      overlay.setAttribute('role', 'dialog')
+      overlay.setAttribute('aria-live', 'polite')
       const list = document.createElement('ul')
 
       TRUTHS.forEach((truth) => {
         const btn = document.createElement('button')
         btn.className = 'truth-btn'
         btn.textContent = truth
+        btn.setAttribute('aria-live', 'polite')
         btn.addEventListener('click', () => {
           try {
             localStorage.setItem(`elysium-truth-${realm}`, truth)
