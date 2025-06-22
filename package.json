@@ -4,7 +4,7 @@
   "description": "Static website for Elysium Web",
   "main": "server/server.js",
   "scripts": {
-    "start": "node build/server/server.js",
+    "start": "npm run build && node build/server/server.js",
     "test": "node test/test.js",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
     "build": "tsc && node scripts/buildOverlayData.mjs && node scripts/renderRealms.mjs"

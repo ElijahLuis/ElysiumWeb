@@ -5,7 +5,7 @@ This repository contains the static assets for the Elysium Web project. The `cli
 Elysium is a digital cosmos shaped by feeling. Every page and line of code aims to evoke honest reflection. To understand the heart behind this project, read the [core philosophy](lore/core.md) and let emotion guide your journey.
 
 ## Running locally
-A small Node server is included to serve the contents of `client/` for development. Run the following commands:
+A small Node server is included to serve the contents of `client/` for development. Run the following command, which builds the TypeScript and then starts the server:
 
 ```bash
 npm start
