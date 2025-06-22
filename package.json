@@ -7,7 +7,9 @@
     "start": "npm run build && node build/server/server.js",
     "test": "node test/test.js",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
-    "build": "tsc && node scripts/buildOverlayData.mjs && node scripts/renderRealms.mjs"
+    "build": "tsc && node scripts/buildOverlayData.mjs && node scripts/renderRealms.mjs",
+    "overlay": "node scripts/buildOverlayData.mjs",
+    "dev": "concurrently -k \"tsc -w\" \"nodemon -q -w build/src/data/overlayData.js -x npm run overlay\""
   },
   "author": "",
   "license": "MIT",
@@ -15,7 +17,9 @@
     "@types/node": "^24.0.1",
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "concurrently": "^8.0.1",
+    "nodemon": "^3.0.2"
   },
   "dependencies": {
     "@types/react": "^19.1.8",
