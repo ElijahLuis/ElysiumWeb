@@ -230,10 +230,25 @@ async function run() {
     const starIcon = dom.window.document.querySelector('.collect-star')
     assert.ok(starIcon, 'star icon should be injected')
     starIcon.click()
-    const firstOption = dom.window.document.querySelector(
-      '#star-overlay button',
+    const overlayEl = dom.window.document.getElementById('star-overlay')
+    assert.ok(overlayEl, 'overlay element should exist')
+    assert.strictEqual(
+      overlayEl.getAttribute('role'),
+      'dialog',
+      'overlay should have dialog role',
     )
+    assert.strictEqual(
+      overlayEl.getAttribute('aria-live'),
+      'polite',
+      'overlay should be aria-live polite',
+    )
+    const firstOption = dom.window.document.querySelector('#star-overlay button')
     assert.ok(firstOption, 'overlay should show truth options')
+    assert.strictEqual(
+      firstOption.getAttribute('aria-live'),
+      'polite',
+      'truth button should have aria-live',
+    )
     firstOption.click()
     assert.ok(
       dom.window.localStorage.getItem('elysium-truth-testrealm'),
