@@ -4,11 +4,11 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
 // Compile-time pages and data
-const { realmPages } = await import('../build/pages/realms/index.js')
-const { realms } = await import('../build/data/realmMetadata.js')
-const { realmIcons } = await import('../build/data/realmIcons.js')
-const { loadRealmDetail } = await import('../build/data/realmData.js')
-const RealmTemplate = (await import('../build/components/RealmTemplate.js')).default.default
+const { realmPages } = await import('../build/src/pages/realms/index.js')
+const { realms } = await import('../build/src/data/realmMetadata.js')
+const { realmIcons } = await import('../build/src/data/realmIcons.js')
+const { loadRealmDetail } = await import('../build/src/data/realmData.js')
+const RealmTemplate = (await import('../build/src/components/RealmTemplate.js')).default.default
 
 for (const key of Object.keys(realmPages)) {
   const realm = realms[key]
