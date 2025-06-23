@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!starsContainer) return;
 
     // Star generation
-    const STAR_COUNT = 2000;
+    const STAR_COUNT = 250;
     const stars = [];
 
     function createStar() {
