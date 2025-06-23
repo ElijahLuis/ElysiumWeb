@@ -7,6 +7,8 @@
   --primary-spacing: 1.5px;
   --ripple-color: var(--realm-color, #ff69b4);
   --gradient-alpha: 0.75;
+  --scroll-track: rgba(255, 255, 255, 0.1);
+  --scroll-thumb: rgba(255, 102, 153, 0.6);
   --default-gradient: linear-gradient(
     to bottom,
     rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
@@ -70,11 +72,11 @@ html {
 
 body {
   margin: 0;
-  /* allow scrolling but keep the bars invisible */
   overflow-y: auto;
   overflow-x: hidden;
   -ms-overflow-style: none; /* Edge */
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
   position: relative;
   font-family: var(--primary-font);
   color: var(--primary-color);
@@ -89,9 +91,19 @@ body.no-scroll {
   overflow-y: hidden;
 }
 
-/* hide scrollbars for WebKit-based browsers */
+/* custom scrollbar for WebKit */
 body::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scroll-track);
 }
 
 h2,
