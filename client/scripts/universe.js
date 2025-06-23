@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const overlayData = window.overlayData || {}
 
-  planets.forEach((p) => {
-    const name = p.textContent || ''
-    const data = overlayData[p.id] || {}
+  planets.forEach((planetElement) => {
+    const name = planetElement.textContent || ''
+    const data = overlayData[planetElement.id] || {}
 
     const inner = document.createElement('span')
     inner.className = 'planet-inner'
@@ -29,35 +29,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const delay = -Math.random() * 8
     inner.style.animationDelay = `${delay}s, ${delay}s`
 
-    p.textContent = ''
-    p.appendChild(inner)
+    planetElement.textContent = ''
+    planetElement.appendChild(inner)
   })
 
   if (quickMenu) {
-    planets.forEach((p, i) => {
-      const dot = document.createElement('button')
-      dot.className = 'quick-dot'
-      const glow = getComputedStyle(p).getPropertyValue('--glow-color')
-      if (glow) dot.style.setProperty('--dot-color', glow.trim())
-      const icon = overlayData[p.id]?.icon
-      if (icon) dot.textContent = icon
-      dot.addEventListener('click', () => {
+    planets.forEach((planetElement, i) => {
+      const dotButton = document.createElement('button')
+      dotButton.className = 'quick-dot'
+      const glow =
+        getComputedStyle(planetElement).getPropertyValue('--glow-color')
+      if (glow) dotButton.style.setProperty('--dot-color', glow.trim())
+      const icon = overlayData[planetElement.id]?.icon
+      if (icon) dotButton.textContent = icon
+      dotButton.addEventListener('click', () => {
         if (focused) return
         currentIndex = i
         angle = -slice * i
         updatePlanets()
       })
-      quickMenu.appendChild(dot)
-      quickDots.push(dot)
+      quickMenu.appendChild(dotButton)
+      quickDots.push(dotButton)
     })
     // arrange in a circle
     const radius = 70
-    quickDots.forEach((dot, idx) => {
+    quickDots.forEach((dotButton, idx) => {
       const theta = (idx / quickDots.length) * Math.PI * 2 - Math.PI / 2
       const x = 50 + radius * Math.cos(theta)
       const y = 50 + radius * Math.sin(theta)
-      dot.style.left = `${x}%`
-      dot.style.top = `${y}%`
+      dotButton.style.left = `${x}%`
+      dotButton.style.top = `${y}%`
     })
   }
 
@@ -100,7 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const startKey = window.location.hash.replace('#', '')
   if (startKey) {
-    const idx = planets.findIndex((p) => p.id === startKey)
+    const idx = planets.findIndex(
+      (planetElement) => planetElement.id === startKey,
+    )
     if (idx >= 0) {
       currentIndex = idx
       angle = -slice * idx
@@ -119,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
       planet.style.zIndex = Math.round(scale * 100)
       planet.classList.toggle('active', i === currentIndex)
     })
-    quickDots.forEach((d, i) => {
-      d.classList.toggle('active', i === currentIndex)
+    quickDots.forEach((dotButton, i) => {
+      dotButton.classList.toggle('active', i === currentIndex)
     })
   }
 
@@ -159,9 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function revertSelection() {
     hideOverlay()
-    planets.forEach((p) => {
-      p.classList.remove('faded', 'focused')
-      p.style.removeProperty('--scale-mult')
+    planets.forEach((planetElement) => {
+      planetElement.classList.remove('faded', 'focused')
+      planetElement.style.removeProperty('--scale-mult')
     })
     const active = planets[currentIndex]
     active.style.removeProperty('--scale-mult')
@@ -212,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const list = document.createElement('ul')
     list.className = 'overlay-features'
-    data.features.forEach((f) => {
+    data.features.forEach((feature) => {
       const li = document.createElement('li')
-      li.textContent = f
+      li.textContent = feature
       list.appendChild(li)
     })
 
@@ -271,13 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
       selectButton.classList.remove('fade-in')
       selectButton.classList.add('fade-out')
       const active = planets[currentIndex]
-      planets.forEach((p, i) => {
+      planets.forEach((planetElement, i) => {
         if (i === currentIndex) {
-          p.style.setProperty('--scale-mult', 1.2)
-          p.classList.add('focused')
+          planetElement.style.setProperty('--scale-mult', 1.2)
+          planetElement.classList.add('focused')
         } else {
-          p.classList.add('faded')
-          p.style.removeProperty('--scale-mult')
+          planetElement.classList.add('faded')
+          planetElement.style.removeProperty('--scale-mult')
         }
       })
       const realmKey = active.id

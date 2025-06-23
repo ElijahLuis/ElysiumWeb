@@ -71,7 +71,6 @@ html {
 }
 
 body {
-  margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
   -ms-overflow-style: none; /* Edge */
