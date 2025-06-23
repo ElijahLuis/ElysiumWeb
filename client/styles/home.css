@@ -97,6 +97,11 @@ body {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
+#profile-section .profile-avatar {
+  width: 180px;
+  height: 180px;
+}
+
 .profile-name {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -202,6 +207,10 @@ body {
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form select:focus {
@@ -231,13 +240,20 @@ body {
 }
 
 #explore-form {
-  gap: 12px;
+  gap: 24px;
 }
 
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 2px;
+  margin-bottom: 0;
+}
+
+#explore-form .submit-btn {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #explore-result {
