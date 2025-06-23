@@ -175,6 +175,7 @@ body.universe-page {
   color: #ffffff;
   font-size: 1.8rem;
   cursor: pointer;
+  padding-bottom: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,7 +263,7 @@ body.universe-page {
 
 #quick-select-wrapper {
   position: fixed;
-  bottom: calc(3% + 12px);
+  bottom: calc(3% + 32px);
   left: calc(3% + 5px);
   width: 160px;
   height: 160px;

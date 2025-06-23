@@ -90,6 +90,12 @@ body {
 body.no-scroll {
   overflow-y: hidden;
 }
+body.realm-page {
+  --gradient-alpha: 0.6;
+}
+body.realm-page .nebula {
+  opacity: 0.45;
+}
 
 /* custom scrollbar for WebKit */
 body::-webkit-scrollbar {
@@ -818,7 +824,7 @@ code {
   gap: 32px;
   padding: 50px 30px 50px;
   color: #ffeeee;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);

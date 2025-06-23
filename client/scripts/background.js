@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const starsContainer = document.getElementById('stars')
   if (!starsContainer) return
+  const realmSpace = document.getElementById('realm-space')
+  if (realmSpace) document.body.classList.add('realm-page')
 
   // Star generation
   const stars = []
