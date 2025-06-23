@@ -257,39 +257,13 @@ async function run() {
       path.join(ROOT, 'client', 'scripts', 'nav.js'),
       'utf-8',
     )
-    const navDom = new JSDOM(
-      '<!doctype html><html><body><nav id="main-nav" aria-label="primary"></nav></body></html>',
-      {
-        runScripts: 'dangerously',
-        url: 'https://example.com/pages/zenith.html',
-      },
-    )
-    navDom.window.fetch = () => Promise.reject(new Error('fail'))
-    navDom.window.eval(navScript)
-    navDom.window.document.dispatchEvent(
-      new navDom.window.Event('DOMContentLoaded'),
-    )
-    await wait(0)
-    const fallbackNav = navDom.window.document.querySelector('#main-nav')
-    assert.ok(
-      fallbackNav.querySelector('a[href="home.html"]'),
-      'fallback nav should show links when fetch fails',
-    )
-
     const activeDom = new JSDOM(
-      '<!doctype html><html><body><nav id="main-nav" aria-label="primary"></nav></body></html>',
+      '<!doctype html><html><body><nav id="main-nav" aria-label="primary"><ul><li><a href="home.html">Home</a></li><li><a href="about.html">About</a></li></ul></nav></body></html>',
       {
         runScripts: 'dangerously',
         url: 'https://example.com/pages/about.html',
       },
     )
-    activeDom.window.fetch = () =>
-      Promise.resolve({
-        text: () =>
-          Promise.resolve(
-            '<nav id="main-nav" aria-label="primary"><a href="home.html">Home</a><a href="about.html">About</a></nav>',
-          ),
-      })
     activeDom.window.eval(navScript)
     activeDom.window.document.dispatchEvent(
       new activeDom.window.Event('DOMContentLoaded'),

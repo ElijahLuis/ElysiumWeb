@@ -1,26 +1,13 @@
 // Loads shared navigation and highlights active page
 document.addEventListener('DOMContentLoaded', () => {
-  const placeholder = document.getElementById('main-nav')
-  if (!placeholder) return
+  const nav = document.getElementById('main-nav')
+  if (!nav) return
 
-  fetch('../partials/nav.html')
-    .then((res) => res.text())
-    .then((html) => {
-      placeholder.outerHTML = html
-      const nav = document.getElementById('main-nav')
-      highlightCurrentPage(nav)
-    })
-    .catch((err) => {
-      console.error('Navigation failed to load', err)
-      placeholder.innerHTML = [
-        '<a href="home.html">Home</a>',
-        '<a href="profile.html">Profile</a>',
-        '<a href="explore.html">Explore</a>',
-        '<a href="about.html">About</a>',
-        '<a href="universe.html">Universe</a>',
-      ].join(' ')
-      highlightCurrentPage(placeholder)
-    })
+  if (!nav.innerHTML.trim()) {
+    nav.innerHTML = `\n      <div class="brand">\n        <a href="home.html" class="brand-link" aria-label="Elysium home">Elysium</a>\n      </div>\n      <ul>\n        <li><a href="home.html">Home</a></li>\n        <li><a href="profile.html">Profile</a></li>\n        <li><a href="explore.html">Explore</a></li>\n        <li><a href="about.html">About</a></li>\n        <li><a href="universe.html">Universe</a></li>\n      </ul>\n    `
+  }
+
+  highlightCurrentPage(nav)
 
   function highlightCurrentPage(nav) {
     const page = window.location.pathname.split('/').pop()
