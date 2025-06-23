@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Star generation
   const stars = []
 
-  function createStars() {
-    starsContainer.innerHTML = ''
+  function updateStars() {
     const minStars = 400
     const maxStars = 600
     const pageWidth = document.documentElement.clientWidth
@@ -14,20 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const area = pageWidth * pageHeight
     const baseCount = Math.floor(area / 5000)
     const count = Math.max(minStars, Math.min(maxStars, baseCount))
-    const frag = document.createDocumentFragment()
-    for (let i = 0; i < count; i++) {
-      const star = document.createElement('div')
-      star.classList.add('star')
-      frag.appendChild(star)
-      stars.push(star)
+
+    if (count > stars.length) {
+      const frag = document.createDocumentFragment()
+      for (let i = stars.length; i < count; i++) {
+        const star = document.createElement('div')
+        star.classList.add('star')
+        frag.appendChild(star)
+        stars.push(star)
+      }
+      starsContainer.appendChild(frag)
+    } else if (count < stars.length) {
+      while (stars.length > count) {
+        const star = stars.pop()
+        if (star) star.remove()
+      }
     }
-    starsContainer.appendChild(frag)
-    positionStars()
+
+    positionStars(pageWidth, pageHeight)
   }
 
-  function positionStars() {
-    const pageWidth = document.documentElement.clientWidth
-    const pageHeight = Math.max(document.body.scrollHeight, window.innerHeight)
+  function positionStars(width, height) {
+    const pageWidth = width ?? document.documentElement.clientWidth
+    const pageHeight =
+      height ?? Math.max(document.body.scrollHeight, window.innerHeight)
     stars.forEach((star) => {
       star.style.left = `${Math.random() * pageWidth}px`
       star.style.top = `${Math.random() * pageHeight}px`
@@ -36,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  createStars()
+  updateStars()
   let lastWidth = document.documentElement.clientWidth,
     lastHeight = Math.max(document.body.scrollHeight, window.innerHeight)
   let resizeTimeout
@@ -48,12 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (width !== lastWidth || height !== lastHeight) {
         lastWidth = width
         lastHeight = height
-        positionStars()
+        updateStars()
       }
     }, 200)
   }
 
   window.addEventListener('resize', checkSize)
+  window.addEventListener('scroll', checkSize)
 
   // Gradient colors
   function adjust(hex, amt) {

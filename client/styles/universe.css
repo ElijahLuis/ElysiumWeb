@@ -112,7 +112,7 @@ body.universe-page {
 }
 
 .planet-label {
-  font-family: var(--realm-font, 'Orbitron', sans-serif);
+  font-family: var(--primary-font);
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
@@ -289,8 +289,8 @@ body.universe-page {
 
 .quick-dot {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: var(--dot-color, rgba(255, 255, 255, 0.1));
@@ -298,10 +298,11 @@ body.universe-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 0 8px var(--dot-color, rgba(255, 255, 255, 0.3));
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
@@ -318,7 +319,7 @@ body.universe-page {
 #quick-label {
   position: absolute;
   top: 50%;
-  left: calc(50% + 5px);
+  left: calc(50% + 3px);
   transform: translate(-50%, -50%);
   font-family: 'Orbitron', sans-serif;
   text-align: center;
@@ -476,52 +477,42 @@ body.universe-page {
 #abyss {
   --bg-color: #23034a;
   --glow-color: #bf9dff;
-  --realm-font: 'Cinzel', serif;
 }
 #cavern {
   --bg-color: #004d44;
   --glow-color: #9ef2e3;
-  --realm-font: 'Stardos Stencil', cursive;
 }
 #dross {
   --bg-color: #5a2f1f;
   --glow-color: #f0c9b3;
-  --realm-font: 'Special Elite', cursive;
 }
 #ember {
   --bg-color: #9e290f;
   --glow-color: #ffb194;
-  --realm-font: 'Rajdhani', sans-serif;
 }
 #glare {
   --bg-color: #a06f00;
   --glow-color: #ffd96a;
-  --realm-font: 'Monoton', cursive;
 }
 #languish {
   --bg-color: #0d4d98;
   --glow-color: #86bfff;
-  --realm-font: 'Roboto Slab', serif;
 }
 #mist {
   --bg-color: #61757d;
   --glow-color: #cfe8f8;
-  --realm-font: 'Ubuntu', sans-serif;
 }
 #oasis {
   --bg-color: #157f79;
   --glow-color: #76ffe5;
-  --realm-font: 'Comfortaa', cursive;
 }
 #trace {
   --bg-color: #7a143d;
   --glow-color: #ffa3c0;
-  --realm-font: 'Fira Code', monospace;
 }
 #zenith {
   --bg-color: #b68625;
   --glow-color: #ffeba3;
-  --realm-font: 'Chakra Petch', sans-serif;
 }
 
 @keyframes planetSpin {
@@ -542,4 +533,3 @@ body.universe-page {
     transform: translateY(-6px);
   }
 }
-

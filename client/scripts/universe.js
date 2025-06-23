@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const quickMenu = document.getElementById('quick-menu')
   const quickDots = []
 
-  const overlayInfo = window.overlayData || {}
+  const overlayData = window.overlayData || {}
 
   planets.forEach((p) => {
     const name = p.textContent || ''
-    const data = overlayInfo[p.id] || {}
+    const data = overlayData[p.id] || {}
 
     const inner = document.createElement('span')
     inner.className = 'planet-inner'
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dot.className = 'quick-dot'
       const glow = getComputedStyle(p).getPropertyValue('--glow-color')
       if (glow) dot.style.setProperty('--dot-color', glow.trim())
-      const icon = overlayInfo[p.id]?.icon
+      const icon = overlayData[p.id]?.icon
       if (icon) dot.textContent = icon
       dot.addEventListener('click', () => {
         if (focused) return
@@ -114,9 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       angle = -slice * idx
     }
   }
-
-  // overlay details provided globally by overlayData.js
-  const overlayData = window.overlayData || {}
 
   function updatePlanets() {
     planets.forEach((planet, i) => {
