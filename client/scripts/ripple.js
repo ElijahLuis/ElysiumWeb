@@ -3,9 +3,13 @@
     const rect = element.getBoundingClientRect()
     // use a small, consistent ring size for smoother performance
     const size = 60
-    const ring = document.createElement('span')
-    ring.className = 'ripple'
-    ring.style.width = ring.style.height = `${size}px`
+    let ring = element.querySelector('span.ripple')
+    if (!ring) {
+      ring = document.createElement('span')
+      ring.className = 'ripple'
+      ring.style.width = ring.style.height = `${size}px`
+      element.appendChild(ring)
+    }
     ring.style.left = `${event.clientX - rect.left - size / 2}px`
     ring.style.top = `${event.clientY - rect.top - size / 2}px`
 
@@ -27,11 +31,13 @@
       ${hexWithAlpha(base, '00')} 55%)`
     ring.style.boxShadow = `0 0 6px ${hexWithAlpha(base, 'e6')}`
 
-    element.appendChild(ring)
+    ring.style.animation = 'none'
+    // trigger reflow to restart animation
+    void ring.offsetWidth
+    ring.style.animation = ''
     ring.addEventListener(
       'animationend',
       () => {
-        ring.remove()
         if (typeof onEnd === 'function') onEnd()
       },
       { once: true },

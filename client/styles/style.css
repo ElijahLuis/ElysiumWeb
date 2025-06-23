@@ -791,6 +791,19 @@ code {
   margin-right: 6px;
 }
 
+.fade-in,
+.fade-out {
+  transition: opacity var(--fade-duration, 500ms) ease;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
 .hidden {
   display: none;
 }

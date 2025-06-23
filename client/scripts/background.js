@@ -3,30 +3,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!starsContainer) return;
 
     // Star generation
-    function generateStars() {
-        starsContainer.innerHTML = "";
-        // more stars by increasing density
-        const DENSITY = 4000;
-        const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
-        const frag = document.createDocumentFragment();
-        for (let i = 0; i < count; i++) {
-            const star = document.createElement("div");
-            star.classList.add("star");
-            star.style.left = `${Math.random() * window.innerWidth}px`;
-            star.style.top = `${Math.random() * window.innerHeight}px`;
-            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            star.style.opacity = Math.random();
-            frag.appendChild(star);
-        }
-        starsContainer.appendChild(frag);
+    const stars = [];
+    const DENSITY = 4000;
+    const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
+
+    for (let i = 0; i < count; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        star.style.opacity = Math.random();
+        starsContainer.appendChild(star);
+        stars.push(star);
     }
 
-    generateStars();
+    function positionStars() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        stars.forEach((star) => {
+            star.style.left = `${Math.random() * w}px`;
+            star.style.top = `${Math.random() * h}px`;
+        });
+    }
+
+    positionStars();
 
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(generateStars, 200);
+        resizeTimeout = setTimeout(positionStars, 200);
     });
 
     // Gradient colors

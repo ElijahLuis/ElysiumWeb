@@ -32,23 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function fadeOutElement(element, duration = 500) {
-    if (element) {
-      element.style.transition = `opacity ${duration}ms ease-out`
-      element.style.opacity = '0'
-      setTimeout(() => {
-        element.style.display = 'none'
-      }, duration)
-    }
+    if (!element) return
+    element.style.setProperty('--fade-duration', `${duration}ms`)
+    element.classList.remove('fade-in')
+    element.classList.add('fade-out')
+    setTimeout(() => {
+      element.style.display = 'none'
+    }, duration)
   }
 
   function fadeInElement(element, duration = 500) {
-    if (element) {
-      element.style.display = 'block'
-      setTimeout(() => {
-        element.style.transition = `opacity ${duration}ms ease-in`
-        element.style.opacity = '1'
-      }, 50)
-    }
+    if (!element) return
+    element.style.display = 'block'
+    element.style.setProperty('--fade-duration', `${duration}ms`)
+    element.classList.remove('fade-out')
+    element.classList.add('fade-in')
   }
 
   window.fadeInElement = fadeInElement
@@ -92,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loginButton.addEventListener('click', event => {
       event.preventDefault()
       sanitizeForm(loginForm)
-      stars.style.transition = 'opacity 1.5s ease-out'
-      stars.style.opacity = '0'
+      stars.style.setProperty('--fade-duration', '1500ms')
+      stars.classList.add('fade-out')
 
       const gradientOverlay = document.createElement('div')
       gradientOverlay.style.position = 'fixed'

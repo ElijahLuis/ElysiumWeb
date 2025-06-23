@@ -7,18 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!form || !result) return;
 
   function fadeOut(el) {
-    el.style.transition = 'opacity 500ms ease-out';
-    el.style.opacity = '0';
+    el.style.setProperty('--fade-duration', '500ms');
+    el.classList.remove('fade-in');
+    el.classList.add('fade-out');
     setTimeout(() => el.classList.add('hidden'), 500);
   }
 
   function fadeIn(el) {
     el.classList.remove('hidden');
-    el.style.opacity = '0';
-    requestAnimationFrame(() => {
-      el.style.transition = 'opacity 500ms ease-in';
-      el.style.opacity = '1';
-    });
+    el.style.setProperty('--fade-duration', '500ms');
+    el.classList.remove('fade-out');
+    el.classList.add('fade-in');
   }
 
   // realm names from src/data/realmMetadata.ts
