@@ -69,7 +69,7 @@ body.universe-page {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  color: var(--dark-color, #fff);
+  color: #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +83,7 @@ body.universe-page {
   transform: translate(-50%, -50%) rotateY(var(--theta, 0deg))
     translateZ(var(--radius, 520px)) rotateY(calc(var(--theta, 0deg) * -1))
     scale(calc(var(--scale, 1) * var(--scale-mult, 1)));
-  transition: transform 0.4s ease-out;
+  transition: transform 0.25s ease-out;
   will-change: transform;
   background: transparent;
 }
@@ -328,12 +328,12 @@ body.universe-page {
 
 .planet.faded {
   opacity: 0;
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.25s ease-out;
   pointer-events: none;
 }
 
 .planet.focused {
-  transition: transform 0.4s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 #realm-overlay {
