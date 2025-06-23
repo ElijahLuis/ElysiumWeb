@@ -93,13 +93,19 @@ body {
   width: 135px;
   height: 135px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
+  background:
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48Y2lyY2xlIGN4PSI2NCIgY3k9IjQwIiByPSIyNCIvPjxwYXRoIGQ9Ik02NCA3MmMtMzAgMC01NCAxOC01NCA0MHYxNmgxMDh2LTE2YzAtMjItMjQtNDAtNTQtNDB6Ii8+PC9zdmc+')
+      center/70% 70% no-repeat,
+    radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 #profile-section .profile-avatar {
   width: 180px;
   height: 180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile-name {
@@ -144,7 +150,10 @@ body {
   height: 90px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
+  background:
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48Y2lyY2xlIGN4PSI2NCIgY3k9IjQwIiByPSIyNCIvPjxwYXRoIGQ9Ik02NCA3MmMtMzAgMC01NCAxOC01NCA0MHYxNmgxMDh2LTE2YzAtMjItMjQtNDAtNTQtNDB6Ii8+PC9zdmc+')
+      center/70% 70% no-repeat,
+    radial-gradient(circle at 30% 30%, #ffffff, #9aaaff);
 }
 
 .feed-body {
@@ -208,7 +217,7 @@ body {
     background 0.3s ease,
     box-shadow 0.3s ease;
   width: 100%;
-  max-width: 1200px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -246,12 +255,12 @@ body {
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
 #explore-form .submit-btn {
   width: 100%;
-  max-width: 800px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -283,7 +292,6 @@ body {
 #explore-result .result-name:hover {
   color: #ffffff;
 }
-
 
 .visually-hidden {
   position: absolute;

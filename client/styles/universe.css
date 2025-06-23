@@ -43,7 +43,7 @@ body.universe-page {
 
 #universe {
   position: absolute;
-  top: calc(50% + 40px);
+  top: calc(50% + 20px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -83,7 +83,7 @@ body.universe-page {
   transform: translate(-50%, -50%) rotateY(var(--theta, 0deg))
     translateZ(var(--radius, 520px)) rotateY(calc(var(--theta, 0deg) * -1))
     scale(calc(var(--scale, 1) * var(--scale-mult, 1)));
-  transition: transform 0.6s ease-out;
+  transition: transform 0.4s ease-out;
   will-change: transform;
   background: transparent;
 }
@@ -215,7 +215,7 @@ body.universe-page {
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: 2px;
   cursor: pointer;
   box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
@@ -288,7 +288,7 @@ body.universe-page {
   height: 48px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: var(--dot-color, rgba(255, 255, 255, 0.2));
+  background: var(--dot-color, rgba(255, 255, 255, 0.15));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #fff;
@@ -320,7 +320,7 @@ body.universe-page {
   transform: translate(-50%, -50%);
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: 1px;
   color: #fff;
   pointer-events: none;
