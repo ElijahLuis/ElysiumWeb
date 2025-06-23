@@ -2,31 +2,54 @@ document.addEventListener("DOMContentLoaded", () => {
     const starsContainer = document.getElementById("stars");
     if (!starsContainer) return;
 
-    // Star generation
-    function generateStars() {
-        starsContainer.innerHTML = "";
-        // more stars by increasing density
-        const DENSITY = 4000;
-        const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
-        const frag = document.createDocumentFragment();
-        for (let i = 0; i < count; i++) {
-            const star = document.createElement("div");
-            star.classList.add("star");
-            star.style.left = `${Math.random() * window.innerWidth}px`;
-            star.style.top = `${Math.random() * window.innerHeight}px`;
-            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            star.style.opacity = Math.random();
-            frag.appendChild(star);
-        }
-        starsContainer.appendChild(frag);
+    // Star generation with a fixed pool
+    const STAR_COUNT = 2000;
+    const stars = [];
+
+    function createStar() {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        star.style.opacity = Math.random().toString();
+        starsContainer.appendChild(star);
+        return star;
     }
 
-    generateStars();
+    function positionStar(star, width, height) {
+        star.style.left = `${Math.random() * width}px`;
+        star.style.top = `${Math.random() * height}px`;
+    }
+
+    function initStars() {
+        const width = document.documentElement.clientWidth;
+        const height = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.clientHeight,
+        );
+        starsContainer.style.height = `${height}px`;
+        for (let i = 0; i < STAR_COUNT; i++) {
+            const star = createStar();
+            positionStar(star, width, height);
+            stars.push(star);
+        }
+    }
+
+    function repositionStars() {
+        const width = document.documentElement.clientWidth;
+        const height = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.clientHeight,
+        );
+        starsContainer.style.height = `${height}px`;
+        stars.forEach((star) => positionStar(star, width, height));
+    }
+
+    initStars();
 
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(generateStars, 200);
+        resizeTimeout = setTimeout(repositionStars, 150);
     });
 
     // Gradient colors
