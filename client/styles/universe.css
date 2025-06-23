@@ -104,7 +104,7 @@ body.universe-page {
   animation-fill-mode: both;
   animation:
     planetSpin 40s linear infinite,
-    planetFloat 8s ease-in-out infinite;
+    planetFloat 12s ease-in-out infinite;
 }
 
 .paused .planet-inner {
@@ -163,7 +163,7 @@ body.universe-page {
   box-shadow:
     inset 0 0 20px rgba(255, 255, 255, 0.25),
     0 0 30px var(--glow-color);
-  animation: colorDrift 20s ease-in-out infinite;
+  animation: colorDrift 30s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
@@ -271,18 +271,11 @@ body.universe-page {
   position: absolute;
   bottom: 3%;
   left: 3%;
-  width: 180px;
-  padding: 12px;
+  width: 160px;
+  height: 160px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+  justify-content: center;
   z-index: 10;
 }
 
@@ -290,6 +283,9 @@ body.universe-page {
   position: relative;
   width: 160px;
   height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quick-dot {
@@ -321,10 +317,15 @@ body.universe-page {
 }
 
 #quick-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Orbitron', sans-serif;
   font-size: 0.9rem;
   letter-spacing: 1px;
   color: #fff;
+  pointer-events: none;
 }
 
 .planet.faded {
@@ -538,7 +539,7 @@ body.universe-page {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
   }
 }
 
