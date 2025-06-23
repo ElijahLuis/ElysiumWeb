@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result')
   if (!form || !result) return
 
-  // Softly shields our words from harm
   function escapeHTML(str) {
     const map = {
       '&': '&amp;',
