@@ -4,7 +4,6 @@
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   --primary-color: #ffcccc;
   --primary-spacing: 1.5px;
-  --ripple-color: var(--realm-color, #ff69b4);
   --gradient-alpha: 0.75;
   --scroll-track: rgba(255, 255, 255, 0.1);
   --scroll-thumb: rgba(255, 102, 153, 0.6);

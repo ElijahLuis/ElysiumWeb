@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       placeholder.outerHTML = html
       const nav = document.getElementById('main-nav')
       highlightCurrentPage(nav)
-      enableRipples(nav)
     })
     .catch((err) => {
       console.error('Navigation failed to load', err)
@@ -32,18 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  function enableRipples(nav) {
-    nav.querySelectorAll('a:not(.brand-link)').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault()
-        if (window.createRainbowRipple) {
-          createRainbowRipple(link, event, () => {
-            window.location.href = link.href
-          })
-        } else {
-          window.location.href = link.href
-        }
-      })
-    })
-  }
 })

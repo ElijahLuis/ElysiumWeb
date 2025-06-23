@@ -55,9 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (enterButton) {
     enterButton.addEventListener('click', event => {
-      if (window.createRainbowRipple) {
-        createRainbowRipple(enterButton, event)
-      }
 
       fadeOutElement(welcomeText)
       fadeOutElement(enterButton)

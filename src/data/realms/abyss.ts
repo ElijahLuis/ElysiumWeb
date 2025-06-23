@@ -1,5 +1,5 @@
 import { clusters as clusterData } from '../clusters/abyss'
-import { corePlanets as planetData } from '../planets/abyss'
+import { corePlanets as planetData } from '../corePlanets/abyss'
 import { realms } from '../realmMetadata'
 import { Realm } from '../types'
 
