@@ -159,6 +159,16 @@ h1 {
   animation: boxFloat 14s ease-in-out infinite;
 }
 
+body.realm-page {
+  --gradient-alpha: 0.85;
+}
+
+.realm-page .realm {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 10px;
+  border-radius: 12px;
+}
+
 .stellar-heading {
   letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
@@ -721,7 +731,12 @@ fieldset legend {
 }
 
 #login-form input:not([type='checkbox']),
-#signup-form input:not([type='checkbox']),
+#signup-form input:not([type='checkbox']) {
+  width: calc(100% - 150px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #login-form .submit-btn,
 #signup-form .submit-btn {
   width: 100%;
@@ -1145,7 +1160,7 @@ code {
 .realm-divider {
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 30px 0;
+  margin: 12px 0;
   width: 90%;
 }
 

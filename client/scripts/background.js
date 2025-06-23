@@ -5,15 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
     // Star generation
     const stars = [];
     const DENSITY = 4000;
-    const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
 
-    for (let i = 0; i < count; i++) {
+    function createStar() {
         const star = document.createElement("div");
         star.classList.add("star");
         star.style.animationDuration = `${Math.random() * 3 + 2}s`;
         star.style.opacity = Math.random();
-        starsContainer.appendChild(star);
-        stars.push(star);
+        return star;
+    }
+
+    function adjustStarCount() {
+        const required = Math.floor(
+            (window.innerWidth * window.innerHeight) / DENSITY,
+        );
+        while (stars.length < required) {
+            const star = createStar();
+            stars.push(star);
+            starsContainer.appendChild(star);
+        }
+        while (stars.length > required) {
+            const star = stars.pop();
+            if (star) star.remove();
+        }
     }
 
     function positionStars() {
@@ -25,12 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    adjustStarCount();
     positionStars();
 
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(positionStars, 200);
+        resizeTimeout = setTimeout(() => {
+            adjustStarCount();
+            positionStars();
+        }, 200);
     });
 
     // Gradient colors
