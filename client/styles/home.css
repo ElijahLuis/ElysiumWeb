@@ -11,11 +11,11 @@ body {
   padding: 0;
 }
 
-/* Layout for the main home sections */
+/* Layout for main home sections */
 
-/* Container for profile/check-in and feed columns */
+/* Container for main columns */
 #home-main {
-  margin-top: 130px; /* clear the fixed nav */
+  margin-top: 130px;
   display: grid;
   grid-template-columns: minmax(320px, 420px) 1fr;
   align-items: start;
