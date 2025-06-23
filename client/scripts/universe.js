@@ -31,10 +31,32 @@ document.addEventListener('DOMContentLoaded', () => {
     p.appendChild(inner)
   })
 
+  if (quickMenu) {
+    planets.forEach((p, i) => {
+      const dot = document.createElement('button')
+      dot.className = 'quick-dot'
+      const glow = getComputedStyle(p).getPropertyValue('--glow-color')
+      if (glow) dot.style.setProperty('--dot-color', glow.trim())
+      const icon = overlayInfo[p.id]?.icon
+      if (icon) dot.textContent = icon
+      dot.addEventListener('click', () => {
+        if (focused) return
+        pauseFloat()
+        currentIndex = i
+        angle = -slice * i
+        updatePlanets()
+      })
+      quickMenu.appendChild(dot)
+      quickDots.push(dot)
+    })
+  }
+
   const leftArrow = document.getElementById('arrow-left')
   const rightArrow = document.getElementById('arrow-right')
   const selectButton = document.getElementById('select-button')
   const overlay = document.getElementById('realm-overlay')
+  const quickMenu = document.getElementById('quick-menu')
+  const quickDots = []
   let yesBtn, noBtn
   let lastFocus
   const ringElem = ring
@@ -98,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
       planet.style.setProperty('--scale', scale)
       planet.style.zIndex = Math.round(scale * 100)
       planet.classList.toggle('active', i === currentIndex)
+    })
+    quickDots.forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex)
     })
   }
 

@@ -8,7 +8,7 @@
   --overlay-color-7: #290136;
   --overlay-color-8: #120022;
   --overlay-color-9: #020131;
-  --overlay-alpha: 0.55;
+  --overlay-alpha: 0.4;
 }
 
 #gradientOverlay {
@@ -112,7 +112,7 @@ body.universe-page {
 }
 
 .planet-label {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--realm-font, 'Orbitron', sans-serif);
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
@@ -150,13 +150,15 @@ body.universe-page {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    var(--glow-color),
-    var(--bg-color, #444) 60%
-  );
-  mix-blend-mode: normal;
+  background:
+    radial-gradient(circle at 30% 30%, var(--glow-color), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.5), transparent 70%);
+  background-color: var(--bg-color, #444);
+  mix-blend-mode: screen;
   opacity: 1;
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.25),
+    0 0 30px var(--glow-color);
   animation: colorDrift 20s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
@@ -259,6 +261,55 @@ body.universe-page {
   display: flex;
   gap: 20px;
   z-index: 10;
+}
+
+#quick-select-wrapper {
+  position: absolute;
+  bottom: 3%;
+  left: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+#quick-menu {
+  display: grid;
+  grid-template-columns: repeat(5, 24px);
+  grid-template-rows: repeat(2, 24px);
+  gap: 6px;
+}
+
+.quick-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--dot-color, rgba(255, 255, 255, 0.1));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--dot-color, rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quick-dot.active {
+  box-shadow:
+    0 0 12px var(--dot-color, rgba(255, 255, 255, 0.8)),
+    0 0 6px rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+#quick-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #fff;
 }
 
 .planet.faded {
@@ -409,42 +460,52 @@ body.universe-page {
 #abyss {
   --bg-color: #23034a;
   --glow-color: #bf9dff;
+  --realm-font: 'Cinzel', serif;
 }
 #cavern {
   --bg-color: #004d44;
   --glow-color: #9ef2e3;
+  --realm-font: 'Stardos Stencil', cursive;
 }
 #dross {
   --bg-color: #5a2f1f;
   --glow-color: #f0c9b3;
+  --realm-font: 'Special Elite', cursive;
 }
 #ember {
   --bg-color: #9e290f;
   --glow-color: #ffb194;
+  --realm-font: 'Rajdhani', sans-serif;
 }
 #glare {
   --bg-color: #a06f00;
   --glow-color: #ffd96a;
+  --realm-font: 'Monoton', cursive;
 }
 #languish {
   --bg-color: #0d4d98;
   --glow-color: #86bfff;
+  --realm-font: 'Roboto Slab', serif;
 }
 #mist {
   --bg-color: #61757d;
   --glow-color: #cfe8f8;
+  --realm-font: 'Ubuntu', sans-serif;
 }
 #oasis {
   --bg-color: #157f79;
   --glow-color: #76ffe5;
+  --realm-font: 'Comfortaa', cursive;
 }
 #trace {
   --bg-color: #7a143d;
   --glow-color: #ffa3c0;
+  --realm-font: 'Fira Code', monospace;
 }
 #zenith {
   --bg-color: #b68625;
   --glow-color: #ffeba3;
+  --realm-font: 'Chakra Petch', sans-serif;
 }
 
 @keyframes planetSpin {

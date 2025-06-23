@@ -5,19 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // Star generation
     function generateStars() {
         starsContainer.innerHTML = "";
-        // more stars by increasing density
-        const DENSITY = 4000;
-        const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
+        const minStars = 400;
+        const maxStars = 600;
+        const pageWidth = document.documentElement.clientWidth;
+        const pageHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+        const area = pageWidth * pageHeight;
+        const baseCount = Math.floor(area / 5000);
+        const count = Math.max(minStars, Math.min(maxStars, baseCount));
         const frag = document.createDocumentFragment();
         for (let i = 0; i < count; i++) {
             const star = document.createElement("div");
             star.classList.add("star");
-            star.style.left = `${Math.random() * window.innerWidth}px`;
-            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.left = `${Math.random() * pageWidth}px`;
+            star.style.top = `${Math.random() * pageHeight}px`;
             star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            star.style.opacity = Math.random();
+            star.style.opacity = Math.random().toString();
             frag.appendChild(star);
         }
+        starsContainer.style.height = `${pageHeight}px`;
         starsContainer.appendChild(frag);
     }
 
