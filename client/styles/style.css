@@ -635,7 +635,7 @@ h1 {
   outline-offset: 4px;
 }
 
-/* Form container & inputs */
+/* Form container and inputs */
 .form {
   display: flex;
   flex-direction: column;
@@ -805,7 +805,6 @@ code {
 /* --------------------------
    9) REALM SPACE
 -------------------------- */
-
 #realm-space {
   margin: 60px auto 80px;
   width: min(95%, 900px);
