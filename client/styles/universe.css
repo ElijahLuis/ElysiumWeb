@@ -275,13 +275,13 @@ body.universe-page {
 }
 
 #quick-menu {
-  display: grid;
-  grid-template-columns: repeat(5, 24px);
-  grid-template-rows: repeat(2, 24px);
-  gap: 6px;
+  position: relative;
+  width: 120px;
+  height: 120px;
 }
 
 .quick-dot {
+  position: absolute;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -296,6 +296,7 @@ body.universe-page {
   cursor: pointer;
   box-shadow: 0 0 8px var(--dot-color, rgba(255, 255, 255, 0.3));
   transition: transform 0.3s, box-shadow 0.3s;
+  transform: translate(-50%, -50%);
 }
 
 .quick-dot.active {

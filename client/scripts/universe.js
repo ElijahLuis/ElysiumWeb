@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!ring) return
 
   const planets = Array.from(ring.querySelectorAll('.planet'))
+  const quickMenu = document.getElementById('quick-menu')
+  const quickDots = []
 
   const overlayInfo = window.overlayData || {}
 
@@ -49,14 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
       quickMenu.appendChild(dot)
       quickDots.push(dot)
     })
+    // arrange in a circle
+    const radius = 45
+    quickDots.forEach((dot, idx) => {
+      const theta = (idx / quickDots.length) * Math.PI * 2 - Math.PI / 2
+      const x = 50 + radius * Math.cos(theta)
+      const y = 50 + radius * Math.sin(theta)
+      dot.style.left = `${x}%`
+      dot.style.top = `${y}%`
+    })
   }
 
   const leftArrow = document.getElementById('arrow-left')
   const rightArrow = document.getElementById('arrow-right')
   const selectButton = document.getElementById('select-button')
   const overlay = document.getElementById('realm-overlay')
-  const quickMenu = document.getElementById('quick-menu')
-  const quickDots = []
   let yesBtn, noBtn
   let lastFocus
   const ringElem = ring

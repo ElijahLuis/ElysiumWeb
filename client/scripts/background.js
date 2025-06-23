@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Star generation
     function generateStars() {
         starsContainer.innerHTML = "";
-        const minStars = 400;
-        const maxStars = 600;
+        const minStars = 250;
+        const maxStars = 750;
         const pageWidth = document.documentElement.clientWidth;
         const pageHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
         const area = pageWidth * pageHeight;
@@ -28,11 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     generateStars();
 
-    let resizeTimeout;
-    window.addEventListener("resize", () => {
+    let lastHeight = 0;
+    function checkSize() {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(generateStars, 200);
-    });
+        resizeTimeout = setTimeout(() => {
+            const height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+            if (height !== lastHeight) {
+                lastHeight = height;
+                generateStars();
+            }
+        }, 200);
+    }
+
+    let resizeTimeout;
+    window.addEventListener("resize", checkSize);
+    window.addEventListener("scroll", checkSize);
 
     // Gradient colors
     function adjust(hex, amt) {
