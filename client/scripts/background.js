@@ -3,12 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!starsContainer) return;
 
     // Star generation
-    const STAR_COUNT = 500;
-
     function generateStars() {
         starsContainer.innerHTML = "";
+        // more stars by increasing density
+        const DENSITY = 4000;
+        const count = Math.floor((window.innerWidth * window.innerHeight) / DENSITY);
         const frag = document.createDocumentFragment();
-        for (let i = 0; i < STAR_COUNT; i++) {
+        for (let i = 0; i < count; i++) {
             const star = document.createElement("div");
             star.classList.add("star");
             star.style.left = `${Math.random() * window.innerWidth}px`;
