@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!starsContainer) return;
 
     // Star generation
+    const STAR_COUNT = 2000;
     const stars = [];
-    const DENSITY = 4000;
 
     function createStar() {
         const star = document.createElement("div");
@@ -14,18 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return star;
     }
 
-    function adjustStarCount() {
-        const required = Math.floor(
-            (window.innerWidth * window.innerHeight) / DENSITY,
-        );
-        while (stars.length < required) {
+    function createPool() {
+        while (stars.length < STAR_COUNT) {
             const star = createStar();
             stars.push(star);
             starsContainer.appendChild(star);
-        }
-        while (stars.length > required) {
-            const star = stars.pop();
-            if (star) star.remove();
         }
     }
 
@@ -38,14 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    adjustStarCount();
+    createPool();
     positionStars();
 
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            adjustStarCount();
             positionStars();
         }, 200);
     });

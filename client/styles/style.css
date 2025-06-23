@@ -364,7 +364,7 @@ body.realm-page {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: black;
   pointer-events: none;
   opacity: 0;
@@ -404,7 +404,7 @@ body.realm-page {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
@@ -465,7 +465,7 @@ body.realm-page {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height:  100vh;
   pointer-events: none;
   will-change: transform;
 }
@@ -687,6 +687,8 @@ fieldset legend {
 }
 
 .form label {
+  display: block;
+  text-align: center;
   margin-bottom: 6px;
 }
 
@@ -732,7 +734,7 @@ fieldset legend {
 
 #login-form input:not([type='checkbox']),
 #signup-form input:not([type='checkbox']) {
-  width: calc(100% - 150px);
+  width: 240px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1160,7 +1162,7 @@ code {
 .realm-divider {
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 12px 0;
+  margin: 6px 0;
   width: 90%;
 }
 
