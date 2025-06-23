@@ -2,8 +2,8 @@ import http, { IncomingMessage, ServerResponse } from 'http'
 import fs from 'fs'
 import path from 'path'
 
-// Locate the client folder whether we're running from the TypeScript sources
-// or the compiled build output. When running `npm start` the server lives in
+// Locate client folder either from TypeScript sources
+// or compiled build output. When running `npm start` the server lives in
 // `build/server`, otherwise it's inside `server`.
 const builtRoot = path.join(__dirname, '..', 'client')
 const root = fs.existsSync(builtRoot)
@@ -24,7 +24,7 @@ const mimeTypes: Record<string, string> = {
   '.woff2': 'font/woff2',
 }
 
-// Gracefully send a plain 404 when the requested file slips through our fingers.
+// Send plain 404 when requested file is not found
 function send404(res: ServerResponse): void {
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
   res.end('Not found')

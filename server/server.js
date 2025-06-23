@@ -17,7 +17,7 @@ const mimeTypes = {
   '.woff2': 'font/woff2',
 }
 
-// Gracefully send a plain 404 when the requested file slips through our fingers.
+// Send plain 404 when the requested file is not found
 function send404(res) {
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
   res.end('Not found')

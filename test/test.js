@@ -3,10 +3,8 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 const assert = require('assert')
-
 const PORT = 3100
 const ROOT = path.join(__dirname, '..')
-
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 function fetch(pathname, method = 'GET') {
