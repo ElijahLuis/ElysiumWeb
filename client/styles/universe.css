@@ -8,7 +8,7 @@
   --overlay-color-7: #290136;
   --overlay-color-8: #120022;
   --overlay-color-9: #020131;
-  --overlay-alpha: 0.4;
+  --overlay-alpha: 0.3;
 }
 
 #gradientOverlay {
@@ -262,7 +262,7 @@ body.universe-page {
 
 #quick-select-wrapper {
   position: fixed;
-  bottom: 3%;
+  bottom: calc(3% + 12px);
   left: calc(3% + 5px);
   width: 160px;
   height: 160px;
@@ -341,7 +341,7 @@ body.universe-page {
   width: 60%;
   max-width: 500px;
   padding: 40px 30px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);

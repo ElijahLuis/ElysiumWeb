@@ -6,13 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const stars = []
 
   function updateStars() {
-    const minStars = 400
-    const maxStars = 600
+    const count = 400
     const pageWidth = document.documentElement.clientWidth
     const pageHeight = Math.max(document.body.scrollHeight, window.innerHeight)
-    const area = pageWidth * pageHeight
-    const baseCount = Math.floor(area / 5000)
-    const count = Math.max(minStars, Math.min(maxStars, baseCount))
 
     if (count > stars.length) {
       const frag = document.createDocumentFragment()
