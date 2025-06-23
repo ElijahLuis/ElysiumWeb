@@ -7,6 +7,8 @@
   --primary-spacing: 1.5px;
   --ripple-color: var(--realm-color, #ff69b4);
   --gradient-alpha: 0.75;
+  --scroll-track: rgba(255, 255, 255, 0.1);
+  --scroll-thumb: rgba(255, 102, 153, 0.6);
   --default-gradient: linear-gradient(
     to bottom,
     rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
@@ -70,19 +72,16 @@ html {
 
 body {
   margin: 0;
-  /* allow scrolling but keep the bars invisible */
   overflow-y: auto;
   overflow-x: hidden;
   -ms-overflow-style: none; /* Edge */
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
   position: relative;
   font-family: var(--primary-font);
   color: var(--primary-color);
   letter-spacing: var(--primary-spacing);
-  background: var(
-    --gradient-current,
-    var(--default-gradient)
-  );
+  background: var(--gradient-current, var(--default-gradient));
   background-size: 400% 400%;
   animation: gradientCycle 60s ease-in-out infinite;
 }
@@ -91,10 +90,26 @@ body {
 body.no-scroll {
   overflow-y: hidden;
 }
+body.realm-page {
+  --gradient-alpha: 0.6;
+}
+body.realm-page .nebula {
+  opacity: 0.45;
+}
 
-/* hide scrollbars for WebKit-based browsers */
+/* custom scrollbar for WebKit */
 body::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scroll-track);
 }
 
 h2,
@@ -359,11 +374,11 @@ h1 {
   pointer-events: none;
   opacity: 0;
   z-index: -10;
-  transition: opacity 0.75s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 #fadeOverlay.start {
-  animation: fadeOutOverlay 1.25s ease-out forwards;
+  animation: fadeOutOverlay 0.6s ease-out forwards;
 }
 
 #fadeOverlay.fade-in {
@@ -451,11 +466,12 @@ h1 {
 -------------------------- */
 /* Removed the transform transition here to avoid conflict with JS-driven parallax updates. */
 #stars {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   pointer-events: none;
   will-change: transform;
 }
@@ -808,7 +824,7 @@ code {
   gap: 32px;
   padding: 50px 30px 50px;
   color: #ffeeee;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);
