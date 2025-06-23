@@ -101,7 +101,6 @@ body.universe-page {
   cursor: default;
   user-select: none;
   will-change: transform;
-  /* remove animations for performance */
   animation: none;
 }
 
