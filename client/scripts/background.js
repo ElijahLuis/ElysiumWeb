@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createStars() {
     starsContainer.innerHTML = ''
-    const minStars = 500
-    const maxStars = 750
+    const minStars = 400
+    const maxStars = 600
     const pageWidth = document.documentElement.clientWidth
     const pageHeight = Math.max(document.body.scrollHeight, window.innerHeight)
     const area = pageWidth * pageHeight
