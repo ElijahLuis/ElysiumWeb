@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result')
   if (!form || !result) return
 
-
   // Softly shields our words from harm
   function escapeHTML(str) {
     const map = {
@@ -13,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
       '"': '&quot;',
       "'": '&#39;',
     }
-    return str.replace(/[&<>"']/g, m => map[m])
+    return str.replace(/[&<>"']/g, (m) => map[m])
   }
-  
+
   const planetMap = {
     abyss: { realm: 'Abyss', planets: ['Nocturnis', 'Umbrak', 'Nerveris'] },
     cavern: { realm: 'Cavern', planets: ['Bedesto', 'Thirsa', 'Kerelos'] },
@@ -42,13 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     'zenith',
   ]
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const values = Array.from(form.querySelectorAll('select')).map(sel =>
-      parseInt(sel.value, 10)
+    const values = Array.from(form.querySelectorAll('select')).map((selectEl) =>
+      parseInt(selectEl.value, 10),
     )
-    const avg = values.reduce((a, b) => a + b, 0) / values.length
-    const index = Math.min(realms.length - 1, Math.floor((avg - 1) / 0.4))
+    const averageScore = values.reduce((a, b) => a + b, 0) / values.length
+    const index = Math.min(
+      realms.length - 1,
+      Math.floor((averageScore - 1) / 0.4),
+    )
     const key = realms[index]
     const { realm, planets } = planetMap[key]
     const name = planets[Math.floor(Math.random() * planets.length)]

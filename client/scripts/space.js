@@ -1,23 +1,27 @@
-(function(){
-  if (typeof document === 'undefined') return;
+;(function () {
+  if (typeof document === 'undefined') return
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.select-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const win = document.createElement('div')
-        win.className = 'space-window'
-        win.textContent = 'Realm space awaits...'
-        document.body.appendChild(win)
-        requestAnimationFrame(() => win.classList.add('show'))
+    document.querySelectorAll('.select-btn').forEach((selectButton) => {
+      selectButton.addEventListener('click', () => {
+        const popupWindow = document.createElement('div')
+        popupWindow.className = 'space-window'
+        popupWindow.textContent = 'Realm space awaits...'
+        document.body.appendChild(popupWindow)
+        requestAnimationFrame(() => popupWindow.classList.add('show'))
 
-        function removeWin() {
-          win.classList.remove('show')
-          win.classList.add('fade-out')
-          win.addEventListener('transitionend', () => win.remove(), { once: true })
+        function closePopup() {
+          popupWindow.classList.remove('show')
+          popupWindow.classList.add('fade-out')
+          popupWindow.addEventListener(
+            'transitionend',
+            () => popupWindow.remove(),
+            { once: true },
+          )
         }
 
-        win.addEventListener('click', removeWin)
-        setTimeout(removeWin, 3000)
+        popupWindow.addEventListener('click', closePopup)
+        setTimeout(closePopup, 3000)
       })
     })
   })
-})();
+})()
