@@ -257,7 +257,7 @@ body.universe-page {
 }
 
 #controls {
-  position: absolute;
+  position: fixed;
   bottom: 3%;
   left: 50%;
   transform: translateX(-50%);
@@ -267,9 +267,9 @@ body.universe-page {
 }
 
 #quick-select-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 3%;
-  left: 3%;
+  left: calc(3% + 5px);
   width: 160px;
   height: 160px;
   display: flex;
