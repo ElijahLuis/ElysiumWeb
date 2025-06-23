@@ -3,7 +3,6 @@
 :root {
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   --primary-color: #ffcccc;
-  /* Slightly wider spacing for clarity */
   --primary-spacing: 1.5px;
   --ripple-color: var(--realm-color, #ff69b4);
   --gradient-alpha: 0.75;
@@ -85,7 +84,7 @@ body {
   animation: gradientCycle 60s ease-in-out infinite;
 }
 
-/* index page should stay still */
+/* no scroll on index.html */
 body.no-scroll {
   overflow-y: hidden;
 }
@@ -94,21 +93,6 @@ body.realm-page {
 }
 body.realm-page .nebula {
   opacity: 0.45;
-}
-
-/* custom scrollbar for WebKit */
-body::-webkit-scrollbar {
-  width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--scroll-track);
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--scroll-thumb);
-  border-radius: 5px;
-  border: 2px solid var(--scroll-track);
 }
 
 h2,
