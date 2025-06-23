@@ -47,19 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateStars()
   let lastWidth = document.documentElement.clientWidth
+  let lastHeight = Math.max(document.body.scrollHeight, window.innerHeight)
   let resizeTimeout
   function checkSize() {
     clearTimeout(resizeTimeout)
     resizeTimeout = setTimeout(() => {
       const width = document.documentElement.clientWidth
-      if (width !== lastWidth) {
+      const height = Math.max(document.body.scrollHeight, window.innerHeight)
+      if (width !== lastWidth || height !== lastHeight) {
         lastWidth = width
+        lastHeight = height
         updateStars()
       }
     }, 200)
   }
 
   window.addEventListener('resize', checkSize)
+  window.addEventListener('scroll', checkSize)
 
   // Gradient colors
   function adjust(hex, amt) {

@@ -101,14 +101,8 @@ body.universe-page {
   cursor: default;
   user-select: none;
   will-change: transform;
-  animation-fill-mode: both;
-  animation:
-    planetSpin 40s linear infinite,
-    planetFloat 12s ease-in-out infinite;
-}
-
-.paused .planet-inner {
-  animation-play-state: paused;
+  /* remove animations for performance */
+  animation: none;
 }
 
 .planet-label {
@@ -513,23 +507,4 @@ body.universe-page {
 #zenith {
   --bg-color: #b68625;
   --glow-color: #ffeba3;
-}
-
-@keyframes planetSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes planetFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
 }
