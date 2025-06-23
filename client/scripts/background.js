@@ -3,43 +3,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!starsContainer) return;
 
     // Star generation
-    const STAR_COUNT = 250;
-    const stars = [];
+    const STAR_COUNT = 500;
 
-    function createStar() {
-        const star = document.createElement("div");
-        star.classList.add("star");
-        star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        star.style.opacity = Math.random();
-        return star;
-    }
-
-    function createPool() {
-        while (stars.length < STAR_COUNT) {
-            const star = createStar();
-            stars.push(star);
-            starsContainer.appendChild(star);
+    function generateStars() {
+        starsContainer.innerHTML = "";
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < STAR_COUNT; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            star.style.opacity = Math.random();
+            frag.appendChild(star);
         }
+        starsContainer.appendChild(frag);
     }
 
-    function positionStars() {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        stars.forEach((star) => {
-            star.style.left = `${Math.random() * w}px`;
-            star.style.top = `${Math.random() * h}px`;
-        });
-    }
-
-    createPool();
-    positionStars();
+    generateStars();
 
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            positionStars();
-        }, 200);
+        resizeTimeout = setTimeout(generateStars, 200);
     });
 
     // Gradient colors

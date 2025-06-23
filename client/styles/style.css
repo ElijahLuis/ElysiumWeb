@@ -170,14 +170,25 @@ body.realm-page {
 }
 
 .stellar-heading {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
   letter-spacing: 2px;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
   background: linear-gradient(45deg, #ff8a00, #e52e71, #9b08ff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: headerGradient 15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .stellar-heading {
+    -webkit-text-fill-color: currentColor;
+    background: none;
+  }
 }
 
 /* --------------------------
@@ -734,7 +745,7 @@ fieldset legend {
 
 #login-form input:not([type='checkbox']),
 #signup-form input:not([type='checkbox']) {
-  width: 240px;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
 }
