@@ -4,12 +4,12 @@
   "description": "Static website for Elysium Web",
   "main": "server/server.js",
   "scripts": {
-    "start": "npm run build && node build/server/server.js",
-    "test": "node test/test.js",
-    "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
+    "start": "node build/server/server.js",
     "build": "tsc && node scripts/buildOverlayData.mjs && node scripts/renderRealms.mjs",
+    "dev": "concurrently -k \"tsc -w\" \"nodemon -q -w build/src/data/overlayData.js -x npm run overlay\"",
     "overlay": "node scripts/buildOverlayData.mjs",
-    "dev": "concurrently -k \"tsc -w\" \"nodemon -q -w build/src/data/overlayData.js -x npm run overlay\""
+    "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
+    "test": "node test/test.js"
   },
   "author": "",
   "license": "MIT",
