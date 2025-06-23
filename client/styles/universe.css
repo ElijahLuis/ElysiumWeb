@@ -43,7 +43,7 @@ body.universe-page {
 
 #universe {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 20px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -69,7 +69,7 @@ body.universe-page {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  color: #fff;
+  color: #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +83,7 @@ body.universe-page {
   transform: translate(-50%, -50%) rotateY(var(--theta, 0deg))
     translateZ(var(--radius, 520px)) rotateY(calc(var(--theta, 0deg) * -1))
     scale(calc(var(--scale, 1) * var(--scale-mult, 1)));
-  transition: transform 0.6s ease-out;
+  transition: transform 0.25s ease-out;
   will-change: transform;
   background: transparent;
 }
@@ -215,7 +215,7 @@ body.universe-page {
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: 2px;
   cursor: pointer;
   box-shadow: 0 0 16px rgba(255, 136, 194, 0.45);
@@ -263,8 +263,8 @@ body.universe-page {
 
 #quick-select-wrapper {
   position: fixed;
-  bottom: calc(3% + 32px);
-  left: calc(3% + 5px);
+  bottom: calc(3% + 57px);
+  left: calc(3% + 15px);
   width: 160px;
   height: 160px;
   display: flex;
@@ -288,7 +288,9 @@ body.universe-page {
   height: 48px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: var(--dot-color, rgba(255, 255, 255, 0.1));
+  background: var(--dot-color, rgba(255, 255, 255, 0.15));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: #fff;
   display: flex;
   align-items: center;
@@ -318,7 +320,7 @@ body.universe-page {
   transform: translate(-50%, -50%);
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   letter-spacing: 1px;
   color: #fff;
   pointer-events: none;
@@ -326,12 +328,12 @@ body.universe-page {
 
 .planet.faded {
   opacity: 0;
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.25s ease-out;
   pointer-events: none;
 }
 
 .planet.focused {
-  transition: transform 0.4s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 #realm-overlay {
@@ -472,40 +474,50 @@ body.universe-page {
 #abyss {
   --bg-color: #23034a;
   --glow-color: #bf9dff;
+  --dark-color: #4c3e66;
 }
 #cavern {
   --bg-color: #004d44;
   --glow-color: #9ef2e3;
+  --dark-color: #3f605a;
 }
 #dross {
   --bg-color: #5a2f1f;
   --glow-color: #f0c9b3;
+  --dark-color: #605047;
 }
 #ember {
   --bg-color: #9e290f;
   --glow-color: #ffb194;
+  --dark-color: #66463b;
 }
 #glare {
   --bg-color: #a06f00;
   --glow-color: #ffd96a;
+  --dark-color: #66562a;
 }
 #languish {
   --bg-color: #0d4d98;
   --glow-color: #86bfff;
+  --dark-color: #354c66;
 }
 #mist {
   --bg-color: #61757d;
   --glow-color: #cfe8f8;
+  --dark-color: #525c63;
 }
 #oasis {
   --bg-color: #157f79;
   --glow-color: #76ffe5;
+  --dark-color: #2f665b;
 }
 #trace {
   --bg-color: #7a143d;
   --glow-color: #ffa3c0;
+  --dark-color: #66414c;
 }
 #zenith {
   --bg-color: #b68625;
   --glow-color: #ffeba3;
+  --dark-color: #665e41;
 }
