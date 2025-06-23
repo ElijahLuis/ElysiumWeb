@@ -20,7 +20,7 @@
         }
 
         popupWindow.addEventListener('click', closePopup)
-        setTimeout(closePopup, 3000)
+        setTimeout(closePopup, 2000)
       })
     })
   })
