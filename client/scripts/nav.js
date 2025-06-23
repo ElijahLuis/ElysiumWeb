@@ -1,5 +1,4 @@
-// Loads the shared navigation and highlights the active page
-
+// Loads shared navigation and highlights active page
 document.addEventListener('DOMContentLoaded', () => {
   const placeholder = document.getElementById('main-nav')
   if (!placeholder) return
