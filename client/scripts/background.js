@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!starsContainer) return
 
   // Star generation
-  function generateStars() {
+  const stars = []
+
+  function createStars() {
     starsContainer.innerHTML = ''
-    const minStars = 400
-    const maxStars = 600
+    const minStars = 500
+    const maxStars = 750
     const pageWidth = document.documentElement.clientWidth
     const pageHeight = Math.max(document.body.scrollHeight, window.innerHeight)
     const area = pageWidth * pageHeight
@@ -16,19 +18,27 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < count; i++) {
       const star = document.createElement('div')
       star.classList.add('star')
+      frag.appendChild(star)
+      stars.push(star)
+    }
+    starsContainer.appendChild(frag)
+    positionStars()
+  }
+
+  function positionStars() {
+    const pageWidth = document.documentElement.clientWidth
+    const pageHeight = Math.max(document.body.scrollHeight, window.innerHeight)
+    stars.forEach((star) => {
       star.style.left = `${Math.random() * pageWidth}px`
       star.style.top = `${Math.random() * pageHeight}px`
       star.style.animationDuration = `${Math.random() * 3 + 2}s`
       star.style.opacity = Math.random().toString()
-      frag.appendChild(star)
-    }
-    starsContainer.appendChild(frag)
+    })
   }
 
-  generateStars()
-
-  let lastWidth = 0,
-    lastHeight = 0
+  createStars()
+  let lastWidth = document.documentElement.clientWidth,
+    lastHeight = Math.max(document.body.scrollHeight, window.innerHeight)
   let resizeTimeout
   function checkSize() {
     clearTimeout(resizeTimeout)
@@ -38,13 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (width !== lastWidth || height !== lastHeight) {
         lastWidth = width
         lastHeight = height
-        generateStars()
+        positionStars()
       }
     }, 200)
   }
 
   window.addEventListener('resize', checkSize)
-  window.addEventListener('scroll', checkSize)
 
   // Gradient colors
   function adjust(hex, amt) {

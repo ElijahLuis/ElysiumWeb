@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       quickDots.push(dot)
     })
     // arrange in a circle
-    const radius = 60
+    const radius = 70
     quickDots.forEach((dot, idx) => {
       const theta = (idx / quickDots.length) * Math.PI * 2 - Math.PI / 2
       const x = 50 + radius * Math.cos(theta)
