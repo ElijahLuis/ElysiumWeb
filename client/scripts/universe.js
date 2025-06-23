@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let yesBtn, noBtn
   let lastFocus
 
-  // keep focus cycling within the overlay when it is active
+  // keep focus cycling within overlay when active
   function trapFocus(e) {
     if (!overlay || !overlay.classList.contains('active')) return
     if (e.key !== 'Tab') return
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400)
     if (yesBtn) yesBtn.removeEventListener('click', confirmTravel)
     if (noBtn) noBtn.removeEventListener('click', revertSelection)
-    // release focus trap and return focus to the element that opened the dialog
+    // release focus trap and return focus to element that opened dialog
     overlay.removeEventListener('keydown', trapFocus)
     overlay.removeAttribute('tabindex')
     if (lastFocus && lastFocus.focus) lastFocus.focus()
@@ -251,10 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     overlay.classList.remove('hidden')
     overlay.classList.add('active')
-    // make the overlay focusable and store the element that was focused previously
     overlay.setAttribute('tabindex', '-1')
     lastFocus = document.activeElement
-    // trap focus inside the overlay so keyboard users stay within the dialog
     overlay.addEventListener('keydown', trapFocus)
 
     setTimeout(() => icon.classList.add('show'), 50)
@@ -263,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     yesBtn.addEventListener('click', confirmTravel)
     noBtn.addEventListener('click', revertSelection)
-    // direct keyboard focus to the first actionable element in the dialog
     yesBtn.focus()
   }
 
