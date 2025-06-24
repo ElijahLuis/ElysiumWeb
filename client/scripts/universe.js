@@ -291,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ring
         .querySelectorAll('.planet-inner')
         .forEach((inner) => inner.classList.add('show'))
+      planets.forEach((p) => (p.style.visibility = 'visible'))
     }, 50)
   }
 

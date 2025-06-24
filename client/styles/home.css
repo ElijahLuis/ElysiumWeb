@@ -260,18 +260,19 @@ body {
 }
 
 #explore-form {
-  gap: 8px;
+  gap: 0;
 }
 
 #explore-form select {
-  margin-top: 10px;
+  margin-top: 2px;
+  margin-bottom: 14px;
 }
 
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-top: 5px;
-  margin-bottom: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #explore-form .submit-btn {

@@ -69,16 +69,14 @@ body.universe-page {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  color: #f2f2f2;
+  color: transparent;
+  text-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
-  text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.7),
-    0 0 15px rgba(255, 255, 255, 0.9);
   transform-style: preserve-3d;
   transform: translate(-50%, -50%) rotateY(var(--theta, 0deg))
     translateZ(var(--radius, 520px)) rotateY(calc(var(--theta, 0deg) * -1))
@@ -86,6 +84,7 @@ body.universe-page {
   transition: transform 0.25s ease-out;
   will-change: transform;
   background: transparent;
+  visibility: hidden;
 }
 
 .planet-inner {
@@ -115,6 +114,7 @@ body.universe-page {
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
+  color: #f2f2f2;
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.7),
     0 0 15px rgba(255, 255, 255, 0.9);
