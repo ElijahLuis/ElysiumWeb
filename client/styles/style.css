@@ -10,9 +10,9 @@
   --default-gradient: linear-gradient(
     to bottom,
     rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
-    rgba(2, 12, 27, var(--gradient-alpha, 0.75)),
-    rgba(10, 31, 68, var(--gradient-alpha, 0.75)),
-    rgba(39, 58, 127, var(--gradient-alpha, 0.75))
+    rgba(18, 0, 34, var(--gradient-alpha, 0.75)),
+    rgba(41, 1, 54, var(--gradient-alpha, 0.75)),
+    rgba(61, 0, 117, var(--gradient-alpha, 0.75))
   );
 }
 
@@ -153,9 +153,9 @@ h1 {
   text-align: center;
   position: relative;
   z-index: 2;
-  color: #ffffff;
+  color: var(--glow-color, #ffffff);
   text-shadow:
-    0 0 12px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 0, 0, 0.7),
     0 0 6px var(--glow-color, #ffffff);
   animation: boxFloat 14s ease-in-out infinite;
 }

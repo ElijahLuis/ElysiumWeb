@@ -247,6 +247,10 @@ body {
   text-align: center;
 }
 
+#explore-intro {
+  margin-top: -25px;
+}
+
 #explore-intro .stellar-heading {
   font-size: 2.4rem;
 }
@@ -260,7 +264,7 @@ body {
 }
 
 #explore-form select {
-  margin-top: -20px;
+  margin-top: 10px;
 }
 
 #explore-form label {
@@ -277,7 +281,7 @@ body {
 }
 
 #explore-result {
-  margin-top: 40px;
+  margin-top: 15px;
   text-align: center;
 }
 
