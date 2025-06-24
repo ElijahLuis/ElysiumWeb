@@ -248,7 +248,7 @@ body {
 }
 
 #explore-intro {
-  margin-top: -25px;
+  margin-top: -45px;
 }
 
 #explore-intro .stellar-heading {
@@ -281,19 +281,19 @@ body {
 }
 
 #explore-result {
-  margin-top: 15px;
+  margin-top: -5px;
   text-align: center;
 }
 
 #explore-result .result-intro {
   font-size: 1.6rem;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #explore-result .result-icon {
   font-size: 4rem;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 #explore-result .result-name {

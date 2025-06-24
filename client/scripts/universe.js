@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const ring = document.getElementById('space')
-  if (!ring) return
+  const initCarousel = () => {
+    const ring = document.getElementById('space')
+    if (!ring) return
 
-  const planets = Array.from(ring.querySelectorAll('.planet'))
-  const quickMenu = document.getElementById('quick-menu')
-  const quickDots = []
+    const planets = Array.from(ring.querySelectorAll('.planet'))
+    const quickMenu = document.getElementById('quick-menu')
+    const quickDots = []
 
-  const overlayData = window.overlayData || {}
+    const overlayData = window.overlayData || {}
 
-  planets.forEach((planetElement) => {
+    planets.forEach((planetElement) => {
     const name = planetElement.textContent || ''
     const data = overlayData[planetElement.id] || {}
 
@@ -31,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     planetElement.textContent = ''
     planetElement.appendChild(inner)
-  })
+    })
 
-  if (quickMenu) {
+    if (quickMenu) {
     planets.forEach((planetElement, i) => {
       const dotButton = document.createElement('button')
       dotButton.className = 'quick-dot'
@@ -60,17 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
       dotButton.style.left = `${x}%`
       dotButton.style.top = `${y}%`
     })
-  }
+    }
 
-  const leftArrow = document.getElementById('arrow-left')
-  const rightArrow = document.getElementById('arrow-right')
-  const selectButton = document.getElementById('select-button')
-  const overlay = document.getElementById('realm-overlay')
-  let yesBtn, noBtn
-  let lastFocus
+    const leftArrow = document.getElementById('arrow-left')
+    const rightArrow = document.getElementById('arrow-right')
+    const selectButton = document.getElementById('select-button')
+    const overlay = document.getElementById('realm-overlay')
+    let yesBtn, noBtn
+    let lastFocus
 
   // keep focus cycling within overlay when active
-  function trapFocus(e) {
+    function trapFocus(e) {
     if (!overlay || !overlay.classList.contains('active')) return
     if (e.key !== 'Tab') return
 
@@ -92,25 +93,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const totalPlanets = planets.length
-  const slice = 360 / totalPlanets
-  const radius = 520
-  let angle = 0
-  let currentIndex = 0
-  let focused = false
+    const totalPlanets = planets.length
+    const slice = 360 / totalPlanets
+    const radius = 520
+    let angle = 0
+    let currentIndex = 0
+    let focused = false
 
-  const startKey = window.location.hash.replace('#', '')
-  if (startKey) {
-    const idx = planets.findIndex(
-      (planetElement) => planetElement.id === startKey,
-    )
-    if (idx >= 0) {
-      currentIndex = idx
-      angle = -slice * idx
+    const startKey = window.location.hash.replace('#', '')
+    if (startKey) {
+      const idx = planets.findIndex(
+        (planetElement) => planetElement.id === startKey,
+      )
+      if (idx >= 0) {
+        currentIndex = idx
+        angle = -slice * idx
+      }
     }
-  }
 
-  function updatePlanets() {
+    function updatePlanets() {
     planets.forEach((planet, i) => {
       const theta = angle + i * slice
       const rad = (theta * Math.PI) / 180
@@ -125,27 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
     quickDots.forEach((dotButton, i) => {
       dotButton.classList.toggle('active', i === currentIndex)
     })
-  }
+    }
 
-  if (leftArrow) {
+    if (leftArrow) {
     leftArrow.addEventListener('click', () => {
       if (focused) return
       angle += slice
       currentIndex = (currentIndex - 1 + totalPlanets) % totalPlanets
       updatePlanets()
     })
-  }
+    }
 
-  if (rightArrow) {
+    if (rightArrow) {
     rightArrow.addEventListener('click', () => {
       if (focused) return
       angle -= slice
       currentIndex = (currentIndex + 1) % totalPlanets
       updatePlanets()
     })
-  }
+    }
 
-  function hideOverlay() {
+    function hideOverlay() {
     if (!overlay) return
     overlay.classList.remove('active')
     setTimeout(() => {
@@ -158,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.removeEventListener('keydown', trapFocus)
     overlay.removeAttribute('tabindex')
     if (lastFocus && lastFocus.focus) lastFocus.focus()
-  }
+    }
 
-  function revertSelection() {
+    function revertSelection() {
     hideOverlay()
     planets.forEach((planetElement) => {
       planetElement.classList.remove('faded', 'focused')
@@ -173,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
       selectButton.classList.add('fade-in')
     }
     focused = false
-  }
+    }
 
-  function confirmTravel() {
+    function confirmTravel() {
     const realm = yesBtn?.dataset.realm
     if (!realm) return
 
@@ -189,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       window.location.href = `${realm}.html`
     }, 600)
-  }
+    }
 
-  function showOverlay(realmKey) {
+    function showOverlay(realmKey) {
     if (!overlay) return
     const data = overlayData[realmKey]
     if (!data) return
@@ -262,9 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
     yesBtn.addEventListener('click', confirmTravel)
     noBtn.addEventListener('click', revertSelection)
     yesBtn.focus()
-  }
+    }
 
-  if (selectButton) {
+    if (selectButton) {
     selectButton.addEventListener('click', () => {
       if (focused) return
       focused = true
@@ -283,7 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const realmKey = active.id
       showOverlay(realmKey)
     })
+    }
+
+    updatePlanets()
   }
 
-  updatePlanets()
+  const overlay = document.getElementById('fadeOverlay')
+  if (overlay && overlay.classList.contains('start')) {
+    overlay.addEventListener('animationend', initCarousel, { once: true })
+  } else {
+    setTimeout(initCarousel, 600)
+  }
 })
