@@ -102,6 +102,12 @@ body.universe-page {
   user-select: none;
   will-change: transform;
   animation: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.planet-inner.show {
+  opacity: 1;
 }
 
 .planet-label {

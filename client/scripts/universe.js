@@ -287,6 +287,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updatePlanets()
+    setTimeout(() => {
+      ring
+        .querySelectorAll('.planet-inner')
+        .forEach((inner) => inner.classList.add('show'))
+    }, 50)
   }
 
   const overlay = document.getElementById('fadeOverlay')
