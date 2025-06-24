@@ -96,6 +96,7 @@ body.universe-page {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   border-radius: 50%;
   cursor: default;
   user-select: none;
@@ -115,6 +116,7 @@ body.universe-page {
   font-weight: 600;
   line-height: 1;
   color: #f2f2f2;
+  display: block;
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.7),
     0 0 15px rgba(255, 255, 255, 0.9);
@@ -123,7 +125,8 @@ body.universe-page {
 .planet-icon {
   font-size: 2rem;
   line-height: 1;
-  margin-top: 4px;
+  margin-top: 0;
+  display: block;
 }
 
 .planet-inner::before {
