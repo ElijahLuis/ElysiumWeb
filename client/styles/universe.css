@@ -1,41 +1,3 @@
-:root {
-  --overlay-color-1: #000000;
-  --overlay-color-2: #120022;
-  --overlay-color-3: #290136;
-  --overlay-color-4: #3d0075;
-  --overlay-color-5: #400144;
-  --overlay-color-6: #3d0075;
-  --overlay-color-7: #290136;
-  --overlay-color-8: #120022;
-  --overlay-color-9: #020131;
-  --overlay-alpha: 0.3;
-}
-
-#gradientOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: var(--overlay-alpha, 0.65);
-  background: linear-gradient(
-    -45deg,
-    var(--overlay-color-1, #000000),
-    var(--overlay-color-2, #120022),
-    var(--overlay-color-3, #290136),
-    var(--overlay-color-4, #3d0075),
-    var(--overlay-color-5, #400144),
-    var(--overlay-color-6, #3d0075),
-    var(--overlay-color-7, #290136),
-    var(--overlay-color-8, #120022),
-    var(--overlay-color-9, #020131)
-  );
-  background-size: 400% 400%;
-  animation: gradientCycle 60s ease-in-out infinite;
-  will-change: background-position;
-  z-index: -1;
-}
 
 body.universe-page {
   background: #020131;
@@ -127,6 +89,10 @@ body.universe-page {
   line-height: 1;
   margin-top: 0;
   display: block;
+  color: #f2f2f2;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(255, 255, 255, 0.9);
 }
 
 .planet-inner::before {
