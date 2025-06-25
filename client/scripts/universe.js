@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const leftArrow = document.getElementById('arrow-left')
     const rightArrow = document.getElementById('arrow-right')
     const selectButton = document.getElementById('select-button')
+    const quickLabel = document.getElementById('quick-label')
     const overlay = document.getElementById('realm-overlay')
     let yesBtn, noBtn
     let lastFocus
@@ -292,6 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .querySelectorAll('.planet-inner')
         .forEach((inner) => inner.classList.add('show'))
       planets.forEach((p) => (p.style.visibility = 'visible'))
+      if (selectButton)
+        selectButton.classList.replace('fade-out', 'fade-in')
+      if (leftArrow) leftArrow.classList.add('fade-in')
+      if (rightArrow) rightArrow.classList.add('fade-in')
+      if (quickLabel) quickLabel.classList.add('fade-in')
     }, 50)
   }
 

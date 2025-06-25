@@ -189,11 +189,8 @@ h1 {
   text-align: center;
   position: relative;
   z-index: 2;
-  color: var(--glow-color, #ffffff);
-  text-shadow:
-    0 0 10px rgba(0, 0, 0, 0.7),
-    0 0 6px var(--glow-color, #ffffff);
-  animation: boxFloat 14s ease-in-out infinite;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--bubble-text, var(--glow-color, #ffffff));
 }
 
 .stellar-heading {
