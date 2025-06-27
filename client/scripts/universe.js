@@ -295,9 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
       planets.forEach((p) => (p.style.visibility = 'visible'))
       if (selectButton)
         selectButton.classList.replace('fade-out', 'fade-in')
-      if (leftArrow) leftArrow.classList.add('fade-in')
-      if (rightArrow) rightArrow.classList.add('fade-in')
-      if (quickLabel) quickLabel.classList.add('fade-in')
+      if (leftArrow) leftArrow.classList.replace('fade-out', 'fade-in')
+      if (rightArrow) rightArrow.classList.replace('fade-out', 'fade-in')
+      if (quickLabel) quickLabel.classList.replace('fade-out', 'fade-in')
+      if (quickMenu) quickMenu.classList.replace('fade-out', 'fade-in')
     }, 50)
   }
 

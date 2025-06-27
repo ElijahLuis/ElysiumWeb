@@ -191,6 +191,10 @@ h1 {
   z-index: 2;
   font-family: 'Orbitron', sans-serif;
   color: var(--bubble-text, var(--glow-color, #ffffff));
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
 }
 
 .stellar-heading {

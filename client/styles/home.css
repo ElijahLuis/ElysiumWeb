@@ -248,12 +248,12 @@ body {
 }
 
 #explore-intro {
-  margin-top: -60px;
+  margin-top: -40px;
 }
 
 #explore-intro .stellar-heading {
   font-size: 2.4rem;
-  margin-top: -15px;
+  margin-top: -10px;
 }
 
 #explore-intro .explore-desc {
@@ -284,7 +284,7 @@ body {
 }
 
 #explore-result {
-  margin-top: -20px;
+  margin-top: -5px;
   text-align: center;
 }
 
