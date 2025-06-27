@@ -13,12 +13,24 @@
   </head>
   <body>
     <div id="fadeOverlay" class="start"></div>
+    <div id="gradientOverlay"></div>
     <div id="nebula-container">
       <div class="nebula" id="nebula1"></div>
       <div class="nebula" id="nebula2"></div>
     </div>
     <div id="stars"></div>
-    <nav id="main-nav" aria-label="primary"></nav>
+    <nav id="main-nav" aria-label="primary">
+      <div class="brand">
+        <a href="home.html" class="brand-link" aria-label="Elysium home">Elysium</a>
+      </div>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="universe.html">Universe</a></li>
+      </ul>
+    </nav>
     <main id="explore-main">
       <section id="explore-intro" class="home-section">
         <h2 class="stellar-heading">Choose Your Path</h2>
@@ -88,7 +100,6 @@
       </section>
     </main>
     <script defer src="../scripts/background.js"></script>
-    <script defer src="../scripts/ripple.js"></script>
     <script defer src="../scripts/nav.js"></script>
     <script defer src="../scripts/explore.js"></script>
   </body>

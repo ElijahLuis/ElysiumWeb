@@ -4,17 +4,52 @@
   --primary-font: 'Orbitron', 'Arial Narrow', Arial, sans-serif;
   --primary-color: #ffcccc;
   --primary-spacing: 1.5px;
-  --ripple-color: var(--realm-color, #ff69b4);
   --gradient-alpha: 0.75;
   --scroll-track: rgba(255, 255, 255, 0.1);
   --scroll-thumb: rgba(255, 102, 153, 0.6);
   --default-gradient: linear-gradient(
     to bottom,
     rgba(0, 0, 0, var(--gradient-alpha, 0.75)),
-    rgba(2, 12, 27, var(--gradient-alpha, 0.75)),
-    rgba(10, 31, 68, var(--gradient-alpha, 0.75)),
-    rgba(39, 58, 127, var(--gradient-alpha, 0.75))
+    rgba(18, 0, 34, var(--gradient-alpha, 0.75)),
+    rgba(41, 1, 54, var(--gradient-alpha, 0.75)),
+    rgba(61, 0, 117, var(--gradient-alpha, 0.75))
   );
+  --overlay-color-1: #000000;
+  --overlay-color-2: #120022;
+  --overlay-color-3: #290136;
+  --overlay-color-4: #3d0075;
+  --overlay-color-5: #400144;
+  --overlay-color-6: #3d0075;
+  --overlay-color-7: #290136;
+  --overlay-color-8: #120022;
+  --overlay-color-9: #020131;
+  --overlay-alpha: 0.3;
+}
+
+#gradientOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: var(--overlay-alpha, 0.65);
+  background: linear-gradient(
+    -45deg,
+    var(--overlay-color-1, #000000),
+    var(--overlay-color-2, #120022),
+    var(--overlay-color-3, #290136),
+    var(--overlay-color-4, #3d0075),
+    var(--overlay-color-5, #400144),
+    var(--overlay-color-6, #3d0075),
+    var(--overlay-color-7, #290136),
+    var(--overlay-color-8, #120022),
+    var(--overlay-color-9, #020131)
+  );
+  background-size: 400% 400%;
+  animation: gradientCycle 60s ease-in-out infinite;
+  will-change: background-position;
+  z-index: -1;
 }
 
 html,
@@ -154,9 +189,17 @@ h1 {
   text-align: center;
   position: relative;
   z-index: 2;
-  color: var(--dark-color, var(--realm-color));
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  animation: boxFloat 14s ease-in-out infinite;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: var(--bubble-text, #ffffff);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.8),
+    0 0 16px var(--bubble-color),
+    0 0 36px var(--bubble-color),
+    0 0 48px var(--bubble-color);
 }
 
 .stellar-heading {
@@ -942,6 +985,10 @@ code {
 
 #elysium-main .realm-table {
   line-height: 1.5;
+  width: 600px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #elysium-main th {

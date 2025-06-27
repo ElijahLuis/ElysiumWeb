@@ -71,7 +71,7 @@ Planetary names are stored in `src/data/realmMetadata.ts`.
 Each entry defines a realm by name and is used across the React pages to generate the planetary views.
 
 Emotion clusters for each realm live in `src/data/clusters/`. 
-Their matching core planets are listed in `src/data/planets/`. 
+Their matching core planets are listed in `src/data/corePlanets/`. 
 The shared interfaces `EmotionCluster` and `CorePlanet` reside in `src/data/types.ts` so these structures stay consistent.
 
 For a holistic look at every realm, cluster, and planet, see the full design schema in `client/lore/realmsFull.ts`.

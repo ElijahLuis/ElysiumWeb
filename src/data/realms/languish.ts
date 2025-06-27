@@ -1,5 +1,5 @@
 import { clusters as clusterData } from '../clusters/languish'
-import { corePlanets as planetData } from '../planets/languish'
+import { corePlanets as planetData } from '../corePlanets/languish'
 import { realms } from '../realmMetadata'
 import { Realm } from '../types'
 

@@ -42,7 +42,7 @@ body {
 }
 
 #explore-main {
-  margin-top: 130px;
+  margin-top: 150px;
   width: min(95%, 700px);
   margin-left: auto;
   margin-right: auto;
@@ -109,6 +109,10 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#profile-overview .profile-avatar {
+  margin-top: 10px;
 }
 
 .profile-name {
@@ -243,8 +247,13 @@ body {
   text-align: center;
 }
 
+#explore-intro {
+  margin-top: -40px;
+}
+
 #explore-intro .stellar-heading {
   font-size: 2.4rem;
+  margin-top: -10px;
 }
 
 #explore-intro .explore-desc {
@@ -252,13 +261,19 @@ body {
 }
 
 #explore-form {
-  gap: 24px;
+  gap: 0;
+}
+
+#explore-form select {
+  margin-top: 2px;
+  margin-bottom: 14px;
 }
 
 #explore-form label {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #explore-form .submit-btn {
@@ -269,19 +284,19 @@ body {
 }
 
 #explore-result {
-  margin-top: 40px;
+  margin-top: -5px;
   text-align: center;
 }
 
 #explore-result .result-intro {
   font-size: 1.6rem;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #explore-result .result-icon {
   font-size: 4rem;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 #explore-result .result-name {

@@ -1,5 +1,5 @@
 import { clusters as clusterData } from '../clusters/zenith'
-import { corePlanets as planetData } from '../planets/zenith'
+import { corePlanets as planetData } from '../corePlanets/zenith'
 import { realms } from '../realmMetadata'
 import { Realm } from '../types'
 

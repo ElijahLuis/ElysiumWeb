@@ -19,7 +19,18 @@
       <div class="nebula" id="nebula2"></div>
     </div>
     <div id="stars"></div>
-    <nav id="main-nav" aria-label="primary"></nav>
+    <nav id="main-nav" aria-label="primary">
+      <div class="brand">
+        <a href="home.html" class="brand-link" aria-label="Elysium home">Elysium</a>
+      </div>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="universe.html">Universe</a></li>
+      </ul>
+    </nav>
     <div id="universe">
       <div id="space">
         <div class="planet" id="abyss">Abyss</div>
@@ -42,27 +53,26 @@
       ></div>
     </div>
     <div id="controls">
-      <button class="arrow" id="arrow-left" aria-label="previous planet">
+      <button class="arrow fade-out" id="arrow-left" aria-label="previous planet">
         &larr;
       </button>
       <button
         id="select-button"
-        class="select-btn fade-in"
+        class="select-btn fade-out"
         aria-label="select realm"
       >
         Select
       </button>
-      <button class="arrow" id="arrow-right" aria-label="next planet">
+      <button class="arrow fade-out" id="arrow-right" aria-label="next planet">
         &rarr;
       </button>
     </div>
     <div id="quick-select-wrapper">
-      <div id="quick-menu" aria-label="Quick select">
-        <span id="quick-label">Quick Select</span>
+      <div id="quick-menu" class="fade-out" aria-label="Quick select">
+        <span id="quick-label" class="fade-out">Quick Select</span>
       </div>
     </div>
     <script defer src="../scripts/background.js"></script>
-    <script defer src="../scripts/ripple.js"></script>
     <script defer src="../scripts/nav.js"></script>
     <script defer src="../scripts/overlayData.js" type="module"></script>
     <script src="../scripts/universe.js" defer></script>

@@ -1,5 +1,5 @@
 import { clusters as clusterData } from '../clusters/trace'
-import { corePlanets as planetData } from '../planets/trace'
+import { corePlanets as planetData } from '../corePlanets/trace'
 import { realms } from '../realmMetadata'
 import { Realm } from '../types'
 
