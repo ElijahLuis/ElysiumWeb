@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!nav) return
 
   if (!nav.innerHTML.trim()) {
-    nav.innerHTML = `\n      <div class="brand">\n        <a href="home.html" class="brand-link" aria-label="Elysium home">Elysium</a>\n      </div>\n      <ul>\n        <li><a href="home.html">Home</a></li>\n        <li><a href="profile.html">Profile</a></li>\n        <li><a href="explore.html">Explore</a></li>\n        <li><a href="about.html">About</a></li>\n        <li><a href="universe.html">Universe</a></li>\n      </ul>\n    `
+    nav.innerHTML = `\n      <div class="brand">\n        <a href="home.html" class="brand-link" aria-label="Elysium home">Elysium</a>\n      </div>\n      <ul>\n        <li><a href="home.html">Home</a></li>\n        <li><a href="profile.html">Profile</a></li>\n        <li><a href="explore.html">Explore</a></li>\n        <li><a href="about.html">About</a></li>\n        <li><a href="universe.html">Universe</a></li>\n        <li><a href="constellations.html">Constellations</a></li>\n      </ul>\n    `
   }
 
   highlightCurrentPage(nav)

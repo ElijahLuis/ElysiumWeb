@@ -1,0 +1,29 @@
+#constellations-main {
+  margin-top: 150px;
+  width: min(95%, 800px);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+#constellation-canvas {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dummy-star {
+  position: absolute;
+  color: #ffeeee;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
