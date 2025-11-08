@@ -9,22 +9,40 @@
     "dev": "concurrently -k \"tsc -w\" \"nodemon -q -w build/src/data/overlayData.js -x npm run overlay\"",
     "overlay": "node scripts/buildOverlayData.mjs",
     "format": "prettier --write \"client/**/*.{js,css,html}\" \"server/**/*.js\" \"test/**/*.js\" \"src/**/*.{ts,tsx}\"",
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "dev:client": "vite",
+    "dev:server:safe": "wait-on file:build/src/data/overlayData.js && nodemon -q -w build/src/data/overlayData.js -x \"npm run overlay\"",
+    "dev:full": "concurrently -k \"tsc -w\" \"npm:dev:server:safe\" \"npm:dev:client\""
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.0.1",
+    "concurrently": "^8.0.1",
     "jsdom": "^26.1.0",
+    "nodemon": "^3.0.2",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "concurrently": "^8.0.1",
-    "nodemon": "^3.0.2"
+    "vite": "^7.2.2",
+    "wait-on": "^9.0.1"
   },
   "dependencies": {
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElijahLuis/ElysiumWeb.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ElijahLuis/ElysiumWeb/issues"
+  },
+  "homepage": "https://github.com/ElijahLuis/ElysiumWeb#readme"
 }
